@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zonego.tw</id>
+    <title>筆記ZONE • Posts by &#34;網路&#34; tag</title>
+    <link href="https://zonego.tw" />
+    <updated>2022-03-15T10:46:58.000Z</updated>
+    <category term="Self-Hosting" />
+    <category term="網路" />
+    <category term="Windows" />
+    <category term="Linux" />
+    <category term="Mac" />
+    <category term="資安" />
+    <category term="網路資源" />
+    <category term="CI/CD" />
+    <category term="Drone" />
+    <category term="Git" />
+    <category term="Gitea" />
+    <category term="Google" />
+    <category term="GMail" />
+    <category term="Blog" />
+    <category term="Hexo" />
+    <category term="桌布" />
+    <category term="DIY" />
+    <category term="筆記型電腦" />
+    <category term="環境變數" />
+    <entry>
+        <id>https://zonego.tw/2022/03/15/SpeedTest/</id>
+        <title>OpenSpeedTest 純HTML5的內網測速工具</title>
+        <link rel="alternate" href="https://zonego.tw/2022/03/15/SpeedTest/"/>
+        <content type="html">&lt;p&gt;大家平常要測網路速度都會想到 Ookla 的 &lt;a href=&#34;https://speedtest.net/&#34;&gt;Speedtest.net&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在簡單的網路環境內，Speedtest 就可以完成測速的工作&lt;/p&gt;
+&lt;p&gt;但如果我要測試內網速度呢?&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;網路環境&#34;&gt;&lt;a href=&#34;#網路環境&#34; class=&#34;headerlink&#34; title=&#34;網路環境&#34;&gt;&lt;/a&gt;網路環境&lt;/h2&gt;&lt;p&gt;在測試之前，我們先了解網路速度到底是在測甚麼&lt;/p&gt;
+&lt;p&gt;一般家用的網路架構大概如圖，由中華電信這些電信商(ISP) 提供網際網路連線(雲圖示)&lt;/p&gt;
+&lt;p&gt;之後在你家裝一台路由器，讓家裡的設備可以透過它上網&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/network-simple.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;我們平常用的 Speedtest.net 其實就是在測家裡到網際網路的連線速度&lt;/p&gt;
+&lt;p&gt;只是因為網路架構相當簡單，所以電腦、手機等終端的連線速度就等於連網際網路的速度&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;若是有在玩自架 homelab 的朋友網路架構絕對沒那麼簡單，可能比較像這張圖&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/network-complex.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在接到網際網路(後面以外網代稱)之前&lt;/p&gt;
+&lt;p&gt;接到路由器 Router 架設區域網路(後面以內網代稱)&lt;/p&gt;
+&lt;p&gt;然後連交換機 Switch 去串接各終端設備和伺服器、監視器等&lt;/p&gt;
+&lt;p&gt;所以如果我們要測試內網裡面電腦連伺服器的速度 如下圖&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/network-local.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Speedtest.net 當然就測不出來了&lt;/p&gt;
+&lt;h2 id=&#34;OpenSpeedTest&#34;&gt;&lt;a href=&#34;#OpenSpeedTest&#34; class=&#34;headerlink&#34; title=&#34;OpenSpeedTest&#34;&gt;&lt;/a&gt;OpenSpeedTest&lt;/h2&gt;&lt;p&gt;講了這麼多前提，主要就是要紹可以自己架設的 OpenSpeedTest&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://openspeedtest.com/&#34;&gt;官網&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://hub.docker.com/r/openspeedtest/latest&#34;&gt;DockerHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;只要把它架在自己的伺服器上，就可以像在用 Speedtest.net 一樣測試內網的網速🎉&lt;/p&gt;
+&lt;p&gt;這邊是官方那邊的 DEMO (沒錯它可以直接嵌在你的網頁內)&lt;/p&gt;
+&lt;div style=&#34;text-align:right;&#34;&gt;&lt;div style=&#34;min-height:360px;&#34;&gt;&lt;div style=&#34;width:100%;height:0;padding-bottom:50%;position:relative;&#34;&gt;&lt;iframe style=&#34;border:none;position:absolute;top:0;left:0;width:100%;height:100%;min-height:360px;border:none;overflow:hidden !important;&#34; src=&#34;//openspeedtest.com/Get-widget.php&#34;&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;Provided by  &lt;a href=&#34;http://openspeedtest.com&#34;&gt;OpenSpeedtest.com&lt;/a&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;安裝-OpenSpeedTest&#34;&gt;&lt;a href=&#34;#安裝-OpenSpeedTest&#34; class=&#34;headerlink&#34; title=&#34;安裝 OpenSpeedTest&#34;&gt;&lt;/a&gt;安裝 OpenSpeedTest&lt;/h2&gt;&lt;p&gt;OpenSpeedTest 大致分為3種安裝方式&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安裝程式包&lt;/li&gt;
+&lt;li&gt;Docker&lt;/li&gt;
+&lt;li&gt;從原始碼手動架設&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;程式包&#34;&gt;&lt;a href=&#34;#程式包&#34; class=&#34;headerlink&#34; title=&#34;程式包&#34;&gt;&lt;/a&gt;程式包&lt;/h3&gt;&lt;p&gt;官方打包好的安裝檔在這邊&lt;a href=&#34;https://openspeedtest.com/speed-testing-application-for-your-website.php#Option-3&#34;&gt;下載頁&lt;/a&gt;可以找到&lt;/p&gt;
+&lt;p&gt;支援主流的作業系統 Windows, Mac, Linux 之外 連 Android 跟 IOS 都有 &lt;del&gt;用來測熱點性能?&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;點 Start Server 後就可以連 👉 給的的網址測速了&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/OSTV2-SS.png&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;Docker&#34;&gt;&lt;a href=&#34;#Docker&#34; class=&#34;headerlink&#34; title=&#34;Docker&#34;&gt;&lt;/a&gt;Docker&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;docker run --restart=unless-stopped --name openspeedtest -d -p 3000:3000 -p 3001:3001 openspeedtest/latest&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;啟動後連 &lt;a href=&#34;http://your-ip:3000/&#34;&gt;http://YOUR-IP:3000&lt;/a&gt; 或 &lt;a href=&#34;https://your-ip:3001/&#34;&gt;https://YOUR-IP:3001&lt;/a&gt; 測速&lt;/p&gt;
+&lt;h3 id=&#34;原始碼安裝&#34;&gt;&lt;a href=&#34;#原始碼安裝&#34; class=&#34;headerlink&#34; title=&#34;原始碼安裝&#34;&gt;&lt;/a&gt;原始碼安裝&lt;/h3&gt;&lt;p&gt;首先到 &lt;a href=&#34;https://github.com/openspeedtest/Speed-Test&#34;&gt;Github&lt;/a&gt; 下載或 clone 原始碼&lt;/p&gt;
+&lt;p&gt;準備好 Nginx ，套用&lt;a href=&#34;https://github.com/openspeedtest/Nginx-Configuration&#34;&gt;這邊&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;然後將下載好的OpenSpeedTest原始碼，放到 Nginx 的網頁資料夾就可以用了&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;要長期使用，推薦還是用 Docker 安裝，簡單省事&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+        <category term="Self-Hosting" />
+        <category term="網路" />
+        <category term="Windows" />
+        <category term="Linux" />
+        <category term="Mac" />
+        <updated>2022-03-15T10:46:58.000Z</updated>
+    </entry>
+</feed>

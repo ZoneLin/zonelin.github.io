@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+
+<head>
+    
+    <title>用指令下載影片吧 youtube-dl - 筆記ZONE</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+    <meta name="description" content="你想下載 Youtube、Facebook 或是 twitter 上的影片嗎?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用指令下載影片吧 youtube-dl">
+<meta property="og:url" content="https://zonego.tw/2021/12/19/youtuve-dl/index.html">
+<meta property="og:site_name" content="筆記ZONE">
+<meta property="og:description" content="你想下載 Youtube、Facebook 或是 twitter 上的影片嗎?">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-12-19T08:45:13.000Z">
+<meta property="article:modified_time" content="2022-04-27T12:40:39.646Z">
+<meta property="article:author" content="Zone Lin">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Mac">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1651063257553">
+    
+        <link rel="stylesheet" href="/css/dark.css?v=1651063257553">
+     
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1651063257553">
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(/images/cover.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Zone Lin" class="mdui-btn mdui-btn-icon"><img src="https://s.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" alt="Zone Lin"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Zone Lin">
+            <img src="https://s.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" alt="Zone Lin" alt="Zone Lin">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>18</div>
+        <div><span>標籤</span>19</div>
+        <div><span>分類</span>6</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首頁">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                首頁
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive/" title="所有文章">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                所有文章
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/rss/" title="訂閱文章">
+            <i class="mdui-list-item-icon nexmoefont icon-rss"></i>
+            <div class="mdui-list-item-content">
+                訂閱文章
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/board/" title="留言板">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                留言板
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/donate/" title="請我喝咖啡">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                請我喝咖啡
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about/" title="關於我">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                關於我
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="搜索" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="mailto:th5331958@gmail.com" target="_blank" mdui-tooltip="{content: 'EMail'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-mail-fill"></i>
+        </a><a class="mdui-ripple" href="https://github.com/ZoneLin/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分類</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Blog/">Blog</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/DIY/">DIY</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/小工具/">小工具</a>
+          <span class="category-list-count">7</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/系統設定/">系統設定</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/網路資源/">網路資源</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/開發相關/">開發相關</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Blog/" style="font-size: 16.67px;">Blog</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI/CD</a> <a href="/tags/DIY/" style="font-size: 10px;">DIY</a> <a href="/tags/Drone/" style="font-size: 10px;">Drone</a> <a href="/tags/GMail/" style="font-size: 10px;">GMail</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Gitea/" style="font-size: 11.67px;">Gitea</a> <a href="/tags/Google/" style="font-size: 11.67px;">Google</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.33px;">Linux</a> <a href="/tags/Mac/" style="font-size: 18.33px;">Mac</a> <a href="/tags/Self-Hosting/" style="font-size: 13.33px;">Self-Hosting</a> <a href="/tags/Windows/" style="font-size: 20px;">Windows</a> <a href="/tags/%E6%A1%8C%E5%B8%83/" style="font-size: 10px;">桌布</a> <a href="/tags/%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8/" style="font-size: 10px;">環境變數</a> <a href="/tags/%E7%AD%86%E8%A8%98%E5%9E%8B%E9%9B%BB%E8%85%A6/" style="font-size: 10px;">筆記型電腦</a> <a href="/tags/%E7%B6%B2%E8%B7%AF/" style="font-size: 10px;">網路</a> <a href="/tags/%E7%B6%B2%E8%B7%AF%E8%B3%87%E6%BA%90/" style="font-size: 11.67px;">網路資源</a> <a href="/tags/%E8%B3%87%E5%AE%89/" style="font-size: 10px;">資安</a>
+    </div>
+    
+  </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/27/copy-past/">注意複製貼上內容</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/10/youtube-dl-login/">youtube-dl 登入並下載影片</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/10/youtube-dl-quality/">youtube-dl 指定下載影片畫質</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/10/youtube-dl-subtitle/">youtube-dl 下載字幕</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/15/SpeedTest/">OpenSpeedTest 純HTML5的內網測速工具</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 Zone Lin
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="zonego" data-description="Support me on Buy me a coffee!" data-message="如果你喜歡這個網站，歡迎請我喝杯咖啡☕" data-color="#FF5F5F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>,<div>Icons made by <a target="_blank" rel="noopener" href="https://www.freepik.com" title="Freepik">Freepik</a> from <a target="_blank" rel="noopener" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="/images/cover/youtube.jpg" data-sizes="auto" alt="用指令下載影片吧 youtube-dl" class="lazyload">
+              <h1>用指令下載影片吧 youtube-dl</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年12月19日</a>
+    <a><i class="nexmoefont icon-areachart"></i>645 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
+</div>
+
+      
+
+      <p>你想下載 Youtube、Facebook 或是 twitter 上的影片嗎?</p>
+<span id="more"></span>
+<p>雖然名稱叫 youtube 下載，但 <a target="_blank" rel="noopener" href="https://ytdl-org.github.io/youtube-dl/supportedsites.html">youtube-dl支援的網站</a> 多達一千多個</p>
+<p>只要到 <a target="_blank" rel="noopener" href="https://ytdl-org.github.io/youtube-dl/index.html">這裡</a> 就能下載</p>
+<p>對於初學者會卡的地方，大概就只有不熟悉指令界面而已 (可能還有youtube的限速)</p>
+<hr>
+<p>甚麼?你說打指令你不會用?</p>
+<p>那你可以改用 <a href="/2021/12/10/youtube-dlg/"><strong>youtube-dl gui</strong></a></p>
+<h2 id="詳細教學"><a href="#詳細教學" class="headerlink" title="詳細教學"></a>詳細教學</h2><ul>
+<li><a href="/2022/04/10/youtube-dl-quality/">指定下載畫質</a></li>
+<li><a href="/2022/04/10/youtube-dl-subtitle/">下載字幕</a></li>
+<li><a href="/2022/04/10/youtube-dl-login/">登入並下載影片</a></li>
+</ul>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><h3 id="Windows-版本"><a href="#Windows-版本" class="headerlink" title="Windows 版本"></a>Windows 版本</h3><p>Windows 需要 Microsoft Visual C++ 2010 Service Pack 1 Redistributable Package (x86)</p>
+<p><a target="_blank" rel="noopener" href="https://download.microsoft.com/download/1/6/5/165255E7-1014-4D0A-B094-B6A430A6BFFC/vcredist_x86.exe">https://download.microsoft.com/download/1/6/5/165255E7-1014-4D0A-B094-B6A430A6BFFC/vcredist_x86.exe</a></p>
+<p>套件連結至微軟網站，請放心服用</p>
+<p>安裝後下載 Windows.exe 搬到預設應用程式的位置</p>
+<figure class="highlight taggerscript"><table><tr><td class="code"><pre><code class="hljs taggerscript"><span class="hljs-variable">%USERPROFILE%</span><span class="hljs-symbol">\A</span>ppData<span class="hljs-symbol">\L</span>ocal<span class="hljs-symbol">\M</span>icrosoft<span class="hljs-symbol">\W</span>indowsApps<br></code></pre></td></tr></table></figure>
+
+<p>或是參考這篇 <a href="/2022/01/07/windows11-path/">Windows 11 環境變數及 Path 設定</a> 設定路徑(Path)環境變數</p>
+<p>使用 CMD, Powershell 或 windows terminal 就可以直接使用</p>
+<hr>
+<h3 id="Linux-Mac-版本"><a href="#Linux-Mac-版本" class="headerlink" title="Linux, Mac 版本"></a>Linux, Mac 版本</h3><p>Linux 及 Mac 需要 Python 2.6, 2.7, 或 3.2+ 以上的版本才能執行</p>
+<p>可以到 <a target="_blank" rel="noopener" href="https://www.python.org/">Python 官網</a> 下載</p>
+<p>透過網路下載 youtube-dl</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/<span class="hljs-built_in">local</span>/bin/youtube-dl<br><br>sudo chmod a+rx /usr/<span class="hljs-built_in">local</span>/bin/youtube-dl<br></code></pre></td></tr></table></figure>
+
+<p>透過 python 安裝</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo pip install --upgrade youtube_dl<br></code></pre></td></tr></table></figure>
+<p>Mac 可以透過 homebrew 安裝</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo pip install --upgrade youtube_dl<br></code></pre></td></tr></table></figure>
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">youtube-dl -U<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Linux 若是用套件管理器(例如 man, apt)安裝，就用套件管理器更新</p>
+</blockquote>
+<h2 id="下載影片"><a href="#下載影片" class="headerlink" title="下載影片"></a>下載影片</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Windows</span><br>youtube-dl.exe <span class="hljs-string">&quot;https://www.youtube.com/watch?v=dQw4w9WgXcQ&quot;</span><br><br><span class="hljs-comment"># Linux</span><br>youtube-dl <span class="hljs-string">&quot;https://www.youtube.com/watch?v=dQw4w9WgXcQ&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>使用指令介面不像視窗版是點開後才給設定或操作，<br>大多都是先把設定參數都一起寫在啟動指令中</p>
+<blockquote>
+<p>用 Ctrl + C 可以終止執行中的指令</p>
+</blockquote>
+<blockquote>
+<p>如果網址內有特殊符號，可以用字串標記 “URL”</p>
+</blockquote>
+<p>通常指令介面的程式會保留 <code>-h</code> <code>--help</code> 做使用說明</p>
+<p>如果不會操作，可以參考使用說明</p>
+<h2 id="下載播放清單"><a href="#下載播放清單" class="headerlink" title="下載播放清單"></a>下載播放清單</h2><p>下載撥放清單跟下載影片一樣，把網址換成撥放清單</p>
+<h3 id="指定播放清單下載範圍"><a href="#指定播放清單下載範圍" class="headerlink" title="指定播放清單下載範圍"></a>指定播放清單下載範圍</h3><ul>
+<li><code>--playlist-start</code>：播放清單起始位置</li>
+<li><code>--playlist-end</code>：播放清單結束位置</li>
+<li><code>--playlist-items</code>：指定範圍，逗號分隔，例如：1,2,5,8, 1-3,7,10-13</li>
+</ul>
+<h2 id="只下載音樂"><a href="#只下載音樂" class="headerlink" title="只下載音樂"></a>只下載音樂</h2><p>用 <code>-x</code> 只輸出音軌，<code>--audio-format</code> 指定輸出檔的格式</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim">youtube-<span class="hljs-keyword">dl</span> -<span class="hljs-keyword">x</span> --audio-format mp3 http<span class="hljs-variable">s:</span>//www.youtube.<span class="hljs-keyword">com</span>/watch?v=WI-EMzrUSP4<br></code></pre></td></tr></table></figure>
+
+<p>其他參數：</p>
+<ul>
+<li><code>--embed-thumbnail</code>：嵌入影片縮圖(僅限 mp3 和 m4a/mp4)</li>
+<li><code>--add-metadata</code>：加入影片資訊</li>
+</ul>
+<h2 id="參考來源"><a href="#參考來源" class="headerlink" title="參考來源"></a>參考來源</h2><p><a target="_blank" rel="noopener" href="https://github.com/ytdl-org/youtube-dl/blob/master/README.md">https://github.com/ytdl-org/youtube-dl/blob/master/README.md</a><br><a target="_blank" rel="noopener" href="https://junyussh.github.io/p/use-youtube-dl-to-download-videos/">https://junyussh.github.io/p/use-youtube-dl-to-download-videos/</a></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Zone Lin<br>
+        <strong>本文鏈接：</strong><a href="https://zonego.tw/2021/12/19/youtuve-dl/" title="https:&#x2F;&#x2F;zonego.tw&#x2F;2021&#x2F;12&#x2F;19&#x2F;youtuve-dl&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;zonego.tw&#x2F;2021&#x2F;12&#x2F;19&#x2F;youtuve-dl&#x2F;</a><br>
+        
+            <strong>版權宣告：</strong>本文採用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW" target="_blank">創用CC BY 4.0</a> 協議進行許可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%B0%8F%E5%B7%A5%E5%85%B7/">小工具</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Linux/" rel="tag">Linux</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Mac/" rel="tag">Mac</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Windows/" rel="tag">Windows</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '4154b7069cefd96aa34b',
+        clientSecret: '4d1e06eb5468a4a083bdb0b6095c613deb234ea1',
+        id: window.location.pathname,
+        repo: 'zonelin.github.io',
+        owner: 'ZoneLin',
+        admin: 'ZoneLin'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A9%B3%E7%B4%B0%E6%95%99%E5%AD%B8"><span class="toc-number">1.</span> <span class="toc-text">詳細教學</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D"><span class="toc-number">2.</span> <span class="toc-text">安裝</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows-%E7%89%88%E6%9C%AC"><span class="toc-number">2.1.</span> <span class="toc-text">Windows 版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-Mac-%E7%89%88%E6%9C%AC"><span class="toc-number">2.2.</span> <span class="toc-text">Linux, Mac 版本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0"><span class="toc-number">3.</span> <span class="toc-text">更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BC%89%E5%BD%B1%E7%89%87"><span class="toc-number">4.</span> <span class="toc-text">下載影片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BC%89%E6%92%AD%E6%94%BE%E6%B8%85%E5%96%AE"><span class="toc-number">5.</span> <span class="toc-text">下載播放清單</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E6%92%AD%E6%94%BE%E6%B8%85%E5%96%AE%E4%B8%8B%E8%BC%89%E7%AF%84%E5%9C%8D"><span class="toc-number">5.1.</span> <span class="toc-text">指定播放清單下載範圍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AA%E4%B8%8B%E8%BC%89%E9%9F%B3%E6%A8%82"><span class="toc-number">6.</span> <span class="toc-text">只下載音樂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E4%BE%86%E6%BA%90"><span class="toc-number">7.</span> <span class="toc-text">參考來源</span></a></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1651063257555"></script>
+
+
+	<script async src="/js/search.js?v=1651063257555"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+    <!-- Google Analytics -->
+<script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', '3052690855', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-92G2VB89BE"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-92G2VB89BE');
+</script>
+
+
+
+
+
+</body>
+
+</html>

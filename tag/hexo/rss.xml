@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>筆記ZONE • Posts by &#34;hexo&#34; tag</title>
+        <link>https://zonego.tw</link>
+        <description></description>
+        <language>zh-TW</language>
+        <pubDate>Wed, 15 Dec 2021 01:41:37 +0000</pubDate>
+        <lastBuildDate>Wed, 15 Dec 2021 01:41:37 +0000</lastBuildDate>
+        <category>Self-Hosting</category>
+        <category>網路</category>
+        <category>Windows</category>
+        <category>Linux</category>
+        <category>Mac</category>
+        <category>資安</category>
+        <category>網路資源</category>
+        <category>CI/CD</category>
+        <category>Drone</category>
+        <category>Git</category>
+        <category>Gitea</category>
+        <category>Google</category>
+        <category>GMail</category>
+        <category>Blog</category>
+        <category>Hexo</category>
+        <category>桌布</category>
+        <category>DIY</category>
+        <category>筆記型電腦</category>
+        <category>環境變數</category>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2021/12/15/hexo-skip/</guid>
+            <title>Hexo 指定文件跳過渲染</title>
+            <link>https://zonego.tw/2021/12/15/hexo-skip/</link>
+            <category>Blog</category>
+            <category>Hexo</category>
+            <pubDate>Wed, 15 Dec 2021 01:41:37 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;Hexo 在編譯時，會將&lt;code&gt;source&lt;/code&gt;下的md以及html檔，都套用主題後產生成html&lt;/p&gt;
+&lt;p&gt;若有些頁面原本就是設計好的，不要套用主題的話，就要改設定去跳過了&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;修改設定&#34;&gt;&lt;a href=&#34;#修改設定&#34; class=&#34;headerlink&#34; title=&#34;修改設定&#34;&gt;&lt;/a&gt;修改設定&lt;/h2&gt;&lt;p&gt;詳細請看 Hexo 的&lt;a href=&#34;https://hexo.io/zh-tw/docs/configuration.html&#34;&gt;官方文件&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;開啟 &lt;code&gt;_config.yml&lt;/code&gt; 修改 skip_render 欄位可以設定渲染時要跳過的文件&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;這邊的設定與 exclude 不同，用 exclude 排除後，&lt;br&gt;在編譯時不會將原檔複製到 public 內，包括佈署時也是。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;跳過單一文件&#34;&gt;&lt;a href=&#34;#跳過單一文件&#34; class=&#34;headerlink&#34; title=&#34;跳過單一文件&#34;&gt;&lt;/a&gt;跳過單一文件&lt;/h3&gt;&lt;p&gt;若要跳過 source 下的 test.html&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test.html&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 或是&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt; [&lt;span class=&#34;hljs-string&#34;&gt;test.html&lt;/span&gt;]&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 或是&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test.html&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;若是跳過 source/abc 下的 test.html，就寫 abc/test.html&lt;br&gt;路徑不要寫成絕對位置，這邊的路徑都寫 source 下的相對位置&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;跳過多個文件&#34;&gt;&lt;a href=&#34;#跳過多個文件&#34; class=&#34;headerlink&#34; title=&#34;跳過多個文件&#34;&gt;&lt;/a&gt;跳過多個文件&lt;/h3&gt;&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt; [&lt;span class=&#34;hljs-string&#34;&gt;test.html&lt;/span&gt;, &lt;span class=&#34;hljs-string&#34;&gt;test2.html&lt;/span&gt;]&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 或是&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test.html&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test2.html&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;使用規則命名&#34;&gt;&lt;a href=&#34;#使用規則命名&#34; class=&#34;headerlink&#34; title=&#34;使用規則命名&#34;&gt;&lt;/a&gt;使用規則命名&lt;/h3&gt;&lt;p&gt;skip_render 欄位可以用 &lt;a href=&#34;https://github.com/micromatch/micromatch#extended-globbing&#34;&gt;glob 表達式&lt;/a&gt;表示符合規則的檔名&lt;/p&gt;
+&lt;p&gt;例如:&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 跳過所有 test 開頭的檔案&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test*&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 跳過所有 test 開頭的 html 檔案&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test*.html&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 跳過所有 abc 資料夾內的檔案&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;abc/*&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 跳過所有 abc 資料夾內的檔案包含目錄&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;abc/**&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;參考資料&#34;&gt;&lt;a href=&#34;#參考資料&#34; class=&#34;headerlink&#34; title=&#34;參考資料&#34;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://hexo.io/zh-tw/docs/configuration.html&#34;&gt;https://hexo.io/zh-tw/docs/configuration.html&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://iitii.github.io/2019/02/15/1/&#34;&gt;https://iitii.github.io/2019/02/15/1/&lt;/a&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2021/12/09/hexo-rss/</guid>
+            <title>增加 Hexo 的 RSS, ATOM, JSON Feed 訂閱功能</title>
+            <link>https://zonego.tw/2021/12/09/hexo-rss/</link>
+            <category>Blog</category>
+            <category>Hexo</category>
+            <pubDate>Thu, 09 Dec 2021 05:48:27 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;RSS(Really Simple Syndication) 是用 xml 定義的標準格式，用來把新聞、部落格文章或是 Podcast 更新資訊彙整到一個地方&lt;/p&gt;
+&lt;p&gt;衍生出的格式有 Atom, Json Feed 等格式&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;既然都做部落格了，當然要提供訂閱功能。(加減多點流量)&lt;/p&gt;
+&lt;p&gt;在 Hexo 內可以使用 &lt;code&gt;Hexo-Feed&lt;/code&gt; 插件幫我們產生 RSS, Atom 還有 Json Feed 的檔案&lt;/p&gt;
+&lt;p&gt;Hexo-feed &lt;a href=&#34;https://github.com/sergeyzwezdin/hexo-feed&#34;&gt;&lt;i class=&#34;nexmoefont icon-github&#34;&gt;&lt;/i&gt; GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安裝&#34;&gt;&lt;a href=&#34;#安裝&#34; class=&#34;headerlink&#34; title=&#34;安裝&#34;&gt;&lt;/a&gt;安裝&lt;/h2&gt;&lt;h3 id=&#34;需要版本&#34;&gt;&lt;a href=&#34;#需要版本&#34; class=&#34;headerlink&#34; title=&#34;需要版本&#34;&gt;&lt;/a&gt;需要版本&lt;/h3&gt;&lt;p&gt;Hexo 4.X+&lt;br&gt;NodeJS 12+&lt;/p&gt;
+&lt;h3 id=&#34;安裝指令&#34;&gt;&lt;a href=&#34;#安裝指令&#34; class=&#34;headerlink&#34; title=&#34;安裝指令&#34;&gt;&lt;/a&gt;安裝指令&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;npm install hexo-feed --save-dev&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;製作模板檔案&#34;&gt;&lt;a href=&#34;#製作模板檔案&#34; class=&#34;headerlink&#34; title=&#34;製作模板檔案&#34;&gt;&lt;/a&gt;製作模板檔案&lt;/h3&gt;&lt;p&gt;新增對應的模板檔案&lt;/p&gt;
+&lt;p&gt;RSS: &lt;code&gt;themes/layout/template/rss.ejs&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&lt;span class=&#34;hljs-meta&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;rss&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;version&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;2.0&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;channel&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.title %&amp;gt;&amp;lt;%= tag ? ` • Posts by &amp;quot;$&amp;#123;tag&amp;#125;&amp;quot; tag` : &amp;#x27;&amp;#x27; %&amp;gt;&amp;lt;%= category ? ` • Posts by &amp;quot;$&amp;#123;category&amp;#125;&amp;quot; category` : &amp;#x27;&amp;#x27; %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.url %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.description %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;language&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.language %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;language&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;pubDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= moment(lastBuildDate).locale(&amp;#x27;en&amp;#x27;).format(&amp;#x27;ddd, DD MMM YYYY HH:mm:ss ZZ&amp;#x27;) %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;pubDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;lastBuildDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= moment(lastBuildDate).locale(&amp;#x27;en&amp;#x27;).format(&amp;#x27;ddd, DD MMM YYYY HH:mm:ss ZZ&amp;#x27;) %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;lastBuildDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &amp;lt;%_ for (const &amp;#123; name &amp;#125; of (tags || [])) &amp;#123; _%&amp;gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= name %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;        &amp;lt;%_ for (const post of posts) &amp;#123; _%&amp;gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;item&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;guid&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;isPermalink&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.permalink %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;guid&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.title %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.permalink %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &amp;lt;%_ for (const tag of (post.tags ? post.tags.toArray() : [])) &amp;#123; _%&amp;gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= tag.name %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;pubDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= moment(post.date).locale(&amp;#x27;en&amp;#x27;).format(&amp;#x27;ddd, DD MMM YYYY HH:mm:ss ZZ&amp;#x27;) %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;pubDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;![CDATA[ &amp;lt;%= post.content %&amp;gt; ]]&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;item&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;channel&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;rss&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;ATOM: &lt;code&gt;themes/layout/template/atom.ejs&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&lt;span class=&#34;hljs-meta&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;feed&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;xmlns&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;http://www.w3.org/2005/Atom&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.url %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.title %&amp;gt;&amp;lt;%= tag ? ` • Posts by &amp;quot;$&amp;#123;tag&amp;#125;&amp;quot; tag` : &amp;#x27;&amp;#x27; %&amp;gt;&amp;lt;%= category ? ` • Posts by &amp;quot;$&amp;#123;category&amp;#125;&amp;quot; category` : &amp;#x27;&amp;#x27; %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;href&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&amp;lt;%= config.url %&amp;gt;&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;updated&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= moment(lastBuildDate).toISOString() %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;updated&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &amp;lt;%_ for (const &amp;#123; name &amp;#125; of (tags || [])) &amp;#123; _%&amp;gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;term&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&amp;lt;%= name %&amp;gt;&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;br&gt;    &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;    &amp;lt;%_ for (const post of posts) &amp;#123; _%&amp;gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;entry&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.permalink %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.title %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;rel&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;alternate&amp;quot;&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;href&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&amp;lt;%= post.permalink %&amp;gt;&amp;quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;content&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;type&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;html&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.content %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;content&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &amp;lt;%_ for (const &amp;#123; name &amp;#125; of (post.tags ? post.tags.toArray() : [])) &amp;#123; _%&amp;gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;term&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&amp;lt;%= name %&amp;gt;&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;br&gt;        &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;updated&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= moment(post.date).toISOString() %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;updated&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;entry&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;feed&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;Json Feed: &lt;code&gt;themes/layout/template/json.ejs&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&amp;lt;%- JSON.stringify(&amp;#123;&lt;br&gt;  version: &amp;#x27;https://jsonfeed.org/version/1&amp;#x27;,&lt;br&gt;  title: config.title + (tag ? ` • All posts by &amp;quot;$&amp;#123;tag&amp;#125;&amp;quot; tag` : &amp;#x27;&amp;#x27;) + (category ? ` • All posts by &amp;quot;$&amp;#123;category&amp;#125;&amp;quot; category` : &amp;#x27;&amp;#x27;),&lt;br&gt;  description: config.description,&lt;br&gt;  home_page_url: config.url,&lt;br&gt;  items: posts.map(post =&amp;gt; (&amp;#123;&lt;br&gt;      id: post.permalink,&lt;br&gt;      url: post.permalink,&lt;br&gt;      title: post.title,&lt;br&gt;      date_published: moment(post.date).toISOString(),&lt;br&gt;      content_html: post.content || &amp;#x27;&amp;#x27;,&lt;br&gt;      tags:  (post.tags ? post.tags.toArray() : []).map((&amp;#123; name &amp;#125;) =&amp;gt; name)&lt;br&gt;  &amp;#125;))&lt;br&gt;&amp;#125;, null, 4) _%&amp;gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;設定&#34;&gt;&lt;a href=&#34;#設定&#34; class=&#34;headerlink&#34; title=&#34;設定&#34;&gt;&lt;/a&gt;設定&lt;/h2&gt;&lt;p&gt;修改 Heox 設定檔 &lt;code&gt;_config.yml&lt;/code&gt;  新增 feed 設定&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;feed:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;limit:&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;20&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;order_by:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;-date&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;tag_dir:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;tag&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;category_dir:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;category&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;rss:&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;enable:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;template:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;themes/layout/template/rss.ejs&amp;quot;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;output:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;rss.xml&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;atom:&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;enable:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;template:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;themes/layout/template/atom.ejs&amp;quot;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;output:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;atom.xml&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;jsonFeed:&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;enable:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;template:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;themes/layout/template/json.ejs&amp;quot;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;output:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;feed.json&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;詳細設定參考 &lt;a href=&#34;https://github.com/sergeyzwezdin/hexo-feed&#34;&gt;&lt;i class=&#34;nexmoefont icon-github&#34;&gt;&lt;/i&gt; GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;完成&#34;&gt;&lt;a href=&#34;#完成&#34; class=&#34;headerlink&#34; title=&#34;完成&#34;&gt;&lt;/a&gt;完成&lt;/h2&gt;&lt;p&gt;接下來只要重新佈署 hexo 即可&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo server&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;檢查這些網址看是否安裝成功&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:4000/rss.xml&#34;&gt;http://localhost:4000/rss.xml&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:4000/atom.xml&#34;&gt;http://localhost:4000/atom.xml&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:4000/feed.json&#34;&gt;http://localhost:4000/feed.json&lt;/a&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2021/11/16/hexo-GA/</guid>
+            <title>Hexo nexmoe 主題套用 Google Analytics</title>
+            <link>https://zonego.tw/2021/11/16/hexo-GA/</link>
+            <category>Google</category>
+            <category>Blog</category>
+            <category>Hexo</category>
+            <pubDate>Tue, 16 Nov 2021 07:44:43 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;Google Analytics（GA）是Google公司提供的數據分析工具，可以幫助你追蹤你的網站流量、用戶行為，是一個網路行銷重要又好用的小工具。&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;網路上會看到很多推薦使用 GA 的文章，有甚麼功能就不用我多說了 &lt;del&gt;絕對不是我想偷懶&lt;/del&gt;。&lt;/p&gt;
+&lt;p&gt;我這小小的部落格也就只有看人數的需求而已。&lt;/p&gt;
+&lt;h2 id=&#34;申請-Google-Analytics&#34;&gt;&lt;a href=&#34;#申請-Google-Analytics&#34; class=&#34;headerlink&#34; title=&#34;申請 Google Analytics&#34;&gt;&lt;/a&gt;申請 Google Analytics&lt;/h2&gt;&lt;p&gt;基本上你有 google 帳號就完成一半了，接下來到 &lt;a href=&#34;https://analytics.google.com/analytics/web/&#34;&gt;GA&lt;/a&gt;網站&lt;/p&gt;
+&lt;p&gt;接著在左下角設定 &amp;gt; 建立資源 &amp;gt; 完成後到資料串流&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/ga_resource.jpg&#34; alt=&#34;Google Analytics 資源&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;新增網站串流，裡面填入要分析的網站網址，以及名稱&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/ga_stream.jpg&#34; alt=&#34;Google Analytics 串流&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;完成後我們會得到需要的 &lt;code&gt;評估ID&lt;/code&gt; G-XXXXX 的這串ID&lt;br&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/ga_stream2.jpg&#34; alt=&#34;Google Analytics 串流&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;修改Hexo設定檔&#34;&gt;&lt;a href=&#34;#修改Hexo設定檔&#34; class=&#34;headerlink&#34; title=&#34;修改Hexo設定檔&#34;&gt;&lt;/a&gt;修改Hexo設定檔&lt;/h2&gt;&lt;p&gt;nexmoe 這個主題有支援 Google Analytics&lt;br&gt;只要在 &lt;code&gt;_config.nexmoe.yml&lt;/code&gt; 設定檔內調整分析的設定即可&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;analytics:&lt;/span&gt; &lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;google_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;gtags_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;這邊填入分析ID&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;G-XXXXX&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;cnzz_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;tencent_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;la_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;baidu_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;gtm_container_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;成果&#34;&gt;&lt;a href=&#34;#成果&#34; class=&#34;headerlink&#34; title=&#34;成果&#34;&gt;&lt;/a&gt;成果&lt;/h2&gt;&lt;p&gt;設定完後重開 Hexo 伺服器套用&lt;/p&gt;
+&lt;p&gt;在&lt;a href=&#34;https://analytics.google.com/analytics/web/&#34;&gt;GA&lt;/a&gt;網站 &amp;gt; 報表內看到我們要的瀏覽人數&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;/images/content/ga_dash.jpg&#34; alt=&#34;Google Analytics 報表&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;果然人數是0&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;其實是截圖時根本還沒重開 Hexo，所以 Google 根本沒抓到瀏覽紀錄&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2021/11/13/hexo/</guid>
+            <title>Hexo 基本使用教學</title>
+            <link>https://zonego.tw/2021/11/13/hexo/</link>
+            <category>Self-Hosting</category>
+            <category>Blog</category>
+            <category>Hexo</category>
+            <pubDate>Sat, 13 Nov 2021 04:30:30 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;a href=&#34;https://hexo.io/zh-tw/&#34;&gt;官網&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://hexo.io/zh-tw/docs/&#34;&gt;使用說明&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://github.com/hexojs/hexo&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;常用指令&#34;&gt;&lt;a href=&#34;#常用指令&#34; class=&#34;headerlink&#34; title=&#34;常用指令&#34;&gt;&lt;/a&gt;常用指令&lt;/h2&gt;&lt;h3 id=&#34;建新貼文&#34;&gt;&lt;a href=&#34;#建新貼文&#34; class=&#34;headerlink&#34; title=&#34;建新貼文&#34;&gt;&lt;/a&gt;建新貼文&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo new 文章名稱&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/writing.html&#34;&gt;Writing&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;啟動測試伺服器&#34;&gt;&lt;a href=&#34;#啟動測試伺服器&#34; class=&#34;headerlink&#34; title=&#34;啟動測試伺服器&#34;&gt;&lt;/a&gt;啟動測試伺服器&lt;/h3&gt;&lt;p&gt;Hexo 提供 Web server 功能，不須透過 Nginx 或是 apache&lt;/p&gt;
+&lt;p&gt;安裝&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;npm install hexo-server --save&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;啟動伺服器&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo server&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/server.html&#34;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;產生靜態網站檔案&#34;&gt;&lt;a href=&#34;#產生靜態網站檔案&#34; class=&#34;headerlink&#34; title=&#34;產生靜態網站檔案&#34;&gt;&lt;/a&gt;產生靜態網站檔案&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo generate&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/generating.html&#34;&gt;Generating&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;部署到網站伺服器&#34;&gt;&lt;a href=&#34;#部署到網站伺服器&#34; class=&#34;headerlink&#34; title=&#34;部署到網站伺服器&#34;&gt;&lt;/a&gt;部署到網站伺服器&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo deploy&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;產生靜態頁面後佈署&lt;br&gt;兩個指令相同&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo generate --deploy&lt;br&gt;hexo deploy --generate&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/one-command-deployment.html&#34;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;增加文章分類-Categories&#34;&gt;&lt;a href=&#34;#增加文章分類-Categories&#34; class=&#34;headerlink&#34; title=&#34;增加文章分類 (Categories)&#34;&gt;&lt;/a&gt;增加文章分類 (Categories)&lt;/h2&gt;&lt;p&gt;指令開啟分類功能&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo new page categories&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;新文章增加分類，只要在新貼文的標頭加上 &lt;code&gt;categories&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight markdown&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs markdown&#34;&gt;---&lt;br&gt;title: 2021-11-00&lt;br&gt;date: 2021-11-00 10:10&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;categories: 這裡寫分類&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;---&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;增加文章標籤-Tags&#34;&gt;&lt;a href=&#34;#增加文章標籤-Tags&#34; class=&#34;headerlink&#34; title=&#34;增加文章標籤 (Tags)&#34;&gt;&lt;/a&gt;增加文章標籤 (Tags)&lt;/h2&gt;&lt;p&gt;指令開啟標籤功能&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo new page tags&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;新文章增加標籤，也是在新貼文的標頭加上 &lt;code&gt;tags&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight markdown&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs markdown&#34;&gt;---&lt;br&gt;title: 2021-11-00&lt;br&gt;date: 2021-11-00 10:10&lt;br&gt;tags: &lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; 第一個標籤&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;- 第二個標籤&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;---&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;修改新文章預設標頭&#34;&gt;&lt;a href=&#34;#修改新文章預設標頭&#34; class=&#34;headerlink&#34; title=&#34;修改新文章預設標頭&#34;&gt;&lt;/a&gt;修改新文章預設標頭&lt;/h2&gt;&lt;p&gt;修改 &lt;code&gt;scaffolds/post.md&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs marddown&#34;&gt;title: &amp;#123;&amp;#123; title &amp;#125;&amp;#125;&lt;br&gt;date: &amp;#123;&amp;#123; date &amp;#125;&amp;#125;&lt;br&gt;categories: &amp;#123;&amp;#123; categories &amp;#125;&amp;#125;&lt;br&gt;tags: &amp;#123;&amp;#123; tags &amp;#125;&amp;#125;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;這樣每次新增文章就會自動添加分類及標籤&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

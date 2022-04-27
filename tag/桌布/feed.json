@@ -1,0 +1,21 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "筆記ZONE • All posts by \"桌布\" tag",
+    "description": "",
+    "home_page_url": "https://zonego.tw",
+    "items": [
+        {
+            "id": "https://zonego.tw/2021/12/06/unsplash-wallpapers/",
+            "url": "https://zonego.tw/2021/12/06/unsplash-wallpapers/",
+            "title": "自動換桌布 unsplash-wallpapers",
+            "date_published": "2021-12-06T11:05:56.000Z",
+            "content_html": "<p>自動換桌布的方案有很多</p>\n<p>在 Windows 上比較有名的是 Wallpaper Engine，除了一般的圖片之外，還可以將影片、靜態網頁做成桌布</p>\n<p>跨平台的方案則有微軟的 bing wallpaper</p>\n<span id=\"more\"></span>\n\n<link rel=\"stylesheet\" href=\"/image.css\">\n\n<h2 id=\"Unsplash\"><a href=\"#Unsplash\" class=\"headerlink\" title=\"Unsplash\"></a>Unsplash</h2><p><a href=\"https://unsplash.com/\">Unsplash</a> 是一個免費的相片共享網站<br>攝影師可以將相片上傳到 Unsplash，相片編輯者們會對使用者上傳的相片進行整理<br>Unsplash 使用了較為自由的著作權許可條款，這讓 Unsplash 上的相片經常在文章配圖中出現</p>\n<p>想當然，官方也推出像 bing wallpaper 一樣的自動桌布工具<a href=\"https://unsplash.com/apps\">在這裡</a><br>但只有 iOS MAC AppleTV 以及 chrome 能使用</p>\n<p>但PC平台才是大神開發者的發源地，這種小問題已經有人解決了</p>\n<h2 id=\"unsplash-wallpapers\"><a href=\"#unsplash-wallpapers\" class=\"headerlink\" title=\"unsplash-wallpapers\"></a>unsplash-wallpapers</h2><p>這次要介紹的就是基於<a href=\"https://unsplash.com/\">Unsplash</a>圖庫的開源小工具 unsplash-wallpapers</p>\n<p><a href=\"https://github.com/soroushchehresa/unsplash-wallpapers\"><i class=\"nexmoefont icon-github\"></i> Github</a></p>\n<h3 id=\"特點\"><a href=\"#特點\" class=\"headerlink\" title=\"特點\"></a>特點</h3><ul>\n<li>支援 Windows MAC Linux 系統</li>\n<li>紀錄更換過的歷史桌布.</li>\n<li>可設定自動更換週期，每小時、每天、每周、手動</li>\n<li>下載桌布原圖</li>\n</ul>\n<h3 id=\"範例\"><a href=\"#範例\" class=\"headerlink\" title=\"範例\"></a>範例</h3><p><div class=\"justified-gallery\"><div><img alt=\"MAC\" src=\"/images/content/unsplash-wallpapers-mac.gif\" data-src=\"/images/content/unsplash-wallpapers-mac.gif\" data-fancybox=\"gallery\"></div><div><img alt=\"Windows\" src=\"/images/content/unsplash-wallpapers-windows.gif\" data-src=\"/images/content/unsplash-wallpapers-windows.gif\" data-fancybox=\"gallery\"></div><div><img alt=\"Linux\" src=\"/images/content/unsplash-wallpapers-linux.gif\" data-src=\"/images/content/unsplash-wallpapers-linux.gif\" data-fancybox=\"gallery\"></div></p>\n\n            </div></p>\n\n<h3 id=\"下載\"><a href=\"#下載\" class=\"headerlink\" title=\"下載\"></a>下載</h3><p>下載點請到 <a href=\"https://github.com/soroushchehresa/unsplash-wallpapers/releases\"><i class=\"nexmoefont icon-github\"></i> Github Release</a></p>\n<p>依據你的系統下載定應安裝檔<br><img data-fancybox=\"gallery\" data-sizes=\"auto\" data-src=\"/images/content/unsplash-wallpaper-release.jpg\" alt=\"release\" class=\"lazyload\"></p>\n<p>MAC 系統下載 <code>.dmg</code><br>Windows 下載 <code>.exe</code><br>Redhat、Centos 下載 <code>.rpm</code><br>debain、Ubuntu 下載 <code>.deb</code><br>要自行編譯就下載 Sorce code</p>\n<hr>\n<p>裝完就可以享受定時自動換桌布啦🎉</p>\n",
+            "tags": [
+                "Windows",
+                "Linux",
+                "Mac",
+                "桌布"
+            ]
+        }
+    ]
+}

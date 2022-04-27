@@ -1,0 +1,19 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "筆記ZONE • All posts by \"系統設定\" category",
+    "description": "",
+    "home_page_url": "https://zonego.tw",
+    "items": [
+        {
+            "id": "https://zonego.tw/2022/01/07/windows11-path/",
+            "url": "https://zonego.tw/2022/01/07/windows11-path/",
+            "title": "Windows 11 環境變數及 Path 設定",
+            "date_published": "2022-01-07T02:52:56.000Z",
+            "content_html": "<span id=\"more\"></span>\n<h2 id=\"設定環境變數\"><a href=\"#設定環境變數\" class=\"headerlink\" title=\"設定環境變數\"></a>設定環境變數</h2><p>開啟設定 &gt; 系統 &gt; 關於 &gt; 裝置規格 進階系統設定</p>\n<p><img data-fancybox=\"gallery\" data-sizes=\"auto\" data-src=\"/images/content/setting_sys.png\" alt=\"env\" class=\"lazyload\"></p>\n<p><img data-fancybox=\"gallery\" data-sizes=\"auto\" data-src=\"/images/content/env.png\" alt=\"env\" class=\"lazyload\"></p>\n<h2 id=\"設定-Path\"><a href=\"#設定-Path\" class=\"headerlink\" title=\"設定 Path\"></a>設定 Path</h2><h3 id=\"預設位置\"><a href=\"#預設位置\" class=\"headerlink\" title=\"預設位置\"></a>預設位置</h3><p>Windows預設應用程式 path 位置</p>\n<figure class=\"highlight taggerscript\"><table><tr><td class=\"code\"><pre><code class=\"hljs taggerscript\"><span class=\"hljs-variable\">%USERPROFILE%</span><span class=\"hljs-symbol\">\\A</span>ppData<span class=\"hljs-symbol\">\\L</span>ocal<span class=\"hljs-symbol\">\\M</span>icrosoft<span class=\"hljs-symbol\">\\W</span>indowsApps<br></code></pre></td></tr></table></figure>\n\n<p>題外話 Linux 的預設位置在</p>\n<figure class=\"highlight awk\"><table><tr><td class=\"code\"><pre><code class=\"hljs awk\"><span class=\"hljs-regexp\">/usr/</span>local/bin<br></code></pre></td></tr></table></figure>\n\n<h3 id=\"為甚麼要設定-Path\"><a href=\"#為甚麼要設定-Path\" class=\"headerlink\" title=\"為甚麼要設定 Path\"></a>為甚麼要設定 Path</h3><p>設定路徑可以簡化找程式的時間</p>\n<p>例如下載完 youtube-dl.exe 放在下載資料夾內時</p>\n<figure class=\"highlight powershell\"><table><tr><td class=\"code\"><pre><code class=\"hljs powershell\"><span class=\"hljs-comment\"># 未設定路徑</span><br>C:\\Users\\th533\\Downloads\\youtube<span class=\"hljs-literal\">-dl</span>.exe ...<br><br><span class=\"hljs-comment\"># 有設定路徑</span><br>youtube<span class=\"hljs-literal\">-dl</span>.exe ...<br></code></pre></td></tr></table></figure>\n\n<h3 id=\"新增、編輯-Path\"><a href=\"#新增、編輯-Path\" class=\"headerlink\" title=\"新增、編輯 Path\"></a>新增、編輯 Path</h3><p><img data-fancybox=\"gallery\" data-sizes=\"auto\" data-src=\"/images/content/env.png\" alt=\"env\" class=\"lazyload\"></p>\n<p><img data-fancybox=\"gallery\" data-sizes=\"auto\" data-src=\"/images/content/env_path.png\" alt=\"env_path\" class=\"lazyload\"></p>\n",
+            "tags": [
+                "Windows",
+                "環境變數"
+            ]
+        }
+    ]
+}

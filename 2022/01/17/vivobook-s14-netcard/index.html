@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+
+<head>
+    
+    <title>ASUS VivoBook S14 S433 更換無線網卡 - 筆記ZONE</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+    <meta name="description" content="去年大概在10月左右買了 ASUS VivoBook S14 (S433)，起初用著都很正常 12月開始出現偶發的藍屏崩潰、網卡抓不到等現象 自從大學開始，電腦都是自己組以來，不知道已經有幾年沒看過這麼頻繁出現的藍屏… 爬文後才發現，大概是因為晶片短缺的原因，ASUS 這幾個月的筆電網卡會採用替代品，而不是之前常用的 Intel AX210 Intel 他們家的網卡跟 SSD 可是出了名的穩定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ASUS VivoBook S14 S433 更換無線網卡">
+<meta property="og:url" content="https://zonego.tw/2022/01/17/vivobook-s14-netcard/index.html">
+<meta property="og:site_name" content="筆記ZONE">
+<meta property="og:description" content="去年大概在10月左右買了 ASUS VivoBook S14 (S433)，起初用著都很正常 12月開始出現偶發的藍屏崩潰、網卡抓不到等現象 自從大學開始，電腦都是自己組以來，不知道已經有幾年沒看過這麼頻繁出現的藍屏… 爬文後才發現，大概是因為晶片短缺的原因，ASUS 這幾個月的筆電網卡會採用替代品，而不是之前常用的 Intel AX210 Intel 他們家的網卡跟 SSD 可是出了名的穩定">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://zonego.tw/images/content/Intel-AX210.jpg">
+<meta property="og:image" content="https://zonego.tw/images/content/screwdriver.jpg">
+<meta property="og:image" content="https://zonego.tw/images/content/tweezers.jpg">
+<meta property="og:image" content="https://zonego.tw/images/content/asus-s433.jpg">
+<meta property="og:image" content="https://zonego.tw/images/content/AW-XB468NF.jpg">
+<meta property="article:published_time" content="2022-01-17T12:20:36.000Z">
+<meta property="article:modified_time" content="2022-04-27T12:40:39.646Z">
+<meta property="article:author" content="Zone Lin">
+<meta property="article:tag" content="DIY">
+<meta property="article:tag" content="筆記型電腦">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zonego.tw/images/content/Intel-AX210.jpg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1651063257539">
+    
+        <link rel="stylesheet" href="/css/dark.css?v=1651063257539">
+     
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1651063257539">
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(/images/cover.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Zone Lin" class="mdui-btn mdui-btn-icon"><img src="https://s.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" alt="Zone Lin"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Zone Lin">
+            <img src="https://s.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" alt="Zone Lin" alt="Zone Lin">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>18</div>
+        <div><span>標籤</span>19</div>
+        <div><span>分類</span>6</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="首頁">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                首頁
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive/" title="所有文章">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                所有文章
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/rss/" title="訂閱文章">
+            <i class="mdui-list-item-icon nexmoefont icon-rss"></i>
+            <div class="mdui-list-item-content">
+                訂閱文章
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/board/" title="留言板">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                留言板
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/donate/" title="請我喝咖啡">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                請我喝咖啡
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about/" title="關於我">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                關於我
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="搜索" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="mailto:th5331958@gmail.com" target="_blank" mdui-tooltip="{content: 'EMail'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-mail-fill"></i>
+        </a><a class="mdui-ripple" href="https://github.com/ZoneLin/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分類</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Blog/">Blog</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/DIY/">DIY</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/小工具/">小工具</a>
+          <span class="category-list-count">7</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/系統設定/">系統設定</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/網路資源/">網路資源</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/開發相關/">開發相關</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/Blog/" style="font-size: 16.67px;">Blog</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI/CD</a> <a href="/tags/DIY/" style="font-size: 10px;">DIY</a> <a href="/tags/Drone/" style="font-size: 10px;">Drone</a> <a href="/tags/GMail/" style="font-size: 10px;">GMail</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Gitea/" style="font-size: 11.67px;">Gitea</a> <a href="/tags/Google/" style="font-size: 11.67px;">Google</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.33px;">Linux</a> <a href="/tags/Mac/" style="font-size: 18.33px;">Mac</a> <a href="/tags/Self-Hosting/" style="font-size: 13.33px;">Self-Hosting</a> <a href="/tags/Windows/" style="font-size: 20px;">Windows</a> <a href="/tags/%E6%A1%8C%E5%B8%83/" style="font-size: 10px;">桌布</a> <a href="/tags/%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8/" style="font-size: 10px;">環境變數</a> <a href="/tags/%E7%AD%86%E8%A8%98%E5%9E%8B%E9%9B%BB%E8%85%A6/" style="font-size: 10px;">筆記型電腦</a> <a href="/tags/%E7%B6%B2%E8%B7%AF/" style="font-size: 10px;">網路</a> <a href="/tags/%E7%B6%B2%E8%B7%AF%E8%B3%87%E6%BA%90/" style="font-size: 11.67px;">網路資源</a> <a href="/tags/%E8%B3%87%E5%AE%89/" style="font-size: 10px;">資安</a>
+    </div>
+    
+  </div>
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/27/copy-past/">注意複製貼上內容</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/10/youtube-dl-login/">youtube-dl 登入並下載影片</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/10/youtube-dl-quality/">youtube-dl 指定下載影片畫質</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/10/youtube-dl-subtitle/">youtube-dl 下載字幕</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/15/SpeedTest/">OpenSpeedTest 純HTML5的內網測速工具</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 Zone Lin
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="zonego" data-description="Support me on Buy me a coffee!" data-message="如果你喜歡這個網站，歡迎請我喝杯咖啡☕" data-color="#FF5F5F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>,<div>Icons made by <a target="_blank" rel="noopener" href="https://www.freepik.com" title="Freepik">Freepik</a> from <a target="_blank" rel="noopener" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 56.25%;"> 
+              <img data-src="/images/cover.jpg" data-sizes="auto" alt="ASUS VivoBook S14 S433 更換無線網卡" class="lazyload">
+              <h1>ASUS VivoBook S14 S433 更換無線網卡</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年01月17日</a>
+    <a><i class="nexmoefont icon-areachart"></i>304 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+</div>
+
+      
+
+      <span id="more"></span>
+
+<p>去年大概在10月左右買了 ASUS VivoBook S14 (S433)，起初用著都很正常</p>
+<p>12月開始出現偶發的藍屏崩潰、網卡抓不到等現象</p>
+<p>自從大學開始，電腦都是自己組以來，不知道已經有幾年沒看過這麼頻繁出現的藍屏…</p>
+<p>爬文後才發現，大概是因為晶片短缺的原因，ASUS 這幾個月的筆電網卡會採用替代品，而不是之前常用的 Intel AX210</p>
+<p>Intel 他們家的網卡跟 SSD 可是出了名的穩定耐用</p>
+<p>趁著缺貨前趕快從某皮買一張 AX210 來換</p>
+<blockquote>
+<p>警告! 自行更換網卡可能會破保固，換之前請想好</p>
+</blockquote>
+<h2 id="事前準備"><a href="#事前準備" class="headerlink" title="事前準備"></a>事前準備</h2><ul>
+<li><p>Intel AX210 網卡一張<br><img data-fancybox="gallery" data-sizes="auto" data-src="/images/content/Intel-AX210.jpg" alt="AX210" class="lazyload"></p>
+</li>
+<li><p>星型螺絲起子 建議可以買XX合1那種螺絲起子組<br><img data-fancybox="gallery" data-sizes="auto" data-src="/images/content/screwdriver.jpg" alt="screwdriver" class="lazyload"></p>
+</li>
+<li><p>尖頭鑷子<br><img data-fancybox="gallery" data-sizes="auto" data-src="/images/content/tweezers.jpg" alt="tweezers" class="lazyload"></p>
+</li>
+</ul>
+<h2 id="拆機"><a href="#拆機" class="headerlink" title="拆機"></a>拆機</h2><div class="video-container"><iframe src="https://www.youtube.com/embed/gm1w6xI4cp0" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+
+<p>參考別人的拆機影片，把背蓋打開就看的到網卡了</p>
+<p>紅框的地方就是網卡，天線用鑷子會比較好拆裝<br><img data-fancybox="gallery" data-sizes="auto" data-src="/images/content/asus-s433.jpg" alt="asus-s433" class="lazyload"></p>
+<p>換下的網卡 AW-XB468NF<br><img data-fancybox="gallery" data-sizes="auto" data-src="/images/content/AW-XB468NF.jpg" alt="AW-XB468NF" class="lazyload"></p>
+<p>這張卡請保留好，之後要如果送修</p>
+<p>需要在送修前先換回去，以免保固出問題</p>
+<p>都裝好了才發現忘記拍照…</p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Zone Lin<br>
+        <strong>本文鏈接：</strong><a href="https://zonego.tw/2022/01/17/vivobook-s14-netcard/" title="https:&#x2F;&#x2F;zonego.tw&#x2F;2022&#x2F;01&#x2F;17&#x2F;vivobook-s14-netcard&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;zonego.tw&#x2F;2022&#x2F;01&#x2F;17&#x2F;vivobook-s14-netcard&#x2F;</a><br>
+        
+            <strong>版權宣告：</strong>本文採用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW" target="_blank">創用CC BY 4.0</a> 協議進行許可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/DIY/">DIY</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/DIY/" rel="tag">DIY</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E7%AD%86%E8%A8%98%E5%9E%8B%E9%9B%BB%E8%85%A6/" rel="tag">筆記型電腦</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '4154b7069cefd96aa34b',
+        clientSecret: '4d1e06eb5468a4a083bdb0b6095c613deb234ea1',
+        id: window.location.pathname,
+        repo: 'zonelin.github.io',
+        owner: 'ZoneLin',
+        admin: 'ZoneLin'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%89%8D%E6%BA%96%E5%82%99"><span class="toc-number">1.</span> <span class="toc-text">事前準備</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%86%E6%A9%9F"><span class="toc-number">2.</span> <span class="toc-text">拆機</span></a></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1651063257541"></script>
+
+
+	<script async src="/js/search.js?v=1651063257541"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+    <!-- Google Analytics -->
+<script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', '3052690855', 'auto');
+    ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-92G2VB89BE"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-92G2VB89BE');
+</script>
+
+
+
+
+
+</body>
+
+</html>

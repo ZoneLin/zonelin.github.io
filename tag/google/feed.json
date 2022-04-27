@@ -1,0 +1,33 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "筆記ZONE • All posts by \"google\" tag",
+    "description": "",
+    "home_page_url": "https://zonego.tw",
+    "items": [
+        {
+            "id": "https://zonego.tw/2021/11/16/hexo-GA/",
+            "url": "https://zonego.tw/2021/11/16/hexo-GA/",
+            "title": "Hexo nexmoe 主題套用 Google Analytics",
+            "date_published": "2021-11-16T07:44:43.000Z",
+            "content_html": "<p>Google Analytics（GA）是Google公司提供的數據分析工具，可以幫助你追蹤你的網站流量、用戶行為，是一個網路行銷重要又好用的小工具。</p>\n<span id=\"more\"></span>\n\n<p>網路上會看到很多推薦使用 GA 的文章，有甚麼功能就不用我多說了 <del>絕對不是我想偷懶</del>。</p>\n<p>我這小小的部落格也就只有看人數的需求而已。</p>\n<h2 id=\"申請-Google-Analytics\"><a href=\"#申請-Google-Analytics\" class=\"headerlink\" title=\"申請 Google Analytics\"></a>申請 Google Analytics</h2><p>基本上你有 google 帳號就完成一半了，接下來到 <a href=\"https://analytics.google.com/analytics/web/\">GA</a>網站</p>\n<p>接著在左下角設定 &gt; 建立資源 &gt; 完成後到資料串流<br><img data-fancybox=\"gallery\" data-sizes=\"auto\" data-src=\"/images/content/ga_resource.jpg\" alt=\"Google Analytics 資源\" class=\"lazyload\"></p>\n<p>新增網站串流，裡面填入要分析的網站網址，以及名稱<br><img data-fancybox=\"gallery\" data-sizes=\"auto\" data-src=\"/images/content/ga_stream.jpg\" alt=\"Google Analytics 串流\" class=\"lazyload\"></p>\n<p>完成後我們會得到需要的 <code>評估ID</code> G-XXXXX 的這串ID<br><img data-fancybox=\"gallery\" data-sizes=\"auto\" data-src=\"/images/content/ga_stream2.jpg\" alt=\"Google Analytics 串流\" class=\"lazyload\"></p>\n<h2 id=\"修改Hexo設定檔\"><a href=\"#修改Hexo設定檔\" class=\"headerlink\" title=\"修改Hexo設定檔\"></a>修改Hexo設定檔</h2><p>nexmoe 這個主題有支援 Google Analytics<br>只要在 <code>_config.nexmoe.yml</code> 設定檔內調整分析的設定即可</p>\n<figure class=\"highlight yaml\"><table><tr><td class=\"code\"><pre><code class=\"hljs yaml\"><span class=\"hljs-attr\">analytics:</span> <br>  <span class=\"hljs-attr\">google_site_id:</span> <span class=\"hljs-comment\">#&lt;ID&gt;</span><br>  <span class=\"hljs-attr\">gtags_site_id:</span> <span class=\"hljs-string\">這邊填入分析ID</span> <span class=\"hljs-string\">G-XXXXX</span><br>  <span class=\"hljs-attr\">cnzz_site_id:</span> <span class=\"hljs-comment\">#&lt;ID&gt;</span><br>  <span class=\"hljs-attr\">tencent_site_id:</span> <span class=\"hljs-comment\">#&lt;ID&gt;</span><br>  <span class=\"hljs-attr\">la_site_id:</span> <span class=\"hljs-comment\">#&lt;ID&gt;</span><br>  <span class=\"hljs-attr\">baidu_site_id:</span> <span class=\"hljs-comment\">#&lt;ID&gt;</span><br>  <span class=\"hljs-attr\">gtm_container_id:</span> <span class=\"hljs-comment\">#&lt;ID&gt;</span><br></code></pre></td></tr></table></figure>\n\n<h2 id=\"成果\"><a href=\"#成果\" class=\"headerlink\" title=\"成果\"></a>成果</h2><p>設定完後重開 Hexo 伺服器套用</p>\n<p>在<a href=\"https://analytics.google.com/analytics/web/\">GA</a>網站 &gt; 報表內看到我們要的瀏覽人數</p>\n<p><img data-fancybox=\"gallery\" data-sizes=\"auto\" data-src=\"/images/content/ga_dash.jpg\" alt=\"Google Analytics 報表\" class=\"lazyload\"></p>\n<p><del>果然人數是0</del></p>\n<p>其實是截圖時根本還沒重開 Hexo，所以 Google 根本沒抓到瀏覽紀錄</p>\n",
+            "tags": [
+                "Google",
+                "Blog",
+                "Hexo"
+            ]
+        },
+        {
+            "id": "https://zonego.tw/2021/11/14/gitea-gmail/",
+            "url": "https://zonego.tw/2021/11/14/gitea-gmail/",
+            "title": "Gitea 使用 Gmail 寄信",
+            "date_published": "2021-11-14T04:39:30.000Z",
+            "content_html": "<span id=\"more\"></span>\n\n<h2 id=\"建立-Gmail-應用程式密碼\"><a href=\"#建立-Gmail-應用程式密碼\" class=\"headerlink\" title=\"建立 Gmail 應用程式密碼\"></a>建立 Gmail 應用程式密碼</h2><p>Google 基於安全性，禁用直接用密碼存取 smtp<br>取而代之要先建立應用程式密碼，代替原本密碼的功能</p>\n<p>管理 Google 帳戶 &gt; 安全性 &gt; 登入 Google &gt; 應用程式密碼</p>\n<p><img data-fancybox=\"gallery\" data-sizes=\"auto\" data-src=\"/images/content/google_account.jpg\" alt=\"Google Account\" class=\"lazyload\"></p>\n<p>應用選郵件，裝置只是方便管理的名稱，可以選其他自己寫</p>\n<p><img data-fancybox=\"gallery\" data-sizes=\"auto\" data-src=\"/images/content/google_appkey.jpg\" alt=\"Google APP KEY\" class=\"lazyload\"></p>\n<p>完成後會產生一組密碼，建議用完之後就忘掉他，下次要用忘記時再建新的就好</p>\n<h2 id=\"設定-container-環境變數\"><a href=\"#設定-container-環境變數\" class=\"headerlink\" title=\"設定 container 環境變數\"></a>設定 container 環境變數</h2><p>我的 gitea 是使用 Docker 架的</p>\n<p>gitea 官方鏡像有提供透過環境變數設定，不用另外修改設定檔</p>\n<figure class=\"highlight routeros\"><table><tr><td class=\"code\"><pre><code class=\"hljs routeros\">environment:<br>  - <span class=\"hljs-attribute\">GITEA__mailer__ENABLED</span>=<span class=\"hljs-literal\">true</span><br>  - <span class=\"hljs-attribute\">GITEA__mailer__FROM</span>=寄件者信箱<br>  - <span class=\"hljs-attribute\">GITEA__mailer__MAILER_TYPE</span>=smtp<br>  - <span class=\"hljs-attribute\">GITEA__mailer__HOST</span>=smtp.gmail.com:465<br>  - <span class=\"hljs-attribute\">GITEA__mailer__IS_TLS_ENABLED</span>=<span class=\"hljs-literal\">true</span><br>  - <span class=\"hljs-attribute\">GITEA__mailer__USER</span>=你的Gmail<br>  - <span class=\"hljs-attribute\">GITEA__mailer__PASSWD</span>=應用程式密碼<br></code></pre></td></tr></table></figure>\n\n<p>改完之後到 Gitea 網站 &gt; 網站管理 &gt; 組態<br>往下捲找到 SMTP 組態，可以測試寄信</p>\n<p><a href=\"https://docs.gitea.io/en-us/install-with-docker/#managing-deployments-with-environment-variables\">詳細參考</a></p>\n",
+            "tags": [
+                "Git",
+                "Gitea",
+                "Google",
+                "GMail"
+            ]
+        }
+    ]
+}
