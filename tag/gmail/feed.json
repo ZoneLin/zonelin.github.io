@@ -1,0 +1,21 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "筆記ZONE • All posts by \"gmail\" tag",
+    "description": "",
+    "home_page_url": "https://zonego.tw",
+    "items": [
+        {
+            "id": "https://zonego.tw/2021/11/14/gitea-gmail/",
+            "url": "https://zonego.tw/2021/11/14/gitea-gmail/",
+            "title": "Gitea 使用 Gmail 寄信",
+            "date_published": "2021-11-14T04:39:30.000Z",
+            "content_html": "<span id=\"more\"></span>\n\n<h2 id=\"建立-Gmail-應用程式密碼\"><a href=\"#建立-Gmail-應用程式密碼\" class=\"headerlink\" title=\"建立 Gmail 應用程式密碼\"></a>建立 Gmail 應用程式密碼</h2><p>Google 基於安全性，禁用直接用密碼存取 smtp<br>取而代之要先建立應用程式密碼，代替原本密碼的功能</p>\n<p>管理 Google 帳戶 &gt; 安全性 &gt; 登入 Google &gt; 應用程式密碼</p>\n<p><img onerror=\"imgOnError(this);\" data-fancybox=\"gallery\" src=\"/images/content/google_account.jpg\" alt=\"Google Account\" data-caption=\"Google Account\" loading=\"lazy\"></p>\n<p>應用選郵件，裝置只是方便管理的名稱，可以選其他自己寫</p>\n<p><img onerror=\"imgOnError(this);\" data-fancybox=\"gallery\" src=\"/images/content/google_appkey.jpg\" alt=\"Google APP KEY\" data-caption=\"Google APP KEY\" loading=\"lazy\"></p>\n<p>完成後會產生一組密碼，建議用完之後就忘掉他，下次要用忘記時再建新的就好</p>\n<h2 id=\"設定-container-環境變數\"><a href=\"#設定-container-環境變數\" class=\"headerlink\" title=\"設定 container 環境變數\"></a>設定 container 環境變數</h2><p>我的 gitea 是使用 Docker 架的</p>\n<p>gitea 官方鏡像有提供透過環境變數設定，不用另外修改設定檔</p>\n<figure class=\"highlight routeros\"><table><tr><td class=\"code\"><pre><code class=\"hljs routeros\">environment:<br>  - <span class=\"hljs-attribute\">GITEA__mailer__ENABLED</span>=<span class=\"hljs-literal\">true</span><br>  - <span class=\"hljs-attribute\">GITEA__mailer__FROM</span>=寄件者信箱<br>  - <span class=\"hljs-attribute\">GITEA__mailer__MAILER_TYPE</span>=smtp<br>  - <span class=\"hljs-attribute\">GITEA__mailer__HOST</span>=smtp.gmail.com:465<br>  - <span class=\"hljs-attribute\">GITEA__mailer__IS_TLS_ENABLED</span>=<span class=\"hljs-literal\">true</span><br>  - <span class=\"hljs-attribute\">GITEA__mailer__USER</span>=你的Gmail<br>  - <span class=\"hljs-attribute\">GITEA__mailer__PASSWD</span>=應用程式密碼<br></code></pre></td></tr></table></figure>\n\n<p>改完之後到 Gitea 網站 &gt; 網站管理 &gt; 組態<br>往下捲找到 SMTP 組態，可以測試寄信</p>\n<p><a href=\"https://docs.gitea.io/en-us/install-with-docker/#managing-deployments-with-environment-variables\">詳細參考</a></p>\n",
+            "tags": [
+                "Google",
+                "Git",
+                "Gitea",
+                "GMail"
+            ]
+        }
+    ]
+}

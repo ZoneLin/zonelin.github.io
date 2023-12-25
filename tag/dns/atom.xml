@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zonego.tw</id>
+    <title>筆記ZONE • Posts by &#34;dns&#34; tag</title>
+    <link href="https://zonego.tw" />
+    <updated>2023-02-21T11:42:28.000Z</updated>
+    <category term="Hexo" />
+    <category term="Blog" />
+    <category term="搜尋引擎" />
+    <category term="Self-Hosting" />
+    <category term="網路" />
+    <category term="Windows" />
+    <category term="Linux" />
+    <category term="Mac" />
+    <category term="Apple Silicon" />
+    <category term="VM 虛擬機" />
+    <category term="DNS" />
+    <category term="Google" />
+    <category term="廣告" />
+    <category term="網站架設" />
+    <category term="Cloudflare" />
+    <category term="靜態網站" />
+    <category term="Git" />
+    <category term="資安" />
+    <category term="網路資源" />
+    <category term="CI/CD" />
+    <category term="Drone" />
+    <category term="Gitea" />
+    <category term="GMail" />
+    <category term="套件管理" />
+    <category term="環境變數" />
+    <category term="Ubuntu" />
+    <category term="桌布" />
+    <category term="DIY" />
+    <category term="Wiki JS" />
+    <category term="Keyckoak" />
+    <category term="身分認證" />
+    <entry>
+        <id>https://zonego.tw/2023/02/21/adguardhome/</id>
+        <title>AdGuard Home 擋廣告工具</title>
+        <link rel="alternate" href="https://zonego.tw/2023/02/21/adguardhome/"/>
+        <content type="html">&lt;p&gt;一般檔廣告大家都會使用瀏覽器插，例如 AD Bolck。這邊推薦可以從 DNS 下手&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;DNS-檔廣告原理&#34;&gt;&lt;a href=&#34;#DNS-檔廣告原理&#34; class=&#34;headerlink&#34; title=&#34;DNS 檔廣告原理&#34;&gt;&lt;/a&gt;DNS 檔廣告原理&lt;/h2&gt;&lt;h3 id=&#34;DNS原理簡介&#34;&gt;&lt;a href=&#34;#DNS原理簡介&#34; class=&#34;headerlink&#34; title=&#34;DNS原理簡介&#34;&gt;&lt;/a&gt;DNS原理簡介&lt;/h3&gt;&lt;p&gt;一般瀏覽網站時，我們常會使用網域名稱 domain，代替只有數字的 IP 作為連線地址&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/DNS.png&#34; alt=&#34;DNS&#34; data-caption=&#34;DNS&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;舉個例子🌰，要去 google 首頁 &lt;a href=&#34;https://www.google.com/&#34;&gt;https://www.google.com&lt;/a&gt; ，其中 &lt;a href=&#34;http://www.google.com/&#34;&gt;www.google.com&lt;/a&gt; 就是網域名稱&lt;br&gt;瀏覽器會先去 DNS 伺服器用網域名稱查出 Google 的伺服器 IP&lt;br&gt;知道 IP 後才能連到 Google 的伺服器請求資料&lt;/p&gt;
+&lt;p&gt;在這中間，Google 也會順便將要顯示的廣告網址一起送回來&lt;br&gt;瀏覽器再照之前的流程，去廣告商的伺服器去抓廣告回來顯示&lt;/p&gt;
+&lt;p&gt;想知道更多 DNS 詳細機制，可以參考 &lt;a href=&#34;https://www.cloudflare.com/zh-tw/learning/dns/what-is-dns/&#34;&gt;Coudflare 寫的說明&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;DNS沉洞（DNS-sinkhole）&#34;&gt;&lt;a href=&#34;#DNS沉洞（DNS-sinkhole）&#34; class=&#34;headerlink&#34; title=&#34;DNS沉洞（DNS sinkhole）&#34;&gt;&lt;/a&gt;DNS沉洞（DNS sinkhole）&lt;/h3&gt;&lt;p&gt;看完原理後，反過來說，只要 DNS 伺服器不能正常把網域名稱換成 IP，網路就像斷了，只剩直接給 IP 的方式還能連線&lt;/p&gt;
+&lt;p&gt;所以只要在 DNS 伺服器動手腳把廣告的網址設定成錯誤的IP(例如：127.0.0.1)，廣告就無法正常顯示&lt;/p&gt;
+&lt;p&gt;這種作法就叫做 &lt;code&gt;DNS沉洞&lt;/code&gt;（DNS sinkhole）&lt;/p&gt;
+&lt;p&gt;有幾套可以自己架的 DNS 伺服器軟體可以達到這種效果，如 PI-Hole、 AdGuard Home&lt;br&gt;這邊主要介紹 AdGuard Home&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;PI-Hole 改天在寫&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;AdGuard-Home&#34;&gt;&lt;a href=&#34;#AdGuard-Home&#34; class=&#34;headerlink&#34; title=&#34;AdGuard Home&#34;&gt;&lt;/a&gt;AdGuard Home&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://adguard.com/zh_tw/adguard-home/overview.html&#34;&gt;AdGuard Home 官方網站&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/AdguardTeam/AdGuardHome&#34;&gt;AdGuard Home GitHub repo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://camo.githubusercontent.com/c6223645832b66d312f31eecbf833e23f95e363198d83de29438db55d01c8eca/68747470733a2f2f63646e2e6164746964792e6f72672f7075626c69632f416467756172642f436f6d6d6f6e2f616467756172645f686f6d652e676966&#34;&gt;&lt;/p&gt;
+&lt;p&gt;附上 AdGuard Home 提供的功能比對表…&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;AdGuard Home&lt;/th&gt;
+&lt;th&gt;Pi-Hole&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;阻擋廣告與追蹤器&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;自訂阻擋清單&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;內建 DHCP server 功能&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HTTPS 管理介面&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌ 需手動設定 lighttpd&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;上游 DNS 伺服器加密&lt;br&gt;(DNS-over-HTTPS, DNS-over-TLS, DNSCrypt)&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌ (需安裝額外插件)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;跨平台支援&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌ (需透過 Docker)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;支援加密&lt;br&gt;DNS-over-HTTPS or DNS-over-TLS server&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌ (需安裝額外插件)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;阻擋惡意網域&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌ (需要使用另外的阻擋清單)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;家長管控 (阻擋成人網站)&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌ (需自行設定阻擋清單)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;強制搜尋引擎啟用安全搜尋&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Per-client (device) configuration&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;存取設定 (設定可用 AGH DNS 的名單)&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;[不需 root 權限][wiki-noroot]執行&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;基本上我們只用擋廣告的功能，AdGuardHome 跟 Pi-Hole 選順手好用的就好&lt;br&gt;雖說 AdGuard Home 有原生跨平台支援，不過真的要用也是用 Docker 去不同平台執行比較方便&lt;/p&gt;
+&lt;h2 id=&#34;安裝-AdGuard-Home&#34;&gt;&lt;a href=&#34;#安裝-AdGuard-Home&#34; class=&#34;headerlink&#34; title=&#34;安裝 AdGuard Home&#34;&gt;&lt;/a&gt;安裝 AdGuard Home&lt;/h2&gt;&lt;h3 id=&#34;Linux&#34;&gt;&lt;a href=&#34;#Linux&#34; class=&#34;headerlink&#34; title=&#34;Linux&#34;&gt;&lt;/a&gt;Linux&lt;/h3&gt;&lt;p&gt;官方有提供 Linux 系統的自動安裝腳本&lt;/p&gt;
+&lt;figure class=&#34;highlight awk&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs awk&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 可以用 wget, curl 等工具下載腳本&lt;/span&gt;&lt;br&gt;wget --no-verbose -O - https:&lt;span class=&#34;hljs-regexp&#34;&gt;//&lt;/span&gt;raw.githubusercontent.com&lt;span class=&#34;hljs-regexp&#34;&gt;/AdguardTeam/&lt;/span&gt;AdGuardHome&lt;span class=&#34;hljs-regexp&#34;&gt;/master/&lt;/span&gt;scripts/install.sh | sh -s -- -v&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;腳本參數：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-c &amp;lt;channel&amp;gt;&lt;/code&gt; 使用特定的安裝渠道，預設是從 release 安裝，可用 &lt;code&gt;development&lt;/code&gt; &lt;code&gt;edge&lt;/code&gt; &lt;code&gt;beta&lt;/code&gt; &lt;code&gt;release&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-r&lt;/code&gt; 重新安裝 AdGuard Home (不可與 &lt;code&gt;-u&lt;/code&gt; 一起用)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-u&lt;/code&gt; 移除 AdGuard Home (不可與 &lt;code&gt;-r&lt;/code&gt; 一起用)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-v&lt;/code&gt; 查看更多安裝時訊息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;或是手動下載、安裝&lt;br&gt;到 &lt;a href=&#34;https://github.com/AdguardTeam/AdGuardHome/releases&#34;&gt;GitHub Release&lt;/a&gt; 下載對應 OS 的安裝檔&lt;br&gt;例如安裝 Linux x64 版本&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;tar zxvf AdGuardHome_linux_amd64.tar.gz&lt;br&gt;&lt;br&gt;./AdGuardHome -s install&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;建議使用剛裝好系統的 VM 來裝 AdGuard Home，方便備份或是避免 port 衝突&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;Windows&#34;&gt;&lt;a href=&#34;#Windows&#34; class=&#34;headerlink&#34; title=&#34;Windows&#34;&gt;&lt;/a&gt;Windows&lt;/h3&gt;&lt;p&gt;跟 Linux 手動安裝步驟相同，到 &lt;a href=&#34;https://github.com/AdguardTeam/AdGuardHome/releases&#34;&gt;GitHub Release&lt;/a&gt; 下載 windows 版本後執行&lt;/p&gt;
+&lt;h3 id=&#34;Docker&#34;&gt;&lt;a href=&#34;#Docker&#34; class=&#34;headerlink&#34; title=&#34;Docker&#34;&gt;&lt;/a&gt;Docker&lt;/h3&gt;&lt;p&gt;&lt;a href=&#34;https://hub.docker.com/r/adguard/adguardhome&#34;&gt;AdGuard Home Docker Hub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;docker 指令：&lt;/p&gt;
+&lt;figure class=&#34;highlight awk&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs awk&#34;&gt;docker run --name adguardhome\&lt;br&gt;    --restart unless-stopped\&lt;br&gt;    -v &lt;span class=&#34;hljs-regexp&#34;&gt;/my/&lt;/span&gt;own&lt;span class=&#34;hljs-regexp&#34;&gt;/workdir:/&lt;/span&gt;opt&lt;span class=&#34;hljs-regexp&#34;&gt;/adguardhome/&lt;/span&gt;work\&lt;br&gt;    -v &lt;span class=&#34;hljs-regexp&#34;&gt;/my/&lt;/span&gt;own&lt;span class=&#34;hljs-regexp&#34;&gt;/confdir:/&lt;/span&gt;opt&lt;span class=&#34;hljs-regexp&#34;&gt;/adguardhome/&lt;/span&gt;conf\&lt;br&gt;    -p &lt;span class=&#34;hljs-number&#34;&gt;53&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;53&lt;/span&gt;&lt;span class=&#34;hljs-regexp&#34;&gt;/tcp -p 53:53/u&lt;/span&gt;dp\&lt;br&gt;    -p &lt;span class=&#34;hljs-number&#34;&gt;67&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;67&lt;/span&gt;&lt;span class=&#34;hljs-regexp&#34;&gt;/udp -p 68:68/u&lt;/span&gt;dp\&lt;br&gt;    -p &lt;span class=&#34;hljs-number&#34;&gt;80&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;80&lt;/span&gt;&lt;span class=&#34;hljs-regexp&#34;&gt;/tcp -p 443:443/&lt;/span&gt;tcp -p &lt;span class=&#34;hljs-number&#34;&gt;443&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;443&lt;/span&gt;&lt;span class=&#34;hljs-regexp&#34;&gt;/udp -p 3000:3000/&lt;/span&gt;tcp\&lt;br&gt;    -p &lt;span class=&#34;hljs-number&#34;&gt;853&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;853&lt;/span&gt;/tcp\&lt;br&gt;    -p &lt;span class=&#34;hljs-number&#34;&gt;784&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;784&lt;/span&gt;&lt;span class=&#34;hljs-regexp&#34;&gt;/udp -p 853:853/u&lt;/span&gt;dp -p &lt;span class=&#34;hljs-number&#34;&gt;8853&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;8853&lt;/span&gt;/udp\&lt;br&gt;    -p &lt;span class=&#34;hljs-number&#34;&gt;5443&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;5443&lt;/span&gt;&lt;span class=&#34;hljs-regexp&#34;&gt;/tcp -p 5443:5443/u&lt;/span&gt;dp\&lt;br&gt;    -d adguard/adguardhome&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;其中的 Port 設定&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-p 53:53/tcp -p 53:53/udp&lt;/code&gt;: 預設 DNS 使用 port&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p 67:67/udp -p 68:68/tcp -p 68:68/udp&lt;/code&gt;: DHCP 使用 port (如不使用 DHCP 可以跳過)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p 3000:3000/tcp -p 443:443/tcp&lt;/code&gt;: AdGuard Home 的管理介面 (如不需設定 HTTPS 可以不用 443 port)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p 80:80/tcp -p 443:443/tcp -p 443:443/udp&lt;/code&gt;: DNS-over-HTTPS 使用 port&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p 853:853/tcp&lt;/code&gt;: DNS-over-TLS 使用 port&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p 784:784/udp -p 853:853/udp -p 8853:8853/udp&lt;/code&gt;: DNS-over-QUIC 使用 port (只需要設定其中一個或兩個，不需要全都用)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p 5443:5443/tcp -p 5443:5443/udp&lt;/code&gt;: DNSCrypt 使用 port.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果要使用 DHCP server 的功能，建議將讓容器使用主機網路 (需注意 port 衝突)&lt;/p&gt;
+&lt;figure class=&#34;highlight awk&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs awk&#34;&gt;docker run --name adguardhome\&lt;br&gt;    --restart unless-stopped\&lt;br&gt;    -v &lt;span class=&#34;hljs-regexp&#34;&gt;/my/&lt;/span&gt;own&lt;span class=&#34;hljs-regexp&#34;&gt;/workdir:/&lt;/span&gt;opt&lt;span class=&#34;hljs-regexp&#34;&gt;/adguardhome/&lt;/span&gt;work\&lt;br&gt;    ...&lt;br&gt;    --network host&lt;br&gt;    -d adguard/adguardhome&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;設定&#34;&gt;&lt;a href=&#34;#設定&#34; class=&#34;headerlink&#34; title=&#34;設定&#34;&gt;&lt;/a&gt;設定&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;這邊我是在自己的電腦上用 docker 展示，連線會用 localhost 去連&lt;br&gt;實際使用建議獨立裝在其他不常關的電腦或樹梅派，連線就使用 IP 連&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;初次設定&#34;&gt;&lt;a href=&#34;#初次設定&#34; class=&#34;headerlink&#34; title=&#34;初次設定&#34;&gt;&lt;/a&gt;初次設定&lt;/h3&gt;&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_init1.png&#34; alt=&#34;adguard init&#34; data-caption=&#34;adguard init&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;網路設定&#34;&gt;&lt;a href=&#34;#網路設定&#34; class=&#34;headerlink&#34; title=&#34;網路設定&#34;&gt;&lt;/a&gt;網路設定&lt;/h4&gt;&lt;p&gt;接下來設定監聽的網卡(透過哪張網卡能存取)，用 Docker 執行建議可以用所有介面&lt;br&gt;管理員的監聽介面如果在 docker 沒有使用 80，記得設定成 3000，避免設定完就連不到&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_init2.png&#34; alt=&#34;adguard init&#34; data-caption=&#34;adguard init&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;DNS 伺服器監聽介面同上，建議保留預設的 53 Port&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_init3.png&#34; alt=&#34;adguard init&#34; data-caption=&#34;adguard init&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;管理帳號設定&#34;&gt;&lt;a href=&#34;#管理帳號設定&#34; class=&#34;headerlink&#34; title=&#34;管理帳號設定&#34;&gt;&lt;/a&gt;管理帳號設定&lt;/h5&gt;&lt;p&gt;設定管理員帳號密碼，建議不要用 &lt;code&gt;root&lt;/code&gt;, &lt;code&gt;admin&lt;/code&gt;, &lt;code&gt;administor&lt;/code&gt; 等常見的管理帳號&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_init4.png&#34; alt=&#34;adguard init&#34; data-caption=&#34;adguard init&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;用戶端設定&#34;&gt;&lt;a href=&#34;#用戶端設定&#34; class=&#34;headerlink&#34; title=&#34;用戶端設定&#34;&gt;&lt;/a&gt;用戶端設定&lt;/h4&gt;&lt;p&gt;初次設定完成，這邊可以看一下不同種類客戶端該怎麼設定使用這個 DNS 伺服器&lt;br&gt;基本上只要將網路設定裡的 DNS 伺服器，改成這邊監聽的網卡的IP，就可以用 Adguard 過濾網站&lt;br&gt;路由器也要套用的話，是去修改路由器的 DHCP 設定，讓子網段自動分配的 DNS 都使用我們架的 Adguard IP&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_init5.png&#34; alt=&#34;adguard init&#34; data-caption=&#34;adguard init&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_init6.png&#34; alt=&#34;adguard init&#34; data-caption=&#34;adguard init&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;初次設定完成🎉&#34;&gt;&lt;a href=&#34;#初次設定完成🎉&#34; class=&#34;headerlink&#34; title=&#34;初次設定完成🎉&#34;&gt;&lt;/a&gt;初次設定完成🎉&lt;/h5&gt;&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_init7.png&#34; alt=&#34;adguard init&#34; data-caption=&#34;adguard init&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;接著可以用設定好的管理員帳號登入&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_login.png&#34; alt=&#34;adguard login&#34; data-caption=&#34;adguard login&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;設定上游-DNS-伺服器&#34;&gt;&lt;a href=&#34;#設定上游-DNS-伺服器&#34; class=&#34;headerlink&#34; title=&#34;設定上游 DNS 伺服器&#34;&gt;&lt;/a&gt;設定上游 DNS 伺服器&lt;/h3&gt;&lt;p&gt;在 Adguard Home 中並不會紀錄設定之外的網域及IP的對應&lt;br&gt;其他網域就需要去其他的 DNS 伺服器(上游 DNS 伺服器)查詢&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_upstreamDNS.png&#34; alt=&#34;adguard upstream DNS&#34; data-caption=&#34;adguard upstream DNS&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Adguard Home 整理了幾個常用的 DNS 伺服器 &lt;a href=&#34;https://adguard-dns.io/kb/zh-CN/general/dns-providers/&#34;&gt;https://adguard-dns.io/kb/zh-CN/general/dns-providers/&lt;/a&gt;&lt;br&gt;這邊推薦可以用 Google DNS 跟 Cloudflare DNS&lt;/p&gt;
+&lt;h4 id=&#34;Google-DNS&#34;&gt;&lt;a href=&#34;#Google-DNS&#34; class=&#34;headerlink&#34; title=&#34;Google DNS&#34;&gt;&lt;/a&gt;Google DNS&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;協定&lt;/th&gt;
+&lt;th&gt;地址&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;DNS, IPv4&lt;/td&gt;
+&lt;td&gt;8.8.8.8 和 8.8.4.4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS, IPv6&lt;/td&gt;
+&lt;td&gt;2001:4860:4860::8888 和 2001:4860:4860::8844&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS-over-HTTPS&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://dns.google/dns-query&#34;&gt;https://dns.google/dns-query&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS-over-TLS&lt;/td&gt;
+&lt;td&gt;tls:&amp;#x2F;&amp;#x2F;dns.google&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h4 id=&#34;Cloudflare-DNS&#34;&gt;&lt;a href=&#34;#Cloudflare-DNS&#34; class=&#34;headerlink&#34; title=&#34;Cloudflare DNS&#34;&gt;&lt;/a&gt;Cloudflare DNS&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;協定&lt;/th&gt;
+&lt;th&gt;地址&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;DNS, IPv4&lt;/td&gt;
+&lt;td&gt;1.1.1.1 和 1.0.0.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS, IPv6&lt;/td&gt;
+&lt;td&gt;2606:4700:4700::1111 和 2606:4700:4700::1001&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS-over-HTTPS IPv4&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://dns.cloudflare.com/dns-query&#34;&gt;https://dns.cloudflare.com/dns-query&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS-over-HTTPS IPv6&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://dns.cloudflare.com/dns-query&#34;&gt;https://dns.cloudflare.com/dns-query&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS-over-TLS&lt;/td&gt;
+&lt;td&gt;tls:&amp;#x2F;&amp;#x2F;1dot1dot1dot1.cloudflare-dns.com&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2 id=&#34;過濾器設定&#34;&gt;&lt;a href=&#34;#過濾器設定&#34; class=&#34;headerlink&#34; title=&#34;過濾器設定&#34;&gt;&lt;/a&gt;過濾器設定&lt;/h2&gt;&lt;h3 id=&#34;過濾黑名單&#34;&gt;&lt;a href=&#34;#過濾黑名單&#34; class=&#34;headerlink&#34; title=&#34;過濾黑名單&#34;&gt;&lt;/a&gt;過濾黑名單&lt;/h3&gt;&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_blocklist.png&#34; alt=&#34;adguard blocklist&#34; data-caption=&#34;adguard blocklist&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;預設黑名單&#34;&gt;&lt;a href=&#34;#預設黑名單&#34; class=&#34;headerlink&#34; title=&#34;預設黑名單&#34;&gt;&lt;/a&gt;預設黑名單&lt;/h4&gt;&lt;p&gt;Adguard Home 預設使用 Adguard 的過濾黑名單&lt;br&gt;新增黑名單也很方便&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_blocklist_new.png&#34; alt=&#34;adguard blocklist new&#34; data-caption=&#34;adguard blocklist new&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;把想套用的黑名單加進去啟用&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_blocklist_new2.png&#34; alt=&#34;adguard blocklist new&#34; data-caption=&#34;adguard blocklist new&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;第三方黑名單&#34;&gt;&lt;a href=&#34;#第三方黑名單&#34; class=&#34;headerlink&#34; title=&#34;第三方黑名單&#34;&gt;&lt;/a&gt;第三方黑名單&lt;/h4&gt;&lt;p&gt;要使用第三方黑名單只要有網址也可以匯入&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_blocklist_new3.png&#34; alt=&#34;adguard blocklist new&#34; data-caption=&#34;adguard blocklist new&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_blocklist_new4.png&#34; alt=&#34;adguard blocklist new&#34; data-caption=&#34;adguard blocklist new&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;這邊介紹一款專為臺灣人設計的廣告阻擋規則 &lt;a href=&#34;https://github.com/FutaGuard/LowTechFilter&#34;&gt;LowTechFilter&lt;/a&gt;&lt;br&gt;提供阻擋台灣常見的簡訊詐騙、釣魚網站和農場文&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;簡訊詐騙、釣魚網站 &lt;a href=&#34;https://filter.futa.gg/hosts.txt&#34;&gt;https://filter.futa.gg/hosts.txt&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;農場文 &lt;a href=&#34;https://filter.futa.gg/nofarm_hosts.txt&#34;&gt;https://filter.futa.gg/nofarm_hosts.txt&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;手動過濾規則&#34;&gt;&lt;a href=&#34;#手動過濾規則&#34; class=&#34;headerlink&#34; title=&#34;手動過濾規則&#34;&gt;&lt;/a&gt;手動過濾規則&lt;/h3&gt;&lt;p&gt;可以從主頁到 DNS 查詢紀錄裡去增加封鎖名單，不過缺點是之前要先查詢過&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;還沒有用戶端用這個 DNS 伺服器之前，紀錄會是空的&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_dashboard.png&#34; alt=&#34;adguard dashboard&#34; data-caption=&#34;adguard dashboard&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_record.png&#34; alt=&#34;adguard record&#34; data-caption=&#34;adguard record&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;其他&#34;&gt;&lt;a href=&#34;#其他&#34; class=&#34;headerlink&#34; title=&#34;其他&#34;&gt;&lt;/a&gt;其他&lt;/h2&gt;&lt;h3 id=&#34;家長管控&#34;&gt;&lt;a href=&#34;#家長管控&#34; class=&#34;headerlink&#34; title=&#34;家長管控&#34;&gt;&lt;/a&gt;家長管控&lt;/h3&gt;&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_ad.png&#34; alt=&#34;adguard blocklist new&#34; data-caption=&#34;adguard blocklist new&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+</content>
+        <category term="Self-Hosting" />
+        <category term="Windows" />
+        <category term="Linux" />
+        <category term="DNS" />
+        <updated>2023-02-21T11:42:28.000Z</updated>
+    </entry>
+</feed>

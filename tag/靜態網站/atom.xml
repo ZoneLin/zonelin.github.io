@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zonego.tw</id>
+    <title>筆記ZONE • Posts by &#34;靜態網站&#34; tag</title>
+    <link href="https://zonego.tw" />
+    <updated>2023-02-10T04:39:40.000Z</updated>
+    <category term="Hexo" />
+    <category term="Blog" />
+    <category term="搜尋引擎" />
+    <category term="Self-Hosting" />
+    <category term="網路" />
+    <category term="Windows" />
+    <category term="Linux" />
+    <category term="Mac" />
+    <category term="Apple Silicon" />
+    <category term="VM 虛擬機" />
+    <category term="DNS" />
+    <category term="Google" />
+    <category term="廣告" />
+    <category term="網站架設" />
+    <category term="Cloudflare" />
+    <category term="靜態網站" />
+    <category term="Git" />
+    <category term="資安" />
+    <category term="網路資源" />
+    <category term="CI/CD" />
+    <category term="Drone" />
+    <category term="Gitea" />
+    <category term="GMail" />
+    <category term="套件管理" />
+    <category term="環境變數" />
+    <category term="Ubuntu" />
+    <category term="桌布" />
+    <category term="DIY" />
+    <category term="Wiki JS" />
+    <category term="Keyckoak" />
+    <category term="身分認證" />
+    <entry>
+        <id>https://zonego.tw/2023/02/10/cloudflare-page/</id>
+        <title>Cloudflare Page 架站教學</title>
+        <link rel="alternate" href="https://zonego.tw/2023/02/10/cloudflare-page/"/>
+        <content type="html">&lt;p&gt;Cloudflare Page 使用上跟 GitHub Page 類似&lt;br&gt;就差在 GitHub Page 只能用靜態網站檔案，用框架產生的靜態網站就必須先編好才能推上去儲藏庫&lt;br&gt;Cloudflare Page 可以支援編譯&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;設定步驟&#34;&gt;&lt;a href=&#34;#設定步驟&#34; class=&#34;headerlink&#34; title=&#34;設定步驟&#34;&gt;&lt;/a&gt;設定步驟&lt;/h2&gt;&lt;p&gt;官方文件 &lt;a href=&#34;https://developers.cloudflare.com/pages/&#34;&gt;https://developers.cloudflare.com/pages/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;簡單步驟總結：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在 GitHub 或 GitLab 建立網頁用的儲藏庫 (repository)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cloudflare page 連結 GitHub 或 GitLab&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在 Cloudflare 設定網站用的 domain name&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;完成🎉&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;設定-Git-儲藏庫&#34;&gt;&lt;a href=&#34;#設定-Git-儲藏庫&#34; class=&#34;headerlink&#34; title=&#34;設定 Git 儲藏庫&#34;&gt;&lt;/a&gt;設定 Git 儲藏庫&lt;/h3&gt;&lt;p&gt;首先到 GitHub 或 GitLab 建立網頁用的儲藏庫 (就基本的 git 操作，這邊就不多作教學)&lt;/p&gt;
+&lt;p&gt;網站內容跟 GitHub Page 一樣，只要是靜態網站都可以，不管是直接寫或是用框架產生都可以&lt;br&gt;比 GitHub Page 好的一點是，可以直接推送框架的程式上去，部署時編譯 (但免費版有限制)&lt;/p&gt;
+&lt;p&gt;GitHub Page 跟 Cloudflare page 也不需要太糾結要用哪個，反正都免費都可以先用看看&lt;br&gt;例如本網站的內容就是用 Hexo 框架產生，先推送到 GitHub Page，Cloudflare page 用同個儲藏庫當來源&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/wBJAHWU.gif&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在 &lt;a href=&#34;https://zonelin.github.io/&#34;&gt;https://zonelin.github.io/&lt;/a&gt; 也可以找到本站&lt;/p&gt;
+&lt;h3 id=&#34;Cloudflare-新增-page-專案&#34;&gt;&lt;a href=&#34;#Cloudflare-新增-page-專案&#34; class=&#34;headerlink&#34; title=&#34;Cloudflare 新增 page 專案&#34;&gt;&lt;/a&gt;Cloudflare 新增 page 專案&lt;/h3&gt;&lt;p&gt;登入 Cloudflare 在 page 設定內新增一個專案　&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/cfpage-addproject.png&#34; alt=&#34;Cloudflare add project&#34; data-caption=&#34;Cloudflare add project&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;登入 GitHub 或 GitLab 選擇要用的存儲庫 repository&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/cfpage-addproject-git.png&#34; alt=&#34;Cloudflare add project&#34; data-caption=&#34;Cloudflare add project&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;設定要觸發抓取的分支 (建議把部署跟開發中做不同的分支)&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/cfpage-addproject-setting.png&#34; alt=&#34;Cloudflare add project&#34; data-caption=&#34;Cloudflare add project&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如果是想要推送後，再用框架產生靜態網頁可以調整這邊設定&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/cfpage-addproject-setting2.png&#34; alt=&#34;Cloudflare add project&#34; data-caption=&#34;Cloudflare add project&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;點儲存部屬 Save and Deploy 後會開始從 Git 存儲庫抓程式碼下來編譯&lt;br&gt;如果是靜態頁面，就只有抓下來 (畢竟我們的 Build setting 是空的)&lt;br&gt;完成會自動給一個自動分配的網址，例如本站就是 &lt;a href=&#34;https://blog-public-3io.pages.dev/&#34;&gt;blog-public-3io.pages.dev&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;需要自訂網址可以到專案的 Custom domains 設定，免費版有使用上限 &lt;a href=&#34;#%E5%85%8D%E8%B2%BB%E7%89%88%E4%BD%BF%E7%94%A8%E9%99%90%E5%88%B6&#34;&gt;免費版限制&lt;/a&gt;&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/cfpage-domain.png&#34; alt=&#34;Cloudflare domain&#34; data-caption=&#34;Cloudflare domain&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;到這邊就完成了🎉&lt;/p&gt;
+&lt;p&gt;用 Cloudflare 還有個好處，Cloudflare 會自動套 Web Analytics&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/cfpage-web-analytics.png&#34; alt=&#34;Cloudflare web analytics&#34; data-caption=&#34;Cloudflare web analytics&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;免費版使用限制&#34;&gt;&lt;a href=&#34;#免費版使用限制&#34; class=&#34;headerlink&#34; title=&#34;免費版使用限制&#34;&gt;&lt;/a&gt;免費版使用限制&lt;/h2&gt;&lt;p&gt;根據&lt;a href=&#34;https://developers.cloudflare.com/pages/platform/limits&#34;&gt;官方文件&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;每個帳號可以件幾個網站專案、預覽板本好像沒限制&lt;/p&gt;
+&lt;h3 id=&#34;建置&#34;&gt;&lt;a href=&#34;#建置&#34; class=&#34;headerlink&#34; title=&#34;建置&#34;&gt;&lt;/a&gt;建置&lt;/h3&gt;&lt;p&gt;免費版能從 GitHub 抓程式碼重新建置每個月500次，建置時間不得過20分鐘&lt;br&gt;推送程式碼到 GitHub 也會觸發重新建置&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;所以我習慣在本機把 hexo 建制好，再推送到 GitHub，省編譯時間&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;Domains&#34;&gt;&lt;a href=&#34;#Domains&#34; class=&#34;headerlink&#34; title=&#34;Domains&#34;&gt;&lt;/a&gt;Domains&lt;/h3&gt;&lt;p&gt;最多 10 個自訂 domain&lt;/p&gt;
+&lt;h3 id=&#34;檔案&#34;&gt;&lt;a href=&#34;#檔案&#34; class=&#34;headerlink&#34; title=&#34;檔案&#34;&gt;&lt;/a&gt;檔案&lt;/h3&gt;&lt;p&gt;單一個網站專案，最多到 2 萬個檔案&lt;br&gt;單一檔案、素材最大 25MB&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;有放圖片要注意下容量&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;Headers&#34;&gt;&lt;a href=&#34;#Headers&#34; class=&#34;headerlink&#34; title=&#34;Headers&#34;&gt;&lt;/a&gt;Headers&lt;/h3&gt;&lt;p&gt;最多 100 header 規則&lt;/p&gt;
+&lt;h3 id=&#34;重導向規則&#34;&gt;&lt;a href=&#34;#重導向規則&#34; class=&#34;headerlink&#34; title=&#34;重導向規則&#34;&gt;&lt;/a&gt;重導向規則&lt;/h3&gt;&lt;p&gt;最多 100 個&lt;/p&gt;
+&lt;hr&gt;
+</content>
+        <category term="網站架設" />
+        <category term="Cloudflare" />
+        <category term="靜態網站" />
+        <category term="Git" />
+        <updated>2023-02-10T04:39:40.000Z</updated>
+    </entry>
+</feed>
