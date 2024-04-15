@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>筆記ZONE • Posts by &#34;桌布&#34; tag</title>
+        <link>https://zonego.tw</link>
+        <description></description>
+        <language>zh-TW</language>
+        <pubDate>Mon, 06 Dec 2021 11:05:56 +0000</pubDate>
+        <lastBuildDate>Mon, 06 Dec 2021 11:05:56 +0000</lastBuildDate>
+        <category>Hexo</category>
+        <category>Blog</category>
+        <category>搜尋引擎</category>
+        <category>Self-Hosting</category>
+        <category>網路</category>
+        <category>Windows</category>
+        <category>Linux</category>
+        <category>Mac</category>
+        <category>Apple Silicon</category>
+        <category>VM 虛擬機</category>
+        <category>DNS</category>
+        <category>Google</category>
+        <category>廣告</category>
+        <category>網站架設</category>
+        <category>Cloudflare</category>
+        <category>靜態網站</category>
+        <category>Git</category>
+        <category>資安</category>
+        <category>網路資源</category>
+        <category>CI/CD</category>
+        <category>Drone</category>
+        <category>Gitea</category>
+        <category>GMail</category>
+        <category>套件管理</category>
+        <category>字型</category>
+        <category>環境變數</category>
+        <category>Ubuntu</category>
+        <category>桌布</category>
+        <category>DIY</category>
+        <category>Wiki JS</category>
+        <category>Keyckoak</category>
+        <category>身分認證</category>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2021/12/06/unsplash-wallpapers/</guid>
+            <title>自動換桌布 unsplash-wallpapers</title>
+            <link>https://zonego.tw/2021/12/06/unsplash-wallpapers/</link>
+            <category>Windows</category>
+            <category>Linux</category>
+            <category>Mac</category>
+            <category>桌布</category>
+            <pubDate>Mon, 06 Dec 2021 11:05:56 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;自動換桌布的方案有很多&lt;/p&gt;
+&lt;p&gt;在 Windows 上比較有名的是 Wallpaper Engine，除了一般的圖片之外，還可以將影片、靜態網頁做成桌布&lt;/p&gt;
+&lt;p&gt;跨平台的方案則有微軟的 bing wallpaper&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;/image.css&#34;&gt;
+
+&lt;h2 id=&#34;Unsplash&#34;&gt;&lt;a href=&#34;#Unsplash&#34; class=&#34;headerlink&#34; title=&#34;Unsplash&#34;&gt;&lt;/a&gt;Unsplash&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://unsplash.com/&#34;&gt;Unsplash&lt;/a&gt; 是一個免費的相片共享網站&lt;br&gt;攝影師可以將相片上傳到 Unsplash，相片編輯者們會對使用者上傳的相片進行整理&lt;br&gt;Unsplash 使用了較為自由的著作權許可條款，這讓 Unsplash 上的相片經常在文章配圖中出現&lt;/p&gt;
+&lt;p&gt;想當然，官方也推出像 bing wallpaper 一樣的自動桌布工具&lt;a href=&#34;https://unsplash.com/apps&#34;&gt;在這裡&lt;/a&gt;&lt;br&gt;但只有 iOS MAC AppleTV 以及 chrome 能使用&lt;/p&gt;
+&lt;p&gt;但PC平台才是大神開發者的發源地，這種小問題已經有人解決了&lt;/p&gt;
+&lt;h2 id=&#34;unsplash-wallpapers&#34;&gt;&lt;a href=&#34;#unsplash-wallpapers&#34; class=&#34;headerlink&#34; title=&#34;unsplash-wallpapers&#34;&gt;&lt;/a&gt;unsplash-wallpapers&lt;/h2&gt;&lt;p&gt;這次要介紹的就是基於&lt;a href=&#34;https://unsplash.com/&#34;&gt;Unsplash&lt;/a&gt;圖庫的開源小工具 unsplash-wallpapers&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/soroushchehresa/unsplash-wallpapers&#34;&gt;&lt;i class=&#34;nexmoefont icon-github&#34;&gt;&lt;/i&gt; Github&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;特點&#34;&gt;&lt;a href=&#34;#特點&#34; class=&#34;headerlink&#34; title=&#34;特點&#34;&gt;&lt;/a&gt;特點&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;支援 Windows MAC Linux 系統&lt;/li&gt;
+&lt;li&gt;紀錄更換過的歷史桌布.&lt;/li&gt;
+&lt;li&gt;可設定自動更換週期，每小時、每天、每周、手動&lt;/li&gt;
+&lt;li&gt;下載桌布原圖&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;範例&#34;&gt;&lt;a href=&#34;#範例&#34; class=&#34;headerlink&#34; title=&#34;範例&#34;&gt;&lt;/a&gt;範例&lt;/h3&gt;&lt;p&gt;&lt;div class=&#34;gallery-pro&#34; style=&#34;column-width:200px;&#34;&gt;&lt;div&gt;&lt;img alt=&#34;MAC&#34; src=&#34;/images/content/unsplash-wallpapers-mac.gif&#34; data-caption=&#34;MAC&#34; data-fancybox=&#34;gallery&#34; loading=&#34;lazy&#34;&gt;&lt;/div&gt;
+&lt;div&gt;&lt;img alt=&#34;Windows&#34; src=&#34;/images/content/unsplash-wallpapers-windows.gif&#34; data-caption=&#34;Windows&#34; data-fancybox=&#34;gallery&#34; loading=&#34;lazy&#34;&gt;&lt;/div&gt;
+&lt;div&gt;&lt;img alt=&#34;Linux&#34; src=&#34;/images/content/unsplash-wallpapers-linux.gif&#34; data-caption=&#34;Linux&#34; data-fancybox=&#34;gallery&#34; loading=&#34;lazy&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;下載&#34;&gt;&lt;a href=&#34;#下載&#34; class=&#34;headerlink&#34; title=&#34;下載&#34;&gt;&lt;/a&gt;下載&lt;/h3&gt;&lt;p&gt;下載點請到 &lt;a href=&#34;https://github.com/soroushchehresa/unsplash-wallpapers/releases&#34;&gt;&lt;i class=&#34;nexmoefont icon-github&#34;&gt;&lt;/i&gt; Github Release&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;依據你的系統下載定應安裝檔&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/unsplash-wallpaper-release.jpg&#34; alt=&#34;release&#34; data-caption=&#34;release&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;MAC 系統下載 &lt;code&gt;.dmg&lt;/code&gt;&lt;br&gt;Windows 下載 &lt;code&gt;.exe&lt;/code&gt;&lt;br&gt;Redhat、Centos 下載 &lt;code&gt;.rpm&lt;/code&gt;&lt;br&gt;debain、Ubuntu 下載 &lt;code&gt;.deb&lt;/code&gt;&lt;br&gt;要自行編譯就下載 Sorce code&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;裝完就可以享受定時自動換桌布啦🎉&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

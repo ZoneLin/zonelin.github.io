@@ -1,0 +1,18 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "筆記ZONE • All posts by \"diy\" category",
+    "description": "",
+    "home_page_url": "https://zonego.tw",
+    "items": [
+        {
+            "id": "https://zonego.tw/2022/01/17/vivobook-s14-netcard/",
+            "url": "https://zonego.tw/2022/01/17/vivobook-s14-netcard/",
+            "title": "ASUS VivoBook S14 S433 更換無線網卡",
+            "date_published": "2022-01-17T12:20:36.000Z",
+            "content_html": "<span id=\"more\"></span>\n\n<p>去年大概在10月左右買了 ASUS VivoBook S14 (S433)，起初用著都很正常</p>\n<p>12月開始出現偶發的藍屏崩潰、網卡抓不到等現象</p>\n<p>自從大學開始，電腦都是自己組以來，不知道已經有幾年沒看過這麼頻繁出現的藍屏…</p>\n<p>爬文後才發現，大概是因為晶片短缺的原因，ASUS 這幾個月的筆電網卡會採用替代品，而不是之前常用的 Intel AX210</p>\n<p>Intel 他們家的網卡跟 SSD 可是出了名的穩定耐用</p>\n<p>趁著缺貨前趕快從某皮買一張 AX210 來換</p>\n<blockquote>\n<p>警告! 自行更換網卡可能會破保固，換之前請想好</p>\n</blockquote>\n<h2 id=\"事前準備\"><a href=\"#事前準備\" class=\"headerlink\" title=\"事前準備\"></a>事前準備</h2><ul>\n<li><p>Intel AX210 網卡一張<br><img onerror=\"imgOnError(this);\" data-fancybox=\"gallery\" src=\"/images/content/Intel-AX210.jpg\" alt=\"AX210\" data-caption=\"AX210\" loading=\"lazy\"></p>\n</li>\n<li><p>星型螺絲起子 建議可以買XX合1那種螺絲起子組<br><img onerror=\"imgOnError(this);\" data-fancybox=\"gallery\" src=\"/images/content/screwdriver.jpg\" alt=\"screwdriver\" data-caption=\"screwdriver\" loading=\"lazy\"></p>\n</li>\n<li><p>尖頭鑷子<br><img onerror=\"imgOnError(this);\" data-fancybox=\"gallery\" src=\"/images/content/tweezers.jpg\" alt=\"tweezers\" data-caption=\"tweezers\" loading=\"lazy\"></p>\n</li>\n</ul>\n<h2 id=\"拆機\"><a href=\"#拆機\" class=\"headerlink\" title=\"拆機\"></a>拆機</h2><div class=\"video-container\"><iframe src=\"https://www.youtube.com/embed/gm1w6xI4cp0\" frameborder=\"0\" loading=\"lazy\" allowfullscreen></iframe></div>\n\n<p>參考別人的拆機影片，把背蓋打開就看的到網卡了</p>\n<p>紅框的地方就是網卡，天線用鑷子會比較好拆裝<br><img onerror=\"imgOnError(this);\" data-fancybox=\"gallery\" src=\"/images/content/asus-s433.jpg\" alt=\"asus-s433\" data-caption=\"asus-s433\" loading=\"lazy\"></p>\n<p>換下的網卡 AW-XB468NF<br><img onerror=\"imgOnError(this);\" data-fancybox=\"gallery\" src=\"/images/content/AW-XB468NF.jpg\" alt=\"AW-XB468NF\" data-caption=\"AW-XB468NF\" loading=\"lazy\"></p>\n<p>這張卡請保留好，之後要如果送修</p>\n<p>需要在送修前先換回去，以免保固出問題</p>\n<p>都裝好了才發現忘記拍照…</p>\n",
+            "tags": [
+                "DIY"
+            ]
+        }
+    ]
+}

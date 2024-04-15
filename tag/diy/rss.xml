@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>筆記ZONE • Posts by &#34;diy&#34; tag</title>
+        <link>https://zonego.tw</link>
+        <description></description>
+        <language>zh-TW</language>
+        <pubDate>Mon, 17 Jan 2022 12:20:36 +0000</pubDate>
+        <lastBuildDate>Mon, 17 Jan 2022 12:20:36 +0000</lastBuildDate>
+        <category>Hexo</category>
+        <category>Blog</category>
+        <category>搜尋引擎</category>
+        <category>Self-Hosting</category>
+        <category>網路</category>
+        <category>Windows</category>
+        <category>Linux</category>
+        <category>Mac</category>
+        <category>Apple Silicon</category>
+        <category>VM 虛擬機</category>
+        <category>DNS</category>
+        <category>Google</category>
+        <category>廣告</category>
+        <category>網站架設</category>
+        <category>Cloudflare</category>
+        <category>靜態網站</category>
+        <category>Git</category>
+        <category>資安</category>
+        <category>網路資源</category>
+        <category>CI/CD</category>
+        <category>Drone</category>
+        <category>Gitea</category>
+        <category>GMail</category>
+        <category>套件管理</category>
+        <category>字型</category>
+        <category>環境變數</category>
+        <category>Ubuntu</category>
+        <category>桌布</category>
+        <category>DIY</category>
+        <category>Wiki JS</category>
+        <category>Keyckoak</category>
+        <category>身分認證</category>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2022/01/17/vivobook-s14-netcard/</guid>
+            <title>ASUS VivoBook S14 S433 更換無線網卡</title>
+            <link>https://zonego.tw/2022/01/17/vivobook-s14-netcard/</link>
+            <category>DIY</category>
+            <pubDate>Mon, 17 Jan 2022 12:20:36 +0000</pubDate>
+            <description><![CDATA[ &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;去年大概在10月左右買了 ASUS VivoBook S14 (S433)，起初用著都很正常&lt;/p&gt;
+&lt;p&gt;12月開始出現偶發的藍屏崩潰、網卡抓不到等現象&lt;/p&gt;
+&lt;p&gt;自從大學開始，電腦都是自己組以來，不知道已經有幾年沒看過這麼頻繁出現的藍屏…&lt;/p&gt;
+&lt;p&gt;爬文後才發現，大概是因為晶片短缺的原因，ASUS 這幾個月的筆電網卡會採用替代品，而不是之前常用的 Intel AX210&lt;/p&gt;
+&lt;p&gt;Intel 他們家的網卡跟 SSD 可是出了名的穩定耐用&lt;/p&gt;
+&lt;p&gt;趁著缺貨前趕快從某皮買一張 AX210 來換&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;警告! 自行更換網卡可能會破保固，換之前請想好&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;事前準備&#34;&gt;&lt;a href=&#34;#事前準備&#34; class=&#34;headerlink&#34; title=&#34;事前準備&#34;&gt;&lt;/a&gt;事前準備&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Intel AX210 網卡一張&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/Intel-AX210.jpg&#34; alt=&#34;AX210&#34; data-caption=&#34;AX210&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;星型螺絲起子 建議可以買XX合1那種螺絲起子組&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/screwdriver.jpg&#34; alt=&#34;screwdriver&#34; data-caption=&#34;screwdriver&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;尖頭鑷子&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/tweezers.jpg&#34; alt=&#34;tweezers&#34; data-caption=&#34;tweezers&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;拆機&#34;&gt;&lt;a href=&#34;#拆機&#34; class=&#34;headerlink&#34; title=&#34;拆機&#34;&gt;&lt;/a&gt;拆機&lt;/h2&gt;&lt;div class=&#34;video-container&#34;&gt;&lt;iframe src=&#34;https://www.youtube.com/embed/gm1w6xI4cp0&#34; frameborder=&#34;0&#34; loading=&#34;lazy&#34; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
+
+&lt;p&gt;參考別人的拆機影片，把背蓋打開就看的到網卡了&lt;/p&gt;
+&lt;p&gt;紅框的地方就是網卡，天線用鑷子會比較好拆裝&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/asus-s433.jpg&#34; alt=&#34;asus-s433&#34; data-caption=&#34;asus-s433&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;換下的網卡 AW-XB468NF&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/AW-XB468NF.jpg&#34; alt=&#34;AW-XB468NF&#34; data-caption=&#34;AW-XB468NF&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;這張卡請保留好，之後要如果送修&lt;/p&gt;
+&lt;p&gt;需要在送修前先換回去，以免保固出問題&lt;/p&gt;
+&lt;p&gt;都裝好了才發現忘記拍照…&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

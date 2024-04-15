@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zonego.tw</id>
+    <title>筆記ZONE • Posts by &#34;搜尋引擎&#34; tag</title>
+    <link href="https://zonego.tw" />
+    <updated>2023-10-02T03:14:09.000Z</updated>
+    <category term="Hexo" />
+    <category term="Blog" />
+    <category term="搜尋引擎" />
+    <category term="Self-Hosting" />
+    <category term="網路" />
+    <category term="Windows" />
+    <category term="Linux" />
+    <category term="Mac" />
+    <category term="Apple Silicon" />
+    <category term="VM 虛擬機" />
+    <category term="DNS" />
+    <category term="Google" />
+    <category term="廣告" />
+    <category term="網站架設" />
+    <category term="Cloudflare" />
+    <category term="靜態網站" />
+    <category term="Git" />
+    <category term="資安" />
+    <category term="網路資源" />
+    <category term="CI/CD" />
+    <category term="Drone" />
+    <category term="Gitea" />
+    <category term="GMail" />
+    <category term="套件管理" />
+    <category term="字型" />
+    <category term="環境變數" />
+    <category term="Ubuntu" />
+    <category term="桌布" />
+    <category term="DIY" />
+    <category term="Wiki JS" />
+    <category term="Keyckoak" />
+    <category term="身分認證" />
+    <entry>
+        <id>https://zonego.tw/2023/10/02/BingWebmasterTools/</id>
+        <title>Bing Webmaster Tools - 讓 Bing 搜尋到部落格內容</title>
+        <link rel="alternate" href="https://zonego.tw/2023/10/02/BingWebmasterTools/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;之前寫過讓 Google 主動來爬我們的網站內容，但世界上不只有 google 這個搜尋引擎&lt;br&gt;微軟的搜尋引擎 Bing 雖然不是最多人使用，不過為了增加網站曝光，就來設定 Webmaster Tools 吧&lt;br&gt;&lt;del&gt;反正設定也不用錢&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;其他搜尋引擎請參考&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/2023/08/02/google-search-console/&#34;&gt;Google Search Console - 讓 Google 搜尋到部落格內容&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;登入-Microsoft-帳號&#34;&gt;&lt;a href=&#34;#登入-Microsoft-帳號&#34; class=&#34;headerlink&#34; title=&#34;登入 Microsoft 帳號&#34;&gt;&lt;/a&gt;登入 Microsoft 帳號&lt;/h2&gt;&lt;p&gt;註冊就跳過吧，應該大家都會&lt;br&gt;真的沒有的話，也可以用 Google 或 FB 帳號登入&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/webmaster-tools/login.jpg&#34; alt=&#34;登入&#34; data-caption=&#34;登入&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;從-Google-Search-Console-匯入網站&#34;&gt;&lt;a href=&#34;#從-Google-Search-Console-匯入網站&#34; class=&#34;headerlink&#34; title=&#34;從 Google Search Console 匯入網站&#34;&gt;&lt;/a&gt;從 Google Search Console 匯入網站&lt;/h2&gt;&lt;p&gt;登入後選擇新增站點&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/webmaster-tools/add_site.jpg&#34; alt=&#34;新增站點&#34; data-caption=&#34;新增站點&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如果之前已經設定過 Google Search Console&lt;br&gt;可以連結 Google 帳號，將設定匯入 Bing Webmaster Tools&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/webmaster-tools/add_site2.jpg&#34; alt=&#34;新增站點&#34; data-caption=&#34;新增站點&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/webmaster-tools/add_site3.jpg&#34; alt=&#34;新增站點&#34; data-caption=&#34;新增站點&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;由於我的部落格 &lt;a href=&#34;https://zonego.tw/&#34;&gt;https://zonego.tw&lt;/a&gt; 已經匯入過，所以我的 Google 帳號內會沒有其他網站能匯入&lt;br&gt;正常的話這邊選擇網站匯入就可以了&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/webmaster-tools/add_site4.jpg&#34; alt=&#34;新增站點&#34; data-caption=&#34;新增站點&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;新增網站至-Webmaster-Tools&#34;&gt;&lt;a href=&#34;#新增網站至-Webmaster-Tools&#34; class=&#34;headerlink&#34; title=&#34;新增網站至 Webmaster Tools&#34;&gt;&lt;/a&gt;新增網站至 Webmaster Tools&lt;/h2&gt;&lt;p&gt;新增站點這邊輸入網站的網址&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/webmaster-tools/add_site2.jpg&#34; alt=&#34;新增站點&#34; data-caption=&#34;新增站點&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;以新增 &lt;code&gt;https://example.zonego.tw&lt;/code&gt; 為範例&lt;br&gt;下一步就是要驗證網站是你的，有三種驗證方法&lt;/p&gt;
+&lt;h3 id=&#34;1-BingSiteAuth-xml&#34;&gt;&lt;a href=&#34;#1-BingSiteAuth-xml&#34; class=&#34;headerlink&#34; title=&#34;1.BingSiteAuth.xml&#34;&gt;&lt;/a&gt;1.BingSiteAuth.xml&lt;/h3&gt;&lt;p&gt;下載驗證用的 BingSiteAuth.xml 檔案，放在網站的根目錄&lt;br&gt;&lt;code&gt;https://example.zonego.tw/BingSiteAuth.xml&lt;/code&gt;&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/webmaster-tools/verify1.jpg&#34; alt=&#34;新增站點&#34; data-caption=&#34;新增站點&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-在頁面的-Header-加入驗證資料&#34;&gt;&lt;a href=&#34;#2-在頁面的-Header-加入驗證資料&#34; class=&#34;headerlink&#34; title=&#34;2.在頁面的 Header 加入驗證資料&#34;&gt;&lt;/a&gt;2.在頁面的 Header 加入驗證資料&lt;/h3&gt;&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/webmaster-tools/verify2.jpg&#34; alt=&#34;新增站點&#34; data-caption=&#34;新增站點&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在網站的所有頁面 Header 中加入驗證碼&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;head&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;  ...&lt;br&gt;  ‹meta name=&amp;quot;msvalidate.01&amp;quot; content=&amp;quot;2218F52174A741F96454DA55D7A664AA&amp;quot; /&amp;gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;head&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;3-透過DNS驗證網站&#34;&gt;&lt;a href=&#34;#3-透過DNS驗證網站&#34; class=&#34;headerlink&#34; title=&#34;3.透過DNS驗證網站&#34;&gt;&lt;/a&gt;3.透過DNS驗證網站&lt;/h3&gt;&lt;p&gt;在網域的DNS紀錄加入 CNAME 轉至 verify.bing.com&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/webmaster-tools/verify3.jpg&#34; alt=&#34;新增站點&#34; data-caption=&#34;新增站點&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;完成之後，對DNS查詢 &lt;code&gt;82d5e001135888feb5576ef02ef31223.zonego.tw&lt;/code&gt; 應該轉至 verify.bing.com&lt;/p&gt;
+&lt;h2 id=&#34;設定-Sitemap&#34;&gt;&lt;a href=&#34;#設定-Sitemap&#34; class=&#34;headerlink&#34; title=&#34;設定 Sitemap&#34;&gt;&lt;/a&gt;設定 Sitemap&lt;/h2&gt;&lt;p&gt;接下來新增網站的 sitemap 網址，讓微軟的爬蟲知道有哪些公開頁面可以爬資料&lt;br&gt;例如我的網站 sitemap 就放在 &lt;a href=&#34;https://zonego.tw/sitemap.xml&#34;&gt;https://zonego.tw/sitemap.xml&lt;/a&gt;&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/webmaster-tools/sitemap.jpg&#34; alt=&#34;新增站點&#34; data-caption=&#34;新增站點&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;完成之後等待一段時間，在 Bing 搜尋就會找到我們網站的內容了 🎉&lt;/p&gt;
+</content>
+        <category term="Hexo" />
+        <category term="Blog" />
+        <category term="搜尋引擎" />
+        <updated>2023-10-02T03:14:09.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2023/08/02/google-search-console/</id>
+        <title>Google Search Console - 讓 Google 搜尋到部落格內容</title>
+        <link rel="alternate" href="https://zonego.tw/2023/08/02/google-search-console/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;p&gt;建好一個新網站，在搜尋引擎爬到你的網站之前，當然會搜尋不到任何東西&lt;/p&gt;
+&lt;p&gt;那 Google 甚麼時候會時候會來爬我的網站? 真的就是&lt;em&gt;隨緣&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;要主動讓搜尋引擎認識你的網站? 那就是要來設定 Google Search Console&lt;/p&gt;
+&lt;p&gt;其他搜尋引擎請參考&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/2023/10/02/BingWebmasterTools/&#34;&gt;Bing Webmaster Tools - 讓 Bing 搜尋到部落格內容&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;新增網站的-Sitemap&#34;&gt;&lt;a href=&#34;#新增網站的-Sitemap&#34; class=&#34;headerlink&#34; title=&#34;新增網站的 Sitemap&#34;&gt;&lt;/a&gt;新增網站的 Sitemap&lt;/h2&gt;&lt;p&gt;去 Google 設定之前，我們需要先將搜尋引擎需要的網站地圖 sitemap.xml 產生出來。&lt;br&gt;教學請看這篇 &lt;a href=&#34;/2023/07/26/hexo-sitemap/&#34;&gt;Hexo 自動產生網站的 sitemap&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;在-Google-Search-Console-新增網站&#34;&gt;&lt;a href=&#34;#在-Google-Search-Console-新增網站&#34; class=&#34;headerlink&#34; title=&#34;在 Google Search Console 新增網站&#34;&gt;&lt;/a&gt;在 Google Search Console 新增網站&lt;/h2&gt;&lt;h3 id=&#34;註冊-Google-帳號&#34;&gt;&lt;a href=&#34;#註冊-Google-帳號&#34; class=&#34;headerlink&#34; title=&#34;註冊 Google 帳號&#34;&gt;&lt;/a&gt;註冊 Google 帳號&lt;/h3&gt;&lt;p&gt;這部份相信大家都會，跳過&lt;/p&gt;
+&lt;h3 id=&#34;新增網站&#34;&gt;&lt;a href=&#34;#新增網站&#34; class=&#34;headerlink&#34; title=&#34;新增網站&#34;&gt;&lt;/a&gt;新增網站&lt;/h3&gt;&lt;p&gt;接下來到 Google Search Console 去設定爬蟲來抓我們的網站&lt;br&gt;Google Search Console 網址： &lt;a href=&#34;https://search.google.com/search-console&#34;&gt;https://search.google.com/search-console&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_search_console/%E6%96%B0%E5%A2%9E%E7%AB%99%E9%BB%9E.png&#34; alt=&#34;新增網站&#34; data-caption=&#34;新增網站&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;資源類型分為兩類，網站前置字元代表只索引單一網站，網域則是歸在該網域下的所有網站都會索引。&lt;br&gt;沒有特殊需求的話選網站前置字元就好。&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_search_console/%E8%B3%87%E6%BA%90%E9%A1%9E%E5%9E%8B.png&#34; alt=&#34;新增網站&#34; data-caption=&#34;新增網站&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;驗證網站&#34;&gt;&lt;a href=&#34;#驗證網站&#34; class=&#34;headerlink&#34; title=&#34;驗證網站&#34;&gt;&lt;/a&gt;驗證網站&lt;/h2&gt;&lt;p&gt;把要索引的網站打進去後，接下來要驗證網站是你的&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_search_console/%E9%A9%97%E8%AD%89%E6%96%B9%E5%BC%8F.png&#34; alt=&#34;新增網站&#34; data-caption=&#34;新增網站&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;下面的驗證方式選一個就好&lt;/p&gt;
+&lt;h3 id=&#34;HTML-檔案&#34;&gt;&lt;a href=&#34;#HTML-檔案&#34; class=&#34;headerlink&#34; title=&#34;HTML 檔案&#34;&gt;&lt;/a&gt;HTML 檔案&lt;/h3&gt;&lt;p&gt;預設最簡單的驗證方式，只要將 google 提供的驗證用 html 檔案下載，放在 hexo 的目錄即可&lt;br&gt;網站部屬之後可以在 &lt;a href=&#34;https://yoursite.com/googleXXXXXXXXXXXXXXXX.html&#34;&gt;https://yoursite.com/googleXXXXXXXXXXXXXXXX.html&lt;/a&gt; 看到驗證碼就可以去點驗證了&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;記得在 &lt;code&gt;_config.yml&lt;/code&gt; 加入跳過這個檔案的渲染 詳細請看 &lt;a href=&#34;/2021/12/15/hexo-skip/&#34;&gt;Hexo 指定文件跳過渲染&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;googleXXXXXXXXXXXXXXXX.html&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;HTML-標記&#34;&gt;&lt;a href=&#34;#HTML-標記&#34; class=&#34;headerlink&#34; title=&#34;HTML 標記&#34;&gt;&lt;/a&gt;HTML 標記&lt;/h3&gt;&lt;p&gt;在首頁的 Header 內加入驗證碼&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://yoursite.com/index.html&#34;&gt;https://yoursite.com/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;name&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;google-site-verification&amp;quot;&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;content&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;key-XXX&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;Google-Analytics&#34;&gt;&lt;a href=&#34;#Google-Analytics&#34; class=&#34;headerlink&#34; title=&#34;Google Analytics&#34;&gt;&lt;/a&gt;Google Analytics&lt;/h3&gt;&lt;p&gt;如果你的網站有使用  Google Analytics 的話可以直接點驗整就好，反正也在設定 GA 時也算驗證過網站所有者了&lt;/p&gt;
+&lt;h3 id=&#34;網域名稱供應商&#34;&gt;&lt;a href=&#34;#網域名稱供應商&#34; class=&#34;headerlink&#34; title=&#34;網域名稱供應商&#34;&gt;&lt;/a&gt;網域名稱供應商&lt;/h3&gt;&lt;p&gt;在 DNS 內加入相同網域的 TXT 紀錄，裡面放驗證碼即可驗證&lt;br&gt;如果是 cloud flare 的話就更簡單，只要照著點就好了&lt;br&gt;不過設定時要注意衝突&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_search_console/DNS.png&#34; alt=&#34;新增網站&#34; data-caption=&#34;新增網站&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;完成&#34;&gt;&lt;a href=&#34;#完成&#34; class=&#34;headerlink&#34; title=&#34;完成&#34;&gt;&lt;/a&gt;完成&lt;/h2&gt;&lt;p&gt;驗證完之後等待 google 把 sitemap 內的頁面索引完，在 Google 搜尋你的網站可以被搜尋到了&lt;br&gt;後續 google 會提是你的網站有什麼問題需要修正，未修正前會被排到搜尋列表的後面&lt;br&gt;要被演算法排到前面就需要做 SEO (search engine optimizaton) 了&lt;/p&gt;
+</content>
+        <category term="Hexo" />
+        <category term="Blog" />
+        <category term="搜尋引擎" />
+        <category term="Google" />
+        <updated>2023-08-02T04:52:15.000Z</updated>
+    </entry>
+</feed>

@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zonego.tw</id>
+    <title>筆記ZONE • Posts by &#34;廣告&#34; tag</title>
+    <link href="https://zonego.tw" />
+    <updated>2023-08-16T07:28:51.000Z</updated>
+    <category term="Hexo" />
+    <category term="Blog" />
+    <category term="搜尋引擎" />
+    <category term="Self-Hosting" />
+    <category term="網路" />
+    <category term="Windows" />
+    <category term="Linux" />
+    <category term="Mac" />
+    <category term="Apple Silicon" />
+    <category term="VM 虛擬機" />
+    <category term="DNS" />
+    <category term="Google" />
+    <category term="廣告" />
+    <category term="網站架設" />
+    <category term="Cloudflare" />
+    <category term="靜態網站" />
+    <category term="Git" />
+    <category term="資安" />
+    <category term="網路資源" />
+    <category term="CI/CD" />
+    <category term="Drone" />
+    <category term="Gitea" />
+    <category term="GMail" />
+    <category term="套件管理" />
+    <category term="字型" />
+    <category term="環境變數" />
+    <category term="Ubuntu" />
+    <category term="桌布" />
+    <category term="DIY" />
+    <category term="Wiki JS" />
+    <category term="Keyckoak" />
+    <category term="身分認證" />
+    <entry>
+        <id>https://zonego.tw/2023/08/16/adsense/</id>
+        <title>Google AdSense 讓你的網站幫你賺錢</title>
+        <link rel="alternate" href="https://zonego.tw/2023/08/16/adsense/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;申請 Google 帳號這個步驟就先跳過&lt;/p&gt;
+&lt;p&gt;接下來到 AdSense 網站 &lt;a href=&#34;https://www.google.com/adsense&#34;&gt;https://www.google.com/adsense&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;套用-AdSense&#34;&gt;&lt;a href=&#34;#套用-AdSense&#34; class=&#34;headerlink&#34; title=&#34;套用 AdSense&#34;&gt;&lt;/a&gt;套用 AdSense&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&#34;設定要套用的網站&#34;&gt;&lt;a href=&#34;#設定要套用的網站&#34; class=&#34;headerlink&#34; title=&#34;設定要套用的網站&#34;&gt;&lt;/a&gt;設定要套用的網站&lt;/h2&gt;&lt;p&gt;點新增網站之後，打入網站的連結，例如 &lt;a href=&#34;https://example.com/&#34;&gt;https://example.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;接下來要驗證網站是你的，有兩種方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 AdSense 程式碼&lt;/li&gt;
+&lt;li&gt;使用 Ads.txt 驗證&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;使用-AdSense-程式碼&#34;&gt;&lt;a href=&#34;#使用-AdSense-程式碼&#34; class=&#34;headerlink&#34; title=&#34;使用 AdSense 程式碼&#34;&gt;&lt;/a&gt;使用 AdSense 程式碼&lt;/h3&gt;&lt;p&gt;將 Google 提供的代碼貼到個頁面的 header&lt;br&gt;&lt;img src=&#34;/images/content/AdSense/AdSenseCode.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;以這個部落格的為例，nexmoe 這個主題有提供修改 header 的設定&lt;/p&gt;
+&lt;p&gt;修改 &lt;code&gt;_config.nexmoe.yml&lt;/code&gt;，在 &lt;code&gt;slotHead: &lt;/code&gt; 貼上即可&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-string&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;slotHead:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;|&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-string&#34;&gt;&amp;lt;script&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;src=&amp;quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-ID&amp;quot;&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;使用-Ads-txt-驗證&#34;&gt;&lt;a href=&#34;#使用-Ads-txt-驗證&#34; class=&#34;headerlink&#34; title=&#34;使用 Ads.txt 驗證&#34;&gt;&lt;/a&gt;使用 Ads.txt 驗證&lt;/h3&gt;&lt;p&gt;建議使用這個方式驗證比較省事，如果我們不是用 Ads.txt 驗證網站所有權的話，後面還是要做這一步&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/AdSense/AdSenseAds.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;步驟請跳下面說明&lt;/p&gt;
+&lt;h2 id=&#34;Ads-txt&#34;&gt;&lt;a href=&#34;#Ads-txt&#34; class=&#34;headerlink&#34; title=&#34;Ads.txt&#34;&gt;&lt;/a&gt;Ads.txt&lt;/h2&gt;&lt;p&gt;詳細請參考 Google 的說明 &lt;a href=&#34;https://support.google.com/adsense/answer/12171612?hl=zh-Hant&#34;&gt;https://support.google.com/adsense/answer/12171612?hl=zh-Hant&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;簡單來說，美國為了保護下廣告的客戶，提供銷售廣告位的網站需要提供 &lt;a href=&#34;https://iabtechlab.com/ads-txt/&#34;&gt;Authorized Digital Sellers&lt;/a&gt; (簡稱 ads.txt)&lt;/p&gt;
+&lt;h3 id=&#34;設定-ads-txt&#34;&gt;&lt;a href=&#34;#設定-ads-txt&#34; class=&#34;headerlink&#34; title=&#34;設定 ads.txt&#34;&gt;&lt;/a&gt;設定 ads.txt&lt;/h3&gt;&lt;p&gt;如果驗證時不是用這個方式的話，可以點網站進去，Google 會產生 &lt;code&gt;ads.txt&lt;/code&gt; 的內容可以複製&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/AdSense/ads.txt.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;範例：&lt;/p&gt;
+&lt;figure class=&#34;highlight fortran&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs fortran&#34;&gt;google.com, pub-XXXXXX, &lt;span class=&#34;hljs-keyword&#34;&gt;DIRECT&lt;/span&gt;, XXXXXXX&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;以 Hexo 為例子，在 &lt;code&gt;source&lt;/code&gt; 資料夾內新增 &lt;code&gt;ads.txt&lt;/code&gt;，把剛剛複製的內容貼上&lt;br&gt;修改 &lt;code&gt;_config.yml&lt;/code&gt; 設定跳渲染 &lt;code&gt;ads.txt&lt;/code&gt; (可參考 &lt;a href=&#34;/2021/12/15/hexo-skip/&#34;&gt;Hexo 指定文件跳過渲染&lt;/a&gt;)&lt;/p&gt;
+&lt;figure class=&#34;highlight yml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yml&#34;&gt;&lt;span class=&#34;hljs-string&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;ads.txt&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h1 id=&#34;設定付款資料&#34;&gt;&lt;a href=&#34;#設定付款資料&#34; class=&#34;headerlink&#34; title=&#34;設定付款資料&#34;&gt;&lt;/a&gt;設定付款資料&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&#34;付款資料&#34;&gt;&lt;a href=&#34;#付款資料&#34; class=&#34;headerlink&#34; title=&#34;付款資料&#34;&gt;&lt;/a&gt;付款資料&lt;/h2&gt;&lt;p&gt;點左側選單 &amp;gt; 付款 &amp;gt; 付款資訊&lt;/p&gt;
+&lt;p&gt;付款帳戶的資料基本上不用管它，想要調整收到前的時間可以改付款時間表，最少需要累積到 100 美金才領的出來&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/AdSense/%E4%BB%98%E6%AC%BE%E8%B3%87%E8%A8%8A.jpg&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;美國稅籍資料&#34;&gt;&lt;a href=&#34;#美國稅籍資料&#34; class=&#34;headerlink&#34; title=&#34;美國稅籍資料&#34;&gt;&lt;/a&gt;美國稅籍資料&lt;/h2&gt;&lt;p&gt;畢竟 Google 是美國公司，照美國的稅制大概會收 24% 起跳的稅金&lt;br&gt;外國人可以申請 W-8BEN 來降低稅收，只有針對美國人銷售、營利才需要收 30% 稅金&lt;/p&gt;
+&lt;p&gt;簡單來說假設你的網站有 100 美元的廣告收入，其中有 10% 的廣告收入是來自美國&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;稅金&lt;/th&gt;
+&lt;th&gt;實際收入&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;正常稅率 (未申請 W-8BEN)&lt;/td&gt;
+&lt;td&gt;100 * 24% &amp;#x3D; 24&lt;/td&gt;
+&lt;td&gt;100 - 24 &amp;#x3D; 76&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;有申請 W-8BEN&lt;/td&gt;
+&lt;td&gt;(100 * 10%) * 30% &amp;#x3D; 3&lt;/td&gt;
+&lt;td&gt;100 - 3 &amp;#x3D; 97&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;所以，除非你的網站或 Youtube 頻道主要都是來自美國，不然申請 W-8BEN 扣的稅會比較少&lt;/p&gt;
+&lt;p&gt;我是參考雲爸的教學來填寫 &lt;a href=&#34;https://dacota.tw/blog/post/google-adsense-w-8ben&#34;&gt;https://dacota.tw/blog/post/google-adsense-w-8ben&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;付款資料內的姓名記得填護照的英文姓名，不然需要在另外上傳護照證明稅及跟帳號擁有者是同一人&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;付款方式&#34;&gt;&lt;a href=&#34;#付款方式&#34; class=&#34;headerlink&#34; title=&#34;付款方式&#34;&gt;&lt;/a&gt;付款方式&lt;/h2&gt;&lt;p&gt;付款方式要累積到能第一次領錢才能設定&lt;/p&gt;
+&lt;p&gt;台灣能使用的有2種方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;美元支票&lt;/li&gt;
+&lt;li&gt;電匯&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://lashiblog.com/google-adsense-payments/&#34;&gt;https://lashiblog.com/google-adsense-payments/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;安插廣告&#34;&gt;&lt;a href=&#34;#安插廣告&#34; class=&#34;headerlink&#34; title=&#34;安插廣告&#34;&gt;&lt;/a&gt;安插廣告&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;安插廣告到網站裡面有2種作法，自動廣告跟手動廣告&lt;/p&gt;
+&lt;h2 id=&#34;自動廣告&#34;&gt;&lt;a href=&#34;#自動廣告&#34; class=&#34;headerlink&#34; title=&#34;自動廣告&#34;&gt;&lt;/a&gt;自動廣告&lt;/h2&gt;&lt;p&gt;在左邊選單 廣告 &amp;gt; 按網站 &amp;gt; 選你要啟用自動廣告的網站&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/AdSense/auto.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;這邊啟用之後就會自動在網站內插入廣告 (因為是自動，廣告可能會插在文中)&lt;/p&gt;
+&lt;h2 id=&#34;手動插入廣告&#34;&gt;&lt;a href=&#34;#手動插入廣告&#34; class=&#34;headerlink&#34; title=&#34;手動插入廣告&#34;&gt;&lt;/a&gt;手動插入廣告&lt;/h2&gt;&lt;p&gt;在左邊選單 廣告 &amp;gt; 按廣告單元&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/AdSense/%E6%89%8B%E5%8B%95%E5%BB%A3%E5%91%8A.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在這邊依照合適的版面類型建立廣告，建完之後會有給你廣告的代碼&lt;br&gt;代碼大概分為三個部分&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;&amp;lt;!--請放在 Header，只需要放一次--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;src&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-ID&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;crossorigin&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;anonymous&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;&amp;lt;!--放在頁面內你想出現廣告的地方，可在頁面內放多次--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;ins&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;class&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;adsbygoogle&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;style&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;display:block; text-align:center;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;data-ad-layout&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;in-article&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;data-ad-format&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;fluid&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;data-ad-client&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;ca-pub-ID&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;data-ad-slot&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;廣告單元ID&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;ins&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;&amp;lt;!--放在頁面最後，只需要放一次--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;language-javascript&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;language-javascript&#34;&gt;     (adsbygoogle = &lt;span class=&#34;hljs-variable language_&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;hljs-property&#34;&gt;adsbygoogle&lt;/span&gt; || []).&lt;span class=&#34;hljs-title function_&#34;&gt;push&lt;/span&gt;(&amp;#123;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;language-javascript&#34;&gt;&lt;/span&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細可參考Google的說明&lt;a href=&#34;https://support.google.com/adsense/answer/9190028?sjid=17637765633261310327-AP&#34;&gt;https://support.google.com/adsense/answer/9190028?sjid=17637765633261310327-AP&lt;/a&gt;&lt;/p&gt;
+</content>
+        <category term="Google" />
+        <category term="廣告" />
+        <updated>2023-08-16T07:28:51.000Z</updated>
+    </entry>
+</feed>

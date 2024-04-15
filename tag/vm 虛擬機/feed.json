@@ -1,0 +1,20 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "筆記ZONE • All posts by \"vm 虛擬機\" tag",
+    "description": "",
+    "home_page_url": "https://zonego.tw",
+    "items": [
+        {
+            "id": "https://zonego.tw/2022/10/05/UTM-virtual-machine/",
+            "url": "https://zonego.tw/2022/10/05/UTM-virtual-machine/",
+            "title": "Apple Silicon MAC上的虛擬機軟體",
+            "date_published": "2022-10-05T01:07:13.000Z",
+            "content_html": "<span id=\"more\"></span>\n\n<p>相信在用 MAC 的大家或多或少都會遇到要用 Windows 專用軟體的情況。</p>\n<p>稍微在網路上爬過比較多人推薦的是 Parallel Desktop ，可惜它是付費軟體。</p>\n<p>VMWare 到今天只有推了一個測試版的 Fusion Player ，害我都已經想用 PC + 遠桌面解決了。</p>\n<p>還好閒逛時找到這套 UTM 虛擬機</p>\n<p><a href=\"https://mac.getutm.app/\">官網 https://mac.getutm.app/</a></p>\n<p><div class=\"gallery-pro\" style=\"column-width:200px;\"><div><img alt=\"\" src=\"https://mac.getutm.app/images/screens/windows-11.png\" data-caption=\"\" data-fancybox=\"gallery\" loading=\"lazy\"></div>\n<div><img alt=\"\" src=\"https://mac.getutm.app/images/screens/windows-10-arm64.png\" data-caption=\"\" data-fancybox=\"gallery\" loading=\"lazy\"></div>\n<div><img alt=\"\" src=\"https://mac.getutm.app/images/screens/ubuntu-20.04-arm64.png\" data-caption=\"\" data-fancybox=\"gallery\" loading=\"lazy\"></div>\n            </div></p>\n\n<p>介面有中文，只要有用過虛擬機的朋友，一定能簡單上手。<del>絕對不是因為我懶得寫</del></p>\n<p>UTM 的底層是用 QEMU ，代表在MAC上的虛擬機跑膩了，還可以簡單移植硬碟檔到 Proxmox VE 上執行。</p>\n<p><del>不得不說 M1 MAC 的續航力實在是太香了。</del></p>\n<blockquote>\n<p>更新，在 MAC 上用虛擬機還是非常噴電，大概只有用遠端桌面能解決了</p>\n</blockquote>\n",
+            "tags": [
+                "Mac",
+                "Apple Silicon",
+                "VM 虛擬機"
+            ]
+        }
+    ]
+}

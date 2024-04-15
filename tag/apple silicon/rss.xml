@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>筆記ZONE • Posts by &#34;apple silicon&#34; tag</title>
+        <link>https://zonego.tw</link>
+        <description></description>
+        <language>zh-TW</language>
+        <pubDate>Wed, 05 Oct 2022 01:07:13 +0000</pubDate>
+        <lastBuildDate>Wed, 05 Oct 2022 01:07:13 +0000</lastBuildDate>
+        <category>Hexo</category>
+        <category>Blog</category>
+        <category>搜尋引擎</category>
+        <category>Self-Hosting</category>
+        <category>網路</category>
+        <category>Windows</category>
+        <category>Linux</category>
+        <category>Mac</category>
+        <category>Apple Silicon</category>
+        <category>VM 虛擬機</category>
+        <category>DNS</category>
+        <category>Google</category>
+        <category>廣告</category>
+        <category>網站架設</category>
+        <category>Cloudflare</category>
+        <category>靜態網站</category>
+        <category>Git</category>
+        <category>資安</category>
+        <category>網路資源</category>
+        <category>CI/CD</category>
+        <category>Drone</category>
+        <category>Gitea</category>
+        <category>GMail</category>
+        <category>套件管理</category>
+        <category>字型</category>
+        <category>環境變數</category>
+        <category>Ubuntu</category>
+        <category>桌布</category>
+        <category>DIY</category>
+        <category>Wiki JS</category>
+        <category>Keyckoak</category>
+        <category>身分認證</category>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2022/10/05/UTM-virtual-machine/</guid>
+            <title>Apple Silicon MAC上的虛擬機軟體</title>
+            <link>https://zonego.tw/2022/10/05/UTM-virtual-machine/</link>
+            <category>Mac</category>
+            <category>Apple Silicon</category>
+            <category>VM 虛擬機</category>
+            <pubDate>Wed, 05 Oct 2022 01:07:13 +0000</pubDate>
+            <description><![CDATA[ &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;相信在用 MAC 的大家或多或少都會遇到要用 Windows 專用軟體的情況。&lt;/p&gt;
+&lt;p&gt;稍微在網路上爬過比較多人推薦的是 Parallel Desktop ，可惜它是付費軟體。&lt;/p&gt;
+&lt;p&gt;VMWare 到今天只有推了一個測試版的 Fusion Player ，害我都已經想用 PC + 遠桌面解決了。&lt;/p&gt;
+&lt;p&gt;還好閒逛時找到這套 UTM 虛擬機&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://mac.getutm.app/&#34;&gt;官網 https://mac.getutm.app/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;gallery-pro&#34; style=&#34;column-width:200px;&#34;&gt;&lt;div&gt;&lt;img alt=&#34;&#34; src=&#34;https://mac.getutm.app/images/screens/windows-11.png&#34; data-caption=&#34;&#34; data-fancybox=&#34;gallery&#34; loading=&#34;lazy&#34;&gt;&lt;/div&gt;
+&lt;div&gt;&lt;img alt=&#34;&#34; src=&#34;https://mac.getutm.app/images/screens/windows-10-arm64.png&#34; data-caption=&#34;&#34; data-fancybox=&#34;gallery&#34; loading=&#34;lazy&#34;&gt;&lt;/div&gt;
+&lt;div&gt;&lt;img alt=&#34;&#34; src=&#34;https://mac.getutm.app/images/screens/ubuntu-20.04-arm64.png&#34; data-caption=&#34;&#34; data-fancybox=&#34;gallery&#34; loading=&#34;lazy&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;介面有中文，只要有用過虛擬機的朋友，一定能簡單上手。&lt;del&gt;絕對不是因為我懶得寫&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;UTM 的底層是用 QEMU ，代表在MAC上的虛擬機跑膩了，還可以簡單移植硬碟檔到 Proxmox VE 上執行。&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;不得不說 M1 MAC 的續航力實在是太香了。&lt;/del&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;更新，在 MAC 上用虛擬機還是非常噴電，大概只有用遠端桌面能解決了&lt;/p&gt;
+&lt;/blockquote&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

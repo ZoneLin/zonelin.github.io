@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>筆記ZONE • Posts by &#34;git&#34; tag</title>
+        <link>https://zonego.tw</link>
+        <description></description>
+        <language>zh-TW</language>
+        <pubDate>Fri, 10 Feb 2023 04:39:40 +0000</pubDate>
+        <lastBuildDate>Fri, 10 Feb 2023 04:39:40 +0000</lastBuildDate>
+        <category>Hexo</category>
+        <category>Blog</category>
+        <category>搜尋引擎</category>
+        <category>Self-Hosting</category>
+        <category>網路</category>
+        <category>Windows</category>
+        <category>Linux</category>
+        <category>Mac</category>
+        <category>Apple Silicon</category>
+        <category>VM 虛擬機</category>
+        <category>DNS</category>
+        <category>Google</category>
+        <category>廣告</category>
+        <category>網站架設</category>
+        <category>Cloudflare</category>
+        <category>靜態網站</category>
+        <category>Git</category>
+        <category>資安</category>
+        <category>網路資源</category>
+        <category>CI/CD</category>
+        <category>Drone</category>
+        <category>Gitea</category>
+        <category>GMail</category>
+        <category>套件管理</category>
+        <category>字型</category>
+        <category>環境變數</category>
+        <category>Ubuntu</category>
+        <category>桌布</category>
+        <category>DIY</category>
+        <category>Wiki JS</category>
+        <category>Keyckoak</category>
+        <category>身分認證</category>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2023/02/10/cloudflare-page/</guid>
+            <title>Cloudflare Page 架站教學</title>
+            <link>https://zonego.tw/2023/02/10/cloudflare-page/</link>
+            <category>網站架設</category>
+            <category>Cloudflare</category>
+            <category>靜態網站</category>
+            <category>Git</category>
+            <pubDate>Fri, 10 Feb 2023 04:39:40 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;Cloudflare Page 使用上跟 GitHub Page 類似&lt;br&gt;就差在 GitHub Page 只能用靜態網站檔案，用框架產生的靜態網站就必須先編好才能推上去儲藏庫&lt;br&gt;Cloudflare Page 可以支援編譯&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;設定步驟&#34;&gt;&lt;a href=&#34;#設定步驟&#34; class=&#34;headerlink&#34; title=&#34;設定步驟&#34;&gt;&lt;/a&gt;設定步驟&lt;/h2&gt;&lt;p&gt;官方文件 &lt;a href=&#34;https://developers.cloudflare.com/pages/&#34;&gt;https://developers.cloudflare.com/pages/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;簡單步驟總結：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在 GitHub 或 GitLab 建立網頁用的儲藏庫 (repository)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cloudflare page 連結 GitHub 或 GitLab&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在 Cloudflare 設定網站用的 domain name&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;完成🎉&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;設定-Git-儲藏庫&#34;&gt;&lt;a href=&#34;#設定-Git-儲藏庫&#34; class=&#34;headerlink&#34; title=&#34;設定 Git 儲藏庫&#34;&gt;&lt;/a&gt;設定 Git 儲藏庫&lt;/h3&gt;&lt;p&gt;首先到 GitHub 或 GitLab 建立網頁用的儲藏庫 (就基本的 git 操作，這邊就不多作教學)&lt;/p&gt;
+&lt;p&gt;網站內容跟 GitHub Page 一樣，只要是靜態網站都可以，不管是直接寫或是用框架產生都可以&lt;br&gt;比 GitHub Page 好的一點是，可以直接推送框架的程式上去，部署時編譯 (但免費版有限制)&lt;/p&gt;
+&lt;p&gt;GitHub Page 跟 Cloudflare page 也不需要太糾結要用哪個，反正都免費都可以先用看看&lt;br&gt;例如本網站的內容就是用 Hexo 框架產生，先推送到 GitHub Page，Cloudflare page 用同個儲藏庫當來源&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/wBJAHWU.gif&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在 &lt;a href=&#34;https://zonelin.github.io/&#34;&gt;https://zonelin.github.io/&lt;/a&gt; 也可以找到本站&lt;/p&gt;
+&lt;h3 id=&#34;Cloudflare-新增-page-專案&#34;&gt;&lt;a href=&#34;#Cloudflare-新增-page-專案&#34; class=&#34;headerlink&#34; title=&#34;Cloudflare 新增 page 專案&#34;&gt;&lt;/a&gt;Cloudflare 新增 page 專案&lt;/h3&gt;&lt;p&gt;登入 Cloudflare 在 page 設定內新增一個專案　&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/cfpage-addproject.png&#34; alt=&#34;Cloudflare add project&#34; data-caption=&#34;Cloudflare add project&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;登入 GitHub 或 GitLab 選擇要用的存儲庫 repository&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/cfpage-addproject-git.png&#34; alt=&#34;Cloudflare add project&#34; data-caption=&#34;Cloudflare add project&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;設定要觸發抓取的分支 (建議把部署跟開發中做不同的分支)&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/cfpage-addproject-setting.png&#34; alt=&#34;Cloudflare add project&#34; data-caption=&#34;Cloudflare add project&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如果是想要推送後，再用框架產生靜態網頁可以調整這邊設定&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/cfpage-addproject-setting2.png&#34; alt=&#34;Cloudflare add project&#34; data-caption=&#34;Cloudflare add project&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;點儲存部屬 Save and Deploy 後會開始從 Git 存儲庫抓程式碼下來編譯&lt;br&gt;如果是靜態頁面，就只有抓下來 (畢竟我們的 Build setting 是空的)&lt;br&gt;完成會自動給一個自動分配的網址，例如本站就是 &lt;a href=&#34;https://blog-public-3io.pages.dev/&#34;&gt;blog-public-3io.pages.dev&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;需要自訂網址可以到專案的 Custom domains 設定，免費版有使用上限 &lt;a href=&#34;#%E5%85%8D%E8%B2%BB%E7%89%88%E4%BD%BF%E7%94%A8%E9%99%90%E5%88%B6&#34;&gt;免費版限制&lt;/a&gt;&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/cfpage-domain.png&#34; alt=&#34;Cloudflare domain&#34; data-caption=&#34;Cloudflare domain&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;到這邊就完成了🎉&lt;/p&gt;
+&lt;p&gt;用 Cloudflare 還有個好處，Cloudflare 會自動套 Web Analytics&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/cfpage-web-analytics.png&#34; alt=&#34;Cloudflare web analytics&#34; data-caption=&#34;Cloudflare web analytics&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;免費版使用限制&#34;&gt;&lt;a href=&#34;#免費版使用限制&#34; class=&#34;headerlink&#34; title=&#34;免費版使用限制&#34;&gt;&lt;/a&gt;免費版使用限制&lt;/h2&gt;&lt;p&gt;根據&lt;a href=&#34;https://developers.cloudflare.com/pages/platform/limits&#34;&gt;官方文件&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;每個帳號可以件幾個網站專案、預覽板本好像沒限制&lt;/p&gt;
+&lt;h3 id=&#34;建置&#34;&gt;&lt;a href=&#34;#建置&#34; class=&#34;headerlink&#34; title=&#34;建置&#34;&gt;&lt;/a&gt;建置&lt;/h3&gt;&lt;p&gt;免費版能從 GitHub 抓程式碼重新建置每個月500次，建置時間不得過20分鐘&lt;br&gt;推送程式碼到 GitHub 也會觸發重新建置&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;所以我習慣在本機把 hexo 建制好，再推送到 GitHub，省編譯時間&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;Domains&#34;&gt;&lt;a href=&#34;#Domains&#34; class=&#34;headerlink&#34; title=&#34;Domains&#34;&gt;&lt;/a&gt;Domains&lt;/h3&gt;&lt;p&gt;最多 10 個自訂 domain&lt;/p&gt;
+&lt;h3 id=&#34;檔案&#34;&gt;&lt;a href=&#34;#檔案&#34; class=&#34;headerlink&#34; title=&#34;檔案&#34;&gt;&lt;/a&gt;檔案&lt;/h3&gt;&lt;p&gt;單一個網站專案，最多到 2 萬個檔案&lt;br&gt;單一檔案、素材最大 25MB&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;有放圖片要注意下容量&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;Headers&#34;&gt;&lt;a href=&#34;#Headers&#34; class=&#34;headerlink&#34; title=&#34;Headers&#34;&gt;&lt;/a&gt;Headers&lt;/h3&gt;&lt;p&gt;最多 100 header 規則&lt;/p&gt;
+&lt;h3 id=&#34;重導向規則&#34;&gt;&lt;a href=&#34;#重導向規則&#34; class=&#34;headerlink&#34; title=&#34;重導向規則&#34;&gt;&lt;/a&gt;重導向規則&lt;/h3&gt;&lt;p&gt;最多 100 個&lt;/p&gt;
+&lt;hr&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2022/01/06/drone-git-push/</guid>
+            <title>drone-git-push 踩雷心得</title>
+            <link>https://zonego.tw/2022/01/06/drone-git-push/</link>
+            <category>Git</category>
+            <category>CI/CD</category>
+            <category>Drone</category>
+            <pubDate>Thu, 06 Jan 2022 12:15:54 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;a href=&#34;https://www.drone.io/&#34;&gt;Drone CI&lt;/a&gt; 是一個可以自行的 CI (Continuous Integration) 軟體&lt;/p&gt;
+&lt;p&gt;使用 CI 的用意就是為了，能在寫完程式時，自動測試、編譯與發佈程式。&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;關於怎麼架設改天再寫一篇教學。 &lt;del&gt;Google一下應該就很多教學了&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;drone-git-push&#34;&gt;&lt;a href=&#34;#drone-git-push&#34; class=&#34;headerlink&#34; title=&#34;drone-git-push&#34;&gt;&lt;/a&gt;drone-git-push&lt;/h2&gt;&lt;p&gt;回來本篇主題&lt;/p&gt;
+&lt;p&gt;這次我的需求是在 Drone 的流程內，測試或編譯完程式後以 git 推送到不同的儲藏庫&lt;/p&gt;
+&lt;p&gt;其實就是要產生網站檔案後，推送到 GitHub 方便用 GitHub Page 或是 Cloudflare Page&lt;/p&gt;
+&lt;p&gt;在 Drone CI 中可以用 &lt;a href=&#34;http://plugins.drone.io/appleboy/drone-git-push/&#34;&gt;drone-git-push&lt;/a&gt; 做到&lt;/p&gt;
+&lt;p&gt;這次遇到的問題有2個 &lt;del&gt;害我為了找問題多花很多時間&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;儲存庫辨識失敗&#34;&gt;&lt;a href=&#34;#儲存庫辨識失敗&#34; class=&#34;headerlink&#34; title=&#34;儲存庫辨識失敗&#34;&gt;&lt;/a&gt;儲存庫辨識失敗&lt;/h2&gt;&lt;p&gt;錯誤訊息:&lt;/p&gt;
+&lt;figure class=&#34;highlight node-repl&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs node-repl&#34;&gt;&lt;span class=&#34;hljs-meta prompt_&#34;&gt;...&lt;/span&gt;&lt;br&gt;parse \&amp;quot;git@github.com:user/repo.git\&amp;quot;: first path segment in URL cannot contain colon&amp;quot;&lt;br&gt;&lt;span class=&#34;hljs-meta prompt_&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;照原本文件寫的 &lt;code&gt;.drone.yml&lt;/code&gt; 大概是長這樣&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;name:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;deploy&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;git&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;image:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;appleboy/drone-git-push&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;settings:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;branch:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;main&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;remote:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;git@github.com:user/repo.git&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;force:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;false&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;commit:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;參考&lt;a href=&#34;https://github.com/appleboy/drone-git-push/issues/40&#34;&gt;GitHub討論區&lt;/a&gt;的解決方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用緊急修補的 image&lt;/li&gt;
+&lt;li&gt;remote 改用字串&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;name:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;deploy&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;git&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;image:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;appleboy/drone-git-push:0.2.0-linux-amd64&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;settings:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;branch:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;main&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;remote:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;git@github.com:user/repo.git&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;force:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;false&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;commit:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;SSH-Key-讀取失敗&#34;&gt;&lt;a href=&#34;#SSH-Key-讀取失敗&#34; class=&#34;headerlink&#34; title=&#34;SSH Key 讀取失敗&#34;&gt;&lt;/a&gt;SSH Key 讀取失敗&lt;/h2&gt;&lt;p&gt;由於資安的關係， SSH KEY 不可以跟著程式碼推送到儲存庫，更不可能放明碼在設定檔中&lt;/p&gt;
+&lt;p&gt;在 Drone CI 要改用 secret 的功能&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;.drone.yml&lt;/code&gt; 大概長這樣&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;name:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;deploy&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;git&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;image:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;appleboy/drone-git-push:0.2.0-linux-amd64&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;settings:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;branch:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;main&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;ssh_key:&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-attr&#34;&gt;from_secret:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;githubkey&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;另外在 Drone CI 的 WebUI 上添加 Secret&lt;/p&gt;
+&lt;p&gt;將 private key 的內文貼進去&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/DroneCI-secret.png&#34; alt=&#34;secret&#34; data-caption=&#34;secret&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;然後就碰到問題了&lt;/p&gt;
+&lt;p&gt;錯誤訊息:&lt;/p&gt;
+&lt;figure class=&#34;highlight node-repl&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs node-repl&#34;&gt;&lt;span class=&#34;hljs-meta prompt_&#34;&gt;...&lt;/span&gt;&lt;br&gt;Load key &amp;quot;/root/.ssh/id_rsa&amp;quot;: invalid format&lt;br&gt;&lt;span class=&#34;hljs-meta prompt_&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;參考&lt;a href=&#34;https://github.com/appleboy/drone-git-push/issues/37&#34;&gt;GitHub討論區&lt;/a&gt;的解決方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;產生的 SSH key 需要改用 PEM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;ssh-keygen -t rsa -b 4096 -C &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;your_email@example.com&amp;quot;&lt;/span&gt; -m PEM&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;換完 KEY 甚麼問題都沒了🎉&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2021/11/25/gitea/</guid>
+            <title>Gitea - Git 自架伺服器首選</title>
+            <link>https://zonego.tw/2021/11/25/gitea/</link>
+            <category>Self-Hosting</category>
+            <category>Git</category>
+            <category>Gitea</category>
+            <pubDate>Thu, 25 Nov 2021 11:22:30 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;作為寫過程式的人，Git是必備工具 &lt;del&gt;除非只是寫好玩的&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;常見的線上Git儲藏庫就是 &lt;a href=&#34;https://github.com/&#34;&gt;GitHub&lt;/a&gt;、&lt;a href=&#34;https://about.gitlab.com/&#34;&gt;Gitlab&lt;/a&gt;、&lt;a href=&#34;https://bitbucket.org/&#34;&gt;Bitbucket&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;對於這些公開平台不放心，或是程式碼不想外流，那就自己架私服吧!&lt;/p&gt;
+&lt;p&gt;常見的有 &lt;a href=&#34;https://gitea.io/&#34;&gt;Gitea&lt;/a&gt;、&lt;a href=&#34;https://gogs.io/&#34;&gt;gogs&lt;/a&gt;或是&lt;a href=&#34;https://about.gitlab.com/&#34;&gt;Gitlab&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Gitlab裡面包含 CI&amp;#x2F;CD 工具等功能，十分肥大&lt;/p&gt;
+&lt;p&gt;想要一個安裝簡單、功能近似GitHub又有中文介面，那就選 Gitea 吧！&lt;/p&gt;
+&lt;h1 id=&#34;安裝&#34;&gt;&lt;a href=&#34;#安裝&#34; class=&#34;headerlink&#34; title=&#34;安裝&#34;&gt;&lt;/a&gt;安裝&lt;/h1&gt;&lt;p&gt;&lt;a href=&#34;https://docs.gitea.io/&#34;&gt;說明文件&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Gitea 提供很多安裝方式，我這邊選則用 docker &lt;del&gt;手邊有現成的docker伺服器，不用白不用&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.gitea.io/zh-tw/install-with-docker-rootless/&#34;&gt;docker-compose 安裝說明&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;選擇版本&#34;&gt;&lt;a href=&#34;#選擇版本&#34; class=&#34;headerlink&#34; title=&#34;選擇版本&#34;&gt;&lt;/a&gt;選擇版本&lt;/h2&gt;&lt;p&gt;Gitea 的官方映像可以在 &lt;a href=&#34;https://hub.docker.com/r/gitea/gitea/&#34;&gt;Docker Hub&lt;/a&gt; 找到&lt;/p&gt;
+&lt;p&gt;版本 tag 與 Gitea 的 &lt;a href=&#34;https://github.com/go-gitea/gitea&#34;&gt;&lt;i class=&#34;nexmoefont icon-github&#34;&gt;&lt;/i&gt; Github&lt;/a&gt; 上發布的版本號一樣&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;latest&lt;/code&gt; 則是最新的穩定版&lt;/p&gt;
+&lt;h2 id=&#34;選擇資料庫&#34;&gt;&lt;a href=&#34;#選擇資料庫&#34; class=&#34;headerlink&#34; title=&#34;選擇資料庫&#34;&gt;&lt;/a&gt;選擇資料庫&lt;/h2&gt;&lt;p&gt;Gitea 支援多種資料庫，例如 &lt;code&gt;mysql&lt;/code&gt; &lt;code&gt;mariadb&lt;/code&gt; &lt;code&gt;PostgreSQL&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安裝過程&#34;&gt;&lt;a href=&#34;#安裝過程&#34; class=&#34;headerlink&#34; title=&#34;安裝過程&#34;&gt;&lt;/a&gt;安裝過程&lt;/h2&gt;&lt;p&gt;使用 docker-compose 安裝&lt;/p&gt;
+&lt;p&gt;我這邊選用 mysql 資料庫&lt;/p&gt;
+&lt;p&gt;docker-compose.yml&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;version:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;2&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;services:&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;server:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;image:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;gitea/gitea:1.15.6-rootless&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;environment:&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;GITEA__database__DB_TYPE=mysql&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;GITEA__database__HOST=db:3306&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;GITEA__database__NAME=gitea&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;GITEA__database__USER=gitea&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;GITEA__database__PASSWD=gitea&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;restart:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;always&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;volumes:&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;./data:/var/lib/gitea&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;./config:/etc/gitea&lt;/span&gt;  &lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;/etc/timezone:/etc/timezone:ro&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;/etc/localtime:/etc/localtime:ro&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;ports:&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;10080:3000&amp;quot;&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;10022:22&amp;quot;&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;depends_on:&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;db&lt;/span&gt;&lt;br&gt; &lt;br&gt;   &lt;span class=&#34;hljs-attr&#34;&gt;db:&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;image:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;mysql:8&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;restart:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;always&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;environment:&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;MYSQL_ROOT_PASSWORD=gitea&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;MYSQL_USER=gitea&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;MYSQL_PASSWORD=gitea&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;MYSQL_DATABASE=gitea&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;volumes:&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;./mysql:/var/lib/mysql&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;執行&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;docker-compose up&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;完成後可以用 &lt;a href=&#34;http://hostname:10080/&#34;&gt;http://hostname:10080&lt;/a&gt; 連到你剛剛架的 gitea&lt;/p&gt;
+&lt;p&gt;SSH 要使用 10022 例如 &lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;git &lt;span class=&#34;hljs-built_in&#34;&gt;clone&lt;/span&gt; ssh://git@hostname:10022/username/repo.git&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;如果想用預設 Port&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;#將這段&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;ports:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;10080:3000&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;10022:22&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;#換成這段&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;ports:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;80:3000&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;22:22&amp;quot;&lt;/span&gt;      &lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2021/11/14/gitea-gmail/</guid>
+            <title>Gitea 使用 Gmail 寄信</title>
+            <link>https://zonego.tw/2021/11/14/gitea-gmail/</link>
+            <category>Google</category>
+            <category>Git</category>
+            <category>Gitea</category>
+            <category>GMail</category>
+            <pubDate>Sun, 14 Nov 2021 04:39:30 +0000</pubDate>
+            <description><![CDATA[ &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;建立-Gmail-應用程式密碼&#34;&gt;&lt;a href=&#34;#建立-Gmail-應用程式密碼&#34; class=&#34;headerlink&#34; title=&#34;建立 Gmail 應用程式密碼&#34;&gt;&lt;/a&gt;建立 Gmail 應用程式密碼&lt;/h2&gt;&lt;p&gt;Google 基於安全性，禁用直接用密碼存取 smtp&lt;br&gt;取而代之要先建立應用程式密碼，代替原本密碼的功能&lt;/p&gt;
+&lt;p&gt;管理 Google 帳戶 &amp;gt; 安全性 &amp;gt; 登入 Google &amp;gt; 應用程式密碼&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_account.jpg&#34; alt=&#34;Google Account&#34; data-caption=&#34;Google Account&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;應用選郵件，裝置只是方便管理的名稱，可以選其他自己寫&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_appkey.jpg&#34; alt=&#34;Google APP KEY&#34; data-caption=&#34;Google APP KEY&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;完成後會產生一組密碼，建議用完之後就忘掉他，下次要用忘記時再建新的就好&lt;/p&gt;
+&lt;h2 id=&#34;設定-container-環境變數&#34;&gt;&lt;a href=&#34;#設定-container-環境變數&#34; class=&#34;headerlink&#34; title=&#34;設定 container 環境變數&#34;&gt;&lt;/a&gt;設定 container 環境變數&lt;/h2&gt;&lt;p&gt;我的 gitea 是使用 Docker 架的&lt;/p&gt;
+&lt;p&gt;gitea 官方鏡像有提供透過環境變數設定，不用另外修改設定檔&lt;/p&gt;
+&lt;figure class=&#34;highlight routeros&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs routeros&#34;&gt;environment:&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__ENABLED&lt;/span&gt;=&lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__FROM&lt;/span&gt;=寄件者信箱&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__MAILER_TYPE&lt;/span&gt;=smtp&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__HOST&lt;/span&gt;=smtp.gmail.com:465&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__IS_TLS_ENABLED&lt;/span&gt;=&lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__USER&lt;/span&gt;=你的Gmail&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__PASSWD&lt;/span&gt;=應用程式密碼&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;改完之後到 Gitea 網站 &amp;gt; 網站管理 &amp;gt; 組態&lt;br&gt;往下捲找到 SMTP 組態，可以測試寄信&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.gitea.io/en-us/install-with-docker/#managing-deployments-with-environment-variables&#34;&gt;詳細參考&lt;/a&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

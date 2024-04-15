@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>筆記ZONE • Posts by &#34;身分認證&#34; tag</title>
+        <link>https://zonego.tw</link>
+        <description></description>
+        <language>zh-TW</language>
+        <pubDate>Fri, 10 Feb 2023 06:35:35 +0000</pubDate>
+        <lastBuildDate>Fri, 10 Feb 2023 06:35:35 +0000</lastBuildDate>
+        <category>Hexo</category>
+        <category>Blog</category>
+        <category>搜尋引擎</category>
+        <category>Self-Hosting</category>
+        <category>網路</category>
+        <category>Windows</category>
+        <category>Linux</category>
+        <category>Mac</category>
+        <category>Apple Silicon</category>
+        <category>VM 虛擬機</category>
+        <category>DNS</category>
+        <category>Google</category>
+        <category>廣告</category>
+        <category>網站架設</category>
+        <category>Cloudflare</category>
+        <category>靜態網站</category>
+        <category>Git</category>
+        <category>資安</category>
+        <category>網路資源</category>
+        <category>CI/CD</category>
+        <category>Drone</category>
+        <category>Gitea</category>
+        <category>GMail</category>
+        <category>套件管理</category>
+        <category>字型</category>
+        <category>環境變數</category>
+        <category>Ubuntu</category>
+        <category>桌布</category>
+        <category>DIY</category>
+        <category>Wiki JS</category>
+        <category>Keyckoak</category>
+        <category>身分認證</category>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2023/02/10/wikijs-keyckoak/</guid>
+            <title>設定 WikiJS 使用 Keyckoak 做身分認證</title>
+            <link>https://zonego.tw/2023/02/10/wikijs-keyckoak/</link>
+            <category>Self-Hosting</category>
+            <category>Wiki JS</category>
+            <category>Keyckoak</category>
+            <category>身分認證</category>
+            <pubDate>Fri, 10 Feb 2023 06:35:35 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;最近在設定 WikiJS 串接 Keycloak 作身分認證時碰到一些問題，所以在這邊做個紀錄&lt;br&gt;這邊就跳過安裝過程&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;紀錄時使用版本： &lt;code&gt;WikiJS 2.5.296&lt;/code&gt;  &lt;code&gt;Keycloak 20.0.3&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;Keycloak-設定&#34;&gt;&lt;a href=&#34;#Keycloak-設定&#34; class=&#34;headerlink&#34; title=&#34;Keycloak 設定&#34;&gt;&lt;/a&gt;Keycloak 設定&lt;/h2&gt;&lt;p&gt;挑選你要設定登入的 realm ，這邊我為了不要應用程式的帳號跟 Keycloak 的管理帳號混用，建一個新的 realm 叫做 demo&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;realm 像是用來管理帳號的群組，在這個群組內建好的應用方式都可以透過這些帳號登入&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;新增-client&#34;&gt;&lt;a href=&#34;#新增-client&#34; class=&#34;headerlink&#34; title=&#34;新增 client&#34;&gt;&lt;/a&gt;新增 client&lt;/h3&gt;&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-new_client.png&#34; alt=&#34;creat&#34; data-caption=&#34;creat&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;打上 client ID (不可重複) ，next 下一步&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-new_client2.png&#34; alt=&#34;creat&#34; data-caption=&#34;creat&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;這邊 Client authentication 必須要勾選，才會產生後面要用到的 Client Secret。點 Save 儲存&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-new_client3.png&#34; alt=&#34;creat&#34; data-caption=&#34;creat&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;設定-client&#34;&gt;&lt;a href=&#34;#設定-client&#34; class=&#34;headerlink&#34; title=&#34;設定 client&#34;&gt;&lt;/a&gt;設定 client&lt;/h3&gt;&lt;p&gt;打開剛剛建好的 client &lt;code&gt;wiki&lt;/code&gt;&lt;br&gt;下滑到 Access Setting&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-access-setting.png&#34; alt=&#34;setting&#34; data-caption=&#34;setting&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;假設我們的 wikijs 網址是 &lt;a href=&#34;https://wiki.example.com/&#34;&gt;https://wiki.example.com&lt;/a&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;填入URL&lt;/th&gt;
+&lt;th&gt;說明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;Root URL&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://wiki.example.com/&#34;&gt;https://wiki.example.com&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;網站根網址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Home URL&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://wiki.example.com/&#34;&gt;https://wiki.example.com&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;登入後重導向的根網址 (通常跟 root url 相同)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Valid rediect URIs&lt;/td&gt;
+&lt;td&gt;&amp;#x2F;XXXXXXXX&amp;#x2F;callback&lt;br&gt;&amp;#x2F;*&lt;/td&gt;
+&lt;td&gt;允許重導向頁面網址&lt;br&gt;用 * 可以代表所有頁面，但要注意安全性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Valid post logout&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://wiki.example.com/&#34;&gt;https://wiki.example.com&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;允許登出後轉向的頁面&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;redirect URIs&lt;/td&gt;
+&lt;td&gt;&amp;#x2F;*&lt;/td&gt;
+&lt;td&gt;允許登出後的重導向位置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Web origins&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;允許 CORS origins 的網址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;Valid rediect URIs&lt;/code&gt; 可以在後面設定 wikijs 時取得&lt;/p&gt;
+&lt;p&gt;如果你的 Keycloak 有安裝客製主題，可以在 Login settings 裡修改&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-login-theme.png&#34; alt=&#34;setting&#34; data-caption=&#34;setting&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Credentials 分頁有後續會用到的 client key，可以先複製&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-client_key.png&#34; alt=&#34;setting&#34; data-caption=&#34;setting&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;Wikijs-設定&#34;&gt;&lt;a href=&#34;#Wikijs-設定&#34; class=&#34;headerlink&#34; title=&#34;Wikijs 設定&#34;&gt;&lt;/a&gt;Wikijs 設定&lt;/h2&gt;&lt;p&gt;進到設定後選認證 &amp;gt; 新增登入機制&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider.png&#34; alt=&#34;wikijs&#34; data-caption=&#34;wikijs&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;選擇 Keycloak&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider2.png&#34; alt=&#34;wikijs&#34; data-caption=&#34;wikijs&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;再來填入你的 Keycloak 網址、realm 名稱跟剛剛建好的 Client ID&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider3.png&#34; alt=&#34;wikijs&#34; data-caption=&#34;wikijs&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;下面4個網址可以參考 wikijs 的提示，不過左邊的 &lt;code&gt;/auth&lt;/code&gt; 要去掉，例如：&lt;/p&gt;
+&lt;figure class=&#34;highlight awk&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs awk&#34;&gt;wikij 提示&lt;br&gt;https:&lt;span class=&#34;hljs-regexp&#34;&gt;//&lt;/span&gt;KEYCLOAK-HOST&lt;span class=&#34;hljs-regexp&#34;&gt;/auth/&lt;/span&gt;realms&lt;span class=&#34;hljs-regexp&#34;&gt;/YOUR-REALM/&lt;/span&gt;protocol&lt;span class=&#34;hljs-regexp&#34;&gt;/openid-connect/&lt;/span&gt;auth&lt;br&gt;&lt;br&gt;左邊的 /auth 去掉，範例的 realms 是 demo&lt;br&gt;https:&lt;span class=&#34;hljs-regexp&#34;&gt;//y&lt;/span&gt;our.keycloak-host.com&lt;span class=&#34;hljs-regexp&#34;&gt;/realms/&lt;/span&gt;demo&lt;span class=&#34;hljs-regexp&#34;&gt;/protocol/&lt;/span&gt;openid-connect/auth&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;Client Secret 貼上 Keycloak Credentials 內複製的金鑰&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider4.png&#34; alt=&#34;wikijs&#34; data-caption=&#34;wikijs&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;開放自由註冊可以斟酌打開，若沒開沒登入過的帳號會無法登入&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider5.png&#34; alt=&#34;wikijs&#34; data-caption=&#34;wikijs&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;最下面可以取得 keycloak 設定需要的 Valid rediect URI&lt;br&gt;只需要填 &amp;#x2F;login&amp;#x2F;a28088b1-8e47-4d16-aa6f-0a32d8af192f&amp;#x2F;callback&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider6.png&#34; alt=&#34;wikijs&#34; data-caption=&#34;wikijs&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;設定完記得卷到上面點套用設定&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider3.png&#34; alt=&#34;wikijs&#34; data-caption=&#34;wikijs&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;問題排除&#34;&gt;&lt;a href=&#34;#問題排除&#34; class=&#34;headerlink&#34; title=&#34;問題排除&#34;&gt;&lt;/a&gt;問題排除&lt;/h2&gt;&lt;h3 id=&#34;登出時遇到-invalid-parameter-redirect-uri&#34;&gt;&lt;a href=&#34;#登出時遇到-invalid-parameter-redirect-uri&#34; class=&#34;headerlink&#34; title=&#34;登出時遇到 invalid parameter redirect_uri&#34;&gt;&lt;/a&gt;登出時遇到 invalid parameter redirect_uri&lt;/h3&gt;&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/invalid-parameter-redirect_uri.png&#34; alt=&#34;invalid parameter redirect_uri&#34; data-caption=&#34;invalid parameter redirect_uri&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;keycloak 在 18 版之後就不支援登出時使用&lt;code&gt;redirect_uri&lt;/code&gt;參數，所以只能先暫時先把 WikiJS 的同步登出先關閉，等 WikiJS 更新&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider5.png&#34; alt=&#34;WikiJS sync logout&#34; data-caption=&#34;WikiJS sync logout&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;關閉後的缺點是在同一台裝置，session 未過期前，點一下 keycloak 登入就會自動登進去&lt;/p&gt;
+&lt;/blockquote&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

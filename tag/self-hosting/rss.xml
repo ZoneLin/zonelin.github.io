@@ -1,0 +1,480 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>筆記ZONE • Posts by &#34;self-hosting&#34; tag</title>
+        <link>https://zonego.tw</link>
+        <description></description>
+        <language>zh-TW</language>
+        <pubDate>Tue, 21 Feb 2023 11:42:28 +0000</pubDate>
+        <lastBuildDate>Tue, 21 Feb 2023 11:42:28 +0000</lastBuildDate>
+        <category>Hexo</category>
+        <category>Blog</category>
+        <category>搜尋引擎</category>
+        <category>Self-Hosting</category>
+        <category>網路</category>
+        <category>Windows</category>
+        <category>Linux</category>
+        <category>Mac</category>
+        <category>Apple Silicon</category>
+        <category>VM 虛擬機</category>
+        <category>DNS</category>
+        <category>Google</category>
+        <category>廣告</category>
+        <category>網站架設</category>
+        <category>Cloudflare</category>
+        <category>靜態網站</category>
+        <category>Git</category>
+        <category>資安</category>
+        <category>網路資源</category>
+        <category>CI/CD</category>
+        <category>Drone</category>
+        <category>Gitea</category>
+        <category>GMail</category>
+        <category>套件管理</category>
+        <category>字型</category>
+        <category>環境變數</category>
+        <category>Ubuntu</category>
+        <category>桌布</category>
+        <category>DIY</category>
+        <category>Wiki JS</category>
+        <category>Keyckoak</category>
+        <category>身分認證</category>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2023/02/21/adguardhome/</guid>
+            <title>AdGuard Home 擋廣告工具</title>
+            <link>https://zonego.tw/2023/02/21/adguardhome/</link>
+            <category>Self-Hosting</category>
+            <category>Windows</category>
+            <category>Linux</category>
+            <category>DNS</category>
+            <pubDate>Tue, 21 Feb 2023 11:42:28 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;一般檔廣告大家都會使用瀏覽器插，例如 AD Bolck。這邊推薦可以從 DNS 下手&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;DNS-檔廣告原理&#34;&gt;&lt;a href=&#34;#DNS-檔廣告原理&#34; class=&#34;headerlink&#34; title=&#34;DNS 檔廣告原理&#34;&gt;&lt;/a&gt;DNS 檔廣告原理&lt;/h2&gt;&lt;h3 id=&#34;DNS原理簡介&#34;&gt;&lt;a href=&#34;#DNS原理簡介&#34; class=&#34;headerlink&#34; title=&#34;DNS原理簡介&#34;&gt;&lt;/a&gt;DNS原理簡介&lt;/h3&gt;&lt;p&gt;一般瀏覽網站時，我們常會使用網域名稱 domain，代替只有數字的 IP 作為連線地址&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/DNS.png&#34; alt=&#34;DNS&#34; data-caption=&#34;DNS&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;舉個例子🌰，要去 google 首頁 &lt;a href=&#34;https://www.google.com/&#34;&gt;https://www.google.com&lt;/a&gt; ，其中 &lt;a href=&#34;http://www.google.com/&#34;&gt;www.google.com&lt;/a&gt; 就是網域名稱&lt;br&gt;瀏覽器會先去 DNS 伺服器用網域名稱查出 Google 的伺服器 IP&lt;br&gt;知道 IP 後才能連到 Google 的伺服器請求資料&lt;/p&gt;
+&lt;p&gt;在這中間，Google 也會順便將要顯示的廣告網址一起送回來&lt;br&gt;瀏覽器再照之前的流程，去廣告商的伺服器去抓廣告回來顯示&lt;/p&gt;
+&lt;p&gt;想知道更多 DNS 詳細機制，可以參考 &lt;a href=&#34;https://www.cloudflare.com/zh-tw/learning/dns/what-is-dns/&#34;&gt;Coudflare 寫的說明&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;DNS沉洞（DNS-sinkhole）&#34;&gt;&lt;a href=&#34;#DNS沉洞（DNS-sinkhole）&#34; class=&#34;headerlink&#34; title=&#34;DNS沉洞（DNS sinkhole）&#34;&gt;&lt;/a&gt;DNS沉洞（DNS sinkhole）&lt;/h3&gt;&lt;p&gt;看完原理後，反過來說，只要 DNS 伺服器不能正常把網域名稱換成 IP，網路就像斷了，只剩直接給 IP 的方式還能連線&lt;/p&gt;
+&lt;p&gt;所以只要在 DNS 伺服器動手腳把廣告的網址設定成錯誤的IP(例如：127.0.0.1)，廣告就無法正常顯示&lt;/p&gt;
+&lt;p&gt;這種作法就叫做 &lt;code&gt;DNS沉洞&lt;/code&gt;（DNS sinkhole）&lt;/p&gt;
+&lt;p&gt;有幾套可以自己架的 DNS 伺服器軟體可以達到這種效果，如 PI-Hole、 AdGuard Home&lt;br&gt;這邊主要介紹 AdGuard Home&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;PI-Hole 改天在寫&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;AdGuard-Home&#34;&gt;&lt;a href=&#34;#AdGuard-Home&#34; class=&#34;headerlink&#34; title=&#34;AdGuard Home&#34;&gt;&lt;/a&gt;AdGuard Home&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://adguard.com/zh_tw/adguard-home/overview.html&#34;&gt;AdGuard Home 官方網站&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/AdguardTeam/AdGuardHome&#34;&gt;AdGuard Home GitHub repo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://camo.githubusercontent.com/c6223645832b66d312f31eecbf833e23f95e363198d83de29438db55d01c8eca/68747470733a2f2f63646e2e6164746964792e6f72672f7075626c69632f416467756172642f436f6d6d6f6e2f616467756172645f686f6d652e676966&#34;&gt;&lt;/p&gt;
+&lt;p&gt;附上 AdGuard Home 提供的功能比對表…&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;AdGuard Home&lt;/th&gt;
+&lt;th&gt;Pi-Hole&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;阻擋廣告與追蹤器&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;自訂阻擋清單&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;內建 DHCP server 功能&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HTTPS 管理介面&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌ 需手動設定 lighttpd&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;上游 DNS 伺服器加密&lt;br&gt;(DNS-over-HTTPS, DNS-over-TLS, DNSCrypt)&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌ (需安裝額外插件)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;跨平台支援&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌ (需透過 Docker)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;支援加密&lt;br&gt;DNS-over-HTTPS or DNS-over-TLS server&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌ (需安裝額外插件)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;阻擋惡意網域&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌ (需要使用另外的阻擋清單)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;家長管控 (阻擋成人網站)&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌ (需自行設定阻擋清單)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;強制搜尋引擎啟用安全搜尋&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Per-client (device) configuration&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;存取設定 (設定可用 AGH DNS 的名單)&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;[不需 root 權限][wiki-noroot]執行&lt;/td&gt;
+&lt;td&gt;✅&lt;/td&gt;
+&lt;td&gt;❌&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;基本上我們只用擋廣告的功能，AdGuardHome 跟 Pi-Hole 選順手好用的就好&lt;br&gt;雖說 AdGuard Home 有原生跨平台支援，不過真的要用也是用 Docker 去不同平台執行比較方便&lt;/p&gt;
+&lt;h2 id=&#34;安裝-AdGuard-Home&#34;&gt;&lt;a href=&#34;#安裝-AdGuard-Home&#34; class=&#34;headerlink&#34; title=&#34;安裝 AdGuard Home&#34;&gt;&lt;/a&gt;安裝 AdGuard Home&lt;/h2&gt;&lt;h3 id=&#34;Linux&#34;&gt;&lt;a href=&#34;#Linux&#34; class=&#34;headerlink&#34; title=&#34;Linux&#34;&gt;&lt;/a&gt;Linux&lt;/h3&gt;&lt;p&gt;官方有提供 Linux 系統的自動安裝腳本&lt;/p&gt;
+&lt;figure class=&#34;highlight awk&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs awk&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 可以用 wget, curl 等工具下載腳本&lt;/span&gt;&lt;br&gt;wget --no-verbose -O - https:&lt;span class=&#34;hljs-regexp&#34;&gt;//&lt;/span&gt;raw.githubusercontent.com&lt;span class=&#34;hljs-regexp&#34;&gt;/AdguardTeam/&lt;/span&gt;AdGuardHome&lt;span class=&#34;hljs-regexp&#34;&gt;/master/&lt;/span&gt;scripts/install.sh | sh -s -- -v&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;腳本參數：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-c &amp;lt;channel&amp;gt;&lt;/code&gt; 使用特定的安裝渠道，預設是從 release 安裝，可用 &lt;code&gt;development&lt;/code&gt; &lt;code&gt;edge&lt;/code&gt; &lt;code&gt;beta&lt;/code&gt; &lt;code&gt;release&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-r&lt;/code&gt; 重新安裝 AdGuard Home (不可與 &lt;code&gt;-u&lt;/code&gt; 一起用)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-u&lt;/code&gt; 移除 AdGuard Home (不可與 &lt;code&gt;-r&lt;/code&gt; 一起用)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-v&lt;/code&gt; 查看更多安裝時訊息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;或是手動下載、安裝&lt;br&gt;到 &lt;a href=&#34;https://github.com/AdguardTeam/AdGuardHome/releases&#34;&gt;GitHub Release&lt;/a&gt; 下載對應 OS 的安裝檔&lt;br&gt;例如安裝 Linux x64 版本&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;tar zxvf AdGuardHome_linux_amd64.tar.gz&lt;br&gt;&lt;br&gt;./AdGuardHome -s install&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;建議使用剛裝好系統的 VM 來裝 AdGuard Home，方便備份或是避免 port 衝突&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;Windows&#34;&gt;&lt;a href=&#34;#Windows&#34; class=&#34;headerlink&#34; title=&#34;Windows&#34;&gt;&lt;/a&gt;Windows&lt;/h3&gt;&lt;p&gt;跟 Linux 手動安裝步驟相同，到 &lt;a href=&#34;https://github.com/AdguardTeam/AdGuardHome/releases&#34;&gt;GitHub Release&lt;/a&gt; 下載 windows 版本後執行&lt;/p&gt;
+&lt;h3 id=&#34;Docker&#34;&gt;&lt;a href=&#34;#Docker&#34; class=&#34;headerlink&#34; title=&#34;Docker&#34;&gt;&lt;/a&gt;Docker&lt;/h3&gt;&lt;p&gt;&lt;a href=&#34;https://hub.docker.com/r/adguard/adguardhome&#34;&gt;AdGuard Home Docker Hub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;docker 指令：&lt;/p&gt;
+&lt;figure class=&#34;highlight awk&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs awk&#34;&gt;docker run --name adguardhome\&lt;br&gt;    --restart unless-stopped\&lt;br&gt;    -v &lt;span class=&#34;hljs-regexp&#34;&gt;/my/&lt;/span&gt;own&lt;span class=&#34;hljs-regexp&#34;&gt;/workdir:/&lt;/span&gt;opt&lt;span class=&#34;hljs-regexp&#34;&gt;/adguardhome/&lt;/span&gt;work\&lt;br&gt;    -v &lt;span class=&#34;hljs-regexp&#34;&gt;/my/&lt;/span&gt;own&lt;span class=&#34;hljs-regexp&#34;&gt;/confdir:/&lt;/span&gt;opt&lt;span class=&#34;hljs-regexp&#34;&gt;/adguardhome/&lt;/span&gt;conf\&lt;br&gt;    -p &lt;span class=&#34;hljs-number&#34;&gt;53&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;53&lt;/span&gt;&lt;span class=&#34;hljs-regexp&#34;&gt;/tcp -p 53:53/u&lt;/span&gt;dp\&lt;br&gt;    -p &lt;span class=&#34;hljs-number&#34;&gt;67&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;67&lt;/span&gt;&lt;span class=&#34;hljs-regexp&#34;&gt;/udp -p 68:68/u&lt;/span&gt;dp\&lt;br&gt;    -p &lt;span class=&#34;hljs-number&#34;&gt;80&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;80&lt;/span&gt;&lt;span class=&#34;hljs-regexp&#34;&gt;/tcp -p 443:443/&lt;/span&gt;tcp -p &lt;span class=&#34;hljs-number&#34;&gt;443&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;443&lt;/span&gt;&lt;span class=&#34;hljs-regexp&#34;&gt;/udp -p 3000:3000/&lt;/span&gt;tcp\&lt;br&gt;    -p &lt;span class=&#34;hljs-number&#34;&gt;853&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;853&lt;/span&gt;/tcp\&lt;br&gt;    -p &lt;span class=&#34;hljs-number&#34;&gt;784&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;784&lt;/span&gt;&lt;span class=&#34;hljs-regexp&#34;&gt;/udp -p 853:853/u&lt;/span&gt;dp -p &lt;span class=&#34;hljs-number&#34;&gt;8853&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;8853&lt;/span&gt;/udp\&lt;br&gt;    -p &lt;span class=&#34;hljs-number&#34;&gt;5443&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;5443&lt;/span&gt;&lt;span class=&#34;hljs-regexp&#34;&gt;/tcp -p 5443:5443/u&lt;/span&gt;dp\&lt;br&gt;    -d adguard/adguardhome&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;其中的 Port 設定&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-p 53:53/tcp -p 53:53/udp&lt;/code&gt;: 預設 DNS 使用 port&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p 67:67/udp -p 68:68/tcp -p 68:68/udp&lt;/code&gt;: DHCP 使用 port (如不使用 DHCP 可以跳過)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p 3000:3000/tcp -p 443:443/tcp&lt;/code&gt;: AdGuard Home 的管理介面 (如不需設定 HTTPS 可以不用 443 port)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p 80:80/tcp -p 443:443/tcp -p 443:443/udp&lt;/code&gt;: DNS-over-HTTPS 使用 port&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p 853:853/tcp&lt;/code&gt;: DNS-over-TLS 使用 port&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p 784:784/udp -p 853:853/udp -p 8853:8853/udp&lt;/code&gt;: DNS-over-QUIC 使用 port (只需要設定其中一個或兩個，不需要全都用)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p 5443:5443/tcp -p 5443:5443/udp&lt;/code&gt;: DNSCrypt 使用 port.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果要使用 DHCP server 的功能，建議將讓容器使用主機網路 (需注意 port 衝突)&lt;/p&gt;
+&lt;figure class=&#34;highlight awk&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs awk&#34;&gt;docker run --name adguardhome\&lt;br&gt;    --restart unless-stopped\&lt;br&gt;    -v &lt;span class=&#34;hljs-regexp&#34;&gt;/my/&lt;/span&gt;own&lt;span class=&#34;hljs-regexp&#34;&gt;/workdir:/&lt;/span&gt;opt&lt;span class=&#34;hljs-regexp&#34;&gt;/adguardhome/&lt;/span&gt;work\&lt;br&gt;    ...&lt;br&gt;    --network host&lt;br&gt;    -d adguard/adguardhome&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;設定&#34;&gt;&lt;a href=&#34;#設定&#34; class=&#34;headerlink&#34; title=&#34;設定&#34;&gt;&lt;/a&gt;設定&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;這邊我是在自己的電腦上用 docker 展示，連線會用 localhost 去連&lt;br&gt;實際使用建議獨立裝在其他不常關的電腦或樹梅派，連線就使用 IP 連&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;初次設定&#34;&gt;&lt;a href=&#34;#初次設定&#34; class=&#34;headerlink&#34; title=&#34;初次設定&#34;&gt;&lt;/a&gt;初次設定&lt;/h3&gt;&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_init1.png&#34; alt=&#34;adguard init&#34; data-caption=&#34;adguard init&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;網路設定&#34;&gt;&lt;a href=&#34;#網路設定&#34; class=&#34;headerlink&#34; title=&#34;網路設定&#34;&gt;&lt;/a&gt;網路設定&lt;/h4&gt;&lt;p&gt;接下來設定監聽的網卡(透過哪張網卡能存取)，用 Docker 執行建議可以用所有介面&lt;br&gt;管理員的監聽介面如果在 docker 沒有使用 80，記得設定成 3000，避免設定完就連不到&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_init2.png&#34; alt=&#34;adguard init&#34; data-caption=&#34;adguard init&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;DNS 伺服器監聽介面同上，建議保留預設的 53 Port&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_init3.png&#34; alt=&#34;adguard init&#34; data-caption=&#34;adguard init&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;管理帳號設定&#34;&gt;&lt;a href=&#34;#管理帳號設定&#34; class=&#34;headerlink&#34; title=&#34;管理帳號設定&#34;&gt;&lt;/a&gt;管理帳號設定&lt;/h5&gt;&lt;p&gt;設定管理員帳號密碼，建議不要用 &lt;code&gt;root&lt;/code&gt;, &lt;code&gt;admin&lt;/code&gt;, &lt;code&gt;administor&lt;/code&gt; 等常見的管理帳號&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_init4.png&#34; alt=&#34;adguard init&#34; data-caption=&#34;adguard init&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;用戶端設定&#34;&gt;&lt;a href=&#34;#用戶端設定&#34; class=&#34;headerlink&#34; title=&#34;用戶端設定&#34;&gt;&lt;/a&gt;用戶端設定&lt;/h4&gt;&lt;p&gt;初次設定完成，這邊可以看一下不同種類客戶端該怎麼設定使用這個 DNS 伺服器&lt;br&gt;基本上只要將網路設定裡的 DNS 伺服器，改成這邊監聽的網卡的IP，就可以用 Adguard 過濾網站&lt;br&gt;路由器也要套用的話，是去修改路由器的 DHCP 設定，讓子網段自動分配的 DNS 都使用我們架的 Adguard IP&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_init5.png&#34; alt=&#34;adguard init&#34; data-caption=&#34;adguard init&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_init6.png&#34; alt=&#34;adguard init&#34; data-caption=&#34;adguard init&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;初次設定完成🎉&#34;&gt;&lt;a href=&#34;#初次設定完成🎉&#34; class=&#34;headerlink&#34; title=&#34;初次設定完成🎉&#34;&gt;&lt;/a&gt;初次設定完成🎉&lt;/h5&gt;&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_init7.png&#34; alt=&#34;adguard init&#34; data-caption=&#34;adguard init&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;接著可以用設定好的管理員帳號登入&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_login.png&#34; alt=&#34;adguard login&#34; data-caption=&#34;adguard login&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;設定上游-DNS-伺服器&#34;&gt;&lt;a href=&#34;#設定上游-DNS-伺服器&#34; class=&#34;headerlink&#34; title=&#34;設定上游 DNS 伺服器&#34;&gt;&lt;/a&gt;設定上游 DNS 伺服器&lt;/h3&gt;&lt;p&gt;在 Adguard Home 中並不會紀錄設定之外的網域及IP的對應&lt;br&gt;其他網域就需要去其他的 DNS 伺服器(上游 DNS 伺服器)查詢&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_upstreamDNS.png&#34; alt=&#34;adguard upstream DNS&#34; data-caption=&#34;adguard upstream DNS&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Adguard Home 整理了幾個常用的 DNS 伺服器 &lt;a href=&#34;https://adguard-dns.io/kb/zh-CN/general/dns-providers/&#34;&gt;https://adguard-dns.io/kb/zh-CN/general/dns-providers/&lt;/a&gt;&lt;br&gt;這邊推薦可以用 Google DNS 跟 Cloudflare DNS&lt;/p&gt;
+&lt;h4 id=&#34;Google-DNS&#34;&gt;&lt;a href=&#34;#Google-DNS&#34; class=&#34;headerlink&#34; title=&#34;Google DNS&#34;&gt;&lt;/a&gt;Google DNS&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;協定&lt;/th&gt;
+&lt;th&gt;地址&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;DNS, IPv4&lt;/td&gt;
+&lt;td&gt;8.8.8.8 和 8.8.4.4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS, IPv6&lt;/td&gt;
+&lt;td&gt;2001:4860:4860::8888 和 2001:4860:4860::8844&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS-over-HTTPS&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://dns.google/dns-query&#34;&gt;https://dns.google/dns-query&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS-over-TLS&lt;/td&gt;
+&lt;td&gt;tls:&amp;#x2F;&amp;#x2F;dns.google&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h4 id=&#34;Cloudflare-DNS&#34;&gt;&lt;a href=&#34;#Cloudflare-DNS&#34; class=&#34;headerlink&#34; title=&#34;Cloudflare DNS&#34;&gt;&lt;/a&gt;Cloudflare DNS&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;協定&lt;/th&gt;
+&lt;th&gt;地址&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;DNS, IPv4&lt;/td&gt;
+&lt;td&gt;1.1.1.1 和 1.0.0.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS, IPv6&lt;/td&gt;
+&lt;td&gt;2606:4700:4700::1111 和 2606:4700:4700::1001&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS-over-HTTPS IPv4&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://dns.cloudflare.com/dns-query&#34;&gt;https://dns.cloudflare.com/dns-query&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS-over-HTTPS IPv6&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://dns.cloudflare.com/dns-query&#34;&gt;https://dns.cloudflare.com/dns-query&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DNS-over-TLS&lt;/td&gt;
+&lt;td&gt;tls:&amp;#x2F;&amp;#x2F;1dot1dot1dot1.cloudflare-dns.com&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2 id=&#34;過濾器設定&#34;&gt;&lt;a href=&#34;#過濾器設定&#34; class=&#34;headerlink&#34; title=&#34;過濾器設定&#34;&gt;&lt;/a&gt;過濾器設定&lt;/h2&gt;&lt;h3 id=&#34;過濾黑名單&#34;&gt;&lt;a href=&#34;#過濾黑名單&#34; class=&#34;headerlink&#34; title=&#34;過濾黑名單&#34;&gt;&lt;/a&gt;過濾黑名單&lt;/h3&gt;&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_blocklist.png&#34; alt=&#34;adguard blocklist&#34; data-caption=&#34;adguard blocklist&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;預設黑名單&#34;&gt;&lt;a href=&#34;#預設黑名單&#34; class=&#34;headerlink&#34; title=&#34;預設黑名單&#34;&gt;&lt;/a&gt;預設黑名單&lt;/h4&gt;&lt;p&gt;Adguard Home 預設使用 Adguard 的過濾黑名單&lt;br&gt;新增黑名單也很方便&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_blocklist_new.png&#34; alt=&#34;adguard blocklist new&#34; data-caption=&#34;adguard blocklist new&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;把想套用的黑名單加進去啟用&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_blocklist_new2.png&#34; alt=&#34;adguard blocklist new&#34; data-caption=&#34;adguard blocklist new&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;第三方黑名單&#34;&gt;&lt;a href=&#34;#第三方黑名單&#34; class=&#34;headerlink&#34; title=&#34;第三方黑名單&#34;&gt;&lt;/a&gt;第三方黑名單&lt;/h4&gt;&lt;p&gt;要使用第三方黑名單只要有網址也可以匯入&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_blocklist_new3.png&#34; alt=&#34;adguard blocklist new&#34; data-caption=&#34;adguard blocklist new&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_blocklist_new4.png&#34; alt=&#34;adguard blocklist new&#34; data-caption=&#34;adguard blocklist new&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;這邊介紹一款專為臺灣人設計的廣告阻擋規則 &lt;a href=&#34;https://github.com/FutaGuard/LowTechFilter&#34;&gt;LowTechFilter&lt;/a&gt;&lt;br&gt;提供阻擋台灣常見的簡訊詐騙、釣魚網站和農場文&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;簡訊詐騙、釣魚網站 &lt;a href=&#34;https://filter.futa.gg/hosts.txt&#34;&gt;https://filter.futa.gg/hosts.txt&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;農場文 &lt;a href=&#34;https://filter.futa.gg/nofarm_hosts.txt&#34;&gt;https://filter.futa.gg/nofarm_hosts.txt&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;手動過濾規則&#34;&gt;&lt;a href=&#34;#手動過濾規則&#34; class=&#34;headerlink&#34; title=&#34;手動過濾規則&#34;&gt;&lt;/a&gt;手動過濾規則&lt;/h3&gt;&lt;p&gt;可以從主頁到 DNS 查詢紀錄裡去增加封鎖名單，不過缺點是之前要先查詢過&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;還沒有用戶端用這個 DNS 伺服器之前，紀錄會是空的&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_dashboard.png&#34; alt=&#34;adguard dashboard&#34; data-caption=&#34;adguard dashboard&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_record.png&#34; alt=&#34;adguard record&#34; data-caption=&#34;adguard record&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;其他&#34;&gt;&lt;a href=&#34;#其他&#34; class=&#34;headerlink&#34; title=&#34;其他&#34;&gt;&lt;/a&gt;其他&lt;/h2&gt;&lt;h3 id=&#34;家長管控&#34;&gt;&lt;a href=&#34;#家長管控&#34; class=&#34;headerlink&#34; title=&#34;家長管控&#34;&gt;&lt;/a&gt;家長管控&lt;/h3&gt;&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/adguard_ad.png&#34; alt=&#34;adguard blocklist new&#34; data-caption=&#34;adguard blocklist new&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2023/02/10/wikijs-keyckoak/</guid>
+            <title>設定 WikiJS 使用 Keyckoak 做身分認證</title>
+            <link>https://zonego.tw/2023/02/10/wikijs-keyckoak/</link>
+            <category>Self-Hosting</category>
+            <category>Wiki JS</category>
+            <category>Keyckoak</category>
+            <category>身分認證</category>
+            <pubDate>Fri, 10 Feb 2023 06:35:35 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;最近在設定 WikiJS 串接 Keycloak 作身分認證時碰到一些問題，所以在這邊做個紀錄&lt;br&gt;這邊就跳過安裝過程&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;紀錄時使用版本： &lt;code&gt;WikiJS 2.5.296&lt;/code&gt;  &lt;code&gt;Keycloak 20.0.3&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;Keycloak-設定&#34;&gt;&lt;a href=&#34;#Keycloak-設定&#34; class=&#34;headerlink&#34; title=&#34;Keycloak 設定&#34;&gt;&lt;/a&gt;Keycloak 設定&lt;/h2&gt;&lt;p&gt;挑選你要設定登入的 realm ，這邊我為了不要應用程式的帳號跟 Keycloak 的管理帳號混用，建一個新的 realm 叫做 demo&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;realm 像是用來管理帳號的群組，在這個群組內建好的應用方式都可以透過這些帳號登入&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;新增-client&#34;&gt;&lt;a href=&#34;#新增-client&#34; class=&#34;headerlink&#34; title=&#34;新增 client&#34;&gt;&lt;/a&gt;新增 client&lt;/h3&gt;&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-new_client.png&#34; alt=&#34;creat&#34; data-caption=&#34;creat&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;打上 client ID (不可重複) ，next 下一步&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-new_client2.png&#34; alt=&#34;creat&#34; data-caption=&#34;creat&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;這邊 Client authentication 必須要勾選，才會產生後面要用到的 Client Secret。點 Save 儲存&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-new_client3.png&#34; alt=&#34;creat&#34; data-caption=&#34;creat&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;設定-client&#34;&gt;&lt;a href=&#34;#設定-client&#34; class=&#34;headerlink&#34; title=&#34;設定 client&#34;&gt;&lt;/a&gt;設定 client&lt;/h3&gt;&lt;p&gt;打開剛剛建好的 client &lt;code&gt;wiki&lt;/code&gt;&lt;br&gt;下滑到 Access Setting&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-access-setting.png&#34; alt=&#34;setting&#34; data-caption=&#34;setting&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;假設我們的 wikijs 網址是 &lt;a href=&#34;https://wiki.example.com/&#34;&gt;https://wiki.example.com&lt;/a&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;填入URL&lt;/th&gt;
+&lt;th&gt;說明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;Root URL&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://wiki.example.com/&#34;&gt;https://wiki.example.com&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;網站根網址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Home URL&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://wiki.example.com/&#34;&gt;https://wiki.example.com&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;登入後重導向的根網址 (通常跟 root url 相同)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Valid rediect URIs&lt;/td&gt;
+&lt;td&gt;&amp;#x2F;XXXXXXXX&amp;#x2F;callback&lt;br&gt;&amp;#x2F;*&lt;/td&gt;
+&lt;td&gt;允許重導向頁面網址&lt;br&gt;用 * 可以代表所有頁面，但要注意安全性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Valid post logout&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://wiki.example.com/&#34;&gt;https://wiki.example.com&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;允許登出後轉向的頁面&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;redirect URIs&lt;/td&gt;
+&lt;td&gt;&amp;#x2F;*&lt;/td&gt;
+&lt;td&gt;允許登出後的重導向位置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Web origins&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;允許 CORS origins 的網址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;Valid rediect URIs&lt;/code&gt; 可以在後面設定 wikijs 時取得&lt;/p&gt;
+&lt;p&gt;如果你的 Keycloak 有安裝客製主題，可以在 Login settings 裡修改&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-login-theme.png&#34; alt=&#34;setting&#34; data-caption=&#34;setting&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Credentials 分頁有後續會用到的 client key，可以先複製&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-client_key.png&#34; alt=&#34;setting&#34; data-caption=&#34;setting&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;Wikijs-設定&#34;&gt;&lt;a href=&#34;#Wikijs-設定&#34; class=&#34;headerlink&#34; title=&#34;Wikijs 設定&#34;&gt;&lt;/a&gt;Wikijs 設定&lt;/h2&gt;&lt;p&gt;進到設定後選認證 &amp;gt; 新增登入機制&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider.png&#34; alt=&#34;wikijs&#34; data-caption=&#34;wikijs&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;選擇 Keycloak&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider2.png&#34; alt=&#34;wikijs&#34; data-caption=&#34;wikijs&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;再來填入你的 Keycloak 網址、realm 名稱跟剛剛建好的 Client ID&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider3.png&#34; alt=&#34;wikijs&#34; data-caption=&#34;wikijs&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;下面4個網址可以參考 wikijs 的提示，不過左邊的 &lt;code&gt;/auth&lt;/code&gt; 要去掉，例如：&lt;/p&gt;
+&lt;figure class=&#34;highlight awk&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs awk&#34;&gt;wikij 提示&lt;br&gt;https:&lt;span class=&#34;hljs-regexp&#34;&gt;//&lt;/span&gt;KEYCLOAK-HOST&lt;span class=&#34;hljs-regexp&#34;&gt;/auth/&lt;/span&gt;realms&lt;span class=&#34;hljs-regexp&#34;&gt;/YOUR-REALM/&lt;/span&gt;protocol&lt;span class=&#34;hljs-regexp&#34;&gt;/openid-connect/&lt;/span&gt;auth&lt;br&gt;&lt;br&gt;左邊的 /auth 去掉，範例的 realms 是 demo&lt;br&gt;https:&lt;span class=&#34;hljs-regexp&#34;&gt;//y&lt;/span&gt;our.keycloak-host.com&lt;span class=&#34;hljs-regexp&#34;&gt;/realms/&lt;/span&gt;demo&lt;span class=&#34;hljs-regexp&#34;&gt;/protocol/&lt;/span&gt;openid-connect/auth&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;Client Secret 貼上 Keycloak Credentials 內複製的金鑰&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider4.png&#34; alt=&#34;wikijs&#34; data-caption=&#34;wikijs&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;開放自由註冊可以斟酌打開，若沒開沒登入過的帳號會無法登入&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider5.png&#34; alt=&#34;wikijs&#34; data-caption=&#34;wikijs&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;最下面可以取得 keycloak 設定需要的 Valid rediect URI&lt;br&gt;只需要填 &amp;#x2F;login&amp;#x2F;a28088b1-8e47-4d16-aa6f-0a32d8af192f&amp;#x2F;callback&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider6.png&#34; alt=&#34;wikijs&#34; data-caption=&#34;wikijs&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;設定完記得卷到上面點套用設定&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider3.png&#34; alt=&#34;wikijs&#34; data-caption=&#34;wikijs&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;問題排除&#34;&gt;&lt;a href=&#34;#問題排除&#34; class=&#34;headerlink&#34; title=&#34;問題排除&#34;&gt;&lt;/a&gt;問題排除&lt;/h2&gt;&lt;h3 id=&#34;登出時遇到-invalid-parameter-redirect-uri&#34;&gt;&lt;a href=&#34;#登出時遇到-invalid-parameter-redirect-uri&#34; class=&#34;headerlink&#34; title=&#34;登出時遇到 invalid parameter redirect_uri&#34;&gt;&lt;/a&gt;登出時遇到 invalid parameter redirect_uri&lt;/h3&gt;&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/invalid-parameter-redirect_uri.png&#34; alt=&#34;invalid parameter redirect_uri&#34; data-caption=&#34;invalid parameter redirect_uri&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;keycloak 在 18 版之後就不支援登出時使用&lt;code&gt;redirect_uri&lt;/code&gt;參數，所以只能先暫時先把 WikiJS 的同步登出先關閉，等 WikiJS 更新&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/keycloak-wikijs-provider5.png&#34; alt=&#34;WikiJS sync logout&#34; data-caption=&#34;WikiJS sync logout&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;關閉後的缺點是在同一台裝置，session 未過期前，點一下 keycloak 登入就會自動登進去&lt;/p&gt;
+&lt;/blockquote&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2022/03/15/SpeedTest/</guid>
+            <title>OpenSpeedTest 純HTML5的內網測速工具</title>
+            <link>https://zonego.tw/2022/03/15/SpeedTest/</link>
+            <category>Self-Hosting</category>
+            <category>網路</category>
+            <category>Windows</category>
+            <category>Linux</category>
+            <category>Mac</category>
+            <pubDate>Tue, 15 Mar 2022 10:46:58 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;大家平常要測網路速度都會想到 Ookla 的 &lt;a href=&#34;https://speedtest.net/&#34;&gt;Speedtest.net&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在簡單的網路環境內，Speedtest 就可以完成測速的工作&lt;/p&gt;
+&lt;p&gt;但如果我要測試內網速度呢?&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;網路環境&#34;&gt;&lt;a href=&#34;#網路環境&#34; class=&#34;headerlink&#34; title=&#34;網路環境&#34;&gt;&lt;/a&gt;網路環境&lt;/h2&gt;&lt;p&gt;在測試之前，我們先了解網路速度到底是在測甚麼&lt;/p&gt;
+&lt;p&gt;一般家用的網路架構大概如圖，由中華電信這些電信商(ISP) 提供網際網路連線(雲圖示)&lt;/p&gt;
+&lt;p&gt;之後在你家裝一台路由器，讓家裡的設備可以透過它上網&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/network-simple.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;我們平常用的 Speedtest.net 其實就是在測家裡到網際網路的連線速度&lt;/p&gt;
+&lt;p&gt;只是因為網路架構相當簡單，所以電腦、手機等終端的連線速度就等於連網際網路的速度&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;若是有在玩自架 homelab 的朋友網路架構絕對沒那麼簡單，可能比較像這張圖&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/network-complex.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在接到網際網路(後面以外網代稱)之前&lt;/p&gt;
+&lt;p&gt;接到路由器 Router 架設區域網路(後面以內網代稱)&lt;/p&gt;
+&lt;p&gt;然後連交換機 Switch 去串接各終端設備和伺服器、監視器等&lt;/p&gt;
+&lt;p&gt;所以如果我們要測試內網裡面電腦連伺服器的速度 如下圖&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/network-local.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Speedtest.net 當然就測不出來了&lt;/p&gt;
+&lt;h2 id=&#34;OpenSpeedTest&#34;&gt;&lt;a href=&#34;#OpenSpeedTest&#34; class=&#34;headerlink&#34; title=&#34;OpenSpeedTest&#34;&gt;&lt;/a&gt;OpenSpeedTest&lt;/h2&gt;&lt;p&gt;講了這麼多前提，主要就是要紹可以自己架設的 OpenSpeedTest&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://openspeedtest.com/&#34;&gt;官網&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://hub.docker.com/r/openspeedtest/latest&#34;&gt;DockerHub&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;只要把它架在自己的伺服器上，就可以像在用 Speedtest.net 一樣測試內網的網速🎉&lt;/p&gt;
+&lt;p&gt;這邊是官方那邊的 DEMO (沒錯它可以直接嵌在你的網頁內)&lt;/p&gt;
+&lt;div style=&#34;text-align:right;&#34;&gt;&lt;div style=&#34;min-height:360px;&#34;&gt;&lt;div style=&#34;width:100%;height:0;padding-bottom:50%;position:relative;&#34;&gt;&lt;iframe style=&#34;border:none;position:absolute;top:0;left:0;width:100%;height:100%;min-height:360px;border:none;overflow:hidden !important;&#34; src=&#34;//openspeedtest.com/Get-widget.php&#34;&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;Provided by  &lt;a href=&#34;http://openspeedtest.com&#34;&gt;OpenSpeedtest.com&lt;/a&gt;&lt;/div&gt;
+
+
+&lt;h2 id=&#34;安裝-OpenSpeedTest&#34;&gt;&lt;a href=&#34;#安裝-OpenSpeedTest&#34; class=&#34;headerlink&#34; title=&#34;安裝 OpenSpeedTest&#34;&gt;&lt;/a&gt;安裝 OpenSpeedTest&lt;/h2&gt;&lt;p&gt;OpenSpeedTest 大致分為3種安裝方式&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安裝程式包&lt;/li&gt;
+&lt;li&gt;Docker&lt;/li&gt;
+&lt;li&gt;從原始碼手動架設&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;程式包&#34;&gt;&lt;a href=&#34;#程式包&#34; class=&#34;headerlink&#34; title=&#34;程式包&#34;&gt;&lt;/a&gt;程式包&lt;/h3&gt;&lt;p&gt;官方打包好的安裝檔在這邊&lt;a href=&#34;https://openspeedtest.com/speed-testing-application-for-your-website.php#Option-3&#34;&gt;下載頁&lt;/a&gt;可以找到&lt;/p&gt;
+&lt;p&gt;支援主流的作業系統 Windows, Mac, Linux 之外 連 Android 跟 IOS 都有 &lt;del&gt;用來測熱點性能?&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;點 Start Server 後就可以連 👉 給的的網址測速了&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/OSTV2-SS.png&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;Docker&#34;&gt;&lt;a href=&#34;#Docker&#34; class=&#34;headerlink&#34; title=&#34;Docker&#34;&gt;&lt;/a&gt;Docker&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;docker run --restart=unless-stopped --name openspeedtest -d -p 3000:3000 -p 3001:3001 openspeedtest/latest&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;啟動後連 &lt;a href=&#34;http://your-ip:3000/&#34;&gt;http://YOUR-IP:3000&lt;/a&gt; 或 &lt;a href=&#34;https://your-ip:3001/&#34;&gt;https://YOUR-IP:3001&lt;/a&gt; 測速&lt;/p&gt;
+&lt;h3 id=&#34;原始碼安裝&#34;&gt;&lt;a href=&#34;#原始碼安裝&#34; class=&#34;headerlink&#34; title=&#34;原始碼安裝&#34;&gt;&lt;/a&gt;原始碼安裝&lt;/h3&gt;&lt;p&gt;首先到 &lt;a href=&#34;https://github.com/openspeedtest/Speed-Test&#34;&gt;Github&lt;/a&gt; 下載或 clone 原始碼&lt;/p&gt;
+&lt;p&gt;準備好 Nginx ，套用&lt;a href=&#34;https://github.com/openspeedtest/Nginx-Configuration&#34;&gt;這邊&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;然後將下載好的OpenSpeedTest原始碼，放到 Nginx 的網頁資料夾就可以用了&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;要長期使用，推薦還是用 Docker 安裝，簡單省事&lt;/p&gt;
+&lt;/blockquote&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2021/11/25/gitea/</guid>
+            <title>Gitea - Git 自架伺服器首選</title>
+            <link>https://zonego.tw/2021/11/25/gitea/</link>
+            <category>Self-Hosting</category>
+            <category>Git</category>
+            <category>Gitea</category>
+            <pubDate>Thu, 25 Nov 2021 11:22:30 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;作為寫過程式的人，Git是必備工具 &lt;del&gt;除非只是寫好玩的&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;常見的線上Git儲藏庫就是 &lt;a href=&#34;https://github.com/&#34;&gt;GitHub&lt;/a&gt;、&lt;a href=&#34;https://about.gitlab.com/&#34;&gt;Gitlab&lt;/a&gt;、&lt;a href=&#34;https://bitbucket.org/&#34;&gt;Bitbucket&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;對於這些公開平台不放心，或是程式碼不想外流，那就自己架私服吧!&lt;/p&gt;
+&lt;p&gt;常見的有 &lt;a href=&#34;https://gitea.io/&#34;&gt;Gitea&lt;/a&gt;、&lt;a href=&#34;https://gogs.io/&#34;&gt;gogs&lt;/a&gt;或是&lt;a href=&#34;https://about.gitlab.com/&#34;&gt;Gitlab&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Gitlab裡面包含 CI&amp;#x2F;CD 工具等功能，十分肥大&lt;/p&gt;
+&lt;p&gt;想要一個安裝簡單、功能近似GitHub又有中文介面，那就選 Gitea 吧！&lt;/p&gt;
+&lt;h1 id=&#34;安裝&#34;&gt;&lt;a href=&#34;#安裝&#34; class=&#34;headerlink&#34; title=&#34;安裝&#34;&gt;&lt;/a&gt;安裝&lt;/h1&gt;&lt;p&gt;&lt;a href=&#34;https://docs.gitea.io/&#34;&gt;說明文件&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Gitea 提供很多安裝方式，我這邊選則用 docker &lt;del&gt;手邊有現成的docker伺服器，不用白不用&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.gitea.io/zh-tw/install-with-docker-rootless/&#34;&gt;docker-compose 安裝說明&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;選擇版本&#34;&gt;&lt;a href=&#34;#選擇版本&#34; class=&#34;headerlink&#34; title=&#34;選擇版本&#34;&gt;&lt;/a&gt;選擇版本&lt;/h2&gt;&lt;p&gt;Gitea 的官方映像可以在 &lt;a href=&#34;https://hub.docker.com/r/gitea/gitea/&#34;&gt;Docker Hub&lt;/a&gt; 找到&lt;/p&gt;
+&lt;p&gt;版本 tag 與 Gitea 的 &lt;a href=&#34;https://github.com/go-gitea/gitea&#34;&gt;&lt;i class=&#34;nexmoefont icon-github&#34;&gt;&lt;/i&gt; Github&lt;/a&gt; 上發布的版本號一樣&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;latest&lt;/code&gt; 則是最新的穩定版&lt;/p&gt;
+&lt;h2 id=&#34;選擇資料庫&#34;&gt;&lt;a href=&#34;#選擇資料庫&#34; class=&#34;headerlink&#34; title=&#34;選擇資料庫&#34;&gt;&lt;/a&gt;選擇資料庫&lt;/h2&gt;&lt;p&gt;Gitea 支援多種資料庫，例如 &lt;code&gt;mysql&lt;/code&gt; &lt;code&gt;mariadb&lt;/code&gt; &lt;code&gt;PostgreSQL&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安裝過程&#34;&gt;&lt;a href=&#34;#安裝過程&#34; class=&#34;headerlink&#34; title=&#34;安裝過程&#34;&gt;&lt;/a&gt;安裝過程&lt;/h2&gt;&lt;p&gt;使用 docker-compose 安裝&lt;/p&gt;
+&lt;p&gt;我這邊選用 mysql 資料庫&lt;/p&gt;
+&lt;p&gt;docker-compose.yml&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;version:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;2&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;services:&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;server:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;image:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;gitea/gitea:1.15.6-rootless&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;environment:&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;GITEA__database__DB_TYPE=mysql&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;GITEA__database__HOST=db:3306&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;GITEA__database__NAME=gitea&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;GITEA__database__USER=gitea&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;GITEA__database__PASSWD=gitea&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;restart:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;always&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;volumes:&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;./data:/var/lib/gitea&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;./config:/etc/gitea&lt;/span&gt;  &lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;/etc/timezone:/etc/timezone:ro&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;/etc/localtime:/etc/localtime:ro&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;ports:&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;10080:3000&amp;quot;&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;10022:22&amp;quot;&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;depends_on:&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;db&lt;/span&gt;&lt;br&gt; &lt;br&gt;   &lt;span class=&#34;hljs-attr&#34;&gt;db:&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;image:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;mysql:8&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;restart:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;always&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;environment:&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;MYSQL_ROOT_PASSWORD=gitea&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;MYSQL_USER=gitea&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;MYSQL_PASSWORD=gitea&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;MYSQL_DATABASE=gitea&lt;/span&gt;&lt;br&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;volumes:&lt;/span&gt;&lt;br&gt;       &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;./mysql:/var/lib/mysql&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;執行&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;docker-compose up&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;完成後可以用 &lt;a href=&#34;http://hostname:10080/&#34;&gt;http://hostname:10080&lt;/a&gt; 連到你剛剛架的 gitea&lt;/p&gt;
+&lt;p&gt;SSH 要使用 10022 例如 &lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;git &lt;span class=&#34;hljs-built_in&#34;&gt;clone&lt;/span&gt; ssh://git@hostname:10022/username/repo.git&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;如果想用預設 Port&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;#將這段&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;ports:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;10080:3000&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;10022:22&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;#換成這段&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;ports:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;80:3000&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;22:22&amp;quot;&lt;/span&gt;      &lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2021/11/13/hexo/</guid>
+            <title>Hexo 基本使用教學</title>
+            <link>https://zonego.tw/2021/11/13/hexo/</link>
+            <category>Hexo</category>
+            <category>Blog</category>
+            <category>Self-Hosting</category>
+            <pubDate>Sat, 13 Nov 2021 04:30:30 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;a href=&#34;https://hexo.io/zh-tw/&#34;&gt;官網&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://hexo.io/zh-tw/docs/&#34;&gt;使用說明&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://github.com/hexojs/hexo&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;常用指令&#34;&gt;&lt;a href=&#34;#常用指令&#34; class=&#34;headerlink&#34; title=&#34;常用指令&#34;&gt;&lt;/a&gt;常用指令&lt;/h2&gt;&lt;h3 id=&#34;建新貼文&#34;&gt;&lt;a href=&#34;#建新貼文&#34; class=&#34;headerlink&#34; title=&#34;建新貼文&#34;&gt;&lt;/a&gt;建新貼文&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo new 文章名稱&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/writing.html&#34;&gt;Writing&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;啟動測試伺服器&#34;&gt;&lt;a href=&#34;#啟動測試伺服器&#34; class=&#34;headerlink&#34; title=&#34;啟動測試伺服器&#34;&gt;&lt;/a&gt;啟動測試伺服器&lt;/h3&gt;&lt;p&gt;Hexo 提供 Web server 功能，不須透過 Nginx 或是 apache&lt;/p&gt;
+&lt;p&gt;安裝&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;npm install hexo-server --save&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;啟動伺服器&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo server&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/server.html&#34;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;產生靜態網站檔案&#34;&gt;&lt;a href=&#34;#產生靜態網站檔案&#34; class=&#34;headerlink&#34; title=&#34;產生靜態網站檔案&#34;&gt;&lt;/a&gt;產生靜態網站檔案&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo generate&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/generating.html&#34;&gt;Generating&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;部署到網站伺服器&#34;&gt;&lt;a href=&#34;#部署到網站伺服器&#34; class=&#34;headerlink&#34; title=&#34;部署到網站伺服器&#34;&gt;&lt;/a&gt;部署到網站伺服器&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo deploy&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;產生靜態頁面後佈署&lt;br&gt;兩個指令相同&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo generate --deploy&lt;br&gt;hexo deploy --generate&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/one-command-deployment.html&#34;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;增加文章分類-Categories&#34;&gt;&lt;a href=&#34;#增加文章分類-Categories&#34; class=&#34;headerlink&#34; title=&#34;增加文章分類 (Categories)&#34;&gt;&lt;/a&gt;增加文章分類 (Categories)&lt;/h2&gt;&lt;p&gt;指令開啟分類功能&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo new page categories&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;新文章增加分類，只要在新貼文的標頭加上 &lt;code&gt;categories&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight markdown&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs markdown&#34;&gt;---&lt;br&gt;title: 2021-11-00&lt;br&gt;date: 2021-11-00 10:10&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;categories: 這裡寫分類&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;---&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;增加文章標籤-Tags&#34;&gt;&lt;a href=&#34;#增加文章標籤-Tags&#34; class=&#34;headerlink&#34; title=&#34;增加文章標籤 (Tags)&#34;&gt;&lt;/a&gt;增加文章標籤 (Tags)&lt;/h2&gt;&lt;p&gt;指令開啟標籤功能&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo new page tags&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;新文章增加標籤，也是在新貼文的標頭加上 &lt;code&gt;tags&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight markdown&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs markdown&#34;&gt;---&lt;br&gt;title: 2021-11-00&lt;br&gt;date: 2021-11-00 10:10&lt;br&gt;tags: &lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; 第一個標籤&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;- 第二個標籤&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;---&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;修改新文章預設標頭&#34;&gt;&lt;a href=&#34;#修改新文章預設標頭&#34; class=&#34;headerlink&#34; title=&#34;修改新文章預設標頭&#34;&gt;&lt;/a&gt;修改新文章預設標頭&lt;/h2&gt;&lt;p&gt;修改 &lt;code&gt;scaffolds/post.md&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs marddown&#34;&gt;title: &amp;#123;&amp;#123; title &amp;#125;&amp;#125;&lt;br&gt;date: &amp;#123;&amp;#123; date &amp;#125;&amp;#125;&lt;br&gt;categories: &amp;#123;&amp;#123; categories &amp;#125;&amp;#125;&lt;br&gt;tags: &amp;#123;&amp;#123; tags &amp;#125;&amp;#125;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;這樣每次新增文章就會自動添加分類及標籤&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

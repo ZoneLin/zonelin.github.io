@@ -1,0 +1,255 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zonego.tw</id>
+    <title>筆記ZONE • Posts by &#34;google&#34; tag</title>
+    <link href="https://zonego.tw" />
+    <updated>2023-09-18T04:00:32.000Z</updated>
+    <category term="Hexo" />
+    <category term="Blog" />
+    <category term="搜尋引擎" />
+    <category term="Self-Hosting" />
+    <category term="網路" />
+    <category term="Windows" />
+    <category term="Linux" />
+    <category term="Mac" />
+    <category term="Apple Silicon" />
+    <category term="VM 虛擬機" />
+    <category term="DNS" />
+    <category term="Google" />
+    <category term="廣告" />
+    <category term="網站架設" />
+    <category term="Cloudflare" />
+    <category term="靜態網站" />
+    <category term="Git" />
+    <category term="資安" />
+    <category term="網路資源" />
+    <category term="CI/CD" />
+    <category term="Drone" />
+    <category term="Gitea" />
+    <category term="GMail" />
+    <category term="套件管理" />
+    <category term="字型" />
+    <category term="環境變數" />
+    <category term="Ubuntu" />
+    <category term="桌布" />
+    <category term="DIY" />
+    <category term="Wiki JS" />
+    <category term="Keyckoak" />
+    <category term="身分認證" />
+    <entry>
+        <id>https://zonego.tw/2023/09/18/emoji-kitchen/</id>
+        <title>Emoji Kitchen 自己組合出想要的表情符號</title>
+        <link rel="alternate" href="https://zonego.tw/2023/09/18/emoji-kitchen/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;h2 id=&#34;Gboard-鍵盤&#34;&gt;&lt;a href=&#34;#Gboard-鍵盤&#34; class=&#34;headerlink&#34; title=&#34;Gboard 鍵盤&#34;&gt;&lt;/a&gt;Gboard 鍵盤&lt;/h2&gt;&lt;p&gt;Google 出的 Gboard 鍵盤上推出 Emoji Kitchen 功能&lt;/p&gt;
+&lt;p&gt;Gboard Google Play 商店連結：&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin&#34;&gt;https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;簡單來說，在可以傳圖片的地方 (如 Discord)，用 Gboard 鍵盤輸入兩個 emiji 就可以將融合後的圖片傳出去&lt;/p&gt;
+&lt;img src=&#34;/images/content/emoji_kitchen/Screenshot.jpg&#34; height=&#34;500&#34;/&gt;
+
+&lt;h2 id=&#34;網頁版&#34;&gt;&lt;a href=&#34;#網頁版&#34; class=&#34;headerlink&#34; title=&#34;網頁版&#34;&gt;&lt;/a&gt;網頁版&lt;/h2&gt;&lt;p&gt;當初只在Gboard 鍵盤上的 Emoji Kitchen 合成功能現在開放網頁版啦&lt;/p&gt;
+&lt;p&gt;只要在 Google 搜尋 Emoji Kitchen，組合完表情就產生出圖片了&lt;/p&gt;
+&lt;p&gt;網址：&lt;a href=&#34;https://www.google.com/search?q=emoji+kitchen&#34;&gt;https://www.google.com/search?q=emoji+kitchen&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/emoji_kitchen/emoji_kitchen.jpg&#34;&gt;&lt;br&gt;&lt;img src=&#34;/images/content/emoji_kitchen/emoji_kitchen2.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;要用時需要將圖片下載下來，或是複製圖片網址使用&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f914/u1f914_u1f47b.png?fbx&#34;&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight markdown&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs markdown&#34;&gt;&amp;lt;!-- 複製圖片網址範例 --&amp;gt;&lt;br&gt;&lt;br&gt;![](&lt;span class=&#34;hljs-link&#34;&gt;https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f914/u1f914_u1f47b.png?fbx&lt;/span&gt;)&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;開源版本&#34;&gt;&lt;a href=&#34;#開源版本&#34; class=&#34;headerlink&#34; title=&#34;開源版本&#34;&gt;&lt;/a&gt;開源版本&lt;/h2&gt;&lt;p&gt;在 Google 還沒開放網頁版功能之前，一些熱心開發者也做出類似的網站可以線上使用&lt;br&gt;這邊介紹 xsalazar&amp;#x2F;emoji-kitchen&lt;/p&gt;
+&lt;p&gt;使用時跟 Google 的網頁版一樣，需要將圖片下載下來，或是複製圖片網址使用&lt;/p&gt;
+&lt;p&gt;GitHub：&lt;a href=&#34;https://github.com/xsalazar/emoji-kitchen&#34;&gt;https://github.com/xsalazar/emoji-kitchen&lt;/a&gt;&lt;br&gt;Emoji Kitchen：&lt;a href=&#34;https://emojikitchen.dev/&#34;&gt;https://emojikitchen.dev/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/emoji_kitchen/emoji_kitchen3.jpg&#34;&gt;&lt;/p&gt;
+</content>
+        <category term="Google" />
+        <category term="網路資源" />
+        <updated>2023-09-18T04:00:32.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2023/08/16/adsense/</id>
+        <title>Google AdSense 讓你的網站幫你賺錢</title>
+        <link rel="alternate" href="https://zonego.tw/2023/08/16/adsense/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;申請 Google 帳號這個步驟就先跳過&lt;/p&gt;
+&lt;p&gt;接下來到 AdSense 網站 &lt;a href=&#34;https://www.google.com/adsense&#34;&gt;https://www.google.com/adsense&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;套用-AdSense&#34;&gt;&lt;a href=&#34;#套用-AdSense&#34; class=&#34;headerlink&#34; title=&#34;套用 AdSense&#34;&gt;&lt;/a&gt;套用 AdSense&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&#34;設定要套用的網站&#34;&gt;&lt;a href=&#34;#設定要套用的網站&#34; class=&#34;headerlink&#34; title=&#34;設定要套用的網站&#34;&gt;&lt;/a&gt;設定要套用的網站&lt;/h2&gt;&lt;p&gt;點新增網站之後，打入網站的連結，例如 &lt;a href=&#34;https://example.com/&#34;&gt;https://example.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;接下來要驗證網站是你的，有兩種方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 AdSense 程式碼&lt;/li&gt;
+&lt;li&gt;使用 Ads.txt 驗證&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;使用-AdSense-程式碼&#34;&gt;&lt;a href=&#34;#使用-AdSense-程式碼&#34; class=&#34;headerlink&#34; title=&#34;使用 AdSense 程式碼&#34;&gt;&lt;/a&gt;使用 AdSense 程式碼&lt;/h3&gt;&lt;p&gt;將 Google 提供的代碼貼到個頁面的 header&lt;br&gt;&lt;img src=&#34;/images/content/AdSense/AdSenseCode.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;以這個部落格的為例，nexmoe 這個主題有提供修改 header 的設定&lt;/p&gt;
+&lt;p&gt;修改 &lt;code&gt;_config.nexmoe.yml&lt;/code&gt;，在 &lt;code&gt;slotHead: &lt;/code&gt; 貼上即可&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-string&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;slotHead:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;|&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-string&#34;&gt;&amp;lt;script&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;src=&amp;quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-ID&amp;quot;&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;使用-Ads-txt-驗證&#34;&gt;&lt;a href=&#34;#使用-Ads-txt-驗證&#34; class=&#34;headerlink&#34; title=&#34;使用 Ads.txt 驗證&#34;&gt;&lt;/a&gt;使用 Ads.txt 驗證&lt;/h3&gt;&lt;p&gt;建議使用這個方式驗證比較省事，如果我們不是用 Ads.txt 驗證網站所有權的話，後面還是要做這一步&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/AdSense/AdSenseAds.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;步驟請跳下面說明&lt;/p&gt;
+&lt;h2 id=&#34;Ads-txt&#34;&gt;&lt;a href=&#34;#Ads-txt&#34; class=&#34;headerlink&#34; title=&#34;Ads.txt&#34;&gt;&lt;/a&gt;Ads.txt&lt;/h2&gt;&lt;p&gt;詳細請參考 Google 的說明 &lt;a href=&#34;https://support.google.com/adsense/answer/12171612?hl=zh-Hant&#34;&gt;https://support.google.com/adsense/answer/12171612?hl=zh-Hant&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;簡單來說，美國為了保護下廣告的客戶，提供銷售廣告位的網站需要提供 &lt;a href=&#34;https://iabtechlab.com/ads-txt/&#34;&gt;Authorized Digital Sellers&lt;/a&gt; (簡稱 ads.txt)&lt;/p&gt;
+&lt;h3 id=&#34;設定-ads-txt&#34;&gt;&lt;a href=&#34;#設定-ads-txt&#34; class=&#34;headerlink&#34; title=&#34;設定 ads.txt&#34;&gt;&lt;/a&gt;設定 ads.txt&lt;/h3&gt;&lt;p&gt;如果驗證時不是用這個方式的話，可以點網站進去，Google 會產生 &lt;code&gt;ads.txt&lt;/code&gt; 的內容可以複製&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/AdSense/ads.txt.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;範例：&lt;/p&gt;
+&lt;figure class=&#34;highlight fortran&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs fortran&#34;&gt;google.com, pub-XXXXXX, &lt;span class=&#34;hljs-keyword&#34;&gt;DIRECT&lt;/span&gt;, XXXXXXX&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;以 Hexo 為例子，在 &lt;code&gt;source&lt;/code&gt; 資料夾內新增 &lt;code&gt;ads.txt&lt;/code&gt;，把剛剛複製的內容貼上&lt;br&gt;修改 &lt;code&gt;_config.yml&lt;/code&gt; 設定跳渲染 &lt;code&gt;ads.txt&lt;/code&gt; (可參考 &lt;a href=&#34;/2021/12/15/hexo-skip/&#34;&gt;Hexo 指定文件跳過渲染&lt;/a&gt;)&lt;/p&gt;
+&lt;figure class=&#34;highlight yml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yml&#34;&gt;&lt;span class=&#34;hljs-string&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;ads.txt&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h1 id=&#34;設定付款資料&#34;&gt;&lt;a href=&#34;#設定付款資料&#34; class=&#34;headerlink&#34; title=&#34;設定付款資料&#34;&gt;&lt;/a&gt;設定付款資料&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&#34;付款資料&#34;&gt;&lt;a href=&#34;#付款資料&#34; class=&#34;headerlink&#34; title=&#34;付款資料&#34;&gt;&lt;/a&gt;付款資料&lt;/h2&gt;&lt;p&gt;點左側選單 &amp;gt; 付款 &amp;gt; 付款資訊&lt;/p&gt;
+&lt;p&gt;付款帳戶的資料基本上不用管它，想要調整收到前的時間可以改付款時間表，最少需要累積到 100 美金才領的出來&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/AdSense/%E4%BB%98%E6%AC%BE%E8%B3%87%E8%A8%8A.jpg&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;美國稅籍資料&#34;&gt;&lt;a href=&#34;#美國稅籍資料&#34; class=&#34;headerlink&#34; title=&#34;美國稅籍資料&#34;&gt;&lt;/a&gt;美國稅籍資料&lt;/h2&gt;&lt;p&gt;畢竟 Google 是美國公司，照美國的稅制大概會收 24% 起跳的稅金&lt;br&gt;外國人可以申請 W-8BEN 來降低稅收，只有針對美國人銷售、營利才需要收 30% 稅金&lt;/p&gt;
+&lt;p&gt;簡單來說假設你的網站有 100 美元的廣告收入，其中有 10% 的廣告收入是來自美國&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;稅金&lt;/th&gt;
+&lt;th&gt;實際收入&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;正常稅率 (未申請 W-8BEN)&lt;/td&gt;
+&lt;td&gt;100 * 24% &amp;#x3D; 24&lt;/td&gt;
+&lt;td&gt;100 - 24 &amp;#x3D; 76&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;有申請 W-8BEN&lt;/td&gt;
+&lt;td&gt;(100 * 10%) * 30% &amp;#x3D; 3&lt;/td&gt;
+&lt;td&gt;100 - 3 &amp;#x3D; 97&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;所以，除非你的網站或 Youtube 頻道主要都是來自美國，不然申請 W-8BEN 扣的稅會比較少&lt;/p&gt;
+&lt;p&gt;我是參考雲爸的教學來填寫 &lt;a href=&#34;https://dacota.tw/blog/post/google-adsense-w-8ben&#34;&gt;https://dacota.tw/blog/post/google-adsense-w-8ben&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;付款資料內的姓名記得填護照的英文姓名，不然需要在另外上傳護照證明稅及跟帳號擁有者是同一人&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;付款方式&#34;&gt;&lt;a href=&#34;#付款方式&#34; class=&#34;headerlink&#34; title=&#34;付款方式&#34;&gt;&lt;/a&gt;付款方式&lt;/h2&gt;&lt;p&gt;付款方式要累積到能第一次領錢才能設定&lt;/p&gt;
+&lt;p&gt;台灣能使用的有2種方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;美元支票&lt;/li&gt;
+&lt;li&gt;電匯&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://lashiblog.com/google-adsense-payments/&#34;&gt;https://lashiblog.com/google-adsense-payments/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;安插廣告&#34;&gt;&lt;a href=&#34;#安插廣告&#34; class=&#34;headerlink&#34; title=&#34;安插廣告&#34;&gt;&lt;/a&gt;安插廣告&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;安插廣告到網站裡面有2種作法，自動廣告跟手動廣告&lt;/p&gt;
+&lt;h2 id=&#34;自動廣告&#34;&gt;&lt;a href=&#34;#自動廣告&#34; class=&#34;headerlink&#34; title=&#34;自動廣告&#34;&gt;&lt;/a&gt;自動廣告&lt;/h2&gt;&lt;p&gt;在左邊選單 廣告 &amp;gt; 按網站 &amp;gt; 選你要啟用自動廣告的網站&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/AdSense/auto.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;這邊啟用之後就會自動在網站內插入廣告 (因為是自動，廣告可能會插在文中)&lt;/p&gt;
+&lt;h2 id=&#34;手動插入廣告&#34;&gt;&lt;a href=&#34;#手動插入廣告&#34; class=&#34;headerlink&#34; title=&#34;手動插入廣告&#34;&gt;&lt;/a&gt;手動插入廣告&lt;/h2&gt;&lt;p&gt;在左邊選單 廣告 &amp;gt; 按廣告單元&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/AdSense/%E6%89%8B%E5%8B%95%E5%BB%A3%E5%91%8A.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在這邊依照合適的版面類型建立廣告，建完之後會有給你廣告的代碼&lt;br&gt;代碼大概分為三個部分&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;&amp;lt;!--請放在 Header，只需要放一次--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;src&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-ID&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;crossorigin&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;anonymous&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;&amp;lt;!--放在頁面內你想出現廣告的地方，可在頁面內放多次--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;ins&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;class&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;adsbygoogle&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;style&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;display:block; text-align:center;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;data-ad-layout&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;in-article&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;data-ad-format&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;fluid&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;data-ad-client&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;ca-pub-ID&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;data-ad-slot&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;廣告單元ID&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;ins&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;&amp;lt;!--放在頁面最後，只需要放一次--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;language-javascript&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;language-javascript&#34;&gt;     (adsbygoogle = &lt;span class=&#34;hljs-variable language_&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;hljs-property&#34;&gt;adsbygoogle&lt;/span&gt; || []).&lt;span class=&#34;hljs-title function_&#34;&gt;push&lt;/span&gt;(&amp;#123;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;language-javascript&#34;&gt;&lt;/span&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細可參考Google的說明&lt;a href=&#34;https://support.google.com/adsense/answer/9190028?sjid=17637765633261310327-AP&#34;&gt;https://support.google.com/adsense/answer/9190028?sjid=17637765633261310327-AP&lt;/a&gt;&lt;/p&gt;
+</content>
+        <category term="Google" />
+        <category term="廣告" />
+        <updated>2023-08-16T07:28:51.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2023/08/02/google-search-console/</id>
+        <title>Google Search Console - 讓 Google 搜尋到部落格內容</title>
+        <link rel="alternate" href="https://zonego.tw/2023/08/02/google-search-console/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;p&gt;建好一個新網站，在搜尋引擎爬到你的網站之前，當然會搜尋不到任何東西&lt;/p&gt;
+&lt;p&gt;那 Google 甚麼時候會時候會來爬我的網站? 真的就是&lt;em&gt;隨緣&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;要主動讓搜尋引擎認識你的網站? 那就是要來設定 Google Search Console&lt;/p&gt;
+&lt;p&gt;其他搜尋引擎請參考&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/2023/10/02/BingWebmasterTools/&#34;&gt;Bing Webmaster Tools - 讓 Bing 搜尋到部落格內容&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;新增網站的-Sitemap&#34;&gt;&lt;a href=&#34;#新增網站的-Sitemap&#34; class=&#34;headerlink&#34; title=&#34;新增網站的 Sitemap&#34;&gt;&lt;/a&gt;新增網站的 Sitemap&lt;/h2&gt;&lt;p&gt;去 Google 設定之前，我們需要先將搜尋引擎需要的網站地圖 sitemap.xml 產生出來。&lt;br&gt;教學請看這篇 &lt;a href=&#34;/2023/07/26/hexo-sitemap/&#34;&gt;Hexo 自動產生網站的 sitemap&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;在-Google-Search-Console-新增網站&#34;&gt;&lt;a href=&#34;#在-Google-Search-Console-新增網站&#34; class=&#34;headerlink&#34; title=&#34;在 Google Search Console 新增網站&#34;&gt;&lt;/a&gt;在 Google Search Console 新增網站&lt;/h2&gt;&lt;h3 id=&#34;註冊-Google-帳號&#34;&gt;&lt;a href=&#34;#註冊-Google-帳號&#34; class=&#34;headerlink&#34; title=&#34;註冊 Google 帳號&#34;&gt;&lt;/a&gt;註冊 Google 帳號&lt;/h3&gt;&lt;p&gt;這部份相信大家都會，跳過&lt;/p&gt;
+&lt;h3 id=&#34;新增網站&#34;&gt;&lt;a href=&#34;#新增網站&#34; class=&#34;headerlink&#34; title=&#34;新增網站&#34;&gt;&lt;/a&gt;新增網站&lt;/h3&gt;&lt;p&gt;接下來到 Google Search Console 去設定爬蟲來抓我們的網站&lt;br&gt;Google Search Console 網址： &lt;a href=&#34;https://search.google.com/search-console&#34;&gt;https://search.google.com/search-console&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_search_console/%E6%96%B0%E5%A2%9E%E7%AB%99%E9%BB%9E.png&#34; alt=&#34;新增網站&#34; data-caption=&#34;新增網站&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;資源類型分為兩類，網站前置字元代表只索引單一網站，網域則是歸在該網域下的所有網站都會索引。&lt;br&gt;沒有特殊需求的話選網站前置字元就好。&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_search_console/%E8%B3%87%E6%BA%90%E9%A1%9E%E5%9E%8B.png&#34; alt=&#34;新增網站&#34; data-caption=&#34;新增網站&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;驗證網站&#34;&gt;&lt;a href=&#34;#驗證網站&#34; class=&#34;headerlink&#34; title=&#34;驗證網站&#34;&gt;&lt;/a&gt;驗證網站&lt;/h2&gt;&lt;p&gt;把要索引的網站打進去後，接下來要驗證網站是你的&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_search_console/%E9%A9%97%E8%AD%89%E6%96%B9%E5%BC%8F.png&#34; alt=&#34;新增網站&#34; data-caption=&#34;新增網站&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;下面的驗證方式選一個就好&lt;/p&gt;
+&lt;h3 id=&#34;HTML-檔案&#34;&gt;&lt;a href=&#34;#HTML-檔案&#34; class=&#34;headerlink&#34; title=&#34;HTML 檔案&#34;&gt;&lt;/a&gt;HTML 檔案&lt;/h3&gt;&lt;p&gt;預設最簡單的驗證方式，只要將 google 提供的驗證用 html 檔案下載，放在 hexo 的目錄即可&lt;br&gt;網站部屬之後可以在 &lt;a href=&#34;https://yoursite.com/googleXXXXXXXXXXXXXXXX.html&#34;&gt;https://yoursite.com/googleXXXXXXXXXXXXXXXX.html&lt;/a&gt; 看到驗證碼就可以去點驗證了&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;記得在 &lt;code&gt;_config.yml&lt;/code&gt; 加入跳過這個檔案的渲染 詳細請看 &lt;a href=&#34;/2021/12/15/hexo-skip/&#34;&gt;Hexo 指定文件跳過渲染&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;googleXXXXXXXXXXXXXXXX.html&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;HTML-標記&#34;&gt;&lt;a href=&#34;#HTML-標記&#34; class=&#34;headerlink&#34; title=&#34;HTML 標記&#34;&gt;&lt;/a&gt;HTML 標記&lt;/h3&gt;&lt;p&gt;在首頁的 Header 內加入驗證碼&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://yoursite.com/index.html&#34;&gt;https://yoursite.com/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;name&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;google-site-verification&amp;quot;&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;content&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;key-XXX&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;Google-Analytics&#34;&gt;&lt;a href=&#34;#Google-Analytics&#34; class=&#34;headerlink&#34; title=&#34;Google Analytics&#34;&gt;&lt;/a&gt;Google Analytics&lt;/h3&gt;&lt;p&gt;如果你的網站有使用  Google Analytics 的話可以直接點驗整就好，反正也在設定 GA 時也算驗證過網站所有者了&lt;/p&gt;
+&lt;h3 id=&#34;網域名稱供應商&#34;&gt;&lt;a href=&#34;#網域名稱供應商&#34; class=&#34;headerlink&#34; title=&#34;網域名稱供應商&#34;&gt;&lt;/a&gt;網域名稱供應商&lt;/h3&gt;&lt;p&gt;在 DNS 內加入相同網域的 TXT 紀錄，裡面放驗證碼即可驗證&lt;br&gt;如果是 cloud flare 的話就更簡單，只要照著點就好了&lt;br&gt;不過設定時要注意衝突&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_search_console/DNS.png&#34; alt=&#34;新增網站&#34; data-caption=&#34;新增網站&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;完成&#34;&gt;&lt;a href=&#34;#完成&#34; class=&#34;headerlink&#34; title=&#34;完成&#34;&gt;&lt;/a&gt;完成&lt;/h2&gt;&lt;p&gt;驗證完之後等待 google 把 sitemap 內的頁面索引完，在 Google 搜尋你的網站可以被搜尋到了&lt;br&gt;後續 google 會提是你的網站有什麼問題需要修正，未修正前會被排到搜尋列表的後面&lt;br&gt;要被演算法排到前面就需要做 SEO (search engine optimizaton) 了&lt;/p&gt;
+</content>
+        <category term="Hexo" />
+        <category term="Blog" />
+        <category term="搜尋引擎" />
+        <category term="Google" />
+        <updated>2023-08-02T04:52:15.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/11/16/hexo-GA/</id>
+        <title>Hexo nexmoe 主題套用 Google Analytics</title>
+        <link rel="alternate" href="https://zonego.tw/2021/11/16/hexo-GA/"/>
+        <content type="html">&lt;p&gt;Google Analytics（GA）是Google公司提供的數據分析工具，可以幫助你追蹤你的網站流量、用戶行為，是一個網路行銷重要又好用的小工具。&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;網路上會看到很多推薦使用 GA 的文章，有甚麼功能就不用我多說了 &lt;del&gt;絕對不是我想偷懶&lt;/del&gt;。&lt;/p&gt;
+&lt;p&gt;我這小小的部落格也就只有看人數的需求而已。&lt;/p&gt;
+&lt;h2 id=&#34;申請-Google-Analytics&#34;&gt;&lt;a href=&#34;#申請-Google-Analytics&#34; class=&#34;headerlink&#34; title=&#34;申請 Google Analytics&#34;&gt;&lt;/a&gt;申請 Google Analytics&lt;/h2&gt;&lt;p&gt;基本上你有 google 帳號就完成一半了，接下來到 &lt;a href=&#34;https://analytics.google.com/analytics/web/&#34;&gt;GA&lt;/a&gt;網站&lt;/p&gt;
+&lt;p&gt;接著在左下角管理 &amp;gt; 建立資源 &amp;gt; 完成後到資料串流&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/hexo-GA/ga_resource.jpg&#34; alt=&#34;Google Analytics 資源&#34; data-caption=&#34;Google Analytics 資源&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;新增網站串流，裡面填入要分析的網站網址，以及名稱&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/hexo-GA/ga_stream.jpg&#34; alt=&#34;Google Analytics 串流&#34; data-caption=&#34;Google Analytics 串流&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;完成後我們會得到需要的 &lt;code&gt;評估ID&lt;/code&gt; G-XXXXX 的這串ID&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/hexo-GA/ga_stream2.jpg&#34; alt=&#34;Google Analytics 串流&#34; data-caption=&#34;Google Analytics 串流&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;修改Hexo設定檔&#34;&gt;&lt;a href=&#34;#修改Hexo設定檔&#34; class=&#34;headerlink&#34; title=&#34;修改Hexo設定檔&#34;&gt;&lt;/a&gt;修改Hexo設定檔&lt;/h2&gt;&lt;h3 id=&#34;3-0-版設定方式&#34;&gt;&lt;a href=&#34;#3-0-版設定方式&#34; class=&#34;headerlink&#34; title=&#34;3.0 版設定方式&#34;&gt;&lt;/a&gt;3.0 版設定方式&lt;/h3&gt;&lt;p&gt;nexmoe 這個主題有支援 Google Analytics&lt;/p&gt;
+&lt;p&gt;只要在 &lt;code&gt;_config.nexmoe.yml&lt;/code&gt; 設定檔內調整分析的設定即可&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;analytics:&lt;/span&gt; &lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;google_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;gtags_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;這邊填入分析ID&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;G-XXXXX&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;cnzz_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;tencent_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;la_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;baidu_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;gtm_container_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;4-0-版設定方式&#34;&gt;&lt;a href=&#34;#4-0-版設定方式&#34; class=&#34;headerlink&#34; title=&#34;4.0 版設定方式&#34;&gt;&lt;/a&gt;4.0 版設定方式&lt;/h3&gt;&lt;p&gt;照前面申請 Google Analytics 的步驟，先到資料串流設定&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;按一下「管理」。&lt;/li&gt;
+&lt;li&gt;使用「資源」欄頂端的下拉式選取器，選擇要在哪個資源設定資料串流的 Google 代碼。&lt;/li&gt;
+&lt;li&gt;在「資源」欄中，按一下「資料串流」。&lt;/li&gt;
+&lt;li&gt;照下圖複製&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/hexo-GA/ga_stream3.png&#34; alt=&#34;Google Analytics 串流&#34; data-caption=&#34;Google Analytics 串流&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/hexo-GA/ga_code_setting.png&#34; alt=&#34;Google Analytics Code設定&#34; data-caption=&#34;Google Analytics Code設定&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/hexo-GA/ga_code.png&#34; alt=&#34;Google Analytics Code&#34; data-caption=&#34;Google Analytics Code&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;打開 &lt;code&gt;_config.nexmoe.yml&lt;/code&gt; 設定檔內在 &lt;code&gt;slotHead&lt;/code&gt; 下面貼上複製的嵌入碼&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-string&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;slotHead:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;|&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;  &amp;lt;!-- Google tag (gtag.js) --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;  &amp;lt;script async src=&amp;quot;https://www.googletagmanager.com/gtag/js?id=G-ID&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;  &amp;lt;script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;    window.dataLayer = window.dataLayer || [];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;    function gtag()&amp;#123;dataLayer.push(arguments);&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;    gtag(&amp;#x27;js&amp;#x27;, new Date());&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-string&#34;&gt;gtag(&amp;#x27;config&amp;#x27;,&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;G-ID&amp;#x27;&lt;/span&gt;&lt;span class=&#34;hljs-string&#34;&gt;);&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-string&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;成果&#34;&gt;&lt;a href=&#34;#成果&#34; class=&#34;headerlink&#34; title=&#34;成果&#34;&gt;&lt;/a&gt;成果&lt;/h2&gt;&lt;p&gt;設定完後重開 Hexo 伺服器套用&lt;/p&gt;
+&lt;p&gt;在&lt;a href=&#34;https://analytics.google.com/analytics/web/&#34;&gt;GA&lt;/a&gt;網站 &amp;gt; 報表內看到我們要的瀏覽人數&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/hexo-GA/ga_dash.jpg&#34; alt=&#34;Google Analytics 報表&#34; data-caption=&#34;Google Analytics 報表&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;網站果然沒有人看，人數是0&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;其實是截圖時根本還沒重開 Hexo，所以 Google 根本沒抓到瀏覽紀錄&lt;/p&gt;
+</content>
+        <category term="Hexo" />
+        <category term="Blog" />
+        <category term="Google" />
+        <updated>2021-11-16T07:44:43.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/11/14/gitea-gmail/</id>
+        <title>Gitea 使用 Gmail 寄信</title>
+        <link rel="alternate" href="https://zonego.tw/2021/11/14/gitea-gmail/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;建立-Gmail-應用程式密碼&#34;&gt;&lt;a href=&#34;#建立-Gmail-應用程式密碼&#34; class=&#34;headerlink&#34; title=&#34;建立 Gmail 應用程式密碼&#34;&gt;&lt;/a&gt;建立 Gmail 應用程式密碼&lt;/h2&gt;&lt;p&gt;Google 基於安全性，禁用直接用密碼存取 smtp&lt;br&gt;取而代之要先建立應用程式密碼，代替原本密碼的功能&lt;/p&gt;
+&lt;p&gt;管理 Google 帳戶 &amp;gt; 安全性 &amp;gt; 登入 Google &amp;gt; 應用程式密碼&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_account.jpg&#34; alt=&#34;Google Account&#34; data-caption=&#34;Google Account&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;應用選郵件，裝置只是方便管理的名稱，可以選其他自己寫&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_appkey.jpg&#34; alt=&#34;Google APP KEY&#34; data-caption=&#34;Google APP KEY&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;完成後會產生一組密碼，建議用完之後就忘掉他，下次要用忘記時再建新的就好&lt;/p&gt;
+&lt;h2 id=&#34;設定-container-環境變數&#34;&gt;&lt;a href=&#34;#設定-container-環境變數&#34; class=&#34;headerlink&#34; title=&#34;設定 container 環境變數&#34;&gt;&lt;/a&gt;設定 container 環境變數&lt;/h2&gt;&lt;p&gt;我的 gitea 是使用 Docker 架的&lt;/p&gt;
+&lt;p&gt;gitea 官方鏡像有提供透過環境變數設定，不用另外修改設定檔&lt;/p&gt;
+&lt;figure class=&#34;highlight routeros&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs routeros&#34;&gt;environment:&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__ENABLED&lt;/span&gt;=&lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__FROM&lt;/span&gt;=寄件者信箱&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__MAILER_TYPE&lt;/span&gt;=smtp&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__HOST&lt;/span&gt;=smtp.gmail.com:465&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__IS_TLS_ENABLED&lt;/span&gt;=&lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__USER&lt;/span&gt;=你的Gmail&lt;br&gt;  - &lt;span class=&#34;hljs-attribute&#34;&gt;GITEA__mailer__PASSWD&lt;/span&gt;=應用程式密碼&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;改完之後到 Gitea 網站 &amp;gt; 網站管理 &amp;gt; 組態&lt;br&gt;往下捲找到 SMTP 組態，可以測試寄信&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.gitea.io/en-us/install-with-docker/#managing-deployments-with-environment-variables&#34;&gt;詳細參考&lt;/a&gt;&lt;/p&gt;
+</content>
+        <category term="Google" />
+        <category term="Git" />
+        <category term="Gitea" />
+        <category term="GMail" />
+        <updated>2021-11-14T04:39:30.000Z</updated>
+    </entry>
+</feed>

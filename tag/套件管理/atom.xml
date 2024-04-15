@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zonego.tw</id>
+    <title>筆記ZONE • Posts by &#34;套件管理&#34; tag</title>
+    <link href="https://zonego.tw" />
+    <updated>2022-10-24T09:59:16.000Z</updated>
+    <category term="Hexo" />
+    <category term="Blog" />
+    <category term="搜尋引擎" />
+    <category term="Self-Hosting" />
+    <category term="網路" />
+    <category term="Windows" />
+    <category term="Linux" />
+    <category term="Mac" />
+    <category term="Apple Silicon" />
+    <category term="VM 虛擬機" />
+    <category term="DNS" />
+    <category term="Google" />
+    <category term="廣告" />
+    <category term="網站架設" />
+    <category term="Cloudflare" />
+    <category term="靜態網站" />
+    <category term="Git" />
+    <category term="資安" />
+    <category term="網路資源" />
+    <category term="CI/CD" />
+    <category term="Drone" />
+    <category term="Gitea" />
+    <category term="GMail" />
+    <category term="套件管理" />
+    <category term="字型" />
+    <category term="環境變數" />
+    <category term="Ubuntu" />
+    <category term="桌布" />
+    <category term="DIY" />
+    <category term="Wiki JS" />
+    <category term="Keyckoak" />
+    <category term="身分認證" />
+    <entry>
+        <id>https://zonego.tw/2022/10/24/homebrew/</id>
+        <title>Mac 上的套件管理系統 Homebrew</title>
+        <link rel="alternate" href="https://zonego.tw/2022/10/24/homebrew/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h1 id=&#34;Homebrew&#34;&gt;&lt;a href=&#34;#Homebrew&#34; class=&#34;headerlink&#34; title=&#34;Homebrew&#34;&gt;&lt;/a&gt;&lt;a href=&#34;https://brew.sh/&#34;&gt;Homebrew&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&#34;https://brew.sh/&#34;&gt;Homebrew&lt;/a&gt; 是 Mac 上常用的第三方套件管理器，可以用來安裝 wget 等 Linux 常用但 Mac 沒有的程式。&lt;br&gt;雖然主要是面向 Mac 的程式，但 Linux 也可以用。&lt;/p&gt;
+&lt;h2 id=&#34;安裝&#34;&gt;&lt;a href=&#34;#安裝&#34; class=&#34;headerlink&#34; title=&#34;安裝&#34;&gt;&lt;/a&gt;安裝&lt;/h2&gt;&lt;p&gt;官方有提供安裝腳本&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# Homebrew 安裝腳本&lt;/span&gt;&lt;br&gt;/bin/bash -c &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&lt;span class=&#34;hljs-subst&#34;&gt;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&lt;/span&gt;&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不需要用 sudo 安裝&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;裝完之後可以用 &lt;code&gt;brew help&lt;/code&gt; 檢查是否安裝成功&lt;/p&gt;
+&lt;h2 id=&#34;使用方法&#34;&gt;&lt;a href=&#34;#使用方法&#34; class=&#34;headerlink&#34; title=&#34;使用方法&#34;&gt;&lt;/a&gt;使用方法&lt;/h2&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;xxxx@MacBook-Pro ~ % brew &lt;span class=&#34;hljs-built_in&#34;&gt;help&lt;/span&gt;&lt;br&gt;&lt;br&gt;Example usage:&lt;br&gt;  brew search TEXT|/REGEX/&lt;br&gt;  brew info [FORMULA|CASK...]&lt;br&gt;  brew install FORMULA|CASK...&lt;br&gt;  brew update&lt;br&gt;  brew upgrade [FORMULA|CASK...]&lt;br&gt;  brew uninstall FORMULA|CASK...&lt;br&gt;  brew list [FORMULA|CASK...]&lt;br&gt;&lt;br&gt;Troubleshooting:&lt;br&gt;  brew config&lt;br&gt;  brew doctor&lt;br&gt;  brew install --verbose --debug FORMULA|CASK&lt;br&gt;&lt;br&gt;Contributing:&lt;br&gt;  brew create URL [--no-fetch]&lt;br&gt;  brew edit [FORMULA|CASK...]&lt;br&gt;&lt;br&gt;Further &lt;span class=&#34;hljs-built_in&#34;&gt;help&lt;/span&gt;:&lt;br&gt;  brew commands&lt;br&gt;  brew &lt;span class=&#34;hljs-built_in&#34;&gt;help&lt;/span&gt; [COMMAND]&lt;br&gt;  man brew&lt;br&gt;  https://docs.brew.sh&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 例如安裝 wget&lt;/span&gt;&lt;br&gt;brew install wget&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;其他更多用法參考官網 &lt;a href=&#34;https://brew.sh/index_zh-tw&#34;&gt;https://brew.sh/index_zh-tw&lt;/a&gt; (有中文)&lt;/p&gt;
+&lt;h2 id=&#34;安裝問題&#34;&gt;&lt;a href=&#34;#安裝問題&#34; class=&#34;headerlink&#34; title=&#34;安裝問題&#34;&gt;&lt;/a&gt;安裝問題&lt;/h2&gt;&lt;p&gt;如果下載途中意外中斷 &lt;del&gt;(例如 Mac 休眠自動斷線)&lt;/del&gt; ，重跑時可能會出現下面問題&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;error: Not a valid ref: refs/remotes/origin/master&lt;br&gt;fatal: ambiguous argument &lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;refs/remotes/origin/master&amp;#x27;&lt;/span&gt;: unknown revision or path not &lt;span class=&#34;hljs-keyword&#34;&gt;in&lt;/span&gt; the working tree.&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;碰到這個問題，只要先把舊的刪掉再重裝就可以了&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# Homebrew 刪除腳本&lt;/span&gt;&lt;br&gt;/bin/bash -c &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&lt;span class=&#34;hljs-subst&#34;&gt;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)&lt;/span&gt;&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+        <category term="Linux" />
+        <category term="Mac" />
+        <category term="套件管理" />
+        <updated>2022-10-24T09:59:16.000Z</updated>
+    </entry>
+</feed>

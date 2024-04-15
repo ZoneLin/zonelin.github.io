@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>筆記ZONE • Posts by &#34;系統設定&#34; category</title>
+        <link>https://zonego.tw</link>
+        <description></description>
+        <language>zh-TW</language>
+        <pubDate>Sun, 25 Dec 2022 10:44:10 +0000</pubDate>
+        <lastBuildDate>Sun, 25 Dec 2022 10:44:10 +0000</lastBuildDate>
+        <category>Hexo</category>
+        <category>Blog</category>
+        <category>搜尋引擎</category>
+        <category>Self-Hosting</category>
+        <category>網路</category>
+        <category>Windows</category>
+        <category>Linux</category>
+        <category>Mac</category>
+        <category>Apple Silicon</category>
+        <category>VM 虛擬機</category>
+        <category>DNS</category>
+        <category>Google</category>
+        <category>廣告</category>
+        <category>網站架設</category>
+        <category>Cloudflare</category>
+        <category>靜態網站</category>
+        <category>Git</category>
+        <category>資安</category>
+        <category>網路資源</category>
+        <category>CI/CD</category>
+        <category>Drone</category>
+        <category>Gitea</category>
+        <category>GMail</category>
+        <category>套件管理</category>
+        <category>字型</category>
+        <category>環境變數</category>
+        <category>Ubuntu</category>
+        <category>桌布</category>
+        <category>DIY</category>
+        <category>Wiki JS</category>
+        <category>Keyckoak</category>
+        <category>身分認證</category>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2022/12/25/ubuntu22-netsetting/</guid>
+            <title>Ubuntu 22.04 設定網路連線</title>
+            <link>https://zonego.tw/2022/12/25/ubuntu22-netsetting/</link>
+            <category>網路</category>
+            <category>Ubuntu</category>
+            <pubDate>Sun, 25 Dec 2022 10:44:10 +0000</pubDate>
+            <description><![CDATA[ &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;Ubuntu 20.04 後改用 netplan 作為指令網路設定工具&lt;/p&gt;
+&lt;h2 id=&#34;設定檔&#34;&gt;&lt;a href=&#34;#設定檔&#34; class=&#34;headerlink&#34; title=&#34;設定檔&#34;&gt;&lt;/a&gt;設定檔&lt;/h2&gt;&lt;p&gt;netplan 設定檔預設放在 &lt;code&gt;/etc/netplan/00-installer-config.yaml&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;修改及套用需要 root 權限&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;查看網卡代號&#34;&gt;&lt;a href=&#34;#查看網卡代號&#34; class=&#34;headerlink&#34; title=&#34;查看網卡代號&#34;&gt;&lt;/a&gt;查看網卡代號&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;ip addr&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;跑出來的結果像這樣&lt;/p&gt;
+&lt;figure class=&#34;highlight apache&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs apache&#34;&gt;&lt;span class=&#34;hljs-attribute&#34;&gt;1&lt;/span&gt;: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu &lt;span class=&#34;hljs-number&#34;&gt;65536&lt;/span&gt; qdisc noqueue state UNKNOWN group default qlen &lt;span class=&#34;hljs-number&#34;&gt;1000&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attribute&#34;&gt;link&lt;/span&gt;/loopback &lt;span class=&#34;hljs-number&#34;&gt;00&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;00&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;00&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;00&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;00&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;00&lt;/span&gt; brd &lt;span class=&#34;hljs-number&#34;&gt;00&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;00&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;00&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;00&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;00&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;00&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attribute&#34;&gt;inet&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;127.0.0.1&lt;/span&gt;/&lt;span class=&#34;hljs-number&#34;&gt;8&lt;/span&gt; scope host lo&lt;br&gt;       &lt;span class=&#34;hljs-attribute&#34;&gt;valid_lft&lt;/span&gt; forever preferred_lft forever&lt;br&gt;    &lt;span class=&#34;hljs-attribute&#34;&gt;inet6&lt;/span&gt; ::&lt;span class=&#34;hljs-number&#34;&gt;1&lt;/span&gt;/&lt;span class=&#34;hljs-number&#34;&gt;128&lt;/span&gt; scope host&lt;br&gt;       &lt;span class=&#34;hljs-attribute&#34;&gt;valid_lft&lt;/span&gt; forever preferred_lft forever&lt;br&gt;&lt;span class=&#34;hljs-attribute&#34;&gt;2&lt;/span&gt;: ens18: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu &lt;span class=&#34;hljs-number&#34;&gt;1500&lt;/span&gt; qdisc fq_codel state UP group default qlen &lt;span class=&#34;hljs-number&#34;&gt;1000&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attribute&#34;&gt;link&lt;/span&gt;/ether xx:xx:xx:xx:xx:xx brd xx:xx:xx:xx:xx:xx&lt;br&gt;    &lt;span class=&#34;hljs-attribute&#34;&gt;altname&lt;/span&gt; enp0s18&lt;br&gt;    &lt;span class=&#34;hljs-attribute&#34;&gt;inet&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;192&lt;/span&gt;.&lt;span class=&#34;hljs-number&#34;&gt;168&lt;/span&gt;.&lt;span class=&#34;hljs-number&#34;&gt;1&lt;/span&gt;.xx/&lt;span class=&#34;hljs-number&#34;&gt;24&lt;/span&gt; brd &lt;span class=&#34;hljs-number&#34;&gt;172.16.0.255&lt;/span&gt; scope global ens18&lt;br&gt;       &lt;span class=&#34;hljs-attribute&#34;&gt;valid_lft&lt;/span&gt; forever preferred_lft forever&lt;br&gt;    &lt;span class=&#34;hljs-attribute&#34;&gt;inet6&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;0000&lt;/span&gt;::&lt;span class=&#34;hljs-number&#34;&gt;0000&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;0000&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;0000&lt;/span&gt;:&lt;span class=&#34;hljs-number&#34;&gt;0000&lt;/span&gt;/&lt;span class=&#34;hljs-number&#34;&gt;64&lt;/span&gt; scope link&lt;br&gt;       &lt;span class=&#34;hljs-attribute&#34;&gt;valid_lft&lt;/span&gt; forever preferred_lft forever&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;編號 2 後面的 &lt;code&gt;ens18&lt;/code&gt; 就是網卡代號&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我的電腦只有裝一張網卡結果才會只到編號 2，如果有多張網卡會接續列在下面&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;接下來就是開始編輯設定檔&lt;/p&gt;
+&lt;p&gt;使用 nano 編輯器修改設定檔&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;nano /etc/netplan/50-cloud-init.yaml&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;使用-DHCP-自動設定-IP&#34;&gt;&lt;a href=&#34;#使用-DHCP-自動設定-IP&#34; class=&#34;headerlink&#34; title=&#34;使用 DHCP 自動設定 IP&#34;&gt;&lt;/a&gt;使用 DHCP 自動設定 IP&lt;/h3&gt;&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;network:&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;version:&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;2&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;renderer:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;networkd&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;ethernets:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-comment&#34;&gt;# 下面 ens18 改成你的網卡代號&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;ens18:&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-attr&#34;&gt;dhcp4:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-comment&#34;&gt;# 如果有多張網卡，設定繼續加在下面&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;設定固定-IP&#34;&gt;&lt;a href=&#34;#設定固定-IP&#34; class=&#34;headerlink&#34; title=&#34;設定固定 IP&#34;&gt;&lt;/a&gt;設定固定 IP&lt;/h3&gt;&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;network:&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;version:&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;2&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;ethernets:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;ens18:&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-attr&#34;&gt;addresses:&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-comment&#34;&gt;# 設定固定 IP&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.1&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.2&lt;/span&gt;&lt;span class=&#34;hljs-string&#34;&gt;/24&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-comment&#34;&gt;# 預設閘道器&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-attr&#34;&gt;gateway4:&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.1&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.1&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-comment&#34;&gt;# 預設 DNS&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-attr&#34;&gt;nameservers:&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;addresses:&lt;/span&gt; [&lt;span class=&#34;hljs-number&#34;&gt;8.8&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.8&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.8&lt;/span&gt;, &lt;span class=&#34;hljs-number&#34;&gt;1.1&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.1&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.1&lt;/span&gt;]&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;固定 IP 中 &lt;code&gt;/24&lt;/code&gt; 代表子網遮罩，相當於 　&lt;code&gt;255.255.255.0&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;如果不會換算，可以參考 IPv4 子網計算機 &lt;a href=&#34;https://damaha-labo.site/converter/zh-Hant/IT/CalcSubnetMask&#34;&gt;https://damaha-labo.site/converter/zh-Hant/IT/CalcSubnetMask&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;通常沒特殊需求的話，家用路由器的子網遮罩都是用 &lt;code&gt;/24&lt;/code&gt; &lt;code&gt;255.255.255.0&lt;/code&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;在 ubuntu 22.04 新版的 Netplan 中， &lt;code&gt;gateway4&lt;/code&gt; 這個設定已被棄用&lt;/p&gt;
+&lt;p&gt;新版的設定檔長這樣&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;network:&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;version:&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;2&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;ethernets:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;ens18:&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-attr&#34;&gt;addresses:&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-comment&#34;&gt;# 設定固定 IP&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.1&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.2&lt;/span&gt;&lt;span class=&#34;hljs-string&#34;&gt;/24&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-comment&#34;&gt;# 預設 DNS&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-attr&#34;&gt;nameservers:&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;addresses:&lt;/span&gt; [&lt;span class=&#34;hljs-number&#34;&gt;8.8&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.8&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.8&lt;/span&gt;, &lt;span class=&#34;hljs-number&#34;&gt;1.1&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.1&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.1&lt;/span&gt;]&lt;br&gt;      &lt;span class=&#34;hljs-comment&#34;&gt;# 預設閘道器&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-attr&#34;&gt;routes:&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;to:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;default&lt;/span&gt;&lt;br&gt;          &lt;span class=&#34;hljs-attr&#34;&gt;via:&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;192.168&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.1&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.1&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;預設路由的設定，改成可以設定多個預設閘道器(Gateway)&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;routes:&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;to:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;default&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;via:&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;10.0&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.0&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.1&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;metric:&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;200&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;to:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;default&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;via:&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;11.0&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.0&lt;/span&gt;&lt;span class=&#34;hljs-number&#34;&gt;.1&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;metric:&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;300&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;其中 &lt;code&gt;metric&lt;/code&gt; 代表優先權重，值越小越優先使用&lt;/p&gt;
+&lt;h3 id=&#34;設定-WIFI-連線&#34;&gt;&lt;a href=&#34;#設定-WIFI-連線&#34; class=&#34;headerlink&#34; title=&#34;設定 WIFI 連線&#34;&gt;&lt;/a&gt;設定 WIFI 連線&lt;/h3&gt;&lt;h4 id=&#34;取得-Wifi-網卡代號&#34;&gt;&lt;a href=&#34;#取得-Wifi-網卡代號&#34; class=&#34;headerlink&#34; title=&#34;取得 Wifi 網卡代號&#34;&gt;&lt;/a&gt;取得 Wifi 網卡代號&lt;/h4&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;$ &lt;span class=&#34;hljs-built_in&#34;&gt;ls&lt;/span&gt; /sys/class/net&lt;br&gt;enp0s25  lo  wlp3s0&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;通常在 Ubuntu 22.04 中 Wifi 網卡代號通常是 &lt;code&gt;wlan0&lt;/code&gt; 或是 &lt;code&gt;wlp3s0&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在設定檔下面加上 Wifi 的部分即可&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;network:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;ethernets:&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;eth0:&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-attr&#34;&gt;dhcp4:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-attr&#34;&gt;optional:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;version:&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;2&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;wifis:&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;wlp3s0:&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-attr&#34;&gt;optional:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-attr&#34;&gt;access-points:&lt;/span&gt;&lt;br&gt;                &lt;span class=&#34;hljs-attr&#34;&gt;&amp;quot;SSID-NAME-HERE&amp;quot;:&lt;/span&gt;&lt;br&gt;                    &lt;span class=&#34;hljs-attr&#34;&gt;password:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;PASSWORD-HERE&amp;quot;&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-attr&#34;&gt;dhcp4:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;至於要怎麼找附近可用的熱點…&lt;br&gt;&lt;img src=&#34;/images/content/do_you_guys_not_have_phones.jpg&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;保存、套用設定&#34;&gt;&lt;a href=&#34;#保存、套用設定&#34; class=&#34;headerlink&#34; title=&#34;保存、套用設定&#34;&gt;&lt;/a&gt;保存、套用設定&lt;/h2&gt;&lt;p&gt;範例使用的 nano 編輯器，儲存按法：&lt;br&gt;&lt;code&gt;Ctrl&lt;/code&gt; + &lt;code&gt;X&lt;/code&gt;  -&amp;gt;  &lt;code&gt;Y&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;保存完後，用下面指令測試設定檔有無格式錯誤&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;netplan try&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;確定網路沒問題，在 120 秒內按 Enter 確定套用。&lt;br&gt;這招可以避免設定固定 IP 時設定錯誤斷網，畢竟很懶的跑去機器旁邊重新設定。&lt;/p&gt;
+&lt;p&gt;如果想要直接套用，不用再另外檢查，可以用&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;netplan apply&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;檢查是否設定成功&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;ip addr&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;看一下網卡有沒有配到 IP&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果你的 Raspberry Pi 也是裝 Ubuntu，網路設定也是這樣修改&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;&lt;a href=&#34;#參考資料&#34; class=&#34;headerlink&#34; title=&#34;參考資料&#34;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;p&gt;Netplan 設定範例 &lt;a href=&#34;https://netplan.io/examples&#34;&gt;https://netplan.io/examples&lt;/a&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2022/11/29/linux-path/</guid>
+            <title>linux 環境變數及 Path 設定</title>
+            <link>https://zonego.tw/2022/11/29/linux-path/</link>
+            <category>Linux</category>
+            <category>Mac</category>
+            <category>環境變數</category>
+            <pubDate>Tue, 29 Nov 2022 12:02:04 +0000</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;Linux-環境變數種類&#34;&gt;&lt;a href=&#34;#Linux-環境變數種類&#34; class=&#34;headerlink&#34; title=&#34;Linux 環境變數種類&#34;&gt;&lt;/a&gt;Linux 環境變數種類&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;永久的：需要修改配置檔案，變數永久生效。&lt;/li&gt;
+&lt;li&gt;臨時的：使用export命令宣告即可，變數在關閉shell或關機時失效。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;Mac 跟 Linux 都是由 Unix 發展的作業系統，在部分操作邏輯都相同，包含環境變數。&lt;/p&gt;
+&lt;h2 id=&#34;看目前的環境變數&#34;&gt;&lt;a href=&#34;#看目前的環境變數&#34; class=&#34;headerlink&#34; title=&#34;看目前的環境變數&#34;&gt;&lt;/a&gt;看目前的環境變數&lt;/h2&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 使用 env 指令&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-built_in&#34;&gt;env&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;XXXX@MacBook-Pro blog % &lt;span class=&#34;hljs-built_in&#34;&gt;env&lt;/span&gt;&lt;br&gt;USER=XXXX&lt;br&gt;SECURITYSESSIONID=186ad&lt;br&gt;COMMAND_MODE=unix2003&lt;br&gt;HOME=/Users/XXXXXX&lt;br&gt;SHELL=/bin/zsh&lt;br&gt;...&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;如果已知環境變數的名稱，可以使用 echo 查看&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 查看環境變數 SHELL&lt;/span&gt;&lt;br&gt;XXXX@MacBook-Pro blog % &lt;span class=&#34;hljs-built_in&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;hljs-variable&#34;&gt;$SHELL&lt;/span&gt;&lt;br&gt;/bin/zsh&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;設定環境變數&#34;&gt;&lt;a href=&#34;#設定環境變數&#34; class=&#34;headerlink&#34; title=&#34;設定環境變數&#34;&gt;&lt;/a&gt;設定環境變數&lt;/h2&gt;&lt;h3 id=&#34;臨時性修改，重開機後就必須再做一次&#34;&gt;&lt;a href=&#34;#臨時性修改，重開機後就必須再做一次&#34; class=&#34;headerlink&#34; title=&#34;臨時性修改，重開機後就必須再做一次&#34;&gt;&lt;/a&gt;臨時性修改，重開機後就必須再做一次&lt;/h3&gt;&lt;p&gt;用 export 指令&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 設定 PATH 變數為例&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-built_in&#34;&gt;export&lt;/span&gt; PATH=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&lt;span class=&#34;hljs-variable&#34;&gt;$PATH&lt;/span&gt;&amp;quot;&lt;/span&gt;:/home/bin&lt;br&gt;&lt;span class=&#34;hljs-built_in&#34;&gt;export&lt;/span&gt; PATH=&lt;span class=&#34;hljs-variable&#34;&gt;$&amp;#123;PATH&amp;#125;&lt;/span&gt;:/home/bin&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;輸入之後可以使用export指令來查看環境變數是否有輸入進去。&lt;/p&gt;
+&lt;h3 id=&#34;永久性修改，需重開機之後才會有作用&#34;&gt;&lt;a href=&#34;#永久性修改，需重開機之後才會有作用&#34; class=&#34;headerlink&#34; title=&#34;永久性修改，需重開機之後才會有作用&#34;&gt;&lt;/a&gt;永久性修改，需重開機之後才會有作用&lt;/h3&gt;&lt;h4 id=&#34;修改-profile&#34;&gt;&lt;a href=&#34;#修改-profile&#34; class=&#34;headerlink&#34; title=&#34;修改 profile&#34;&gt;&lt;/a&gt;修改 profile&lt;/h4&gt;&lt;p&gt;profile的路徑是在 “&amp;#x2F;etc&amp;#x2F;profile”，打開後在裡面加入&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;&lt;span class=&#34;hljs-built_in&#34;&gt;export&lt;/span&gt; PATH=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&lt;span class=&#34;hljs-variable&#34;&gt;$PATH&lt;/span&gt;&amp;quot;&lt;/span&gt;:/home/bin&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 或是&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-built_in&#34;&gt;export&lt;/span&gt; PATH=&lt;span class=&#34;hljs-variable&#34;&gt;$&amp;#123;PATH&amp;#125;&lt;/span&gt;:/home/bin&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h4 id=&#34;修改-bashrc&#34;&gt;&lt;a href=&#34;#修改-bashrc&#34; class=&#34;headerlink&#34; title=&#34;修改.bashrc&#34;&gt;&lt;/a&gt;修改.bashrc&lt;/h4&gt;&lt;p&gt;.bashrc的路徑是在”&amp;#x2F;home&amp;#x2F;danny&amp;#x2F;.bashrc”，在檔案最後面加入&lt;/p&gt;
+&lt;figure class=&#34;highlight routeros&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs routeros&#34;&gt;&lt;span class=&#34;hljs-built_in&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;hljs-attribute&#34;&gt;PATH&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&lt;span class=&#34;hljs-variable&#34;&gt;$PATH&lt;/span&gt;&amp;quot;&lt;/span&gt;:/home/bin&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 或是&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-built_in&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;hljs-attribute&#34;&gt;PATH&lt;/span&gt;=&lt;span class=&#34;hljs-variable&#34;&gt;$&amp;#123;PATH&amp;#125;&lt;/span&gt;:/home/bin&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;參考來源&#34;&gt;&lt;a href=&#34;#參考來源&#34; class=&#34;headerlink&#34; title=&#34;參考來源&#34;&gt;&lt;/a&gt;參考來源&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://dotblogs.com.tw/grayyin/2019/06/25/142934&#34;&gt;阿輝的零碎筆記&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://iter01.com/567129.html&#34;&gt;Linux環境變數的設定、檢視、刪除&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2022/01/07/windows11-path/</guid>
+            <title>Windows 11 環境變數及 Path 設定</title>
+            <link>https://zonego.tw/2022/01/07/windows11-path/</link>
+            <category>Windows</category>
+            <category>環境變數</category>
+            <pubDate>Fri, 07 Jan 2022 02:52:56 +0000</pubDate>
+            <description><![CDATA[ &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;h2 id=&#34;設定環境變數&#34;&gt;&lt;a href=&#34;#設定環境變數&#34; class=&#34;headerlink&#34; title=&#34;設定環境變數&#34;&gt;&lt;/a&gt;設定環境變數&lt;/h2&gt;&lt;p&gt;開啟設定 &amp;gt; 系統 &amp;gt; 關於 &amp;gt; 裝置規格 進階系統設定&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/setting_sys.png&#34; alt=&#34;env&#34; data-caption=&#34;env&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/env.png&#34; alt=&#34;env&#34; data-caption=&#34;env&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;設定-Path&#34;&gt;&lt;a href=&#34;#設定-Path&#34; class=&#34;headerlink&#34; title=&#34;設定 Path&#34;&gt;&lt;/a&gt;設定 Path&lt;/h2&gt;&lt;h3 id=&#34;預設位置&#34;&gt;&lt;a href=&#34;#預設位置&#34; class=&#34;headerlink&#34; title=&#34;預設位置&#34;&gt;&lt;/a&gt;預設位置&lt;/h3&gt;&lt;p&gt;Windows預設應用程式 path 位置&lt;/p&gt;
+&lt;figure class=&#34;highlight gcode&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs gcode&#34;&gt;&lt;span class=&#34;hljs-meta&#34;&gt;%&lt;/span&gt;USERPROFILE&lt;span class=&#34;hljs-meta&#34;&gt;%&lt;/span&gt;\AppData\Local\Microsoft\Wi&lt;span class=&#34;hljs-symbol&#34;&gt;ndowsApps&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;題外話 Linux 的預設位置在&lt;/p&gt;
+&lt;figure class=&#34;highlight awk&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs awk&#34;&gt;&lt;span class=&#34;hljs-regexp&#34;&gt;/usr/&lt;/span&gt;local/bin&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;為甚麼要設定-Path&#34;&gt;&lt;a href=&#34;#為甚麼要設定-Path&#34; class=&#34;headerlink&#34; title=&#34;為甚麼要設定 Path&#34;&gt;&lt;/a&gt;為甚麼要設定 Path&lt;/h3&gt;&lt;p&gt;設定路徑可以簡化找程式的時間&lt;/p&gt;
+&lt;p&gt;例如下載完 youtube-dl.exe 放在下載資料夾內時&lt;br&gt;在指令介面，可以直接打程式名，不用附帶前面的路徑&lt;/p&gt;
+&lt;figure class=&#34;highlight powershell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs powershell&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 未設定路徑&lt;/span&gt;&lt;br&gt;C:\Users\th533\Downloads\youtube&lt;span class=&#34;hljs-literal&#34;&gt;-dl&lt;/span&gt;.exe ...&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 有設定路徑&lt;/span&gt;&lt;br&gt;youtube&lt;span class=&#34;hljs-literal&#34;&gt;-dl&lt;/span&gt;.exe ...&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;新增、編輯-Path&#34;&gt;&lt;a href=&#34;#新增、編輯-Path&#34; class=&#34;headerlink&#34; title=&#34;新增、編輯 Path&#34;&gt;&lt;/a&gt;新增、編輯 Path&lt;/h3&gt;&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/env.png&#34; alt=&#34;env&#34; data-caption=&#34;env&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/env_path.png&#34; alt=&#34;env_path&#34; data-caption=&#34;env_path&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

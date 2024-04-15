@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zonego.tw</id>
+    <title>筆記ZONE • Posts by &#34;字型&#34; tag</title>
+    <link href="https://zonego.tw" />
+    <updated>2024-04-15T02:40:10.000Z</updated>
+    <category term="Hexo" />
+    <category term="Blog" />
+    <category term="搜尋引擎" />
+    <category term="Self-Hosting" />
+    <category term="網路" />
+    <category term="Windows" />
+    <category term="Linux" />
+    <category term="Mac" />
+    <category term="Apple Silicon" />
+    <category term="VM 虛擬機" />
+    <category term="DNS" />
+    <category term="Google" />
+    <category term="廣告" />
+    <category term="網站架設" />
+    <category term="Cloudflare" />
+    <category term="靜態網站" />
+    <category term="Git" />
+    <category term="資安" />
+    <category term="網路資源" />
+    <category term="CI/CD" />
+    <category term="Drone" />
+    <category term="Gitea" />
+    <category term="GMail" />
+    <category term="套件管理" />
+    <category term="字型" />
+    <category term="環境變數" />
+    <category term="Ubuntu" />
+    <category term="桌布" />
+    <category term="DIY" />
+    <category term="Wiki JS" />
+    <category term="Keyckoak" />
+    <category term="身分認證" />
+    <entry>
+        <id>https://zonego.tw/2024/04/15/iansui-font/</id>
+        <title>iansui-font</title>
+        <link rel="alternate" href="https://zonego.tw/2024/04/15/iansui-font/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h1 id=&#34;芫荽-iansui&#34;&gt;&lt;a href=&#34;#芫荽-iansui&#34; class=&#34;headerlink&#34; title=&#34;芫荽 &amp;#x2F; iansui&#34;&gt;&lt;/a&gt;芫荽 &amp;#x2F; iansui&lt;/h1&gt;&lt;p&gt;第一套為台灣教育使用所改造的繁體硬筆楷書字型&lt;/p&gt;
+&lt;p&gt;An open source Chinese font derived from Klee One (Fontworks).&lt;br&gt;基於 Fontworks 的 Klee One 衍生的開源繁體中文字型。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/272006307_4857260941045163_1782966582251673602_n.jpg?_nc_cat=109&amp;ccb=1-7&amp;_nc_sid=5f2048&amp;_nc_ohc=Gq-GHmcsrzAAb4nYKQB&amp;_nc_ht=scontent-tpe1-1.xx&amp;oh=00_AfDKpdb_8KEblYC8Q3pUaoZX2gRNDx9Jju7XjoKUBY6a0w&amp;oe=66226CE4&#34;&gt;&lt;br&gt;&lt;img src=&#34;https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/272094021_4857260854378505_1008538948070863300_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=5f2048&amp;_nc_ohc=MXbmcFayVoQAb51XeXC&amp;_nc_ht=scontent-tpe1-1.xx&amp;oh=00_AfD8CNDHvDRWZ9wvYbdBwmCMvcjeG5pd7L7lOffFjVeNEQ&amp;oe=6622632C&#34;&gt;&lt;br&gt;&lt;img src=&#34;https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/271971802_4857260967711827_2813318410001904650_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_sid=5f2048&amp;_nc_ohc=CnfitaZnv_AAb7j-3_l&amp;_nc_ht=scontent-tpe1-1.xx&amp;oh=00_AfD-cjOvWLRBcGtr4S-t-6UyxZZXGqD4-zTf1Pmq5Dv61Q&amp;oe=66225C86&#34;&gt;&lt;br&gt;&lt;img src=&#34;https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/271966279_4857260864378504_1520780664680379473_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_sid=5f2048&amp;_nc_ohc=tfBU2nM_YBgAb5GTy0g&amp;_nc_ht=scontent-tpe1-1.xx&amp;oh=00_AfD-sibg30YhFbUckLlKTEyfJ9B1P_Yl40J19kqlMSwC5Q&amp;oe=662259E1&#34;&gt;&lt;br&gt;&lt;img src=&#34;https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/272167278_4857261354378455_2338487781966237778_n.jpg?_nc_cat=109&amp;ccb=1-7&amp;_nc_sid=5f2048&amp;_nc_ohc=0gpcBHKpm00Ab6o6OZi&amp;_nc_ht=scontent-tpe1-1.xx&amp;oh=00_AfCpRieSrlrbVdij8mSNj2q0a90MmQzYvHhEH_YJP1D6iw&amp;oe=66227DCC&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;下載&#34;&gt;&lt;a href=&#34;#下載&#34; class=&#34;headerlink&#34; title=&#34;下載&#34;&gt;&lt;/a&gt;下載&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/ButTaiwan/iansui&#34;&gt;GitHub 下載點&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在 GitHub 專案的 Release 頁面，點最新版本的 &lt;code&gt;iansui.zip&lt;/code&gt; 下載&lt;br&gt;&lt;img src=&#34;/images/content/iansui-font/iansui1.jpg&#34;&gt;&lt;br&gt;&lt;img src=&#34;/images/content/iansui-font/iansui2.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;將 &lt;code&gt;iansui.zip&lt;/code&gt; 解壓縮後，找到 &lt;code&gt;Iansui-Regular.ttf&lt;/code&gt; 點兩下即可安裝。&lt;/p&gt;
+&lt;h3 id=&#34;另外也有發音符號的版本&#34;&gt;&lt;a href=&#34;#另外也有發音符號的版本&#34; class=&#34;headerlink&#34; title=&#34;另外也有發音符號的版本&#34;&gt;&lt;/a&gt;另外也有發音符號的版本&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ButTaiwan/bpmfvs&#34;&gt;注音芫荽&lt;/a&gt; 芫荽的注音字型。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ButTaiwan/taigivs&#34;&gt;字咍芫荽&lt;/a&gt; 台語標音字型家族。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;圖片、資訊來源：&#34;&gt;&lt;a href=&#34;#圖片、資訊來源：&#34; class=&#34;headerlink&#34; title=&#34;圖片、資訊來源：&#34;&gt;&lt;/a&gt;圖片、資訊來源：&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/aestheticell/posts/4828133620624562&#34;&gt;美感細胞 教科書再造計畫&lt;/a&gt;&lt;/p&gt;
+</content>
+        <category term="網路資源" />
+        <category term="字型" />
+        <updated>2024-04-15T02:40:10.000Z</updated>
+    </entry>
+</feed>

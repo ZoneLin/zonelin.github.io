@@ -1,0 +1,20 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "筆記ZONE • All posts by \"套件管理\" tag",
+    "description": "",
+    "home_page_url": "https://zonego.tw",
+    "items": [
+        {
+            "id": "https://zonego.tw/2022/10/24/homebrew/",
+            "url": "https://zonego.tw/2022/10/24/homebrew/",
+            "title": "Mac 上的套件管理系統 Homebrew",
+            "date_published": "2022-10-24T09:59:16.000Z",
+            "content_html": "<span id=\"more\"></span>\n\n<h1 id=\"Homebrew\"><a href=\"#Homebrew\" class=\"headerlink\" title=\"Homebrew\"></a><a href=\"https://brew.sh/\">Homebrew</a></h1><p><a href=\"https://brew.sh/\">Homebrew</a> 是 Mac 上常用的第三方套件管理器，可以用來安裝 wget 等 Linux 常用但 Mac 沒有的程式。<br>雖然主要是面向 Mac 的程式，但 Linux 也可以用。</p>\n<h2 id=\"安裝\"><a href=\"#安裝\" class=\"headerlink\" title=\"安裝\"></a>安裝</h2><p>官方有提供安裝腳本</p>\n<figure class=\"highlight bash\"><table><tr><td class=\"code\"><pre><code class=\"hljs bash\"><span class=\"hljs-comment\"># Homebrew 安裝腳本</span><br>/bin/bash -c <span class=\"hljs-string\">&quot;<span class=\"hljs-subst\">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure>\n<blockquote>\n<p>不需要用 sudo 安裝</p>\n</blockquote>\n<p>裝完之後可以用 <code>brew help</code> 檢查是否安裝成功</p>\n<h2 id=\"使用方法\"><a href=\"#使用方法\" class=\"headerlink\" title=\"使用方法\"></a>使用方法</h2><figure class=\"highlight bash\"><table><tr><td class=\"code\"><pre><code class=\"hljs bash\">xxxx@MacBook-Pro ~ % brew <span class=\"hljs-built_in\">help</span><br><br>Example usage:<br>  brew search TEXT|/REGEX/<br>  brew info [FORMULA|CASK...]<br>  brew install FORMULA|CASK...<br>  brew update<br>  brew upgrade [FORMULA|CASK...]<br>  brew uninstall FORMULA|CASK...<br>  brew list [FORMULA|CASK...]<br><br>Troubleshooting:<br>  brew config<br>  brew doctor<br>  brew install --verbose --debug FORMULA|CASK<br><br>Contributing:<br>  brew create URL [--no-fetch]<br>  brew edit [FORMULA|CASK...]<br><br>Further <span class=\"hljs-built_in\">help</span>:<br>  brew commands<br>  brew <span class=\"hljs-built_in\">help</span> [COMMAND]<br>  man brew<br>  https://docs.brew.sh<br></code></pre></td></tr></table></figure>\n\n<figure class=\"highlight bash\"><table><tr><td class=\"code\"><pre><code class=\"hljs bash\"><span class=\"hljs-comment\"># 例如安裝 wget</span><br>brew install wget<br></code></pre></td></tr></table></figure>\n\n<p>其他更多用法參考官網 <a href=\"https://brew.sh/index_zh-tw\">https://brew.sh/index_zh-tw</a> (有中文)</p>\n<h2 id=\"安裝問題\"><a href=\"#安裝問題\" class=\"headerlink\" title=\"安裝問題\"></a>安裝問題</h2><p>如果下載途中意外中斷 <del>(例如 Mac 休眠自動斷線)</del> ，重跑時可能會出現下面問題</p>\n<figure class=\"highlight bash\"><table><tr><td class=\"code\"><pre><code class=\"hljs bash\">error: Not a valid ref: refs/remotes/origin/master<br>fatal: ambiguous argument <span class=\"hljs-string\">&#x27;refs/remotes/origin/master&#x27;</span>: unknown revision or path not <span class=\"hljs-keyword\">in</span> the working tree.<br></code></pre></td></tr></table></figure>\n\n<p>碰到這個問題，只要先把舊的刪掉再重裝就可以了</p>\n<figure class=\"highlight bash\"><table><tr><td class=\"code\"><pre><code class=\"hljs bash\"><span class=\"hljs-comment\"># Homebrew 刪除腳本</span><br>/bin/bash -c <span class=\"hljs-string\">&quot;<span class=\"hljs-subst\">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure>",
+            "tags": [
+                "Linux",
+                "Mac",
+                "套件管理"
+            ]
+        }
+    ]
+}

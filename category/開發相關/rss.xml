@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>筆記ZONE • Posts by &#34;開發相關&#34; category</title>
+        <link>https://zonego.tw</link>
+        <description></description>
+        <language>zh-TW</language>
+        <pubDate>Thu, 06 Jan 2022 12:15:54 +0000</pubDate>
+        <lastBuildDate>Thu, 06 Jan 2022 12:15:54 +0000</lastBuildDate>
+        <category>Hexo</category>
+        <category>Blog</category>
+        <category>搜尋引擎</category>
+        <category>Self-Hosting</category>
+        <category>網路</category>
+        <category>Windows</category>
+        <category>Linux</category>
+        <category>Mac</category>
+        <category>Apple Silicon</category>
+        <category>VM 虛擬機</category>
+        <category>DNS</category>
+        <category>Google</category>
+        <category>廣告</category>
+        <category>網站架設</category>
+        <category>Cloudflare</category>
+        <category>靜態網站</category>
+        <category>Git</category>
+        <category>資安</category>
+        <category>網路資源</category>
+        <category>CI/CD</category>
+        <category>Drone</category>
+        <category>Gitea</category>
+        <category>GMail</category>
+        <category>套件管理</category>
+        <category>字型</category>
+        <category>環境變數</category>
+        <category>Ubuntu</category>
+        <category>桌布</category>
+        <category>DIY</category>
+        <category>Wiki JS</category>
+        <category>Keyckoak</category>
+        <category>身分認證</category>
+        <item>
+            <guid isPermalink="true">https://zonego.tw/2022/01/06/drone-git-push/</guid>
+            <title>drone-git-push 踩雷心得</title>
+            <link>https://zonego.tw/2022/01/06/drone-git-push/</link>
+            <category>Git</category>
+            <category>CI/CD</category>
+            <category>Drone</category>
+            <pubDate>Thu, 06 Jan 2022 12:15:54 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;a href=&#34;https://www.drone.io/&#34;&gt;Drone CI&lt;/a&gt; 是一個可以自行的 CI (Continuous Integration) 軟體&lt;/p&gt;
+&lt;p&gt;使用 CI 的用意就是為了，能在寫完程式時，自動測試、編譯與發佈程式。&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;關於怎麼架設改天再寫一篇教學。 &lt;del&gt;Google一下應該就很多教學了&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;drone-git-push&#34;&gt;&lt;a href=&#34;#drone-git-push&#34; class=&#34;headerlink&#34; title=&#34;drone-git-push&#34;&gt;&lt;/a&gt;drone-git-push&lt;/h2&gt;&lt;p&gt;回來本篇主題&lt;/p&gt;
+&lt;p&gt;這次我的需求是在 Drone 的流程內，測試或編譯完程式後以 git 推送到不同的儲藏庫&lt;/p&gt;
+&lt;p&gt;其實就是要產生網站檔案後，推送到 GitHub 方便用 GitHub Page 或是 Cloudflare Page&lt;/p&gt;
+&lt;p&gt;在 Drone CI 中可以用 &lt;a href=&#34;http://plugins.drone.io/appleboy/drone-git-push/&#34;&gt;drone-git-push&lt;/a&gt; 做到&lt;/p&gt;
+&lt;p&gt;這次遇到的問題有2個 &lt;del&gt;害我為了找問題多花很多時間&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;儲存庫辨識失敗&#34;&gt;&lt;a href=&#34;#儲存庫辨識失敗&#34; class=&#34;headerlink&#34; title=&#34;儲存庫辨識失敗&#34;&gt;&lt;/a&gt;儲存庫辨識失敗&lt;/h2&gt;&lt;p&gt;錯誤訊息:&lt;/p&gt;
+&lt;figure class=&#34;highlight node-repl&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs node-repl&#34;&gt;&lt;span class=&#34;hljs-meta prompt_&#34;&gt;...&lt;/span&gt;&lt;br&gt;parse \&amp;quot;git@github.com:user/repo.git\&amp;quot;: first path segment in URL cannot contain colon&amp;quot;&lt;br&gt;&lt;span class=&#34;hljs-meta prompt_&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;照原本文件寫的 &lt;code&gt;.drone.yml&lt;/code&gt; 大概是長這樣&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;name:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;deploy&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;git&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;image:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;appleboy/drone-git-push&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;settings:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;branch:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;main&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;remote:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;git@github.com:user/repo.git&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;force:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;false&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;commit:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;參考&lt;a href=&#34;https://github.com/appleboy/drone-git-push/issues/40&#34;&gt;GitHub討論區&lt;/a&gt;的解決方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用緊急修補的 image&lt;/li&gt;
+&lt;li&gt;remote 改用字串&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;name:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;deploy&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;git&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;image:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;appleboy/drone-git-push:0.2.0-linux-amd64&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;settings:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;branch:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;main&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;remote:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;git@github.com:user/repo.git&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;force:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;false&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;commit:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;SSH-Key-讀取失敗&#34;&gt;&lt;a href=&#34;#SSH-Key-讀取失敗&#34; class=&#34;headerlink&#34; title=&#34;SSH Key 讀取失敗&#34;&gt;&lt;/a&gt;SSH Key 讀取失敗&lt;/h2&gt;&lt;p&gt;由於資安的關係， SSH KEY 不可以跟著程式碼推送到儲存庫，更不可能放明碼在設定檔中&lt;/p&gt;
+&lt;p&gt;在 Drone CI 要改用 secret 的功能&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;.drone.yml&lt;/code&gt; 大概長這樣&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;name:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;deploy&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;git&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;image:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;appleboy/drone-git-push:0.2.0-linux-amd64&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;settings:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;branch:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;main&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;ssh_key:&lt;/span&gt;&lt;br&gt;      &lt;span class=&#34;hljs-attr&#34;&gt;from_secret:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;githubkey&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;另外在 Drone CI 的 WebUI 上添加 Secret&lt;/p&gt;
+&lt;p&gt;將 private key 的內文貼進去&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/DroneCI-secret.png&#34; alt=&#34;secret&#34; data-caption=&#34;secret&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;然後就碰到問題了&lt;/p&gt;
+&lt;p&gt;錯誤訊息:&lt;/p&gt;
+&lt;figure class=&#34;highlight node-repl&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs node-repl&#34;&gt;&lt;span class=&#34;hljs-meta prompt_&#34;&gt;...&lt;/span&gt;&lt;br&gt;Load key &amp;quot;/root/.ssh/id_rsa&amp;quot;: invalid format&lt;br&gt;&lt;span class=&#34;hljs-meta prompt_&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;參考&lt;a href=&#34;https://github.com/appleboy/drone-git-push/issues/37&#34;&gt;GitHub討論區&lt;/a&gt;的解決方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;產生的 SSH key 需要改用 PEM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;ssh-keygen -t rsa -b 4096 -C &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;your_email@example.com&amp;quot;&lt;/span&gt; -m PEM&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;換完 KEY 甚麼問題都沒了🎉&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

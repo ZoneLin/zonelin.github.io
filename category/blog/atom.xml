@@ -1,0 +1,443 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zonego.tw</id>
+    <title>筆記ZONE • Posts by &#34;blog&#34; category</title>
+    <link href="https://zonego.tw" />
+    <updated>2023-08-16T07:28:51.000Z</updated>
+    <category term="Hexo" />
+    <category term="Blog" />
+    <category term="搜尋引擎" />
+    <category term="Self-Hosting" />
+    <category term="網路" />
+    <category term="Windows" />
+    <category term="Linux" />
+    <category term="Mac" />
+    <category term="Apple Silicon" />
+    <category term="VM 虛擬機" />
+    <category term="DNS" />
+    <category term="Google" />
+    <category term="廣告" />
+    <category term="網站架設" />
+    <category term="Cloudflare" />
+    <category term="靜態網站" />
+    <category term="Git" />
+    <category term="資安" />
+    <category term="網路資源" />
+    <category term="CI/CD" />
+    <category term="Drone" />
+    <category term="Gitea" />
+    <category term="GMail" />
+    <category term="套件管理" />
+    <category term="字型" />
+    <category term="環境變數" />
+    <category term="Ubuntu" />
+    <category term="桌布" />
+    <category term="DIY" />
+    <category term="Wiki JS" />
+    <category term="Keyckoak" />
+    <category term="身分認證" />
+    <entry>
+        <id>https://zonego.tw/2023/08/16/adsense/</id>
+        <title>Google AdSense 讓你的網站幫你賺錢</title>
+        <link rel="alternate" href="https://zonego.tw/2023/08/16/adsense/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;申請 Google 帳號這個步驟就先跳過&lt;/p&gt;
+&lt;p&gt;接下來到 AdSense 網站 &lt;a href=&#34;https://www.google.com/adsense&#34;&gt;https://www.google.com/adsense&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;套用-AdSense&#34;&gt;&lt;a href=&#34;#套用-AdSense&#34; class=&#34;headerlink&#34; title=&#34;套用 AdSense&#34;&gt;&lt;/a&gt;套用 AdSense&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&#34;設定要套用的網站&#34;&gt;&lt;a href=&#34;#設定要套用的網站&#34; class=&#34;headerlink&#34; title=&#34;設定要套用的網站&#34;&gt;&lt;/a&gt;設定要套用的網站&lt;/h2&gt;&lt;p&gt;點新增網站之後，打入網站的連結，例如 &lt;a href=&#34;https://example.com/&#34;&gt;https://example.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;接下來要驗證網站是你的，有兩種方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 AdSense 程式碼&lt;/li&gt;
+&lt;li&gt;使用 Ads.txt 驗證&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;使用-AdSense-程式碼&#34;&gt;&lt;a href=&#34;#使用-AdSense-程式碼&#34; class=&#34;headerlink&#34; title=&#34;使用 AdSense 程式碼&#34;&gt;&lt;/a&gt;使用 AdSense 程式碼&lt;/h3&gt;&lt;p&gt;將 Google 提供的代碼貼到個頁面的 header&lt;br&gt;&lt;img src=&#34;/images/content/AdSense/AdSenseCode.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;以這個部落格的為例，nexmoe 這個主題有提供修改 header 的設定&lt;/p&gt;
+&lt;p&gt;修改 &lt;code&gt;_config.nexmoe.yml&lt;/code&gt;，在 &lt;code&gt;slotHead: &lt;/code&gt; 貼上即可&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-string&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;slotHead:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;|&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-string&#34;&gt;&amp;lt;script&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;src=&amp;quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-ID&amp;quot;&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;使用-Ads-txt-驗證&#34;&gt;&lt;a href=&#34;#使用-Ads-txt-驗證&#34; class=&#34;headerlink&#34; title=&#34;使用 Ads.txt 驗證&#34;&gt;&lt;/a&gt;使用 Ads.txt 驗證&lt;/h3&gt;&lt;p&gt;建議使用這個方式驗證比較省事，如果我們不是用 Ads.txt 驗證網站所有權的話，後面還是要做這一步&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/AdSense/AdSenseAds.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;步驟請跳下面說明&lt;/p&gt;
+&lt;h2 id=&#34;Ads-txt&#34;&gt;&lt;a href=&#34;#Ads-txt&#34; class=&#34;headerlink&#34; title=&#34;Ads.txt&#34;&gt;&lt;/a&gt;Ads.txt&lt;/h2&gt;&lt;p&gt;詳細請參考 Google 的說明 &lt;a href=&#34;https://support.google.com/adsense/answer/12171612?hl=zh-Hant&#34;&gt;https://support.google.com/adsense/answer/12171612?hl=zh-Hant&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;簡單來說，美國為了保護下廣告的客戶，提供銷售廣告位的網站需要提供 &lt;a href=&#34;https://iabtechlab.com/ads-txt/&#34;&gt;Authorized Digital Sellers&lt;/a&gt; (簡稱 ads.txt)&lt;/p&gt;
+&lt;h3 id=&#34;設定-ads-txt&#34;&gt;&lt;a href=&#34;#設定-ads-txt&#34; class=&#34;headerlink&#34; title=&#34;設定 ads.txt&#34;&gt;&lt;/a&gt;設定 ads.txt&lt;/h3&gt;&lt;p&gt;如果驗證時不是用這個方式的話，可以點網站進去，Google 會產生 &lt;code&gt;ads.txt&lt;/code&gt; 的內容可以複製&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/AdSense/ads.txt.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;範例：&lt;/p&gt;
+&lt;figure class=&#34;highlight fortran&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs fortran&#34;&gt;google.com, pub-XXXXXX, &lt;span class=&#34;hljs-keyword&#34;&gt;DIRECT&lt;/span&gt;, XXXXXXX&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;以 Hexo 為例子，在 &lt;code&gt;source&lt;/code&gt; 資料夾內新增 &lt;code&gt;ads.txt&lt;/code&gt;，把剛剛複製的內容貼上&lt;br&gt;修改 &lt;code&gt;_config.yml&lt;/code&gt; 設定跳渲染 &lt;code&gt;ads.txt&lt;/code&gt; (可參考 &lt;a href=&#34;/2021/12/15/hexo-skip/&#34;&gt;Hexo 指定文件跳過渲染&lt;/a&gt;)&lt;/p&gt;
+&lt;figure class=&#34;highlight yml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yml&#34;&gt;&lt;span class=&#34;hljs-string&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;ads.txt&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h1 id=&#34;設定付款資料&#34;&gt;&lt;a href=&#34;#設定付款資料&#34; class=&#34;headerlink&#34; title=&#34;設定付款資料&#34;&gt;&lt;/a&gt;設定付款資料&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&#34;付款資料&#34;&gt;&lt;a href=&#34;#付款資料&#34; class=&#34;headerlink&#34; title=&#34;付款資料&#34;&gt;&lt;/a&gt;付款資料&lt;/h2&gt;&lt;p&gt;點左側選單 &amp;gt; 付款 &amp;gt; 付款資訊&lt;/p&gt;
+&lt;p&gt;付款帳戶的資料基本上不用管它，想要調整收到前的時間可以改付款時間表，最少需要累積到 100 美金才領的出來&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/AdSense/%E4%BB%98%E6%AC%BE%E8%B3%87%E8%A8%8A.jpg&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;美國稅籍資料&#34;&gt;&lt;a href=&#34;#美國稅籍資料&#34; class=&#34;headerlink&#34; title=&#34;美國稅籍資料&#34;&gt;&lt;/a&gt;美國稅籍資料&lt;/h2&gt;&lt;p&gt;畢竟 Google 是美國公司，照美國的稅制大概會收 24% 起跳的稅金&lt;br&gt;外國人可以申請 W-8BEN 來降低稅收，只有針對美國人銷售、營利才需要收 30% 稅金&lt;/p&gt;
+&lt;p&gt;簡單來說假設你的網站有 100 美元的廣告收入，其中有 10% 的廣告收入是來自美國&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;稅金&lt;/th&gt;
+&lt;th&gt;實際收入&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;正常稅率 (未申請 W-8BEN)&lt;/td&gt;
+&lt;td&gt;100 * 24% &amp;#x3D; 24&lt;/td&gt;
+&lt;td&gt;100 - 24 &amp;#x3D; 76&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;有申請 W-8BEN&lt;/td&gt;
+&lt;td&gt;(100 * 10%) * 30% &amp;#x3D; 3&lt;/td&gt;
+&lt;td&gt;100 - 3 &amp;#x3D; 97&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;所以，除非你的網站或 Youtube 頻道主要都是來自美國，不然申請 W-8BEN 扣的稅會比較少&lt;/p&gt;
+&lt;p&gt;我是參考雲爸的教學來填寫 &lt;a href=&#34;https://dacota.tw/blog/post/google-adsense-w-8ben&#34;&gt;https://dacota.tw/blog/post/google-adsense-w-8ben&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;付款資料內的姓名記得填護照的英文姓名，不然需要在另外上傳護照證明稅及跟帳號擁有者是同一人&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;付款方式&#34;&gt;&lt;a href=&#34;#付款方式&#34; class=&#34;headerlink&#34; title=&#34;付款方式&#34;&gt;&lt;/a&gt;付款方式&lt;/h2&gt;&lt;p&gt;付款方式要累積到能第一次領錢才能設定&lt;/p&gt;
+&lt;p&gt;台灣能使用的有2種方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;美元支票&lt;/li&gt;
+&lt;li&gt;電匯&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://lashiblog.com/google-adsense-payments/&#34;&gt;https://lashiblog.com/google-adsense-payments/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;安插廣告&#34;&gt;&lt;a href=&#34;#安插廣告&#34; class=&#34;headerlink&#34; title=&#34;安插廣告&#34;&gt;&lt;/a&gt;安插廣告&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;安插廣告到網站裡面有2種作法，自動廣告跟手動廣告&lt;/p&gt;
+&lt;h2 id=&#34;自動廣告&#34;&gt;&lt;a href=&#34;#自動廣告&#34; class=&#34;headerlink&#34; title=&#34;自動廣告&#34;&gt;&lt;/a&gt;自動廣告&lt;/h2&gt;&lt;p&gt;在左邊選單 廣告 &amp;gt; 按網站 &amp;gt; 選你要啟用自動廣告的網站&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/AdSense/auto.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;這邊啟用之後就會自動在網站內插入廣告 (因為是自動，廣告可能會插在文中)&lt;/p&gt;
+&lt;h2 id=&#34;手動插入廣告&#34;&gt;&lt;a href=&#34;#手動插入廣告&#34; class=&#34;headerlink&#34; title=&#34;手動插入廣告&#34;&gt;&lt;/a&gt;手動插入廣告&lt;/h2&gt;&lt;p&gt;在左邊選單 廣告 &amp;gt; 按廣告單元&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/content/AdSense/%E6%89%8B%E5%8B%95%E5%BB%A3%E5%91%8A.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在這邊依照合適的版面類型建立廣告，建完之後會有給你廣告的代碼&lt;br&gt;代碼大概分為三個部分&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;&amp;lt;!--請放在 Header，只需要放一次--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;src&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-ID&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;crossorigin&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;anonymous&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;&amp;lt;!--放在頁面內你想出現廣告的地方，可在頁面內放多次--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;ins&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;class&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;adsbygoogle&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;style&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;display:block; text-align:center;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;data-ad-layout&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;in-article&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;data-ad-format&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;fluid&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;data-ad-client&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;ca-pub-ID&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;     &lt;span class=&#34;hljs-attr&#34;&gt;data-ad-slot&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;廣告單元ID&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;ins&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;&amp;lt;!--放在頁面最後，只需要放一次--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;language-javascript&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;language-javascript&#34;&gt;     (adsbygoogle = &lt;span class=&#34;hljs-variable language_&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;hljs-property&#34;&gt;adsbygoogle&lt;/span&gt; || []).&lt;span class=&#34;hljs-title function_&#34;&gt;push&lt;/span&gt;(&amp;#123;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;language-javascript&#34;&gt;&lt;/span&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細可參考Google的說明&lt;a href=&#34;https://support.google.com/adsense/answer/9190028?sjid=17637765633261310327-AP&#34;&gt;https://support.google.com/adsense/answer/9190028?sjid=17637765633261310327-AP&lt;/a&gt;&lt;/p&gt;
+</content>
+        <category term="Google" />
+        <category term="廣告" />
+        <updated>2023-08-16T07:28:51.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2023/08/02/google-search-console/</id>
+        <title>Google Search Console - 讓 Google 搜尋到部落格內容</title>
+        <link rel="alternate" href="https://zonego.tw/2023/08/02/google-search-console/"/>
+        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;p&gt;建好一個新網站，在搜尋引擎爬到你的網站之前，當然會搜尋不到任何東西&lt;/p&gt;
+&lt;p&gt;那 Google 甚麼時候會時候會來爬我的網站? 真的就是&lt;em&gt;隨緣&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;要主動讓搜尋引擎認識你的網站? 那就是要來設定 Google Search Console&lt;/p&gt;
+&lt;p&gt;其他搜尋引擎請參考&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/2023/10/02/BingWebmasterTools/&#34;&gt;Bing Webmaster Tools - 讓 Bing 搜尋到部落格內容&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;新增網站的-Sitemap&#34;&gt;&lt;a href=&#34;#新增網站的-Sitemap&#34; class=&#34;headerlink&#34; title=&#34;新增網站的 Sitemap&#34;&gt;&lt;/a&gt;新增網站的 Sitemap&lt;/h2&gt;&lt;p&gt;去 Google 設定之前，我們需要先將搜尋引擎需要的網站地圖 sitemap.xml 產生出來。&lt;br&gt;教學請看這篇 &lt;a href=&#34;/2023/07/26/hexo-sitemap/&#34;&gt;Hexo 自動產生網站的 sitemap&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;在-Google-Search-Console-新增網站&#34;&gt;&lt;a href=&#34;#在-Google-Search-Console-新增網站&#34; class=&#34;headerlink&#34; title=&#34;在 Google Search Console 新增網站&#34;&gt;&lt;/a&gt;在 Google Search Console 新增網站&lt;/h2&gt;&lt;h3 id=&#34;註冊-Google-帳號&#34;&gt;&lt;a href=&#34;#註冊-Google-帳號&#34; class=&#34;headerlink&#34; title=&#34;註冊 Google 帳號&#34;&gt;&lt;/a&gt;註冊 Google 帳號&lt;/h3&gt;&lt;p&gt;這部份相信大家都會，跳過&lt;/p&gt;
+&lt;h3 id=&#34;新增網站&#34;&gt;&lt;a href=&#34;#新增網站&#34; class=&#34;headerlink&#34; title=&#34;新增網站&#34;&gt;&lt;/a&gt;新增網站&lt;/h3&gt;&lt;p&gt;接下來到 Google Search Console 去設定爬蟲來抓我們的網站&lt;br&gt;Google Search Console 網址： &lt;a href=&#34;https://search.google.com/search-console&#34;&gt;https://search.google.com/search-console&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_search_console/%E6%96%B0%E5%A2%9E%E7%AB%99%E9%BB%9E.png&#34; alt=&#34;新增網站&#34; data-caption=&#34;新增網站&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;資源類型分為兩類，網站前置字元代表只索引單一網站，網域則是歸在該網域下的所有網站都會索引。&lt;br&gt;沒有特殊需求的話選網站前置字元就好。&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_search_console/%E8%B3%87%E6%BA%90%E9%A1%9E%E5%9E%8B.png&#34; alt=&#34;新增網站&#34; data-caption=&#34;新增網站&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;驗證網站&#34;&gt;&lt;a href=&#34;#驗證網站&#34; class=&#34;headerlink&#34; title=&#34;驗證網站&#34;&gt;&lt;/a&gt;驗證網站&lt;/h2&gt;&lt;p&gt;把要索引的網站打進去後，接下來要驗證網站是你的&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_search_console/%E9%A9%97%E8%AD%89%E6%96%B9%E5%BC%8F.png&#34; alt=&#34;新增網站&#34; data-caption=&#34;新增網站&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;下面的驗證方式選一個就好&lt;/p&gt;
+&lt;h3 id=&#34;HTML-檔案&#34;&gt;&lt;a href=&#34;#HTML-檔案&#34; class=&#34;headerlink&#34; title=&#34;HTML 檔案&#34;&gt;&lt;/a&gt;HTML 檔案&lt;/h3&gt;&lt;p&gt;預設最簡單的驗證方式，只要將 google 提供的驗證用 html 檔案下載，放在 hexo 的目錄即可&lt;br&gt;網站部屬之後可以在 &lt;a href=&#34;https://yoursite.com/googleXXXXXXXXXXXXXXXX.html&#34;&gt;https://yoursite.com/googleXXXXXXXXXXXXXXXX.html&lt;/a&gt; 看到驗證碼就可以去點驗證了&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;記得在 &lt;code&gt;_config.yml&lt;/code&gt; 加入跳過這個檔案的渲染 詳細請看 &lt;a href=&#34;/2021/12/15/hexo-skip/&#34;&gt;Hexo 指定文件跳過渲染&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;googleXXXXXXXXXXXXXXXX.html&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;HTML-標記&#34;&gt;&lt;a href=&#34;#HTML-標記&#34; class=&#34;headerlink&#34; title=&#34;HTML 標記&#34;&gt;&lt;/a&gt;HTML 標記&lt;/h3&gt;&lt;p&gt;在首頁的 Header 內加入驗證碼&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://yoursite.com/index.html&#34;&gt;https://yoursite.com/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;name&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;google-site-verification&amp;quot;&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;content&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;key-XXX&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;Google-Analytics&#34;&gt;&lt;a href=&#34;#Google-Analytics&#34; class=&#34;headerlink&#34; title=&#34;Google Analytics&#34;&gt;&lt;/a&gt;Google Analytics&lt;/h3&gt;&lt;p&gt;如果你的網站有使用  Google Analytics 的話可以直接點驗整就好，反正也在設定 GA 時也算驗證過網站所有者了&lt;/p&gt;
+&lt;h3 id=&#34;網域名稱供應商&#34;&gt;&lt;a href=&#34;#網域名稱供應商&#34; class=&#34;headerlink&#34; title=&#34;網域名稱供應商&#34;&gt;&lt;/a&gt;網域名稱供應商&lt;/h3&gt;&lt;p&gt;在 DNS 內加入相同網域的 TXT 紀錄，裡面放驗證碼即可驗證&lt;br&gt;如果是 cloud flare 的話就更簡單，只要照著點就好了&lt;br&gt;不過設定時要注意衝突&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/google_search_console/DNS.png&#34; alt=&#34;新增網站&#34; data-caption=&#34;新增網站&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;完成&#34;&gt;&lt;a href=&#34;#完成&#34; class=&#34;headerlink&#34; title=&#34;完成&#34;&gt;&lt;/a&gt;完成&lt;/h2&gt;&lt;p&gt;驗證完之後等待 google 把 sitemap 內的頁面索引完，在 Google 搜尋你的網站可以被搜尋到了&lt;br&gt;後續 google 會提是你的網站有什麼問題需要修正，未修正前會被排到搜尋列表的後面&lt;br&gt;要被演算法排到前面就需要做 SEO (search engine optimizaton) 了&lt;/p&gt;
+</content>
+        <category term="Hexo" />
+        <category term="Blog" />
+        <category term="搜尋引擎" />
+        <category term="Google" />
+        <updated>2023-08-02T04:52:15.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2023/07/26/hexo-sitemap/</id>
+        <title>Hexo 自動產生網站的 sitemap</title>
+        <link rel="alternate" href="https://zonego.tw/2023/07/26/hexo-sitemap/"/>
+        <content type="html">&lt;p&gt;Sitemap 意思為網站地圖，主要是提供給搜尋引擎知道，這個網站有哪些頁面。&lt;br&gt;當然，如果你喜歡看原始的 xml 檔，也可以給人看。&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;hexo-generator-sitemap&#34;&gt;&lt;a href=&#34;#hexo-generator-sitemap&#34; class=&#34;headerlink&#34; title=&#34;hexo-generator-sitemap&#34;&gt;&lt;/a&gt;hexo-generator-sitemap&lt;/h2&gt;&lt;p&gt;GitHub: &lt;a href=&#34;https://github.com/hexojs/hexo-generator-sitemap&#34;&gt;https://github.com/hexojs/hexo-generator-sitemap&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;這個插件在我們部署 hexo 網站時，會自動幫我們產生 sitemap.xml&lt;/p&gt;
+&lt;h2 id=&#34;安裝&#34;&gt;&lt;a href=&#34;#安裝&#34; class=&#34;headerlink&#34; title=&#34;安裝&#34;&gt;&lt;/a&gt;安裝&lt;/h2&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;npm install hexo-generator-sitemap --save&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;Hexo 版本對應使用插件的版本&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Hexo&lt;/th&gt;
+&lt;th&gt;插件&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;Hexo 4&lt;/td&gt;
+&lt;td&gt;2.x&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Hexo 3&lt;/td&gt;
+&lt;td&gt;1.x&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Hexo 2&lt;/td&gt;
+&lt;td&gt;0.x&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2 id=&#34;調整設定&#34;&gt;&lt;a href=&#34;#調整設定&#34; class=&#34;headerlink&#34; title=&#34;調整設定&#34;&gt;&lt;/a&gt;調整設定&lt;/h2&gt;&lt;h3 id=&#34;修改-Hexo-的設定檔-config-yml&#34;&gt;&lt;a href=&#34;#修改-Hexo-的設定檔-config-yml&#34; class=&#34;headerlink&#34; title=&#34;修改 Hexo 的設定檔 _config.yml&#34;&gt;&lt;/a&gt;修改 Hexo 的設定檔 &lt;code&gt;_config.yml&lt;/code&gt;&lt;/h3&gt;&lt;p&gt;設定範例:&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-string&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;sitemap:&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;path:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;sitemap.xml&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;sitemap.txt&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;template:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;./sitemap_template.xml&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;template_txt:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;./sitemap_template.txt&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;rel:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;false&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;tags:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;categories:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;參數&lt;/th&gt;
+&lt;th&gt;說明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;path&lt;/td&gt;
+&lt;td&gt;產生的 sitemap 檔案位置&lt;br&gt;範例的寫法就是 &lt;a href=&#34;http://localhost:4000/sitemap.xml&#34;&gt;http://localhost:4000/sitemap.xml&lt;/a&gt;&lt;br&gt;如果不要生成 txt 格式可以不寫 &lt;code&gt;- sitemap.txt&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;template&lt;/td&gt;
+&lt;td&gt;用於產生 sitemap.xml 的模版檔案位置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;template_txt&lt;/td&gt;
+&lt;td&gt;用於產生 sitemap.txt 的模版檔案位置&lt;br&gt;(如果不要生成 sitemap.txt 可以不寫)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rel&lt;/td&gt;
+&lt;td&gt;是否在 header 產生 rel-sitemap&lt;br&gt;詳情請看&lt;a href=&#34;http://microformats.org/wiki/rel-sitemap&#34;&gt;說明&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;tags&lt;/td&gt;
+&lt;td&gt;是否產生個別 tag 頁面&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;categories&lt;/td&gt;
+&lt;td&gt;是否產生個別分類的頁面&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3 id=&#34;建立模版檔案&#34;&gt;&lt;a href=&#34;#建立模版檔案&#34; class=&#34;headerlink&#34; title=&#34;建立模版檔案&#34;&gt;&lt;/a&gt;建立模版檔案&lt;/h3&gt;&lt;p&gt;預設的 xml 與 txt 格式的模版可以在 github repo 內下載&lt;br&gt;xml: &lt;a href=&#34;https://github.com/hexojs/hexo-generator-sitemap/blob/master/sitemap.xml&#34;&gt;https://github.com/hexojs/hexo-generator-sitemap/blob/master/sitemap.xml&lt;/a&gt;&lt;br&gt;txt: &lt;a href=&#34;https://github.com/hexojs/hexo-generator-sitemap/blob/master/sitemap.txt&#34;&gt;https://github.com/hexojs/hexo-generator-sitemap/blob/master/sitemap.txt&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下載後放到 Hexo 的目錄即可&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;模版檔案的路徑可以自訂&lt;br&gt;例如：模版檔案放在 your_hexo_site&amp;#x2F;template&amp;#x2F;sitemap.xml&lt;br&gt;設定檔 &lt;code&gt;_config.yml&lt;/code&gt; 內的模版路徑 template 需要著修改&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;sitemap:&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-string&#34;&gt;...&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;template:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;./template/sitemap.xml&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;測試安裝&#34;&gt;&lt;a href=&#34;#測試安裝&#34; class=&#34;headerlink&#34; title=&#34;測試安裝&#34;&gt;&lt;/a&gt;測試安裝&lt;/h3&gt;&lt;p&gt;安裝完後啟動伺服器，到 &lt;a href=&#34;http://localhost:4000/sitemap.xml&#34;&gt;http://localhost:4000/sitemap.xml&lt;/a&gt; 看是否有產生 sitemap.xml&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo server&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;產生靜態頁面也會自動產生 sitemap 檔案&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo generate&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;跳過-sitemap-收錄&#34;&gt;&lt;a href=&#34;#跳過-sitemap-收錄&#34; class=&#34;headerlink&#34; title=&#34;跳過 sitemap 收錄&#34;&gt;&lt;/a&gt;跳過 sitemap 收錄&lt;/h2&gt;&lt;p&gt;如果有貼文或頁面想在 sitemap 中隱藏，可以在標頭 (Front-matter) 加 &lt;code&gt;sitemap: false&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;figure class=&#34;highlight markdown&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs markdown&#34;&gt;---&lt;br&gt;title: 隱藏貼文&lt;br&gt;date: 2020-01-01&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;sitemap: false&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;---&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+        <category term="Hexo" />
+        <category term="Blog" />
+        <updated>2023-07-26T05:18:46.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2022/12/21/hexo-404-page/</id>
+        <title>Hexo 設定 404 頁面</title>
+        <link rel="alternate" href="https://zonego.tw/2022/12/21/hexo-404-page/"/>
+        <content type="html">&lt;p&gt;404 頁面，也就是找不到網頁時的暫時頁面。雖然大部分網頁伺服器已經提供預設的 404 頁面，但公版有些蠻醜的。&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;新增頁面&#34;&gt;&lt;a href=&#34;#新增頁面&#34; class=&#34;headerlink&#34; title=&#34;新增頁面&#34;&gt;&lt;/a&gt;新增頁面&lt;/h2&gt;&lt;h3 id=&#34;方法一：使用-md-檔讓-Hexo-生成&#34;&gt;&lt;a href=&#34;#方法一：使用-md-檔讓-Hexo-生成&#34; class=&#34;headerlink&#34; title=&#34;方法一：使用 md 檔讓 Hexo 生成&#34;&gt;&lt;/a&gt;方法一：使用 md 檔讓 Hexo 生成&lt;/h3&gt;&lt;p&gt;簡單省事的做法就是在 source 資料夾內新增 404.md ，依照一般貼文的寫法，寫完讓 Hexo 產生頁面就好。&lt;/p&gt;
+&lt;h3 id=&#34;方法二：使用一般-html-檔&#34;&gt;&lt;a href=&#34;#方法二：使用一般-html-檔&#34; class=&#34;headerlink&#34; title=&#34;方法二：使用一般 html 檔&#34;&gt;&lt;/a&gt;方法二：使用一般 html 檔&lt;/h3&gt;&lt;p&gt;事先準備好 404.html 的靜態網頁，放到 source 資料夾內。&lt;/p&gt;
+&lt;p&gt;例如使用範本 &lt;a href=&#34;https://freefrontend.com/html-css-404-page-templates/&#34;&gt;https://freefrontend.com/html-css-404-page-templates/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;放入後修改 &lt;code&gt;_config.yml&lt;/code&gt; 設定跳渲染 404.html (可參考 &lt;a href=&#34;/2021/12/15/hexo-skip/&#34;&gt;Hexo 指定文件跳過渲染&lt;/a&gt;)&lt;/p&gt;
+&lt;figure class=&#34;highlight yml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yml&#34;&gt;&lt;span class=&#34;hljs-string&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;404.&lt;/span&gt;&lt;span class=&#34;hljs-string&#34;&gt;html&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;一般檔案如 css 與 js 可以直接放著在 source 就好，Hexo 渲染網頁時會回直接搬到 public 資料夾內。&lt;/p&gt;
+&lt;h2 id=&#34;套用-404-頁面&#34;&gt;&lt;a href=&#34;#套用-404-頁面&#34; class=&#34;headerlink&#34; title=&#34;套用 404 頁面&#34;&gt;&lt;/a&gt;套用 404 頁面&lt;/h2&gt;&lt;p&gt;我們的網站有提供 404 頁面，但設定重導向就是網頁伺服器的工作了。&lt;/p&gt;
+&lt;h3 id=&#34;靜態網頁服務&#34;&gt;&lt;a href=&#34;#靜態網頁服務&#34; class=&#34;headerlink&#34; title=&#34;靜態網頁服務&#34;&gt;&lt;/a&gt;靜態網頁服務&lt;/h3&gt;&lt;p&gt;GitHub Page, CloudFlare Page 等免費的靜態網站服務，預設都會抓 source 資料夾下的 404.html 檔案作為 404 頁面。&lt;/p&gt;
+&lt;h3 id=&#34;nginx&#34;&gt;&lt;a href=&#34;#nginx&#34; class=&#34;headerlink&#34; title=&#34;nginx&#34;&gt;&lt;/a&gt;nginx&lt;/h3&gt;&lt;p&gt;預設網站設定檔通常是 &lt;code&gt;/etc/nginx/conf.d/default.conf&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs conf&#34;&gt;# The default server.&lt;br&gt;server &amp;#123;&lt;br&gt;  listen       80 default_server;&lt;br&gt;  server_name  everythingelse;&lt;br&gt;&lt;br&gt;  error_page 404 /404.html;&lt;br&gt;&lt;br&gt;  # Everything is a 404&lt;br&gt;  location / &amp;#123;&lt;br&gt;    return 404; #return the code 404&lt;br&gt;  &amp;#125;&lt;br&gt;&lt;br&gt;  # link the code to the file&lt;br&gt;  location = /404.html &amp;#123;&lt;br&gt;    # 可以把頁面位置改成這樣，Hexo 部署時的對應位置就是 public 資料夾&lt;br&gt;    root  /var/www/nginx/www/;&lt;br&gt;  &amp;#125;&lt;br&gt;&amp;#125;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;apache&#34;&gt;&lt;a href=&#34;#apache&#34; class=&#34;headerlink&#34; title=&#34;apache&#34;&gt;&lt;/a&gt;apache&lt;/h3&gt;&lt;p&gt;在網站資料夾內的 &lt;code&gt;/var/www/html/.htaccess&lt;/code&gt; 檔案內加入&lt;/p&gt;
+&lt;figure class=&#34;highlight apache&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs apache&#34;&gt;&lt;span class=&#34;hljs-attribute&#34;&gt;ErrorDocument&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;404&lt;/span&gt; /&lt;span class=&#34;hljs-number&#34;&gt;404&lt;/span&gt;.html&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;或是編輯 &lt;code&gt;/etc/apache2/sites-enabled/000-default.com&lt;/code&gt; 修改 VirtualHost&lt;/p&gt;
+&lt;figure class=&#34;highlight jboss-cli&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs jboss-cli&#34;&gt;&amp;lt;VirtualHost&amp;gt;&lt;br&gt;   &lt;span class=&#34;hljs-string&#34;&gt;...&lt;/span&gt;&lt;br&gt;   ErrorDocument 404 &lt;span class=&#34;hljs-string&#34;&gt;/404.html&lt;/span&gt;&lt;br&gt;   &lt;span class=&#34;hljs-string&#34;&gt;...&lt;/span&gt;&lt;br&gt;&amp;lt;&lt;span class=&#34;hljs-string&#34;&gt;/VirtualHost&lt;/span&gt;&amp;gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;關於-SEO&#34;&gt;&lt;a href=&#34;#關於-SEO&#34; class=&#34;headerlink&#34; title=&#34;關於 SEO&#34;&gt;&lt;/a&gt;關於 SEO&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Google, Bing 等搜尋引擎，會將較合適的網站優先推到搜尋結果上。&lt;br&gt;為了讓排名靠前一些， SEO（搜尋引擎優化）就變得十分重要，尤其是要增加曝光度。&lt;br&gt;SEO 其中一項是需使用自訂的 404 頁面，也因此網站就會影響到網站的&lt;del&gt;廣告費&lt;/del&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;&lt;a href=&#34;#參考資料&#34; class=&#34;headerlink&#34; title=&#34;參考資料&#34;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site&#34;&gt;github page 404 setting&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://ubiq.co/tech-blog/how-to-create-custom-404-page-in-apache/&#34;&gt;apache custum 404 page&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://stackoverflow.com/questions/7526996/nginx-how-to-always-return-a-custom-404-page-for-the-default-host&#34;&gt;nginx 404 page&lt;/a&gt;&lt;/p&gt;
+</content>
+        <category term="Hexo" />
+        <category term="Blog" />
+        <updated>2022-12-21T02:56:21.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/12/15/hexo-skip/</id>
+        <title>Hexo 指定文件跳過渲染</title>
+        <link rel="alternate" href="https://zonego.tw/2021/12/15/hexo-skip/"/>
+        <content type="html">&lt;p&gt;Hexo 在編譯時，會將&lt;code&gt;source&lt;/code&gt;下的md以及html檔，都套用主題後產生成html&lt;/p&gt;
+&lt;p&gt;若有些頁面原本就是設計好的，不要套用主題的話，就要改設定去跳過了&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;修改設定&#34;&gt;&lt;a href=&#34;#修改設定&#34; class=&#34;headerlink&#34; title=&#34;修改設定&#34;&gt;&lt;/a&gt;修改設定&lt;/h2&gt;&lt;p&gt;詳細請看 Hexo 的&lt;a href=&#34;https://hexo.io/zh-tw/docs/configuration.html&#34;&gt;官方文件&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;開啟 &lt;code&gt;_config.yml&lt;/code&gt; 修改 skip_render 欄位可以設定渲染時要跳過的文件&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;這邊的設定與 exclude 不同，用 exclude 排除後，&lt;br&gt;在編譯時不會將原檔複製到 public 內，包括佈署時也是。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;跳過單一文件&#34;&gt;&lt;a href=&#34;#跳過單一文件&#34; class=&#34;headerlink&#34; title=&#34;跳過單一文件&#34;&gt;&lt;/a&gt;跳過單一文件&lt;/h3&gt;&lt;p&gt;若要跳過 source 下的 test.html&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test.html&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 或是&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt; [&lt;span class=&#34;hljs-string&#34;&gt;test.html&lt;/span&gt;]&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 或是&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test.html&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;若是跳過 source&amp;#x2F;abc 下的 test.html，就寫 abc&amp;#x2F;test.html&lt;br&gt;路徑不要寫成絕對位置，這邊的路徑都寫 source 下的相對位置&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;跳過多個文件&#34;&gt;&lt;a href=&#34;#跳過多個文件&#34; class=&#34;headerlink&#34; title=&#34;跳過多個文件&#34;&gt;&lt;/a&gt;跳過多個文件&lt;/h3&gt;&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt; [&lt;span class=&#34;hljs-string&#34;&gt;test.html&lt;/span&gt;, &lt;span class=&#34;hljs-string&#34;&gt;test2.html&lt;/span&gt;]&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 或是&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test.html&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test2.html&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;使用規則命名&#34;&gt;&lt;a href=&#34;#使用規則命名&#34; class=&#34;headerlink&#34; title=&#34;使用規則命名&#34;&gt;&lt;/a&gt;使用規則命名&lt;/h3&gt;&lt;p&gt;skip_render 欄位可以用 &lt;a href=&#34;https://github.com/micromatch/micromatch#extended-globbing&#34;&gt;glob 表達式&lt;/a&gt;表示符合規則的檔名&lt;/p&gt;
+&lt;p&gt;例如:&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 跳過所有 test 開頭的檔案&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test*&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 跳過所有 test 開頭的 html 檔案&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;test*.html&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 跳過所有 abc 資料夾內的檔案&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;abc/*&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-comment&#34;&gt;# 跳過所有 abc 資料夾內的檔案包含目錄&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;skip_render:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;abc/**&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;參考資料&#34;&gt;&lt;a href=&#34;#參考資料&#34; class=&#34;headerlink&#34; title=&#34;參考資料&#34;&gt;&lt;/a&gt;參考資料&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://hexo.io/zh-tw/docs/configuration.html&#34;&gt;https://hexo.io/zh-tw/docs/configuration.html&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://iitii.github.io/2019/02/15/1/&#34;&gt;https://iitii.github.io/2019/02/15/1/&lt;/a&gt;&lt;/p&gt;
+</content>
+        <category term="Hexo" />
+        <category term="Blog" />
+        <updated>2021-12-15T01:41:37.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/12/09/hexo-rss/</id>
+        <title>增加 Hexo 的 RSS, ATOM, JSON Feed 訂閱功能</title>
+        <link rel="alternate" href="https://zonego.tw/2021/12/09/hexo-rss/"/>
+        <content type="html">&lt;p&gt;RSS(Really Simple Syndication) 是用 xml 定義的標準格式，用來把新聞、部落格文章或是 Podcast 更新資訊彙整到一個地方&lt;/p&gt;
+&lt;p&gt;衍生出的格式有 Atom, Json Feed 等格式&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;既然都做部落格了，當然要提供訂閱功能。(加減多點流量)&lt;/p&gt;
+&lt;p&gt;在 Hexo 內可以使用 &lt;code&gt;Hexo-Feed&lt;/code&gt; 插件幫我們產生 RSS, Atom 還有 Json Feed 的檔案&lt;/p&gt;
+&lt;p&gt;Hexo-feed &lt;a href=&#34;https://github.com/sergeyzwezdin/hexo-feed&#34;&gt;&lt;i class=&#34;nexmoefont icon-github&#34;&gt;&lt;/i&gt; GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安裝&#34;&gt;&lt;a href=&#34;#安裝&#34; class=&#34;headerlink&#34; title=&#34;安裝&#34;&gt;&lt;/a&gt;安裝&lt;/h2&gt;&lt;h3 id=&#34;需要版本&#34;&gt;&lt;a href=&#34;#需要版本&#34; class=&#34;headerlink&#34; title=&#34;需要版本&#34;&gt;&lt;/a&gt;需要版本&lt;/h3&gt;&lt;p&gt;Hexo 4.X+&lt;br&gt;NodeJS 12+&lt;/p&gt;
+&lt;h3 id=&#34;安裝指令&#34;&gt;&lt;a href=&#34;#安裝指令&#34; class=&#34;headerlink&#34; title=&#34;安裝指令&#34;&gt;&lt;/a&gt;安裝指令&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;npm install hexo-feed --save-dev&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;製作模板檔案&#34;&gt;&lt;a href=&#34;#製作模板檔案&#34; class=&#34;headerlink&#34; title=&#34;製作模板檔案&#34;&gt;&lt;/a&gt;製作模板檔案&lt;/h3&gt;&lt;p&gt;新增對應的模板檔案&lt;/p&gt;
+&lt;p&gt;RSS: &lt;code&gt;themes/layout/template/rss.ejs&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&lt;span class=&#34;hljs-meta&#34;&gt;&amp;lt;?xml version=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;1.0&amp;quot;&lt;/span&gt;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;rss&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;version&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;2.0&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;channel&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.title %&amp;gt;&amp;lt;%= tag ? ` • Posts by &amp;quot;$&amp;#123;tag&amp;#125;&amp;quot; tag` : &amp;#x27;&amp;#x27; %&amp;gt;&amp;lt;%= category ? ` • Posts by &amp;quot;$&amp;#123;category&amp;#125;&amp;quot; category` : &amp;#x27;&amp;#x27; %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.url %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.description %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;language&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.language %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;language&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;pubDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= moment(lastBuildDate).locale(&amp;#x27;en&amp;#x27;).format(&amp;#x27;ddd, DD MMM YYYY HH:mm:ss ZZ&amp;#x27;) %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;pubDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;lastBuildDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= moment(lastBuildDate).locale(&amp;#x27;en&amp;#x27;).format(&amp;#x27;ddd, DD MMM YYYY HH:mm:ss ZZ&amp;#x27;) %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;lastBuildDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &amp;lt;%_ for (const &amp;#123; name &amp;#125; of (tags || [])) &amp;#123; _%&amp;gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= name %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;        &amp;lt;%_ for (const post of posts) &amp;#123; _%&amp;gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;item&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;guid&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;isPermalink&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.permalink %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;guid&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.title %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.permalink %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &amp;lt;%_ for (const tag of (post.tags ? post.tags.toArray() : [])) &amp;#123; _%&amp;gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= tag.name %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;pubDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= moment(post.date).locale(&amp;#x27;en&amp;#x27;).format(&amp;#x27;ddd, DD MMM YYYY HH:mm:ss ZZ&amp;#x27;) %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;pubDate&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;            &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;![CDATA[ &amp;lt;%= post.content %&amp;gt; ]]&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;description&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;item&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;channel&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;rss&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;ATOM: &lt;code&gt;themes/layout/template/atom.ejs&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&lt;span class=&#34;hljs-meta&#34;&gt;&amp;lt;?xml version=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;1.0&amp;quot;&lt;/span&gt;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;feed&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;xmlns&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;http://www.w3.org/2005/Atom&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.url %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= config.title %&amp;gt;&amp;lt;%= tag ? ` • Posts by &amp;quot;$&amp;#123;tag&amp;#125;&amp;quot; tag` : &amp;#x27;&amp;#x27; %&amp;gt;&amp;lt;%= category ? ` • Posts by &amp;quot;$&amp;#123;category&amp;#125;&amp;quot; category` : &amp;#x27;&amp;#x27; %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;href&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&amp;lt;%= config.url %&amp;gt;&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;updated&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= moment(lastBuildDate).toISOString() %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;updated&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &amp;lt;%_ for (const &amp;#123; name &amp;#125; of (tags || [])) &amp;#123; _%&amp;gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;term&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&amp;lt;%= name %&amp;gt;&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;br&gt;    &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;    &amp;lt;%_ for (const post of posts) &amp;#123; _%&amp;gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;entry&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.permalink %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.title %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;title&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;link&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;rel&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;alternate&amp;quot;&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;href&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&amp;lt;%= post.permalink %&amp;gt;&amp;quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;content&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;type&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;html&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= post.content %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;content&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;        &amp;lt;%_ for (const &amp;#123; name &amp;#125; of (post.tags ? post.tags.toArray() : [])) &amp;#123; _%&amp;gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;category&lt;/span&gt; &lt;span class=&#34;hljs-attr&#34;&gt;term&lt;/span&gt;=&lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;&amp;lt;%= name %&amp;gt;&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;br&gt;        &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;        &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;&lt;span class=&#34;hljs-name&#34;&gt;updated&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;lt;%= moment(post.date).toISOString() %&amp;gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;updated&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;entry&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;    &amp;lt;%_ &amp;#125; _%&amp;gt;&lt;br&gt;&lt;span class=&#34;hljs-tag&#34;&gt;&amp;lt;/&lt;span class=&#34;hljs-name&#34;&gt;feed&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;Json Feed: &lt;code&gt;themes/layout/template/json.ejs&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs html&#34;&gt;&amp;lt;%- JSON.stringify(&amp;#123;&lt;br&gt;  version: &amp;#x27;https://jsonfeed.org/version/1&amp;#x27;,&lt;br&gt;  title: config.title + (tag ? ` • All posts by &amp;quot;$&amp;#123;tag&amp;#125;&amp;quot; tag` : &amp;#x27;&amp;#x27;) + (category ? ` • All posts by &amp;quot;$&amp;#123;category&amp;#125;&amp;quot; category` : &amp;#x27;&amp;#x27;),&lt;br&gt;  description: config.description,&lt;br&gt;  home_page_url: config.url,&lt;br&gt;  items: posts.map(post =&amp;gt; (&amp;#123;&lt;br&gt;      id: post.permalink,&lt;br&gt;      url: post.permalink,&lt;br&gt;      title: post.title,&lt;br&gt;      date_published: moment(post.date).toISOString(),&lt;br&gt;      content_html: post.content || &amp;#x27;&amp;#x27;,&lt;br&gt;      tags:  (post.tags ? post.tags.toArray() : []).map((&amp;#123; name &amp;#125;) =&amp;gt; name)&lt;br&gt;  &amp;#125;))&lt;br&gt;&amp;#125;, null, 4) _%&amp;gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;設定&#34;&gt;&lt;a href=&#34;#設定&#34; class=&#34;headerlink&#34; title=&#34;設定&#34;&gt;&lt;/a&gt;設定&lt;/h2&gt;&lt;p&gt;修改 Heox 設定檔 &lt;code&gt;_config.yml&lt;/code&gt;  新增 feed 設定&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;feed:&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;limit:&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;20&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;order_by:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;-date&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;tag_dir:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;tag&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;category_dir:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;category&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;rss:&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;enable:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;template:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;themes/layout/template/rss.ejs&amp;quot;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;output:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;rss.xml&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;atom:&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;enable:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;template:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;themes/layout/template/atom.ejs&amp;quot;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;output:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;atom.xml&amp;quot;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-attr&#34;&gt;jsonFeed:&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;enable:&lt;/span&gt; &lt;span class=&#34;hljs-literal&#34;&gt;true&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;template:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;themes/layout/template/json.ejs&amp;quot;&lt;/span&gt;&lt;br&gt;        &lt;span class=&#34;hljs-attr&#34;&gt;output:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;feed.json&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;詳細設定參考 &lt;a href=&#34;https://github.com/sergeyzwezdin/hexo-feed&#34;&gt;&lt;i class=&#34;nexmoefont icon-github&#34;&gt;&lt;/i&gt; GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;完成&#34;&gt;&lt;a href=&#34;#完成&#34; class=&#34;headerlink&#34; title=&#34;完成&#34;&gt;&lt;/a&gt;完成&lt;/h2&gt;&lt;p&gt;接下來只要重新佈署 hexo 即可&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo server&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;檢查這些網址看是否安裝成功&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:4000/rss.xml&#34;&gt;http://localhost:4000/rss.xml&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:4000/atom.xml&#34;&gt;http://localhost:4000/atom.xml&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:4000/feed.json&#34;&gt;http://localhost:4000/feed.json&lt;/a&gt;&lt;/p&gt;
+</content>
+        <category term="Hexo" />
+        <category term="Blog" />
+        <updated>2021-12-09T05:48:27.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/11/16/hexo-GA/</id>
+        <title>Hexo nexmoe 主題套用 Google Analytics</title>
+        <link rel="alternate" href="https://zonego.tw/2021/11/16/hexo-GA/"/>
+        <content type="html">&lt;p&gt;Google Analytics（GA）是Google公司提供的數據分析工具，可以幫助你追蹤你的網站流量、用戶行為，是一個網路行銷重要又好用的小工具。&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;p&gt;網路上會看到很多推薦使用 GA 的文章，有甚麼功能就不用我多說了 &lt;del&gt;絕對不是我想偷懶&lt;/del&gt;。&lt;/p&gt;
+&lt;p&gt;我這小小的部落格也就只有看人數的需求而已。&lt;/p&gt;
+&lt;h2 id=&#34;申請-Google-Analytics&#34;&gt;&lt;a href=&#34;#申請-Google-Analytics&#34; class=&#34;headerlink&#34; title=&#34;申請 Google Analytics&#34;&gt;&lt;/a&gt;申請 Google Analytics&lt;/h2&gt;&lt;p&gt;基本上你有 google 帳號就完成一半了，接下來到 &lt;a href=&#34;https://analytics.google.com/analytics/web/&#34;&gt;GA&lt;/a&gt;網站&lt;/p&gt;
+&lt;p&gt;接著在左下角管理 &amp;gt; 建立資源 &amp;gt; 完成後到資料串流&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/hexo-GA/ga_resource.jpg&#34; alt=&#34;Google Analytics 資源&#34; data-caption=&#34;Google Analytics 資源&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;新增網站串流，裡面填入要分析的網站網址，以及名稱&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/hexo-GA/ga_stream.jpg&#34; alt=&#34;Google Analytics 串流&#34; data-caption=&#34;Google Analytics 串流&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;完成後我們會得到需要的 &lt;code&gt;評估ID&lt;/code&gt; G-XXXXX 的這串ID&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/hexo-GA/ga_stream2.jpg&#34; alt=&#34;Google Analytics 串流&#34; data-caption=&#34;Google Analytics 串流&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;修改Hexo設定檔&#34;&gt;&lt;a href=&#34;#修改Hexo設定檔&#34; class=&#34;headerlink&#34; title=&#34;修改Hexo設定檔&#34;&gt;&lt;/a&gt;修改Hexo設定檔&lt;/h2&gt;&lt;h3 id=&#34;3-0-版設定方式&#34;&gt;&lt;a href=&#34;#3-0-版設定方式&#34; class=&#34;headerlink&#34; title=&#34;3.0 版設定方式&#34;&gt;&lt;/a&gt;3.0 版設定方式&lt;/h3&gt;&lt;p&gt;nexmoe 這個主題有支援 Google Analytics&lt;/p&gt;
+&lt;p&gt;只要在 &lt;code&gt;_config.nexmoe.yml&lt;/code&gt; 設定檔內調整分析的設定即可&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;analytics:&lt;/span&gt; &lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;google_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;gtags_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;這邊填入分析ID&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;G-XXXXX&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;cnzz_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;tencent_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;la_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;baidu_site_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-attr&#34;&gt;gtm_container_id:&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;4-0-版設定方式&#34;&gt;&lt;a href=&#34;#4-0-版設定方式&#34; class=&#34;headerlink&#34; title=&#34;4.0 版設定方式&#34;&gt;&lt;/a&gt;4.0 版設定方式&lt;/h3&gt;&lt;p&gt;照前面申請 Google Analytics 的步驟，先到資料串流設定&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;按一下「管理」。&lt;/li&gt;
+&lt;li&gt;使用「資源」欄頂端的下拉式選取器，選擇要在哪個資源設定資料串流的 Google 代碼。&lt;/li&gt;
+&lt;li&gt;在「資源」欄中，按一下「資料串流」。&lt;/li&gt;
+&lt;li&gt;照下圖複製&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/hexo-GA/ga_stream3.png&#34; alt=&#34;Google Analytics 串流&#34; data-caption=&#34;Google Analytics 串流&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/hexo-GA/ga_code_setting.png&#34; alt=&#34;Google Analytics Code設定&#34; data-caption=&#34;Google Analytics Code設定&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/hexo-GA/ga_code.png&#34; alt=&#34;Google Analytics Code&#34; data-caption=&#34;Google Analytics Code&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;打開 &lt;code&gt;_config.nexmoe.yml&lt;/code&gt; 設定檔內在 &lt;code&gt;slotHead&lt;/code&gt; 下面貼上複製的嵌入碼&lt;/p&gt;
+&lt;figure class=&#34;highlight yaml&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs yaml&#34;&gt;&lt;span class=&#34;hljs-string&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-attr&#34;&gt;slotHead:&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;|&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;  &amp;lt;!-- Google tag (gtag.js) --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;  &amp;lt;script async src=&amp;quot;https://www.googletagmanager.com/gtag/js?id=G-ID&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;  &amp;lt;script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;    window.dataLayer = window.dataLayer || [];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;    function gtag()&amp;#123;dataLayer.push(arguments);&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;    gtag(&amp;#x27;js&amp;#x27;, new Date());&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;&lt;/span&gt;&lt;br&gt;    &lt;span class=&#34;hljs-string&#34;&gt;gtag(&amp;#x27;config&amp;#x27;,&lt;/span&gt; &lt;span class=&#34;hljs-string&#34;&gt;&amp;#x27;G-ID&amp;#x27;&lt;/span&gt;&lt;span class=&#34;hljs-string&#34;&gt;);&lt;/span&gt;&lt;br&gt;  &lt;span class=&#34;hljs-string&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-string&#34;&gt;...&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;成果&#34;&gt;&lt;a href=&#34;#成果&#34; class=&#34;headerlink&#34; title=&#34;成果&#34;&gt;&lt;/a&gt;成果&lt;/h2&gt;&lt;p&gt;設定完後重開 Hexo 伺服器套用&lt;/p&gt;
+&lt;p&gt;在&lt;a href=&#34;https://analytics.google.com/analytics/web/&#34;&gt;GA&lt;/a&gt;網站 &amp;gt; 報表內看到我們要的瀏覽人數&lt;/p&gt;
+&lt;p&gt;&lt;img onerror=&#34;imgOnError(this);&#34; data-fancybox=&#34;gallery&#34; src=&#34;/images/content/hexo-GA/ga_dash.jpg&#34; alt=&#34;Google Analytics 報表&#34; data-caption=&#34;Google Analytics 報表&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;網站果然沒有人看，人數是0&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;其實是截圖時根本還沒重開 Hexo，所以 Google 根本沒抓到瀏覽紀錄&lt;/p&gt;
+</content>
+        <category term="Hexo" />
+        <category term="Blog" />
+        <category term="Google" />
+        <updated>2021-11-16T07:44:43.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://zonego.tw/2021/11/13/hexo/</id>
+        <title>Hexo 基本使用教學</title>
+        <link rel="alternate" href="https://zonego.tw/2021/11/13/hexo/"/>
+        <content type="html">&lt;p&gt;&lt;a href=&#34;https://hexo.io/zh-tw/&#34;&gt;官網&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://hexo.io/zh-tw/docs/&#34;&gt;使用說明&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://github.com/hexojs/hexo&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+
+&lt;h2 id=&#34;常用指令&#34;&gt;&lt;a href=&#34;#常用指令&#34; class=&#34;headerlink&#34; title=&#34;常用指令&#34;&gt;&lt;/a&gt;常用指令&lt;/h2&gt;&lt;h3 id=&#34;建新貼文&#34;&gt;&lt;a href=&#34;#建新貼文&#34; class=&#34;headerlink&#34; title=&#34;建新貼文&#34;&gt;&lt;/a&gt;建新貼文&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo new 文章名稱&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/writing.html&#34;&gt;Writing&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;啟動測試伺服器&#34;&gt;&lt;a href=&#34;#啟動測試伺服器&#34; class=&#34;headerlink&#34; title=&#34;啟動測試伺服器&#34;&gt;&lt;/a&gt;啟動測試伺服器&lt;/h3&gt;&lt;p&gt;Hexo 提供 Web server 功能，不須透過 Nginx 或是 apache&lt;/p&gt;
+&lt;p&gt;安裝&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;npm install hexo-server --save&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;啟動伺服器&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo server&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/server.html&#34;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;產生靜態網站檔案&#34;&gt;&lt;a href=&#34;#產生靜態網站檔案&#34; class=&#34;headerlink&#34; title=&#34;產生靜態網站檔案&#34;&gt;&lt;/a&gt;產生靜態網站檔案&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo generate&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/generating.html&#34;&gt;Generating&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;部署到網站伺服器&#34;&gt;&lt;a href=&#34;#部署到網站伺服器&#34; class=&#34;headerlink&#34; title=&#34;部署到網站伺服器&#34;&gt;&lt;/a&gt;部署到網站伺服器&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo deploy&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;產生靜態頁面後佈署&lt;br&gt;兩個指令相同&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo generate --deploy&lt;br&gt;hexo deploy --generate&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;詳細請看: &lt;a href=&#34;https://hexo.io/zh-tw/docs/one-command-deployment.html&#34;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;增加文章分類-Categories&#34;&gt;&lt;a href=&#34;#增加文章分類-Categories&#34; class=&#34;headerlink&#34; title=&#34;增加文章分類 (Categories)&#34;&gt;&lt;/a&gt;增加文章分類 (Categories)&lt;/h2&gt;&lt;p&gt;指令開啟分類功能&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo new page categories&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;新文章增加分類，只要在新貼文的標頭加上 &lt;code&gt;categories&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight markdown&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs markdown&#34;&gt;---&lt;br&gt;title: 2021-11-00&lt;br&gt;date: 2021-11-00 10:10&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;categories: 這裡寫分類&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;---&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;增加文章標籤-Tags&#34;&gt;&lt;a href=&#34;#增加文章標籤-Tags&#34; class=&#34;headerlink&#34; title=&#34;增加文章標籤 (Tags)&#34;&gt;&lt;/a&gt;增加文章標籤 (Tags)&lt;/h2&gt;&lt;p&gt;指令開啟標籤功能&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;hexo new page tags&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;新文章增加標籤，也是在新貼文的標頭加上 &lt;code&gt;tags&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight markdown&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs markdown&#34;&gt;---&lt;br&gt;title: 2021-11-00&lt;br&gt;date: 2021-11-00 10:10&lt;br&gt;tags: &lt;br&gt;&lt;span class=&#34;hljs-bullet&#34;&gt;-&lt;/span&gt; 第一個標籤&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;- 第二個標籤&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-section&#34;&gt;---&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;修改新文章預設標頭&#34;&gt;&lt;a href=&#34;#修改新文章預設標頭&#34; class=&#34;headerlink&#34; title=&#34;修改新文章預設標頭&#34;&gt;&lt;/a&gt;修改新文章預設標頭&lt;/h2&gt;&lt;p&gt;修改 &lt;code&gt;scaffolds/post.md&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs marddown&#34;&gt;title: &amp;#123;&amp;#123; title &amp;#125;&amp;#125;&lt;br&gt;date: &amp;#123;&amp;#123; date &amp;#125;&amp;#125;&lt;br&gt;categories: &amp;#123;&amp;#123; categories &amp;#125;&amp;#125;&lt;br&gt;tags: &amp;#123;&amp;#123; tags &amp;#125;&amp;#125;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;這樣每次新增文章就會自動添加分類及標籤&lt;/p&gt;
+</content>
+        <category term="Hexo" />
+        <category term="Blog" />
+        <category term="Self-Hosting" />
+        <updated>2021-11-13T04:30:30.000Z</updated>
+    </entry>
+</feed>

