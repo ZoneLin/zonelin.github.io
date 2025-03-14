@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>系統設定 on 筆記Zone</title>
+        <link>https://zonego.tw/categories/%E7%B3%BB%E7%B5%B1%E8%A8%AD%E5%AE%9A/</link>
+        <description>Recent content in 系統設定 on 筆記Zone</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Sun, 25 Dec 2022 18:44:10 +0800</lastBuildDate><atom:link href="https://zonego.tw/categories/%E7%B3%BB%E7%B5%B1%E8%A8%AD%E5%AE%9A/rss.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Ubuntu netplan 設定網路連線</title>
+        <link>https://zonego.tw/post/ubuntu-netplan/</link>
+        <pubDate>Sun, 25 Dec 2022 18:44:10 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/ubuntu-netplan/</guid>
+        <description>&lt;img src="https://zonego.tw/post/ubuntu-netplan/ubuntu.jpg" alt="Featured image of post Ubuntu netplan 設定網路連線" /&gt;&lt;p&gt;Ubuntu 20.04 後改用 netplan 作為指令網路設定工具&lt;/p&gt;
+&lt;h2 id=&#34;設定檔&#34;&gt;&lt;a href=&#34;#%e8%a8%ad%e5%ae%9a%e6%aa%94&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;設定檔
+&lt;/h2&gt;&lt;p&gt;netplan 設定檔預設放在 &lt;code&gt;/etc/netplan/00-installer-config.yaml&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;修改及套用需要 root 權限&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;查看網卡代號&#34;&gt;&lt;a href=&#34;#%e6%9f%a5%e7%9c%8b%e7%b6%b2%e5%8d%a1%e4%bb%a3%e8%99%9f&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;查看網卡代號
+&lt;/h3&gt;&lt;p&gt;使用 &lt;code&gt;ip addr&lt;/code&gt; 指令可以列出網卡資訊，跑出來的結果像這樣&lt;/p&gt;
+
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;$ ip addr&lt;br&gt;&lt;br&gt;1: lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000&lt;br&gt;    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00&lt;br&gt;    inet 127.0.0.1/8 scope host lo&lt;br&gt;       valid_lft forever preferred_lft forever&lt;br&gt;    inet6 ::1/128 scope host&lt;br&gt;       valid_lft forever preferred_lft forever&lt;br&gt;2: ens18: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000&lt;br&gt;    link/ether xx:xx:xx:xx:xx:xx brd xx:xx:xx:xx:xx:xx&lt;br&gt;    altname enp0s18&lt;br&gt;    inet 192.168.1.xx/24 brd 172.16.0.255 scope global ens18&lt;br&gt;       valid_lft forever preferred_lft forever&lt;br&gt;    inet6 0000::0000:0000:0000:0000/64 scope link&lt;br&gt;       valid_lft forever preferred_lft forever&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;編號 2 後面的 &lt;code&gt;ens18&lt;/code&gt; 就是網卡代號&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我的電腦只有裝一張網卡結果才會只到編號 2，如果有多張網卡會接續列在下面&lt;br&gt;&lt;br&gt;
+如果這台機器是 docker host，可能會有一大堆虛擬網卡&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;接下來就是開始編輯設定檔&lt;br&gt;&lt;br&gt;
+使用 nano 編輯器修改設定檔&lt;/p&gt;
+
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;nano /etc/netplan/50-cloud-init.yaml&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;使用-dhcp-自動設定-ip&#34;&gt;&lt;a href=&#34;#%e4%bd%bf%e7%94%a8-dhcp-%e8%87%aa%e5%8b%95%e8%a8%ad%e5%ae%9a-ip&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;使用 DHCP 自動設定 IP
+&lt;/h3&gt;&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;yaml code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;yaml&lt;/span&gt;
+    &lt;span  class=&#34;code-title&#34;&gt;/etc/netplan/50-cloud-init.yaml&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;/etc/netplan/50-cloud-init.yaml&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;network&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;renderer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;networkd&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ethernets&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 下面 ens18 改成你的網卡代號&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ens18&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;dhcp4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 如果有多張網卡，設定繼續加在下面&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;h3 id=&#34;設定固定-ip&#34;&gt;&lt;a href=&#34;#%e8%a8%ad%e5%ae%9a%e5%9b%ba%e5%ae%9a-ip&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;設定固定 IP
+&lt;/h3&gt;&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;yaml code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;yaml&lt;/span&gt;
+    &lt;span  class=&#34;code-title&#34;&gt;/etc/netplan/50-cloud-init.yaml&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;/etc/netplan/50-cloud-init.yaml&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;network&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ethernets&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ens18&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;addresses&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 設定固定 IP&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;- &lt;span class=&#34;m&#34;&gt;192.168.1.2&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;/24&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 預設閘道器&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;gateway4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;192.168.1.1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 預設 DNS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;nameservers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;addresses&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;8.8.8.8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1.1.1.1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;p&gt;固定 IP 中 &lt;code&gt;/24&lt;/code&gt; 代表子網遮罩，相當於 &lt;code&gt;255.255.255.0&lt;/code&gt;&lt;br&gt;&lt;br&gt;
+如果不會換算，可以參考 IPv4 子網計算機&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://damaha-labo.site/converter/zh-Hant/IT/CalcSubnetMask&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://damaha-labo.site/converter/zh-Hant/IT/CalcSubnetMask&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通常沒特殊需求的話，家用路由器的子網遮罩都是用 &lt;code&gt;/24&lt;/code&gt; &lt;code&gt;255.255.255.0&lt;/code&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;在 ubuntu 22.04 新版的 Netplan 中， &lt;code&gt;gateway4&lt;/code&gt; 這個設定已被棄用&lt;br&gt;&lt;br&gt;
+新版的設定檔長這樣&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;yaml code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;yaml&lt;/span&gt;
+    &lt;span  class=&#34;code-title&#34;&gt;/etc/netplan/50-cloud-init.yaml&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;/etc/netplan/50-cloud-init.yaml&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;network&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ethernets&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ens18&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;addresses&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 設定固定 IP&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;- &lt;span class=&#34;m&#34;&gt;192.168.1.2&lt;/span&gt;&lt;span class=&#34;l&#34;&gt;/24&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 預設 DNS&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;nameservers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;addresses&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;8.8.8.8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1.1.1.1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# 預設閘道器&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;routes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;via&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;192.168.1.1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;p&gt;預設路由的設定，改成可以設定多個預設閘道器 (Gateway)&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;yaml code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;yaml&lt;/span&gt;
+    &lt;span  class=&#34;code-title&#34;&gt;/etc/netplan/50-cloud-init.yaml&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;/etc/netplan/50-cloud-init.yaml&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;routes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;via&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;10.0.0.1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;metric&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;200&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;via&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;11.0.0.1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;          &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;metric&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;300&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;p&gt;其中 &lt;code&gt;metric&lt;/code&gt; 代表優先權重，值越小越優先使用&lt;/p&gt;
+&lt;h3 id=&#34;設定-wifi-連線&#34;&gt;&lt;a href=&#34;#%e8%a8%ad%e5%ae%9a-wifi-%e9%80%a3%e7%b7%9a&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;設定 WIFI 連線
+&lt;/h3&gt;&lt;p&gt;這邊同樣是用 Netplan 來修改設定，如果可以裝套件的狀況或是已經裝了 &lt;code&gt;network-manager&lt;/code&gt;&lt;br&gt;
+可以用 nmcli 工具來設定比較方便&lt;/p&gt;
+&lt;h4 id=&#34;取得-wifi-網卡代號&#34;&gt;&lt;a href=&#34;#%e5%8f%96%e5%be%97-wifi-%e7%b6%b2%e5%8d%a1%e4%bb%a3%e8%99%9f&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;取得 Wifi 網卡代號
+&lt;/h4&gt;
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;$ ls /sys/class/net&lt;br&gt;enp0s25  lo  wlp3s0&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;通常在 Ubuntu 22.04 中 Wifi 網卡代號通常是 &lt;code&gt;wlan0&lt;/code&gt; 或是 &lt;code&gt;wlp3s0&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在設定檔下面加上 Wifi 的部分即可&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;yaml code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;yaml&lt;/span&gt;
+    &lt;span  class=&#34;code-title&#34;&gt;/etc/netplan/50-cloud-init.yaml&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;/etc/netplan/50-cloud-init.yaml&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;network&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ethernets&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;eth0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;dhcp4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;optional&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;wifis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;wlp3s0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;optional&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;access-points&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;SSID-NAME-HERE&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;                    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;password&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;PASSWORD-HERE&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;dhcp4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;p&gt;至於要怎麼找附近可用的熱點&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/ubuntu-netplan/do_you_guys_not_have_phones.jpg&#34;
+	width=&#34;515&#34;
+	height=&#34;590&#34;
+	srcset=&#34;https://zonego.tw/post/ubuntu-netplan/do_you_guys_not_have_phones_hu_3980cbb3d16fa281.jpg 480w, https://zonego.tw/post/ubuntu-netplan/do_you_guys_not_have_phones_hu_bdd7d34ad42f4d02.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;87&#34;
+		data-flex-basis=&#34;209px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;如果要用指令的方式查，推薦用 nmcli 設定即可，就不需要用 netplan 打一堆字了&lt;/p&gt;
+&lt;h2 id=&#34;保存套用設定&#34;&gt;&lt;a href=&#34;#%e4%bf%9d%e5%ad%98%e5%a5%97%e7%94%a8%e8%a8%ad%e5%ae%9a&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;保存、套用設定
+&lt;/h2&gt;&lt;p&gt;範例使用的 nano 編輯器，儲存按法：&lt;/p&gt;
+&lt;p&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;X&lt;/kbd&gt; 離開 ＝&amp;gt; &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;Y&lt;/kbd&gt; 確認保存&lt;/p&gt;
+&lt;p&gt;保存完後，用下面指令測試設定檔有無格式錯誤&lt;/p&gt;
+
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;netplan try&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;確定網路沒問題，在 120 秒內按 Enter 確定套用。&lt;br&gt;
+這招可以避免設定固定 IP 時設定錯誤斷網，畢竟很懶的跑去機器旁邊重新設定。&lt;/p&gt;
+&lt;p&gt;如果想要直接套用，不用再另外檢查，可以用 &lt;code&gt;netplan apply&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;netplan apply&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;檢查是否設定成功&lt;/p&gt;
+
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;ip addr&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;看一下網卡有沒有配到 IP&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果你的 Raspberry Pi 也是裝 Ubuntu，網路設定也是這樣修改&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;&lt;a href=&#34;#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;參考資料
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Netplan 設定範例 &lt;a class=&#34;link&#34; href=&#34;https://netplan.io/examples&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://netplan.io/examples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Configure WiFi Connections &lt;a class=&#34;link&#34; href=&#34;https://ubuntu.com/core/docs/networkmanager/configure-wifi-connections&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ubuntu.com/core/docs/networkmanager/configure-wifi-connections&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+&lt;div class=&#34;unsplash unsplash-info&#34; &gt;
+    &lt;div class=&#34;unsplash-title&#34;&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon unsplash-icon icon unsplash-icon-tabler icon unsplash-icons-tabler-outline icon unsplash-icon-tabler-photo&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M15 8h.01&#34; /&gt;&lt;path d=&#34;M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z&#34; /&gt;&lt;path d=&#34;M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5&#34; /&gt;&lt;path d=&#34;M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3&#34; /&gt;&lt;/svg&gt;&lt;/div&gt;
+    &lt;p&gt;Photo by &lt;a href=&#34;https://unsplash.com/@6heinz3r?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;Gabriel Heinzer&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/photos/green-and-black-digital-device-xbEVM6oJ1Fs?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        <item>
+        <title>linux 環境變數及 Path 設定</title>
+        <link>https://zonego.tw/post/linux-path/</link>
+        <pubDate>Tue, 29 Nov 2022 20:02:04 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/linux-path/</guid>
+        <description>&lt;img src="https://zonego.tw/post/linux-path/ubuntu.jpg" alt="Featured image of post linux 環境變數及 Path 設定" /&gt;&lt;h2 id=&#34;linux-環境變數種類&#34;&gt;&lt;a href=&#34;#linux-%e7%92%b0%e5%a2%83%e8%ae%8a%e6%95%b8%e7%a8%ae%e9%a1%9e&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;Linux 環境變數種類
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;永久的：需要修改配置檔案，變數永久生效。&lt;/li&gt;
+&lt;li&gt;臨時的：使用export命令宣告即可，變數在關閉shell或關機時失效。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Mac 跟 Linux 都是由 Unix 發展的作業系統，在部分操作邏輯都相同，包含環境變數。&lt;/p&gt;
+&lt;h2 id=&#34;看目前的環境變數&#34;&gt;&lt;a href=&#34;#%e7%9c%8b%e7%9b%ae%e5%89%8d%e7%9a%84%e7%92%b0%e5%a2%83%e8%ae%8a%e6%95%b8&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;看目前的環境變數
+&lt;/h2&gt;&lt;p&gt;使用 env 指令&lt;/p&gt;
+
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;terminal&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;user@MacBook-Pro ~ % env&lt;br&gt;USER=XXXX&lt;br&gt;SECURITYSESSIONID=186ad&lt;br&gt;COMMAND_MODE=unix2003&lt;br&gt;HOME=/Users/XXXXXX&lt;br&gt;SHELL=/bin/zsh&lt;br&gt;&amp;hellip;&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果已知環境變數的名稱，可以使用 echo 查看，例如要看 SHELL&lt;/p&gt;
+
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;terminal&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;user@MacBook-Pro ~ % echo $SHELL&lt;br&gt;/bin/zsh&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;設定環境變數&#34;&gt;&lt;a href=&#34;#%e8%a8%ad%e5%ae%9a%e7%92%b0%e5%a2%83%e8%ae%8a%e6%95%b8&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;設定環境變數
+&lt;/h2&gt;&lt;h3 id=&#34;臨時性修改重開機後就必須再做一次&#34;&gt;&lt;a href=&#34;#%e8%87%a8%e6%99%82%e6%80%a7%e4%bf%ae%e6%94%b9%e9%87%8d%e9%96%8b%e6%a9%9f%e5%be%8c%e5%b0%b1%e5%bf%85%e9%a0%88%e5%86%8d%e5%81%9a%e4%b8%80%e6%ac%a1&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;臨時性修改，重開機後就必須再做一次
+&lt;/h3&gt;&lt;p&gt;用 export 指令，設定 PATH 變數為例 (下面指令二選一)&lt;/p&gt;
+
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;terminal&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;export PATH=&amp;quot;$PATH&amp;quot;:/home/bin&lt;br&gt;export PATH=${PATH}:/home/bin&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;輸入之後可以使用export指令來查看環境變數是否有輸入進去。&lt;/p&gt;
+&lt;h3 id=&#34;永久性修改需重開機之後才會有作用&#34;&gt;&lt;a href=&#34;#%e6%b0%b8%e4%b9%85%e6%80%a7%e4%bf%ae%e6%94%b9%e9%9c%80%e9%87%8d%e9%96%8b%e6%a9%9f%e4%b9%8b%e5%be%8c%e6%89%8d%e6%9c%83%e6%9c%89%e4%bd%9c%e7%94%a8&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;永久性修改，需重開機之後才會有作用
+&lt;/h3&gt;&lt;h4 id=&#34;修改-profile&#34;&gt;&lt;a href=&#34;#%e4%bf%ae%e6%94%b9-profile&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;修改 profile
+&lt;/h4&gt;&lt;p&gt;profile的路徑是在 &amp;ldquo;/etc/profile&amp;rdquo;，打開後在裡面加入 (下面指令二選一)&lt;/p&gt;
+
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;/etc/profile&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;export PATH=&amp;quot;$PATH&amp;quot;:/home/bin&lt;br&gt;export PATH=${PATH}:/home/bin&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&#34;修改bashrc&#34;&gt;&lt;a href=&#34;#%e4%bf%ae%e6%94%b9bashrc&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;修改.bashrc
+&lt;/h4&gt;&lt;p&gt;.bashrc的路徑是在&amp;quot;/home/username/.bashrc&amp;quot;，在檔案最後面加入 (下面指令二選一)&lt;/p&gt;
+
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;/home/username/.bashrc&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;export PATH=&amp;quot;$PATH&amp;quot;:/home/bin&lt;br&gt;export PATH=${PATH}:/home/bin&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+&lt;h2 id=&#34;參考來源&#34;&gt;&lt;a href=&#34;#%e5%8f%83%e8%80%83%e4%be%86%e6%ba%90&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;參考來源
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://dotblogs.com.tw/grayyin/2019/06/25/142934&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;阿輝的零碎筆記&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://iter01.com/567129.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Linux環境變數的設定、檢視、刪除&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+
+
+
+&lt;div class=&#34;unsplash unsplash-info&#34; &gt;
+    &lt;div class=&#34;unsplash-title&#34;&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon unsplash-icon icon unsplash-icon-tabler icon unsplash-icons-tabler-outline icon unsplash-icon-tabler-photo&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M15 8h.01&#34; /&gt;&lt;path d=&#34;M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z&#34; /&gt;&lt;path d=&#34;M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5&#34; /&gt;&lt;path d=&#34;M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3&#34; /&gt;&lt;/svg&gt;&lt;/div&gt;
+    &lt;p&gt;Photo by &lt;a href=&#34;https://unsplash.com/@6heinz3r?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;Gabriel Heinzer&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/photos/green-and-black-digital-device-xbEVM6oJ1Fs?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>Windows 11 環境變數及 Path 設定</title>
+        <link>https://zonego.tw/post/windows-path/</link>
+        <pubDate>Fri, 07 Jan 2022 10:52:56 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/windows-path/</guid>
+        <description>&lt;h2 id=&#34;設定環境變數&#34;&gt;&lt;a href=&#34;#%e8%a8%ad%e5%ae%9a%e7%92%b0%e5%a2%83%e8%ae%8a%e6%95%b8&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;設定環境變數
+&lt;/h2&gt;&lt;p&gt;開啟設定 &amp;gt; 系統 &amp;gt; 關於 &amp;gt; 裝置規格 進階系統設定&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/windows-path/setting_sys.png&#34;
+	width=&#34;1002&#34;
+	height=&#34;791&#34;
+	srcset=&#34;https://zonego.tw/post/windows-path/setting_sys_hu_85729587150ad2fb.png 480w, https://zonego.tw/post/windows-path/setting_sys_hu_64cdec078cc3681a.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;env&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;304px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/windows-path/env.png&#34;
+	width=&#34;792&#34;
+	height=&#34;740&#34;
+	srcset=&#34;https://zonego.tw/post/windows-path/env_hu_6c04ae0041e08ddc.png 480w, https://zonego.tw/post/windows-path/env_hu_e4078dc5f3cb58fe.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;env&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;107&#34;
+		data-flex-basis=&#34;256px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;設定-path&#34;&gt;&lt;a href=&#34;#%e8%a8%ad%e5%ae%9a-path&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;設定 Path
+&lt;/h2&gt;&lt;h3 id=&#34;預設位置&#34;&gt;&lt;a href=&#34;#%e9%a0%90%e8%a8%ad%e4%bd%8d%e7%bd%ae&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;預設位置
+&lt;/h3&gt;&lt;p&gt;Windows預設應用程式 path 位置&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34; code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;p&gt;題外話 Linux 的預設位置在&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34; code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/usr/local/bin&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;h3 id=&#34;為甚麼要設定-path&#34;&gt;&lt;a href=&#34;#%e7%82%ba%e7%94%9a%e9%ba%bc%e8%a6%81%e8%a8%ad%e5%ae%9a-path&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;為甚麼要設定 Path
+&lt;/h3&gt;&lt;p&gt;設定路徑可以簡化找程式的時間&lt;/p&gt;
+&lt;p&gt;例如下載完 youtube-dl.exe 放在下載資料夾內時&lt;br&gt;
+在指令介面，可以直接打程式名，不用附帶前面的路徑&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;powershell code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;powershell&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# 未設定路徑&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;C:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Users&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;th533&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Downloads&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;youtube-dl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;# 有設定路徑&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;youtube-dl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;h3 id=&#34;新增編輯-path&#34;&gt;&lt;a href=&#34;#%e6%96%b0%e5%a2%9e%e7%b7%a8%e8%bc%af-path&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;新增、編輯 Path
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/windows-path/env.png&#34;
+	width=&#34;792&#34;
+	height=&#34;740&#34;
+	srcset=&#34;https://zonego.tw/post/windows-path/env_hu_6c04ae0041e08ddc.png 480w, https://zonego.tw/post/windows-path/env_hu_e4078dc5f3cb58fe.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;env&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;107&#34;
+		data-flex-basis=&#34;256px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/windows-path/env_path.png&#34;
+	width=&#34;677&#34;
+	height=&#34;632&#34;
+	srcset=&#34;https://zonego.tw/post/windows-path/env_path_hu_9c88d8ead0c62e74.png 480w, https://zonego.tw/post/windows-path/env_path_hu_4c6bf6ebec1590a9.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;env_path&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;107&#34;
+		data-flex-basis=&#34;257px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

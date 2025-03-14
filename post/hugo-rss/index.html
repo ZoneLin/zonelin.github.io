@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="下面會修改到 Hugo 設定，還不知道怎麼改設定檔建議先看 Hugo 設定檔 的說明\n修改RSS檔名 hugo 預設生成的RSS檔案在\u3000localhost:1313/index.xml\n如果要取代原本的RSS檔名，可以直接改 hugo.toml\n將 outputFormats.RSS 的 baseName 改成想要的檔名\n設定檔中沒有這段的話，可以直接貼上下面的設定\n這邊只紀錄 toml 格式的設定方式，需要 yaml 或 json 格式，請參考官方文件 Custom output formats\ntoml hugo.toml 1 2 3 4 [outputFormats] [outputFormats.RSS] mediatype = &#34;application/rss+xml&#34; baseName = &#34;rss&#34; 這樣就可以把RSS的檔名改成 localhost:1313/rss.xml\n自定輸出類型 這種方式適合用在同時加 RSS、ATOM、JSON Feed 或其他的自訂格式\n這邊以建立 Atom feed 作為範例\ntoml hugo.toml 1 2 3 4 5 6 7 8 9 10 [outputs] home = [&#34;HTML&#34;] section = [&#39;HTML&#39;,&#39;ATOM&#39;] taxonomy = [&#39;HTML&#39;] term = [&#39;HTML&#39;] [outputFormats] [outputFormats.ATOM] mediatype = &#34;application/rss+xml&#34; baseName = &#34;atom&#34; 中間的mediatype就可以照我們的需要調整，Atom 跟 RSS 相同即可\n如果是 JSON Feed ，就可以改為 application/json\n其他內建的輸出格式可參考 Output format definitions\n">
+<title>Hugo 設定RSS, ATOM Feed</title>
+
+<link rel='canonical' href='https://zonego.tw/post/hugo-rss/'>
+
+<link rel="stylesheet" href="/scss/style.min.26ab0493597fcd285b9997f5ceddb4c468f78a8fee6c03c2790d3c192d6c92c3.css"><meta property='og:title' content="Hugo 設定RSS, ATOM Feed">
+<meta property='og:description' content="下面會修改到 Hugo 設定，還不知道怎麼改設定檔建議先看 Hugo 設定檔 的說明\n修改RSS檔名 hugo 預設生成的RSS檔案在\u3000localhost:1313/index.xml\n如果要取代原本的RSS檔名，可以直接改 hugo.toml\n將 outputFormats.RSS 的 baseName 改成想要的檔名\n設定檔中沒有這段的話，可以直接貼上下面的設定\n這邊只紀錄 toml 格式的設定方式，需要 yaml 或 json 格式，請參考官方文件 Custom output formats\ntoml hugo.toml 1 2 3 4 [outputFormats] [outputFormats.RSS] mediatype = &#34;application/rss+xml&#34; baseName = &#34;rss&#34; 這樣就可以把RSS的檔名改成 localhost:1313/rss.xml\n自定輸出類型 這種方式適合用在同時加 RSS、ATOM、JSON Feed 或其他的自訂格式\n這邊以建立 Atom feed 作為範例\ntoml hugo.toml 1 2 3 4 5 6 7 8 9 10 [outputs] home = [&#34;HTML&#34;] section = [&#39;HTML&#39;,&#39;ATOM&#39;] taxonomy = [&#39;HTML&#39;] term = [&#39;HTML&#39;] [outputFormats] [outputFormats.ATOM] mediatype = &#34;application/rss+xml&#34; baseName = &#34;atom&#34; 中間的mediatype就可以照我們的需要調整，Atom 跟 RSS 相同即可\n如果是 JSON Feed ，就可以改為 application/json\n其他內建的輸出格式可參考 Output format definitions\n">
+<meta property='og:url' content='https://zonego.tw/post/hugo-rss/'>
+<meta property='og:site_name' content='筆記Zone'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='Blog' /><meta property='article:published_time' content='2025-01-03T16:42:08&#43;08:00'/><meta property='article:modified_time' content='2025-01-03T16:42:08&#43;08:00'/><meta property='og:image' content='https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg' />
+<meta name="twitter:title" content="Hugo 設定RSS, ATOM Feed">
+<meta name="twitter:description" content="下面會修改到 Hugo 設定，還不知道怎麼改設定檔建議先看 Hugo 設定檔 的說明\n修改RSS檔名 hugo 預設生成的RSS檔案在\u3000localhost:1313/index.xml\n如果要取代原本的RSS檔名，可以直接改 hugo.toml\n將 outputFormats.RSS 的 baseName 改成想要的檔名\n設定檔中沒有這段的話，可以直接貼上下面的設定\n這邊只紀錄 toml 格式的設定方式，需要 yaml 或 json 格式，請參考官方文件 Custom output formats\ntoml hugo.toml 1 2 3 4 [outputFormats] [outputFormats.RSS] mediatype = &#34;application/rss+xml&#34; baseName = &#34;rss&#34; 這樣就可以把RSS的檔名改成 localhost:1313/rss.xml\n自定輸出類型 這種方式適合用在同時加 RSS、ATOM、JSON Feed 或其他的自訂格式\n這邊以建立 Atom feed 作為範例\ntoml hugo.toml 1 2 3 4 5 6 7 8 9 10 [outputs] home = [&#34;HTML&#34;] section = [&#39;HTML&#39;,&#39;ATOM&#39;] taxonomy = [&#39;HTML&#39;] term = [&#39;HTML&#39;] [outputFormats] [outputFormats.ATOM] mediatype = &#34;application/rss+xml&#34; baseName = &#34;atom&#34; 中間的mediatype就可以照我們的需要調整，Atom 跟 RSS 相同即可\n如果是 JSON Feed ，就可以改為 application/json\n其他內建的輸出格式可參考 Output format definitions\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg' />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-92G2VB89BE"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-92G2VB89BE');
+        }
+      </script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🎮</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">筆記Zone</a></h1>
+            <h2 class="site-description">能者過勞</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='/rss.xml'
+                        target="_blank"
+                        title="01-RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/ZoneLin'
+                        target="_blank"
+                        title="02-GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首頁</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>所有文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                
+                <span>關於本站</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+                
+                <span>留言板</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tools/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tools"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" /><path d="M14.5 5.5l4 4" /><path d="M12 8l-5 -5l-4 4l5 5" /><path d="M7 8l-1.5 1.5" /><path d="M16 12l5 5l-4 4l-5 -5" /><path d="M16 17l-1.5 1.5" /></svg>
+                
+                <span>線上工具</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#修改rss檔名">修改RSS檔名</a></li>
+    <li><a href="#自定輸出類型">自定輸出類型</a></li>
+    <li><a href="#自訂rss生成模版">自訂RSS生成模版</a>
+      <ol>
+        <li><a href="#建模版檔案">建模版檔案</a></li>
+        <li><a href="#模版內容">模版內容</a></li>
+      </ol>
+    </li>
+    <li><a href="#修改檔案位置">修改檔案位置</a></li>
+    <li><a href="#參考來源">參考來源</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+  <header class="article-header">
+        <div class="article-image">
+            <a href="/post/hugo-rss/">
+                
+                    <img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg" loading="lazy" alt="Featured image of post Hugo 設定RSS, ATOM Feed" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/blog/" style="background-color: #eb5089; color: #ffffff;">
+                Blog
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/hugo-rss/">Hugo 設定RSS, ATOM Feed</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025.01.03</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 4 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+  <section class="article-content">
+    
+    
+    <p>下面會修改到 Hugo 設定，還不知道怎麼改設定檔建議先看 <a class="link" href="https://zonego.tw/post/hugo-config/" >Hugo 設定檔</a> 的說明</p>
+<h2 id="修改rss檔名"><a href="#%e4%bf%ae%e6%94%b9rss%e6%aa%94%e5%90%8d" class="header-anchor"></a>修改RSS檔名
+</h2><p>hugo 預設生成的RSS檔案在　<code>localhost:1313/index.xml</code></p>
+<p>如果要取代原本的RSS檔名，可以直接改 <code>hugo.toml</code><br>
+將 outputFormats.RSS 的 baseName 改成想要的檔名<br>
+設定檔中沒有這段的話，可以直接貼上下面的設定</p>
+<p>這邊只紀錄 toml 格式的設定方式，需要 yaml 或 json 格式，請參考官方文件 <a class="link" href="https://gohugo.io/templates/output-formats/#output-format-definitions"  target="_blank" rel="noopener"
+    >Custom output formats</a></p>
+<figure class="code-block" role="figure" aria-label="toml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">toml</span>
+    <span  class="code-title">hugo.toml</span></div><div class="highlight" title="hugo.toml"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">outputFormats</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">outputFormats</span><span class="p">.</span><span class="nx">RSS</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">mediatype</span> <span class="p">=</span> <span class="s2">&#34;application/rss+xml&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">baseName</span> <span class="p">=</span> <span class="s2">&#34;rss&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>這樣就可以把RSS的檔名改成 <code>localhost:1313/rss.xml</code></p>
+<h2 id="自定輸出類型"><a href="#%e8%87%aa%e5%ae%9a%e8%bc%b8%e5%87%ba%e9%a1%9e%e5%9e%8b" class="header-anchor"></a>自定輸出類型
+</h2><p>這種方式適合用在同時加 RSS、ATOM、JSON Feed 或其他的自訂格式</p>
+<p>這邊以建立 Atom feed 作為範例</p>
+<figure class="code-block" role="figure" aria-label="toml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">toml</span>
+    <span  class="code-title">hugo.toml</span></div><div class="highlight" title="hugo.toml"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">outputs</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">home</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">section</span> <span class="p">=</span> <span class="p">[</span><span class="s1">&#39;HTML&#39;</span><span class="p">,</span><span class="s1">&#39;ATOM&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">taxonomy</span> <span class="p">=</span> <span class="p">[</span><span class="s1">&#39;HTML&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">term</span> <span class="p">=</span> <span class="p">[</span><span class="s1">&#39;HTML&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">outputFormats</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">outputFormats</span><span class="p">.</span><span class="nx">ATOM</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">mediatype</span> <span class="p">=</span> <span class="s2">&#34;application/rss+xml&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">baseName</span> <span class="p">=</span> <span class="s2">&#34;atom&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>中間的<code>mediatype</code>就可以照我們的需要調整，Atom 跟 RSS 相同即可<br>
+如果是 JSON Feed ，就可以改為 application/json<br>
+其他內建的輸出格式可參考 <a class="link" href="https://gohugo.io/templates/output-formats/#output-format-definitions"  target="_blank" rel="noopener"
+    >Output format definitions</a></p>
+<p>需要生成 ATOM Feed 的部分，就可以在 outputs 後面加上我們自訂的 ATOM<br>
+像我這就只需要 section 生成 ATOM Feed</p>
+<p>如果沒有特別設定的話，這四種類的 output 預設都是 [&ldquo;HTML&rdquo;,&ldquo;RSS&rdquo;]</p>
+<p>到這邊我們的 ATOM Feed 還沒設定完，還需要新增模版</p>
+<h2 id="自訂rss生成模版"><a href="#%e8%87%aa%e8%a8%82rss%e7%94%9f%e6%88%90%e6%a8%a1%e7%89%88" class="header-anchor"></a>自訂RSS生成模版
+</h2><h3 id="建模版檔案"><a href="#%e5%bb%ba%e6%a8%a1%e7%89%88%e6%aa%94%e6%a1%88" class="header-anchor"></a>建模版檔案
+</h3><p>我們可以在 layout 資料夾內建立模版檔案，覆蓋預設的模版</p>
+<figure class="code-block" role="figure" aria-label="folder code snippet">
+
+  <div class="code-header">
+    <span class="code-type">folder</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">layouts/
+</span></span><span class="line"><span class="cl">└── _default/
+</span></span><span class="line"><span class="cl">    ├── home.atom.xml
+</span></span><span class="line"><span class="cl">    ├── section.atom.xml
+</span></span><span class="line"><span class="cl">    ├── taxonomy.atom.xml
+</span></span><span class="line"><span class="cl">    └── term.atom.xml</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>如果不想細分這麼詳細，全部都是套用同一個模版，可以只新增 <code>layouts/_default/list.atom.xml</code></p>
+<p>詳細的檔名批配機制可以參考官方文件 <a class="link" href="https://gohugo.io/templates/lookup-order/#rss-templates"  target="_blank" rel="noopener"
+    >lookup-order/#rss-templates</a></p>
+<h3 id="模版內容"><a href="#%e6%a8%a1%e7%89%88%e5%85%a7%e5%ae%b9" class="header-anchor"></a>模版內容
+</h3><p>這邊我使用 <a class="link" href="https://github.com/araname/atom-template-for-hugo"  target="_blank" rel="noopener"
+    >araname/atom-template-for-hugo</a> 的模版</p>
+<a href=https://github.com/araname/atom-template-for-hugo target="_blank">
+  <div class="bookmark">
+    <div class="logo"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon bookmark-icon icon bookmark-icon-tabler icon bookmark-icons-tabler-outline icon bookmark-icon-tabler-world"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></svg>
+        <span class="name">atom-template-for-hugo</span>
+    </div>
+    <div class="description">Allows Hugo to generate Atom feeds to your site</div>
+  </div>
+</a>
+<figure class="code-block" role="figure" aria-label="xml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">xml</span>
+    <span  class="code-title">list.atom.xml</span></div><div class="highlight" title="list.atom.xml"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">{{- /* Deprecate site.Author.email in favor of site.Params.author.email */}}
+</span></span><span class="line"><span class="cl">{{- $authorEmail := &#34;&#34; }}
+</span></span><span class="line"><span class="cl">{{- with site.Params.author }}
+</span></span><span class="line"><span class="cl">  {{- if reflect.IsMap . }}
+</span></span><span class="line"><span class="cl">    {{- with .email }}
+</span></span><span class="line"><span class="cl">      {{- $authorEmail = . }}
+</span></span><span class="line"><span class="cl">    {{- end }}
+</span></span><span class="line"><span class="cl">  {{- end }}
+</span></span><span class="line"><span class="cl">{{- else }}
+</span></span><span class="line"><span class="cl">  {{- with site.Author.email }}
+</span></span><span class="line"><span class="cl">    {{- $authorEmail = . }}
+</span></span><span class="line"><span class="cl">    {{- warnf &#34;The author key in site configuration is deprecated. Use params.author.email instead.&#34; }}
+</span></span><span class="line"><span class="cl">  {{- end }}
+</span></span><span class="line"><span class="cl">{{- end }}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">{{- /* Deprecate site.Author.name in favor of site.Params.author.name */}}
+</span></span><span class="line"><span class="cl">{{- $authorName := &#34;&#34; }}
+</span></span><span class="line"><span class="cl">{{- with site.Params.author }}
+</span></span><span class="line"><span class="cl">  {{- if reflect.IsMap . }}
+</span></span><span class="line"><span class="cl">    {{- with .name }}
+</span></span><span class="line"><span class="cl">      {{- $authorName = . }}
+</span></span><span class="line"><span class="cl">    {{- end }}
+</span></span><span class="line"><span class="cl">  {{- else }}
+</span></span><span class="line"><span class="cl">    {{- $authorName  = . }}
+</span></span><span class="line"><span class="cl">  {{- end }}
+</span></span><span class="line"><span class="cl">{{- else }}
+</span></span><span class="line"><span class="cl">  {{- with site.Author.name }}
+</span></span><span class="line"><span class="cl">    {{- $authorName = . }}
+</span></span><span class="line"><span class="cl">    {{- warnf &#34;The author key in site configuration is deprecated. Use params.author.name instead.&#34; }}
+</span></span><span class="line"><span class="cl">  {{- end }}
+</span></span><span class="line"><span class="cl">{{- end }}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">{{- $pctx := . }}
+</span></span><span class="line"><span class="cl">{{- if .IsHome }}{{ $pctx = .Site }}{{ end }}
+</span></span><span class="line"><span class="cl">{{- $pages := slice }}
+</span></span><span class="line"><span class="cl">{{- if or $.IsHome $.IsSection }}
+</span></span><span class="line"><span class="cl">{{- $pages = $pctx.RegularPages }}
+</span></span><span class="line"><span class="cl">{{- else }}
+</span></span><span class="line"><span class="cl">{{- $pages = $pctx.Pages }}
+</span></span><span class="line"><span class="cl">{{- end }}
+</span></span><span class="line"><span class="cl">{{- $limit := .Site.Config.Services.RSS.Limit }}
+</span></span><span class="line"><span class="cl">{{- if ge $limit 1 }}
+</span></span><span class="line"><span class="cl">{{- $pages = $pages | first $limit }}
+</span></span><span class="line"><span class="cl">{{- end }}
+</span></span><span class="line"><span class="cl">{{- printf &#34;<span class="cp">&lt;?xml version=\&#34;1.0\&#34; encoding=\&#34;utf-8\&#34; standalone=\&#34;yes\&#34;?&gt;</span>&#34; | safeHTML }}
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;feed</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.w3.org/2005/Atom&#34;</span> <span class="na">xml:lang=</span><span class="s">&#34;{{ site.Language.LanguageCode }}&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;title&gt;</span>{{ if eq .Title .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ .Site.Title }}{{ end }}<span class="nt">&lt;/title&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&#34;{{ .Permalink }}&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;subtitle&gt;</span>Recent content {{ if ne .Title .Site.Title }}{{ with .Title }}in {{ . }} {{ end }}{{ end }}on {{ .Site.Title }}<span class="nt">&lt;/subtitle&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;generator&gt;</span>Hugo<span class="nt">&lt;/generator&gt;</span>
+</span></span><span class="line"><span class="cl">  {{- if or $authorName $authorEmail }}
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;author&gt;</span>{{ end }}{{ with $authorName }}
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;name&gt;</span>{{ . }}<span class="nt">&lt;/name&gt;</span>{{ end }}{{ with $authorEmail }}
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;email&gt;</span>{{ . }}<span class="nt">&lt;/email&gt;</span>{{ end }}{{ if or $authorName $authorEmail }}
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/author&gt;</span>{{ end }}{{ with .Site.Copyright }}
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;rights&gt;</span>{{ . }}<span class="nt">&lt;/rights&gt;</span>{{ end }}{{ if not .Date.IsZero }}
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;updated&gt;</span>{{ (index $pages.ByLastmod.Reverse 0).Lastmod.Format &#34;2006-01-02T15:04:05-07:00&#34; | safeHTML }}<span class="nt">&lt;/updated&gt;</span>{{ end }}
+</span></span><span class="line"><span class="cl">  {{- with .OutputFormats.Get &#34;Atom&#34; }}
+</span></span><span class="line"><span class="cl">  {{ printf &#34;<span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">%q</span> <span class="na">rel=</span><span class="s">\&#34;self\&#34;</span> <span class="na">type=</span><span class="s">%q</span> <span class="nt">/&gt;</span>&#34; .Permalink .MediaType | safeHTML }}
+</span></span><span class="line"><span class="cl">  {{- end }}
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;id&gt;</span>{{ .Permalink }}<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">  {{- range $pages }}
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;entry&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;title&gt;</span>{{ .Title }}<span class="nt">&lt;/title&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&#34;{{ .Permalink }}&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;published&gt;</span>{{ .PublishDate.Format &#34;2006-01-02T15:04:05-07:00&#34; | safeHTML }}<span class="nt">&lt;/published&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;updated&gt;</span>{{ .Lastmod.Format &#34;2006-01-02T15:04:05-07:00&#34; | safeHTML }}<span class="nt">&lt;/updated&gt;</span>
+</span></span><span class="line"><span class="cl">    {{- if or $authorName $authorEmail }}
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;author&gt;</span>{{ end }}{{ with $authorName }}
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;name&gt;</span>{{ . }}<span class="nt">&lt;/name&gt;</span>{{ end }}{{ with $authorEmail }}
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;email&gt;</span>{{ . }}<span class="nt">&lt;/email&gt;</span>{{ end }}{{ if or $authorName $authorEmail }}
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/author&gt;</span>{{ end }}
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;id&gt;</span>{{ .Permalink }}<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;content</span> <span class="na">type=</span><span class="s">&#34;html&#34;</span><span class="nt">&gt;</span>{{ .Content | transform.XMLEscape | safeHTML }}<span class="nt">&lt;/content&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/entry&gt;</span>
+</span></span><span class="line"><span class="cl">  {{- end }}
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/feed&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>完成之後，Hugo 就會幫我們生成對應的 atom.xml 檔了</p>
+<h2 id="修改檔案位置"><a href="#%e4%bf%ae%e6%94%b9%e6%aa%94%e6%a1%88%e4%bd%8d%e7%bd%ae" class="header-anchor"></a>修改檔案位置
+</h2><p>有些網站的 RSS 可能不放在根目錄，例如 <code>localhost:1313/rss/rss.xml</code></p>
+<p>有這樣的需求，目前 Hugo 沒有比較好的方式能直接生成在指定位置<br>
+可以在 Hugo 轉譯完之後，另外用指令去移動</p>
+
+<div class="terminal">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+
+    
+    <div class="terminal-title">terminal</div>
+    
+
+    <div class="terminal-copy"></div>
+  </div>
+  <div class="terminal-block">
+    <p>mv public/rss.xml public/rss/rss.xml<br></p>
+  </div>
+</div>
+
+<p>本站的 Rss 設定時有碰一個小問題<br>
+我不想要左邊選單的頁面(page)被列在 RSS 裡面，只需要有貼文(post)就好<br>
+位在 <code>public/post/rss.xml</code> 這個檔案，剛好就只有貼文的資料</p>
+<p>所以乾脆就在 CICD 的設定內，加上複製檔案蓋掉根目錄的 rss.xml</p>
+<figure class="code-block" role="figure" aria-label="yaml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">yaml</span>
+    <span  class="code-title">.woodpecker/deploy.yml</span></div><div class="highlight" title=".woodpecker/deploy.yml"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">when</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">event</span><span class="p">:</span><span class="w"> </span><span class="l">push</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">build</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">hugomods/hugo:dart-sass-go-git</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">commands</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">hugo build</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">cp public/post/rss.xml public/rss.xml</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><blockquote>
+<h2 id="參考來源"><a href="#%e5%8f%83%e8%80%83%e4%be%86%e6%ba%90" class="header-anchor"></a>參考來源
+</h2><ul>
+<li>官方文件 <a class="link" href="https://gohugo.io/getting-started/configuration/"  target="_blank" rel="noopener"
+    >Configure Hugo</a></li>
+<li>Vifly 的博客 <a class="link" href="https://viflythink.com/Migrate_from_Material_to_Stack/"  target="_blank" rel="noopener"
+    >从 Material 主题迁移到 Stack 主题</a></li>
+<li>Hugo 論壇 <a class="link" href="https://discourse.gohugo.io/t/how-can-i-change-the-rss-url/118/8"  target="_blank" rel="noopener"
+    >How can I change the RSS URL?</a></li>
+</ul></blockquote>
+
+</section>
+
+
+  <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/hugo/">Hugo</a>
+        
+            <a href="/tags/blog/">Blog</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>本文採用 <a class="link" href="https://creativecommons.org/licenses/by/4.0/deed"  target="_blank" rel="noopener"
+    >創用CC BY 4.0</a> 協議許可</span>
+    </section>
+    </footer>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5857950919507241" crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5857950919507241"
+     data-ad-slot="6290484367"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/hugo/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo/cloudflare_page.e77bfd5bc9a3c9653fa35b1f55276f95_hu_f71e0ba1684e3d7f.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得"
+                        data-key="hugo" 
+                        data-hash="md5-53v9W8mjyWU/o1sfVSdvlQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-shortcode/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo-shortcode/cover.94c20c262b9400c01dc9c1c6f96aa2a1_hu_f2388f124074c817.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo 短代碼 shortcode"
+                        data-key="hugo-shortcode" 
+                        data-hash="md5-lMIMJiuUAMAdycHG&#43;WqioQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 短代碼 shortcode</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-codeblock/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo-codeblock/cover.e4aed39246f9ce7a1007bea846f3dd35_hu_deabc1eec480223b.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo Theme Stack 修改 CodeBlock"
+                        data-key="hugo-codeblock" 
+                        data-hash="md5-5K7Tkkb5znoQB76oRvPdNQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo Theme Stack 修改 CodeBlock</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-stack-custom/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://user-images.githubusercontent.com/5889006/190859441-141b5f81-8483-40d2-bd96-ebf85616a46d.png" loading="lazy" data-key="hugo-stack-custom" data-hash="https://user-images.githubusercontent.com/5889006/190859441-141b5f81-8483-40d2-bd96-ebf85616a46d.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 定製自己的Stack主題</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-config/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg" loading="lazy" data-key="hugo-config" data-hash="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 設定檔結構</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "4154b7069cefd96aa34b",
+        clientSecret: "4d1e06eb5468a4a083bdb0b6095c613deb234ea1",
+        repo: "zonelin.github.io",
+        owner: "ZoneLin",
+        admin: ["ZoneLin"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy: null ,
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2025 筆記Zone
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

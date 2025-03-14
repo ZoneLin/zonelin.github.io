@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="作為寫過程式的人，Git是必備工具 除非只是寫好玩的\n常見的線上Git儲藏庫就是 GitHub、Gitlab、Bitbucket\n如果對於這些公開平台不放心，或是程式碼不想外流，那就自己架私服吧!\n常見的有 Gitea、gogs或是Gitlab\nGitlab裡面包含 CI/CD 工具等功能，十分肥大\n想要一個安裝簡單、有完整git功能又有中文介面，那就選 Gitea 吧！\n安裝 說明文件\nGitea 提供很多安裝方式，我這邊選則用 docker 手邊有現成的docker伺服器，不用白不用\ndocker-compose 安裝說明\n選擇版本 Gitea 的官方映像可以在 Docker Hub 找到\n版本 tag 與 Gitea 的 Github 上發布的版本號一樣\nlatest 則是最新的穩定版\n選擇資料庫 Gitea 支援多種資料庫，例如 mysql mariadb PostgreSQL\n安裝過程 使用 docker-compose 安裝\n我這邊選用 mysql 資料庫\nyaml docker-compose.yml 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 version: &#34;2&#34; services: server: image: gitea/gitea:1.15.6-rootless environment: - GITEA__database__DB_TYPE=mysql - GITEA__database__HOST=db:3306 - GITEA__database__NAME=gitea - GITEA__database__USER=gitea - GITEA__database__PASSWD=gitea restart: always volumes: - ./data:/var/lib/gitea - ./config:/etc/gitea - /etc/timezone:/etc/timezone:ro - /etc/localtime:/etc/localtime:ro ports: - &#34;10080:3000&#34; - &#34;10022:22&#34; depends_on: - db db: image: mysql:8 restart: always environment: - MYSQL_ROOT_PASSWORD=gitea - MYSQL_USER=gitea - MYSQL_PASSWORD=gitea - MYSQL_DATABASE=gitea volumes: - ./mysql:/var/lib/mysql 執行\nterminal docker-compose\u2002up\n">
+<title>Gitea - 自己的 Git 自己架</title>
+
+<link rel='canonical' href='https://zonego.tw/post/gitea/'>
+
+<link rel="stylesheet" href="/scss/style.min.26ab0493597fcd285b9997f5ceddb4c468f78a8fee6c03c2790d3c192d6c92c3.css"><meta property='og:title' content="Gitea - 自己的 Git 自己架">
+<meta property='og:description' content="作為寫過程式的人，Git是必備工具 除非只是寫好玩的\n常見的線上Git儲藏庫就是 GitHub、Gitlab、Bitbucket\n如果對於這些公開平台不放心，或是程式碼不想外流，那就自己架私服吧!\n常見的有 Gitea、gogs或是Gitlab\nGitlab裡面包含 CI/CD 工具等功能，十分肥大\n想要一個安裝簡單、有完整git功能又有中文介面，那就選 Gitea 吧！\n安裝 說明文件\nGitea 提供很多安裝方式，我這邊選則用 docker 手邊有現成的docker伺服器，不用白不用\ndocker-compose 安裝說明\n選擇版本 Gitea 的官方映像可以在 Docker Hub 找到\n版本 tag 與 Gitea 的 Github 上發布的版本號一樣\nlatest 則是最新的穩定版\n選擇資料庫 Gitea 支援多種資料庫，例如 mysql mariadb PostgreSQL\n安裝過程 使用 docker-compose 安裝\n我這邊選用 mysql 資料庫\nyaml docker-compose.yml 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 version: &#34;2&#34; services: server: image: gitea/gitea:1.15.6-rootless environment: - GITEA__database__DB_TYPE=mysql - GITEA__database__HOST=db:3306 - GITEA__database__NAME=gitea - GITEA__database__USER=gitea - GITEA__database__PASSWD=gitea restart: always volumes: - ./data:/var/lib/gitea - ./config:/etc/gitea - /etc/timezone:/etc/timezone:ro - /etc/localtime:/etc/localtime:ro ports: - &#34;10080:3000&#34; - &#34;10022:22&#34; depends_on: - db db: image: mysql:8 restart: always environment: - MYSQL_ROOT_PASSWORD=gitea - MYSQL_USER=gitea - MYSQL_PASSWORD=gitea - MYSQL_DATABASE=gitea volumes: - ./mysql:/var/lib/mysql 執行\nterminal docker-compose\u2002up\n">
+<meta property='og:url' content='https://zonego.tw/post/gitea/'>
+<meta property='og:site_name' content='筆記Zone'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Self-Hosting' /><meta property='article:tag' content='Git' /><meta property='article:tag' content='Gitea' /><meta property='article:published_time' content='2021-11-25T19:22:30&#43;08:00'/><meta property='article:modified_time' content='2021-11-25T19:22:30&#43;08:00'/><meta property='og:image' content='https://zonego.tw/post/gitea/Gitea.jpg' />
+<meta name="twitter:title" content="Gitea - 自己的 Git 自己架">
+<meta name="twitter:description" content="作為寫過程式的人，Git是必備工具 除非只是寫好玩的\n常見的線上Git儲藏庫就是 GitHub、Gitlab、Bitbucket\n如果對於這些公開平台不放心，或是程式碼不想外流，那就自己架私服吧!\n常見的有 Gitea、gogs或是Gitlab\nGitlab裡面包含 CI/CD 工具等功能，十分肥大\n想要一個安裝簡單、有完整git功能又有中文介面，那就選 Gitea 吧！\n安裝 說明文件\nGitea 提供很多安裝方式，我這邊選則用 docker 手邊有現成的docker伺服器，不用白不用\ndocker-compose 安裝說明\n選擇版本 Gitea 的官方映像可以在 Docker Hub 找到\n版本 tag 與 Gitea 的 Github 上發布的版本號一樣\nlatest 則是最新的穩定版\n選擇資料庫 Gitea 支援多種資料庫，例如 mysql mariadb PostgreSQL\n安裝過程 使用 docker-compose 安裝\n我這邊選用 mysql 資料庫\nyaml docker-compose.yml 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 version: &#34;2&#34; services: server: image: gitea/gitea:1.15.6-rootless environment: - GITEA__database__DB_TYPE=mysql - GITEA__database__HOST=db:3306 - GITEA__database__NAME=gitea - GITEA__database__USER=gitea - GITEA__database__PASSWD=gitea restart: always volumes: - ./data:/var/lib/gitea - ./config:/etc/gitea - /etc/timezone:/etc/timezone:ro - /etc/localtime:/etc/localtime:ro ports: - &#34;10080:3000&#34; - &#34;10022:22&#34; depends_on: - db db: image: mysql:8 restart: always environment: - MYSQL_ROOT_PASSWORD=gitea - MYSQL_USER=gitea - MYSQL_PASSWORD=gitea - MYSQL_DATABASE=gitea volumes: - ./mysql:/var/lib/mysql 執行\nterminal docker-compose\u2002up\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://zonego.tw/post/gitea/Gitea.jpg' />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-92G2VB89BE"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-92G2VB89BE');
+        }
+      </script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🎮</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">筆記Zone</a></h1>
+            <h2 class="site-description">能者過勞</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='/rss.xml'
+                        target="_blank"
+                        title="01-RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/ZoneLin'
+                        target="_blank"
+                        title="02-GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首頁</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>所有文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                
+                <span>關於本站</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+                
+                <span>留言板</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tools/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tools"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" /><path d="M14.5 5.5l4 4" /><path d="M12 8l-5 -5l-4 4l5 5" /><path d="M7 8l-1.5 1.5" /><path d="M16 12l5 5l-4 4l-5 -5" /><path d="M16 17l-1.5 1.5" /></svg>
+                
+                <span>線上工具</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#安裝">安裝</a>
+      <ol>
+        <li><a href="#選擇版本">選擇版本</a></li>
+        <li><a href="#選擇資料庫">選擇資料庫</a></li>
+      </ol>
+    </li>
+    <li><a href="#安裝過程">安裝過程</a></li>
+    <li><a href="#設定-revers-proxy">設定 revers proxy</a>
+      <ol>
+        <li><a href="#https">https</a>
+          <ol>
+            <li><a href="#啟用動態設定檔">啟用動態設定檔</a></li>
+            <li><a href="#設定-lets-encrypt-自動申請憑證">設定 let&rsquo;s encrypt 自動申請憑證</a></li>
+            <li><a href="#設定-entry-point">設定 entry point</a></li>
+            <li><a href="#添加後端跟路由">添加後端跟路由</a></li>
+          </ol>
+        </li>
+        <li><a href="#ssh">ssh</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+  <header class="article-header">
+        <div class="article-image">
+            <a href="/post/gitea/">
+                <img src="/post/gitea/Gitea_hu_34c3dfa58138fad4.jpg"
+                        srcset="/post/gitea/Gitea_hu_34c3dfa58138fad4.jpg 800w, /post/gitea/Gitea_hu_5330e10eb74ecfdd.jpg 1600w"
+                        width="800" 
+                        height="419" 
+                        loading="lazy"
+                        alt="Featured image of post Gitea - 自己的 Git 自己架" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E8%87%AA%E6%9E%B6%E6%9C%8D%E5%8B%99/" style="background-color: #A0C878; color: #fff;">
+                自架服務
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/gitea/">Gitea - 自己的 Git 自己架</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2021.11.25</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 2 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+  <section class="article-content">
+    
+    
+    <p>作為寫過程式的人，Git是必備工具 <del>除非只是寫好玩的</del></p>
+<p>常見的線上Git儲藏庫就是 <a class="link" href="https://github.com/"  target="_blank" rel="noopener"
+    >GitHub</a>、<a class="link" href="https://about.gitlab.com/"  target="_blank" rel="noopener"
+    >Gitlab</a>、<a class="link" href="https://bitbucket.org/"  target="_blank" rel="noopener"
+    >Bitbucket</a></p>
+<p>如果對於這些公開平台不放心，或是程式碼不想外流，那就自己架私服吧!</p>
+<p>常見的有 <a class="link" href="https://gitea.io/"  target="_blank" rel="noopener"
+    >Gitea</a>、<a class="link" href="https://gogs.io/"  target="_blank" rel="noopener"
+    >gogs</a>或是<a class="link" href="https://about.gitlab.com/"  target="_blank" rel="noopener"
+    >Gitlab</a></p>
+<p>Gitlab裡面包含 CI/CD 工具等功能，十分肥大</p>
+<p>想要一個安裝簡單、有完整git功能又有中文介面，那就選 Gitea 吧！</p>
+<h2 id="安裝"><a href="#%e5%ae%89%e8%a3%9d" class="header-anchor"></a>安裝
+</h2><p><a class="link" href="https://docs.gitea.io/"  target="_blank" rel="noopener"
+    >說明文件</a></p>
+<p>Gitea 提供很多安裝方式，我這邊選則用 docker <del>手邊有現成的docker伺服器，不用白不用</del></p>
+<p><a class="link" href="https://docs.gitea.io/zh-tw/install-with-docker-rootless/"  target="_blank" rel="noopener"
+    >docker-compose 安裝說明</a></p>
+<h3 id="選擇版本"><a href="#%e9%81%b8%e6%93%87%e7%89%88%e6%9c%ac" class="header-anchor"></a>選擇版本
+</h3><p>Gitea 的官方映像可以在 <a class="link" href="https://hub.docker.com/r/gitea/gitea/"  target="_blank" rel="noopener"
+    >Docker Hub</a> 找到</p>
+<p>版本 tag 與 Gitea 的 <a class="link" href="https://github.com/go-gitea/gitea"  target="_blank" rel="noopener"
+    >Github</a> 上發布的版本號一樣</p>
+<p><code>latest</code> 則是最新的穩定版</p>
+<h3 id="選擇資料庫"><a href="#%e9%81%b8%e6%93%87%e8%b3%87%e6%96%99%e5%ba%ab" class="header-anchor"></a>選擇資料庫
+</h3><p>Gitea 支援多種資料庫，例如 <code>mysql</code> <code>mariadb</code> <code>PostgreSQL</code></p>
+<h2 id="安裝過程"><a href="#%e5%ae%89%e8%a3%9d%e9%81%8e%e7%a8%8b" class="header-anchor"></a>安裝過程
+</h2><p>使用 docker-compose 安裝</p>
+<p>我這邊選用 mysql 資料庫</p>
+<figure class="code-block" role="figure" aria-label="yaml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">yaml</span>
+    <span  class="code-title">docker-compose.yml</span></div><div class="highlight" title="docker-compose.yml"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">gitea/gitea:1.15.6-rootless</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span>- <span class="l">GITEA__database__DB_TYPE=mysql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span>- <span class="l">GITEA__database__HOST=db:3306</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span>- <span class="l">GITEA__database__NAME=gitea</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span>- <span class="l">GITEA__database__USER=gitea</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span>- <span class="l">GITEA__database__PASSWD=gitea</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./data:/var/lib/gitea</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./config:/etc/gitea  </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/etc/timezone:/etc/timezone:ro</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/etc/localtime:/etc/localtime:ro</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;10080:3000&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;10022:22&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span>- <span class="l">db</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nt">db</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">mysql:8</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span>- <span class="l">MYSQL_ROOT_PASSWORD=gitea</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span>- <span class="l">MYSQL_USER=gitea</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span>- <span class="l">MYSQL_PASSWORD=gitea</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span>- <span class="l">MYSQL_DATABASE=gitea</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span>- <span class="l">./mysql:/var/lib/mysql</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>執行<br>
+
+<div class="terminal">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+
+    
+    <div class="terminal-title">terminal</div>
+    
+
+    <div class="terminal-copy"></div>
+  </div>
+  <div class="terminal-block">
+    <p>docker-compose up<br></p>
+  </div>
+</div>
+</p>
+<p>完成後可以用 <a class="link" href="http://hostname:10080"  target="_blank" rel="noopener"
+    >http://hostname:10080</a> 連到你剛剛架的 gitea</p>
+<p>SSH 要使用 10022 例如<br>
+
+<div class="terminal">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+
+    
+    <div class="terminal-title">terminal</div>
+    
+
+    <div class="terminal-copy"></div>
+  </div>
+  <div class="terminal-block">
+    <p>git clone ssh://git@hostname:10022/username/repo.git<br></p>
+  </div>
+</div>
+</p>
+<p>如果想用預設 Port</p>
+<figure class="code-block" role="figure" aria-label="yaml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">yaml</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c">#將這段</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="s2">&#34;10080:3000&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="s2">&#34;10022:22&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#換成這段</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="s2">&#34;80:3000&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="s2">&#34;22:22&#34;</span><span class="w">      </span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>到這邊自己用應該夠了，後續如果要在外網使用，建議還是設定網段 + SSl憑證 (弄成https) 會比較安全</p>
+<h2 id="設定-revers-proxy"><a href="#%e8%a8%ad%e5%ae%9a-revers-proxy" class="header-anchor"></a>設定 revers proxy
+</h2><p>我自己是使用 traefik 做 revers proxy<br>
+由於之前是用 haproxy ，改用 traefik 之後還是習慣用檔案手動設定<br>
+後面的範例會以設定檔的方式為主，也可以參考官方文件改成 docker labels</p>
+<h3 id="https"><a href="#https" class="header-anchor"></a>https
+</h3><p>我的 traefik 有設定監看資料夾的動態設定檔，service 跟 router 分別在不同檔案<br>
+如果沒有用動態設定檔的話，設定應該都在 traefik.toml 只不過改完後要重開</p>
+<h4 id="啟用動態設定檔"><a href="#%e5%95%9f%e7%94%a8%e5%8b%95%e6%85%8b%e8%a8%ad%e5%ae%9a%e6%aa%94" class="header-anchor"></a>啟用動態設定檔
+</h4><p>directory 可以自行更換</p>
+<figure class="code-block" role="figure" aria-label="toml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">toml</span>
+    <span  class="code-title">traefik.toml</span></div><div class="highlight" title="traefik.toml"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">providers</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">providers</span><span class="p">.</span><span class="nx">file</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">directory</span> <span class="p">=</span> <span class="s2">&#34;/etc/traefik/dynamic_configs&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">watch</span> <span class="p">=</span> <span class="kc">true</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h4 id="設定-lets-encrypt-自動申請憑證"><a href="#%e8%a8%ad%e5%ae%9a-lets-encrypt-%e8%87%aa%e5%8b%95%e7%94%b3%e8%ab%8b%e6%86%91%e8%ad%89" class="header-anchor"></a>設定 let&rsquo;s encrypt 自動申請憑證
+</h4><p>驗證方式有幾種可以選，一般常用的是 http Challenge</p>
+<p>我的網站有套用 cloudflare 保護，DNS 代理就轉過去 cloudflare 了<br>
+外加 cloudflare 有支援 dns Challenge，乾脆就用這種 DNS 驗證比較省事<br>
+如果你的網域租賃商有提供 dns Challenge，也可以用這種方式驗證比較簡單<br>
+只要設定一次，可以套用多個網域</p>
+<p>resolvers 可以改成你的網域租賃商，我這邊寫的是 cloudflare 的 DNS<br>
+如果要套用 cloudflare 的防護，這邊不用改</p>
+<figure class="code-block" role="figure" aria-label="toml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">toml</span>
+    <span  class="code-title">traefik.toml</span></div><div class="highlight" title="traefik.toml"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">certificatesResolvers</span><span class="p">.</span><span class="nx">cloudflare-resolver</span><span class="p">.</span><span class="nx">acme</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">email</span> <span class="p">=</span> <span class="s2">&#34;youremail@gmail.com&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">storage</span> <span class="p">=</span> <span class="s2">&#34;/etc/traefik/acme.json&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">certificatesResolvers</span><span class="p">.</span><span class="nx">cloudflare-resolver</span><span class="p">.</span><span class="nx">acme</span><span class="p">.</span><span class="nx">dnsChallenge</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">provider</span> <span class="p">=</span> <span class="s2">&#34;cloudflare&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">delayBeforeCheck</span> <span class="p">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">resolvers</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;1.1.1.1:53&#34;</span><span class="p">,</span> <span class="s2">&#34;1.0.0.1:53&#34;</span><span class="p">]</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h4 id="設定-entry-point"><a href="#%e8%a8%ad%e5%ae%9a-entry-point" class="header-anchor"></a>設定 entry point
+</h4><figure class="code-block" role="figure" aria-label="toml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">toml</span>
+    <span  class="code-title">traefik.toml</span></div><div class="highlight" title="traefik.toml"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">entryPoints</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">entryPoints</span><span class="p">.</span><span class="nx">ssh</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">address</span> <span class="p">=</span> <span class="s2">&#34;:22&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">entryPoints</span><span class="p">.</span><span class="nx">web</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">address</span> <span class="p">=</span> <span class="s2">&#34;:80&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">entryPoints</span><span class="p">.</span><span class="nx">websecure</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">address</span> <span class="p">=</span> <span class="s2">&#34;:443&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">[</span><span class="nx">entryPoints</span><span class="p">.</span><span class="nx">websecure</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">tls</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">certResolver</span> <span class="p">=</span> <span class="s2">&#34;cloudflare-resolver&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h4 id="添加後端跟路由"><a href="#%e6%b7%bb%e5%8a%a0%e5%be%8c%e7%ab%af%e8%b7%9f%e8%b7%af%e7%94%b1" class="header-anchor"></a>添加後端跟路由
+</h4><p>添加 http service</p>
+<figure class="code-block" role="figure" aria-label="toml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">toml</span>
+    <span  class="code-title">/etc/traefik/dynamic_configs/service.toml</span></div><div class="highlight" title="/etc/traefik/dynamic_configs/service.toml"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">services</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">services</span><span class="p">.</span><span class="nx">gitea</span><span class="p">.</span><span class="nx">loadBalancer</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="c"># healthCheck 是讓 traefik 檢查 gitea 伺服器是否還活著，不要可以去掉</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">services</span><span class="p">.</span><span class="nx">gitea</span><span class="p">.</span><span class="nx">loadBalancer</span><span class="p">.</span><span class="nx">healthCheck</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">scheme</span> <span class="p">=</span> <span class="s2">&#34;http&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">path</span> <span class="p">=</span> <span class="s2">&#34;/&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">interval</span> <span class="p">=</span> <span class="s2">&#34;10s&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">timeout</span> <span class="p">=</span> <span class="s2">&#34;3s&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[[</span><span class="nx">http</span><span class="p">.</span><span class="nx">services</span><span class="p">.</span><span class="nx">gitea</span><span class="p">.</span><span class="nx">loadBalancer</span><span class="p">.</span><span class="nx">servers</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;http://gitea-ip:3000&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>再來是添加 router</p>
+<figure class="code-block" role="figure" aria-label="toml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">toml</span>
+    <span  class="code-title">/etc/traefik/dynamic_configs/routre.toml</span></div><div class="highlight" title="/etc/traefik/dynamic_configs/routre.toml"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">.</span><span class="nx">git</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">entryPoints</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;websecure&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rule</span> <span class="p">=</span> <span class="s2">&#34;Host(`git.your.domain`)&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">service</span> <span class="p">=</span> <span class="s2">&#34;gitea&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="nx">http</span><span class="p">.</span><span class="nx">routers</span><span class="p">.</span><span class="nx">git</span><span class="p">.</span><span class="nx">tls</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">certResolver</span> <span class="p">=</span> <span class="s2">&#34;cloudflare-resolver&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>這樣就完成了</p>
+<h3 id="ssh"><a href="#ssh" class="header-anchor"></a>ssh
+</h3><p>git 使用 key 做身分認證時必須要走 ssh 的協定，如果要使用就必須做好轉發</p>
+<p>在 revers proxy 設定連接 就直接轉到 gitea 伺服器</p>
+
+</section>
+
+
+  <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/self-hosting/">Self-Hosting</a>
+        
+            <a href="/tags/git/">Git</a>
+        
+            <a href="/tags/gitea/">Gitea</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>本文採用 <a class="link" href="https://creativecommons.org/licenses/by/4.0/deed"  target="_blank" rel="noopener"
+    >創用CC BY 4.0</a> 協議許可</span>
+    </section>
+    </footer>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5857950919507241" crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5857950919507241"
+     data-ad-slot="6290484367"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/adguardhome/">
+        
+        
+            <div class="article-image">
+                <img src="/post/adguardhome/adguardhome.be7f1aaf2138ab3f9bc758ea8a0fe13b_hu_96263991d120b094.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post AdGuard Home 擋廣告工具"
+                        data-key="adguardhome" 
+                        data-hash="md5-vn8aryE4qz&#43;bx1jqig/hOw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AdGuard Home 擋廣告工具</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/wikijs-keyckoak/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://camo.githubusercontent.com/0517b8b479b59ff711930e51861faf2154aa54524503cf5de4b7ef506e1119d1/68747470733a2f2f7374617469632e7265717561726b732e696f2f6c6f676f2f77696b696a732d66756c6c2e737667" loading="lazy" data-key="wikijs-keyckoak" data-hash="https://camo.githubusercontent.com/0517b8b479b59ff711930e51861faf2154aa54524503cf5de4b7ef506e1119d1/68747470733a2f2f7374617469632e7265717561726b732e696f2f6c6f676f2f77696b696a732d66756c6c2e737667"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">設定 WikiJS 使用 Keyckoak 做身分認證</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/speedtest/">
+        
+        
+            <div class="article-image">
+                <img src="/post/speedtest/speed-meter.ff9f903df4c3861aaa7606abcf7d0423_hu_405a36f98b18e000.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post OpenSpeedTest 純HTML5的內網測速工具"
+                        data-key="SpeedTest" 
+                        data-hash="md5-/5&#43;QPfTDhhqqdgarz30EIw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">OpenSpeedTest 純HTML5的內網測速工具</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/gitea-gmail/">
+        
+        
+            <div class="article-image">
+                <img src="/post/gitea-gmail/mail.2949e8eaced90b0084840b5dbfb26289_hu_4191df997d824062.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Gitea 使用 Gmail 寄信"
+                        data-key="gitea-gmail" 
+                        data-hash="md5-KUno6s7ZCwCEhAtdv7JiiQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Gitea 使用 Gmail 寄信</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "4154b7069cefd96aa34b",
+        clientSecret: "4d1e06eb5468a4a083bdb0b6095c613deb234ea1",
+        repo: "zonelin.github.io",
+        owner: "ZoneLin",
+        admin: ["ZoneLin"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy: null ,
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2025 筆記Zone
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

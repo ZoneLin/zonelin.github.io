@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Git 連線限制 最近在設定部落格的自動更新，發現自己架的 gitea 伺服器只有對外開放 https\ngit 指令內預設是走 ssh 才能使用免密碼，用 key 作身分驗證\n為了解決身分驗證的問題，花了一些時間整理解決方式\n如果你的目的是 GitHub 或 GitLab 這種不是自己架的，不會有這問題\n順便紀錄怎麼使用 drone-git-push\n1. 改用 https + 帳號密碼驗證 如果原本 gitea 就已經設定好 https 連線，這是簡單方便的方式，只要改專案的CICD設定就好了\n將 git remote 的設定字串，改成下面的格式就好了\nsecret-remote-string 1 https://username:password@your.gitea.com/username/repository.git 如果擔心明文會洩漏帳號密碼，可以用 woodpecker secret\n先在 woodpecker 中加入上面的 remote 字串，到專案的 secret\n再改專案中的 .woodpecker 設定檔， remote 的地方改成調用 secret\nyml 1 2 3 4 5 6 7 8 steps: - name: Commit changes image: appleboy/drone-git-push settings: branch: main remote: from_secret: secret-remote-string 2. IP直連 假設已經準備好 ssh key (如果沒有，可以跳去後面看完整教學)\n">
+<title>Woodpeak Git Push 至私有 git</title>
+
+<link rel='canonical' href='https://zonego.tw/post/woodpeak-git-push/'>
+
+<link rel="stylesheet" href="/scss/style.min.26ab0493597fcd285b9997f5ceddb4c468f78a8fee6c03c2790d3c192d6c92c3.css"><meta property='og:title' content="Woodpeak Git Push 至私有 git">
+<meta property='og:description' content="Git 連線限制 最近在設定部落格的自動更新，發現自己架的 gitea 伺服器只有對外開放 https\ngit 指令內預設是走 ssh 才能使用免密碼，用 key 作身分驗證\n為了解決身分驗證的問題，花了一些時間整理解決方式\n如果你的目的是 GitHub 或 GitLab 這種不是自己架的，不會有這問題\n順便紀錄怎麼使用 drone-git-push\n1. 改用 https + 帳號密碼驗證 如果原本 gitea 就已經設定好 https 連線，這是簡單方便的方式，只要改專案的CICD設定就好了\n將 git remote 的設定字串，改成下面的格式就好了\nsecret-remote-string 1 https://username:password@your.gitea.com/username/repository.git 如果擔心明文會洩漏帳號密碼，可以用 woodpecker secret\n先在 woodpecker 中加入上面的 remote 字串，到專案的 secret\n再改專案中的 .woodpecker 設定檔， remote 的地方改成調用 secret\nyml 1 2 3 4 5 6 7 8 steps: - name: Commit changes image: appleboy/drone-git-push settings: branch: main remote: from_secret: secret-remote-string 2. IP直連 假設已經準備好 ssh key (如果沒有，可以跳去後面看完整教學)\n">
+<meta property='og:url' content='https://zonego.tw/post/woodpeak-git-push/'>
+<meta property='og:site_name' content='筆記Zone'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CICD' /><meta property='article:tag' content='woodpecker' /><meta property='article:tag' content='git' /><meta property='article:published_time' content='2025-03-11T13:07:50&#43;08:00'/><meta property='article:modified_time' content='2025-03-11T13:07:50&#43;08:00'/>
+<meta name="twitter:title" content="Woodpeak Git Push 至私有 git">
+<meta name="twitter:description" content="Git 連線限制 最近在設定部落格的自動更新，發現自己架的 gitea 伺服器只有對外開放 https\ngit 指令內預設是走 ssh 才能使用免密碼，用 key 作身分驗證\n為了解決身分驗證的問題，花了一些時間整理解決方式\n如果你的目的是 GitHub 或 GitLab 這種不是自己架的，不會有這問題\n順便紀錄怎麼使用 drone-git-push\n1. 改用 https + 帳號密碼驗證 如果原本 gitea 就已經設定好 https 連線，這是簡單方便的方式，只要改專案的CICD設定就好了\n將 git remote 的設定字串，改成下面的格式就好了\nsecret-remote-string 1 https://username:password@your.gitea.com/username/repository.git 如果擔心明文會洩漏帳號密碼，可以用 woodpecker secret\n先在 woodpecker 中加入上面的 remote 字串，到專案的 secret\n再改專案中的 .woodpecker 設定檔， remote 的地方改成調用 secret\nyml 1 2 3 4 5 6 7 8 steps: - name: Commit changes image: appleboy/drone-git-push settings: branch: main remote: from_secret: secret-remote-string 2. IP直連 假設已經準備好 ssh key (如果沒有，可以跳去後面看完整教學)\n">
+    <link rel="shortcut icon" href="/favicon.png" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-92G2VB89BE"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-92G2VB89BE');
+        }
+      </script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🎮</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">筆記Zone</a></h1>
+            <h2 class="site-description">能者過勞</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='/rss.xml'
+                        target="_blank"
+                        title="01-RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/ZoneLin'
+                        target="_blank"
+                        title="02-GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首頁</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>所有文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                
+                <span>關於本站</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+                
+                <span>留言板</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tools/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tools"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" /><path d="M14.5 5.5l4 4" /><path d="M12 8l-5 -5l-4 4l5 5" /><path d="M7 8l-1.5 1.5" /><path d="M16 12l5 5l-4 4l-5 -5" /><path d="M16 17l-1.5 1.5" /></svg>
+                
+                <span>線上工具</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#git-連線限制">Git 連線限制</a>
+      <ol>
+        <li><a href="#1-改用-https--帳號密碼驗證">1. 改用 https + 帳號密碼驗證</a></li>
+        <li><a href="#2-ip直連">2. IP直連</a></li>
+        <li><a href="#3-revers-proxy-轉發-22-port">3. revers proxy 轉發 22 port</a></li>
+      </ol>
+    </li>
+    <li><a href="#drone-git-push-使用教學">drone-git-push 使用教學</a>
+      <ol>
+        <li><a href="#設定連線-ssh-key">設定連線 SSH Key</a></li>
+        <li><a href="#woodpecker-設定檔">woodpecker 設定檔</a></li>
+      </ol>
+    </li>
+    <li><a href="#參考來源">參考來源</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+  <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E9%96%8B%E7%99%BC%E7%9B%B8%E9%97%9C/" style="background-color: #27667B; color: #DDEB9D;">
+                開發相關
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/woodpeak-git-push/">Woodpeak Git Push 至私有 git</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025.03.11</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 2 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+  <section class="article-content">
+    
+    
+    <h2 id="git-連線限制"><a href="#git-%e9%80%a3%e7%b7%9a%e9%99%90%e5%88%b6" class="header-anchor"></a>Git 連線限制
+</h2><p>最近在設定部落格的自動更新，發現自己架的 gitea 伺服器只有對外開放 https<br>
+git 指令內預設是走 ssh 才能使用免密碼，用 key 作身分驗證<br>
+為了解決身分驗證的問題，花了一些時間整理解決方式</p>
+<p>如果你的目的是 GitHub 或 GitLab 這種不是自己架的，不會有這問題</p>
+<p>順便紀錄怎麼使用 drone-git-push</p>
+<h3 id="1-改用-https--帳號密碼驗證"><a href="#1-%e6%94%b9%e7%94%a8-https--%e5%b8%b3%e8%99%9f%e5%af%86%e7%a2%bc%e9%a9%97%e8%ad%89" class="header-anchor"></a>1. 改用 https + 帳號密碼驗證
+</h3><p>如果原本 gitea 就已經設定好 https 連線，這是簡單方便的方式，只要改專案的CICD設定就好了<br>
+將 git remote 的設定字串，改成下面的格式就好了</p>
+<figure class="code-block" role="figure" aria-label=" code snippet">
+
+  <div class="code-header">
+    <span  class="code-title">secret-remote-string</span></div><div class="highlight" title="secret-remote-string"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">https://username:password@your.gitea.com/username/repository.git</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>如果擔心明文會洩漏帳號密碼，可以用 woodpecker secret<br>
+先在 woodpecker 中加入上面的 remote 字串，到專案的 secret<br>
+再改專案中的 .woodpecker 設定檔， remote 的地方改成調用 secret</p>
+<figure class="code-block" role="figure" aria-label="yml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">yml</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Commit changes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">appleboy/drone-git-push</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">settings</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">remote</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">from_secret</span><span class="p">:</span><span class="w"> </span><span class="l">secret-remote-string</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="2-ip直連"><a href="#2-ip%e7%9b%b4%e9%80%a3" class="header-anchor"></a>2. IP直連
+</h3><p>假設已經準備好 ssh key (如果沒有，可以跳去後面看完整教學)</p>
+<p>預先調整網路設定，讓 woodpecker 伺服器跟 gitea 伺服器可以用 IP 直連<br>
+例如穿透、轉發或乾脆放同網段</p>
+<p>改完之後，將 git remote 改成如下格式，搭配原本的 key 連線即可</p>
+<figure class="code-block" role="figure" aria-label=" code snippet">
+
+  <div class="code-header"></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git@gitea-ip:username/repository.git</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>如果 gitea 的 ssh port 不是在預設的 22</p>
+<figure class="code-block" role="figure" aria-label=" code snippet">
+
+  <div class="code-header"></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ssh://git@gitea-ip:port/username/repository.git</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="3-revers-proxy-轉發-22-port"><a href="#3-revers-proxy-%e8%bd%89%e7%99%bc-22-port" class="header-anchor"></a>3. revers proxy 轉發 22 port
+</h3><p>這個方法是第一個方法的延伸，如果有時間設定建議可以改成這樣，後面使用也比較方便<br>
+既然 gitea 用非標準的 port，那就在 revers proxy 改回來就好了</p>
+<p><strong>當然，如果你能直接改 gitea 的 port 最省事</strong></p>
+<p>通常 revers proxy 會設定讓大部分內網段都能連到(至少我是這樣設定)，不用再重複設定網段穿透<br>
+至於對不對外開放可以另外考慮，我只設定內網不同網段也可以連到</p>
+<p>設定方式請參考 <a class="link" href="https://zonego.tw/post/gitea/" >Gitea - 自己的 Git 自己架</a></p>
+<h2 id="drone-git-push-使用教學"><a href="#drone-git-push-%e4%bd%bf%e7%94%a8%e6%95%99%e5%ad%b8" class="header-anchor"></a>drone-git-push 使用教學
+</h2><p>例如使用 ssh key 認證，push 到 github 上</p>
+<h3 id="設定連線-ssh-key"><a href="#%e8%a8%ad%e5%ae%9a%e9%80%a3%e7%b7%9a-ssh-key" class="header-anchor"></a>設定連線 SSH Key
+</h3><p>使用指令產生公私鑰</p>
+
+<div class="terminal">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+
+    
+    <div class="terminal-title">terminal</div>
+    
+
+    <div class="terminal-copy"></div>
+  </div>
+  <div class="terminal-block">
+    <p>ssh-keygen -f keyname<br></p>
+  </div>
+</div>
+
+<p>中間 -f 可以自行選擇存放的位置跟檔名<br>
+如果沒指定 -f ，預設存在 <code>~/.ssh/</code></p>
+<p>完成之後會生成 keyname 跟 keyname.pub 兩個檔案<br>
+keyname.pub 就是公鑰<br>
+keyname 就是私鑰，必須要保存好</p>
+<hr>
+<p>將公鑰上傳到 github</p>
+<p>到 github 點右上角大頭貼 &gt; settings &gt; 左邊 SSH and GPG keys</p>
+<p><img src="/post/woodpeak-git-push/github_keys.png"
+	width="3104"
+	height="1834"
+	srcset="/post/woodpeak-git-push/github_keys_hu_9e58bbc05cdc4201.png 480w, /post/woodpeak-git-push/github_keys_hu_29b7ca2a2b16744f.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="406px"
+	
+></p>
+<p>點 new SSH key， title 打方便辨識的名字，例如我就放一個 Key 是 woodpecker 專用<br>
+將 keyname.pub 的內容貼上就完成了</p>
+<p><img src="/post/woodpeak-git-push/github_keys2.png"
+	width="3104"
+	height="1834"
+	srcset="/post/woodpeak-git-push/github_keys2_hu_18762a9e925eeeec.png 480w, /post/woodpeak-git-push/github_keys2_hu_11e5c8596aed0bfa.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="406px"
+	
+></p>
+<p>將公鑰的內容貼進去就可以了</p>
+<hr>
+<p>將私鑰內容貼到 woodpecker secret</p>
+<p>打開 woodpecker 到專案內點齒輪設定 &gt; Secrets</p>
+<p><img src="/post/woodpeak-git-push/woodpecker.png"
+	width="3104"
+	height="1834"
+	srcset="/post/woodpeak-git-push/woodpecker_hu_d6e7ec3d742bbbf5.png 480w, /post/woodpeak-git-push/woodpecker_hu_d3931060d6d3799e.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="406px"
+	
+></p>
+<p><img src="/post/woodpeak-git-push/woodpecker_secret.png"
+	width="3104"
+	height="1834"
+	srcset="/post/woodpeak-git-push/woodpecker_secret_hu_ea7182b01225486b.png 480w, /post/woodpeak-git-push/woodpecker_secret_hu_506c56d438b69bf1.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="406px"
+	
+></p>
+<p>點 add secrets</p>
+<p><img src="/post/woodpeak-git-push/woodpecker_secret2.png"
+	width="3104"
+	height="1834"
+	srcset="/post/woodpeak-git-push/woodpecker_secret2_hu_e2cf2fe7c3f40b67.png 480w, /post/woodpeak-git-push/woodpecker_secret2_hu_b08cda78fb873885.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="406px"
+	
+></p>
+<p>name 可以寫個方便辨識的名字<br>
+value 貼上私鑰的內容 (END後面的換行要保留)</p>
+<figure class="code-block" role="figure" aria-label=" code snippet">
+
+  <div class="code-header">
+    <span  class="code-title">value</span></div><div class="highlight" title="value"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-----BEGIN OPENSSH PRIVATE KEY-----
+</span></span><span class="line"><span class="cl">abcdefghi...
+</span></span><span class="line"><span class="cl">OOXXc=
+</span></span><span class="line"><span class="cl">-----END OPENSSH PRIVATE KEY-----</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>Avalable Plugin 可以指定這個 secret 只有哪個步驟能用<br>
+例如我可以填上 <code>appleboy/drone-git-push</code>，就只有 image 用到 drone-git-push 這些步驟能用<br>
+留空白代表不限制</p>
+<p>Avalable at following event 可以指定在哪些 git 或 woodpecker 操作可以使用這個 secret<br>
+這邊的 git 操作指的是你的操作觸發 woodpecker，而不是 drone-git-push 內的動作</p>
+<h3 id="woodpecker-設定檔"><a href="#woodpecker-%e8%a8%ad%e5%ae%9a%e6%aa%94" class="header-anchor"></a>woodpecker 設定檔
+</h3><p>照前面設定把 Key 跟 secret 設定好之後，就可以在流程內加步驟了</p>
+<figure class="code-block" role="figure" aria-label="yml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">yml</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">push git</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">appleboy/drone-git-push</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_BRANCH</span><span class="p">:</span><span class="w"> </span><span class="l">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_SSH_KEY</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">from_secret</span><span class="p">:</span><span class="w"> </span><span class="l">github_key</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_REMOTE</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;git@github.com:user/repo.git&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_AUTHOR_NAME</span><span class="p">:</span><span class="w"> </span><span class="l">user</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_AUTHOR_EMAIL</span><span class="p">:</span><span class="w"> </span><span class="l">email</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_COMMIT</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_COMMIT_MESSAGE</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Auto generated using Woodpecker CI&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>上面寫的是基本用法<br>
+如果除了 git push 的指令還需要跑別的東西，可以用 <code>commands</code><br>
+例如，我的編譯跑完之後，我只想推送編譯完的檔案出去，而不是專案原始碼</p>
+<ul>
+<li>先 cd 進到編譯完的 public 資料夾</li>
+<li>初始化儲存庫</li>
+<li>強制推送至 github</li>
+</ul>
+<figure class="code-block" role="figure" aria-label="yml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">yml</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">deploy git page</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">appleboy/drone-git-push</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_BRANCH</span><span class="p">:</span><span class="w"> </span><span class="l">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_SSH_KEY</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">from_secret</span><span class="p">:</span><span class="w"> </span><span class="l">github_key</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_REMOTE</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;git@github.com:ZoneLin/blog-public.git&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_AUTHOR_NAME</span><span class="p">:</span><span class="w"> </span><span class="l">zoneLin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_AUTHOR_EMAIL</span><span class="p">:</span><span class="w"> </span><span class="l">th5331958@gmail.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_FORCE</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_COMMIT</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_COMMIT_MESSAGE</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Auto generated using Woodpecker CI&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">commands</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">cd public</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">git init</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">/bin/drone-git-push</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>隨副 drone-git-push 用法參考<br>
+<a class="link" href="https://woodpecker-ci.org/plugins/Git%20Push"  target="_blank" rel="noopener"
+    >https://woodpecker-ci.org/plugins/Git%20Push</a></p>
+<h2 id="參考來源"><a href="#%e5%8f%83%e8%80%83%e4%be%86%e6%ba%90" class="header-anchor"></a>參考來源
+</h2><ul>
+<li><a class="link" href="https://nanxiao.me/git-clone-ssh-non-22-port/"  target="_blank" rel="noopener"
+    >处理git clone命令的非标准SSH端口连接</a></li>
+<li><a class="link" href="https://stackoverflow.com/questions/10054318/how-do-i-provide-a-username-and-password-when-running-git-clone-gitremote-git"  target="_blank" rel="noopener"
+    >stackoverflow</a></li>
+</ul>
+
+</section>
+
+
+  <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/cicd/">CICD</a>
+        
+            <a href="/tags/woodpecker/">Woodpecker</a>
+        
+            <a href="/tags/git/">Git</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>本文採用 <a class="link" href="https://creativecommons.org/licenses/by/4.0/deed"  target="_blank" rel="noopener"
+    >創用CC BY 4.0</a> 協議許可</span>
+    </section>
+    </footer>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5857950919507241" crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5857950919507241"
+     data-ad-slot="6290484367"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/drone-git-push/">
+        
+        
+            <div class="article-image">
+                <img src="/post/drone-git-push/DroneCI.28b55dedd6da5dc2b8d3e0e9b56f9472_hu_b3752a5262ee4ca3.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post drone-git-push 踩雷心得"
+                        data-key="drone-git-push" 
+                        data-hash="md5-KLVd7dbaXcK40&#43;DptW&#43;Ucg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">drone-git-push 踩雷心得</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo/cloudflare_page.e77bfd5bc9a3c9653fa35b1f55276f95_hu_f71e0ba1684e3d7f.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得"
+                        data-key="hugo" 
+                        data-hash="md5-53v9W8mjyWU/o1sfVSdvlQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/copy-past/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">注意複製貼上內容</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "4154b7069cefd96aa34b",
+        clientSecret: "4d1e06eb5468a4a083bdb0b6095c613deb234ea1",
+        repo: "zonelin.github.io",
+        owner: "ZoneLin",
+        admin: ["ZoneLin"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy: null ,
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2025 筆記Zone
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>影片下載 on 筆記Zone</title>
+        <link>https://zonego.tw/tags/%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89/</link>
+        <description>Recent content in 影片下載 on 筆記Zone</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Thu, 19 Jan 2023 10:59:09 +0800</lastBuildDate><atom:link href="https://zonego.tw/tags/%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89/rss.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hitomi Downloader</title>
+        <link>https://zonego.tw/post/hitomi-downloader/</link>
+        <pubDate>Thu, 19 Jan 2023 10:59:09 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/hitomi-downloader/</guid>
+        <description>&lt;img src="https://zonego.tw/post/hitomi-downloader/hitomi.png" alt="Featured image of post Hitomi Downloader" /&gt;&lt;p&gt;Hitomi Downloader 是一個開源的影音下載工具，支援各大網站的影音下載&lt;/p&gt;
+&lt;p&gt;目前只有 windows 的版本&lt;/p&gt;
+&lt;p&gt;GitHub &lt;a class=&#34;link&#34; href=&#34;https://github.com/KurtBestor/Hitomi-Downloader&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/KurtBestor/Hitomi-Downloader&lt;/a&gt;&lt;br&gt;
+下載位置 &lt;a class=&#34;link&#34; href=&#34;https://github.com/KurtBestor/Hitomi-Downloader/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/KurtBestor/Hitomi-Downloader/releases&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;詳細支援網站請看 &lt;a class=&#34;link&#34; href=&#34;https://github.com/KurtBestor/Hitomi-Downloader#supported-sites&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/KurtBestor/Hitomi-Downloader#supported-sites&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;除了 Youtube 等影音網站還支援 Pixiv&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Hitomi Downloader 底層用近乎萬能的 &lt;a class=&#34;link&#34; href=&#34;https://github.com/yt-dlp/yt-dlp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;yt-dlp&lt;/a&gt; 作為影音下載器&lt;br&gt;
+yt-dlp &lt;a class=&#34;link&#34; href=&#34;https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;支援的網站&lt;/a&gt;，Hitomi Downloader 基本就能下載&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;套個官方的示範圖&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/KurtBestor/Hitomi-Downloader/raw/master/imgs/how_to_download.gif&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;除了一般單片下載之外，還支援下載整個播放清單&lt;/p&gt;
+&lt;!-- TODO 寫使用方法 --&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

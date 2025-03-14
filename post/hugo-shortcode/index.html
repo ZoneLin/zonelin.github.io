@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="shortcode 是什麼 有時候我們有些文章排版的想法，在原始的 markdown 中沒有\n或者跟內文很難區分，要每次都自己手磋 html 出來又嫌麻煩\nHugo 內建的短代碼 shortcode 是一種將模板整合為小型、可重複使用的片段的方法\n雖然 shortcode 在其他地方無法使用，想匯出貼文轉到其他平台會需要另外調整\n不過想加入 Markdown 本身不支援的排版，有這點轉換成本還可以接受\n語法格式 加 shortcode 進我們的 Hugo 專案其實也不難，大概就3個步驟\n新增模版 html 新增排版的 css 在貼文或頁面 markdown 加入使用的語法 shortcode 使用語法 這邊先講在 markdown 裡面使用的語法\nmarkdown 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 &lt;!-- 使用語法 --&gt; {{&lt; myshortcode &gt;}} &lt;!-- 或是 --&gt; {{% myshortcode %}} &lt;!-- 需要包住內容時 --&gt; {{&lt; myshortcode &gt;}} * a * b {{&lt; /myshortcode &gt;}} &lt;!-- 這是加上註解，跳過轉譯 --&gt; {{&lt;/* myshortcode &gt;}} * a * b {{&lt; /myshortcode */&gt;}} 像上面的引用範例，Hugo 會去找 layouts/shortcodes/myshortcode.html 這個檔案來替換內容。\n如果想要用資料夾整理也可以。例如 {{&lt;myfolder/myshortcode&gt;}} 就會去找 layouts/shortcodes/myfolder/myshortcode.html。\n">
+<title>Hugo 短代碼 shortcode</title>
+
+<link rel='canonical' href='https://zonego.tw/post/hugo-shortcode/'>
+
+<link rel="stylesheet" href="/scss/style.min.26ab0493597fcd285b9997f5ceddb4c468f78a8fee6c03c2790d3c192d6c92c3.css"><meta property='og:title' content="Hugo 短代碼 shortcode">
+<meta property='og:description' content="shortcode 是什麼 有時候我們有些文章排版的想法，在原始的 markdown 中沒有\n或者跟內文很難區分，要每次都自己手磋 html 出來又嫌麻煩\nHugo 內建的短代碼 shortcode 是一種將模板整合為小型、可重複使用的片段的方法\n雖然 shortcode 在其他地方無法使用，想匯出貼文轉到其他平台會需要另外調整\n不過想加入 Markdown 本身不支援的排版，有這點轉換成本還可以接受\n語法格式 加 shortcode 進我們的 Hugo 專案其實也不難，大概就3個步驟\n新增模版 html 新增排版的 css 在貼文或頁面 markdown 加入使用的語法 shortcode 使用語法 這邊先講在 markdown 裡面使用的語法\nmarkdown 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 &lt;!-- 使用語法 --&gt; {{&lt; myshortcode &gt;}} &lt;!-- 或是 --&gt; {{% myshortcode %}} &lt;!-- 需要包住內容時 --&gt; {{&lt; myshortcode &gt;}} * a * b {{&lt; /myshortcode &gt;}} &lt;!-- 這是加上註解，跳過轉譯 --&gt; {{&lt;/* myshortcode &gt;}} * a * b {{&lt; /myshortcode */&gt;}} 像上面的引用範例，Hugo 會去找 layouts/shortcodes/myshortcode.html 這個檔案來替換內容。\n如果想要用資料夾整理也可以。例如 {{&lt;myfolder/myshortcode&gt;}} 就會去找 layouts/shortcodes/myfolder/myshortcode.html。\n">
+<meta property='og:url' content='https://zonego.tw/post/hugo-shortcode/'>
+<meta property='og:site_name' content='筆記Zone'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='Blog' /><meta property='article:tag' content='html' /><meta property='article:tag' content='css' /><meta property='article:published_time' content='2025-01-14T00:33:37&#43;08:00'/><meta property='article:modified_time' content='2025-01-14T00:33:37&#43;08:00'/><meta property='og:image' content='https://zonego.tw/post/hugo-shortcode/cover.jpg' />
+<meta name="twitter:title" content="Hugo 短代碼 shortcode">
+<meta name="twitter:description" content="shortcode 是什麼 有時候我們有些文章排版的想法，在原始的 markdown 中沒有\n或者跟內文很難區分，要每次都自己手磋 html 出來又嫌麻煩\nHugo 內建的短代碼 shortcode 是一種將模板整合為小型、可重複使用的片段的方法\n雖然 shortcode 在其他地方無法使用，想匯出貼文轉到其他平台會需要另外調整\n不過想加入 Markdown 本身不支援的排版，有這點轉換成本還可以接受\n語法格式 加 shortcode 進我們的 Hugo 專案其實也不難，大概就3個步驟\n新增模版 html 新增排版的 css 在貼文或頁面 markdown 加入使用的語法 shortcode 使用語法 這邊先講在 markdown 裡面使用的語法\nmarkdown 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 &lt;!-- 使用語法 --&gt; {{&lt; myshortcode &gt;}} &lt;!-- 或是 --&gt; {{% myshortcode %}} &lt;!-- 需要包住內容時 --&gt; {{&lt; myshortcode &gt;}} * a * b {{&lt; /myshortcode &gt;}} &lt;!-- 這是加上註解，跳過轉譯 --&gt; {{&lt;/* myshortcode &gt;}} * a * b {{&lt; /myshortcode */&gt;}} 像上面的引用範例，Hugo 會去找 layouts/shortcodes/myshortcode.html 這個檔案來替換內容。\n如果想要用資料夾整理也可以。例如 {{&lt;myfolder/myshortcode&gt;}} 就會去找 layouts/shortcodes/myfolder/myshortcode.html。\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://zonego.tw/post/hugo-shortcode/cover.jpg' />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-92G2VB89BE"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-92G2VB89BE');
+        }
+      </script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🎮</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">筆記Zone</a></h1>
+            <h2 class="site-description">能者過勞</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='/rss.xml'
+                        target="_blank"
+                        title="01-RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/ZoneLin'
+                        target="_blank"
+                        title="02-GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首頁</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>所有文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                
+                <span>關於本站</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+                
+                <span>留言板</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tools/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tools"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" /><path d="M14.5 5.5l4 4" /><path d="M12 8l-5 -5l-4 4l5 5" /><path d="M7 8l-1.5 1.5" /><path d="M16 12l5 5l-4 4l-5 -5" /><path d="M16 17l-1.5 1.5" /></svg>
+                
+                <span>線上工具</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#shortcode-是什麼">shortcode 是什麼</a></li>
+    <li><a href="#語法格式">語法格式</a>
+      <ol>
+        <li><a href="#shortcode-使用語法">shortcode 使用語法</a></li>
+        <li><a href="#html模版">html模版</a>
+          <ol>
+            <li><a href="#傳入參數">傳入參數</a></li>
+            <li><a href="#傳入包住的內容-inner">傳入包住的內容 Inner</a></li>
+            <li><a href="#抓靜態資源">抓靜態資源</a></li>
+            <li><a href="#抓-data-檔案內的資料">抓 data 檔案內的資料</a></li>
+            <li><a href="#變數函數">變數、函數</a></li>
+          </ol>
+        </li>
+        <li><a href="#css美化">CSS美化</a>
+          <ol>
+            <li><a href="#固定主題">固定主題</a></li>
+            <li><a href="#白天夜晚模式">白天、夜晚模式</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#嵌入-notion-風格書籤">嵌入 notion 風格書籤</a>
+      <ol>
+        <li><a href="#下載-icon">下載 ICON</a></li>
+        <li><a href="#新增-bookmarkhtml">新增 bookmark.html</a></li>
+        <li><a href="#新增-scss">新增 scss</a></li>
+        <li><a href="#使用方式">使用方式</a></li>
+      </ol>
+    </li>
+    <li><a href="#unsplash-引用標籤">Unsplash 引用標籤</a>
+      <ol>
+        <li><a href="#下載-icon-1">下載 ICON</a></li>
+        <li><a href="#新增-unsplashhtml">新增 unsplash.html</a></li>
+        <li><a href="#新增-scss-1">新增 scss</a></li>
+        <li><a href="#使用方式-1">使用方式</a></li>
+      </ol>
+    </li>
+    <li><a href="#terminal-區塊">terminal 區塊</a>
+      <ol>
+        <li><a href="#新增-terminalhtml">新增 terminal.html</a></li>
+        <li><a href="#新增-scss-2">新增 scss</a></li>
+        <li><a href="#使用方式-2">使用方式</a></li>
+      </ol>
+    </li>
+    <li><a href="#參考資料">參考資料</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+  <header class="article-header">
+        <div class="article-image">
+            <a href="/post/hugo-shortcode/">
+                <img src="/post/hugo-shortcode/cover_hu_caecbedfefef7124.jpg"
+                        srcset="/post/hugo-shortcode/cover_hu_caecbedfefef7124.jpg 800w, /post/hugo-shortcode/cover_hu_81c33ae761a17503.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo 短代碼 shortcode" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/blog/" style="background-color: #eb5089; color: #ffffff;">
+                Blog
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/hugo-shortcode/">Hugo 短代碼 shortcode</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025.01.14</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 9 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+  <section class="article-content">
+    
+    
+    <h2 id="shortcode-是什麼"><a href="#shortcode-%e6%98%af%e4%bb%80%e9%ba%bc" class="header-anchor"></a>shortcode 是什麼
+</h2><p>有時候我們有些文章排版的想法，在原始的 markdown 中沒有<br>
+或者跟內文很難區分，要每次都自己手磋 html 出來又嫌麻煩</p>
+<p>Hugo 內建的短代碼 shortcode 是一種將模板整合為小型、可重複使用的片段的方法</p>
+<p>雖然 shortcode 在其他地方無法使用，想匯出貼文轉到其他平台會需要另外調整<br>
+不過想加入 Markdown 本身不支援的排版，有這點轉換成本還可以接受</p>
+<h2 id="語法格式"><a href="#%e8%aa%9e%e6%b3%95%e6%a0%bc%e5%bc%8f" class="header-anchor"></a>語法格式
+</h2><p>加 shortcode 進我們的 Hugo 專案其實也不難，大概就3個步驟</p>
+<ol>
+<li>新增模版 html</li>
+<li>新增排版的 css</li>
+<li>在貼文或頁面 markdown 加入使用的語法</li>
+</ol>
+<h3 id="shortcode-使用語法"><a href="#shortcode-%e4%bd%bf%e7%94%a8%e8%aa%9e%e6%b3%95" class="header-anchor"></a>shortcode 使用語法
+</h3><p>這邊先講在 markdown 裡面使用的語法</p>
+<figure class="code-block" role="figure" aria-label="markdown code snippet">
+
+  <div class="code-header">
+    <span class="code-type">markdown</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="c">&lt;!-- 使用語法 --&gt;</span>
+</span></span><span class="line"><span class="cl">{{<span class="p">&lt;</span> <span class="nt">myshortcode</span> <span class="p">&gt;</span>}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- 或是 --&gt;</span>
+</span></span><span class="line"><span class="cl">{{% myshortcode %}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- 需要包住內容時 --&gt;</span>
+</span></span><span class="line"><span class="cl">{{<span class="p">&lt;</span> <span class="nt">myshortcode</span> <span class="p">&gt;</span>}}
+</span></span><span class="line"><span class="cl">  <span class="k">*</span> a
+</span></span><span class="line"><span class="cl">  <span class="k">*</span> b
+</span></span><span class="line"><span class="cl">{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">myshortcode</span> <span class="p">&gt;</span>}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- 這是加上註解，跳過轉譯 --&gt;</span>
+</span></span><span class="line"><span class="cl">{{<span class="err">&lt;</span>/* myshortcode &gt;}}
+</span></span><span class="line"><span class="cl">  <span class="k">*</span> a
+</span></span><span class="line"><span class="cl">  <span class="k">*</span> b
+</span></span><span class="line"><span class="cl">{{<span class="err">&lt;</span> /myshortcode */&gt;}}</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>像上面的引用範例，Hugo 會去找 <code>layouts/shortcodes/myshortcode.html</code> 這個檔案來替換內容。<br>
+如果想要用資料夾整理也可以。例如 <code>{{&lt;myfolder/myshortcode&gt;}}</code> 就會去找 <code>layouts/shortcodes/myfolder/myshortcode.html</code>。</p>
+<h3 id="html模版"><a href="#html%e6%a8%a1%e7%89%88" class="header-anchor"></a>html模版
+</h3><p>這邊我們的模版 html 檔，可以像平常寫 html 一樣、也可以可以傳入參數、抓專案裡面的檔案資源。</p>
+<h4 id="傳入參數"><a href="#%e5%82%b3%e5%85%a5%e5%8f%83%e6%95%b8" class="header-anchor"></a>傳入參數
+</h4><p>我們可以定義在 myshortcode ，用類似 HTML 屬性的方式傳入參數。<br>
+如果沒有定屬性名稱，也可以用位置抓值。</p>
+<figure class="code-block" role="figure" aria-label="markdown code snippet">
+
+  <div class="code-header">
+    <span class="code-type">markdown</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">{{<span class="p">&lt;</span> <span class="nt">myshortcode</span> <span class="err">&#34;</span><span class="na">value1</span><span class="err">&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;my-component&#34;</span> <span class="na">myattr</span><span class="o">=</span><span class="s">&#34;value2&#34;</span> <span class="p">&gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>在 html 檔案內就可以用 Get method 抓到對應的值</p>
+<figure class="code-block" role="figure" aria-label="html code snippet">
+
+  <div class="code-header">
+    <span class="code-type">html</span>
+    <span  class="code-title">myshortcode.html</span></div><div class="highlight" title="myshortcode.html"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">{{</span> <span class="err">.</span><span class="na">Get</span> <span class="err">&#34;</span><span class="na">class</span><span class="err">&#34;</span> <span class="err">}}</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ .Get 0 }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ .Get &#34;myattr&#34; }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>Hugo 轉譯完之後會變為</p>
+<figure class="code-block" role="figure" aria-label="html code snippet">
+
+  <div class="code-header">
+    <span class="code-type">html</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;my-component&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>value1<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>value2<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h4 id="傳入包住的內容-inner"><a href="#%e5%82%b3%e5%85%a5%e5%8c%85%e4%bd%8f%e7%9a%84%e5%85%a7%e5%ae%b9-inner" class="header-anchor"></a>傳入包住的內容 Inner
+</h4><p>傳入的內容可以使用 <code>$Inner</code> 抓取，看使用情形可以作額外處理。</p>
+<p>例如作為一般文字可以包在 <code>&lt;p&gt;</code> 內再輸出到HTML<br>
+<code>{{ printf ``&lt;p&gt;%s&lt;/p&gt;`` $Inner | safeHTML }}</code></p>
+<p>作為 markdown 做轉譯<br>
+<code>{{ .Inner | markdownify }}</code></p>
+<h4 id="抓靜態資源"><a href="#%e6%8a%93%e9%9d%9c%e6%85%8b%e8%b3%87%e6%ba%90" class="header-anchor"></a>抓靜態資源
+</h4><p>需要抓靜態檔案的資源，可以使用 resources.GetMatch</p>
+<p>例如下面的範例就找 my-project/assets/icons/world.svg<br>
+再用 <code>| safeHTML</code> 把SVG檔的內容貼進 HTML</p>
+<figure class="code-block" role="figure" aria-label="html code snippet">
+
+  <div class="code-header">
+    <span class="code-type">html</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;logo&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    {{- $iconFile := resources.GetMatch &#34;icons/world.svg&#34; -}}
+</span></span><span class="line"><span class="cl">    {{ $iconFile.Content | safeHTML }}
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h4 id="抓-data-檔案內的資料"><a href="#%e6%8a%93-data-%e6%aa%94%e6%a1%88%e5%85%a7%e7%9a%84%e8%b3%87%e6%96%99" class="header-anchor"></a>抓 data 檔案內的資料
+</h4><p>Hugo 可以使用<code>$.Site.Data</code> 去抓 <code>my-project/data/*.toml</code> 內的內容</p>
+<p>例如我將內容放在 my-project/data/SVG.html 內</p>
+<figure class="code-block" role="figure" aria-label="toml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">toml</span>
+    <span  class="code-title">SVG.toml</span></div><div class="highlight" title="SVG.toml"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">repository-icon</span> <span class="p">=</span> <span class="s1">&#39;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;icon&#34; viewBox=&#34;0 0 16 16&#34;&gt;&lt;path fill-rule=&#34;evenodd&#34; clip-rule=&#34;evenodd&#34; d=&#34;M2 2.5C2 1.83696 2.26339 1.20107 2.73223 0.732233C3.20108 0.263392 3.83696 0 4.5 0L13.25 0C13.4489 0 13.6397 0.0790176 13.7803 0.21967C13.921 0.360322 14 0.551088 14 0.75V13.25C14 13.4489 13.921 13.6397 13.7803 13.7803C13.6397 13.921 13.4489 14 13.25 14H10.75C10.5511 14 10.3603 13.921 10.2197 13.7803C10.079 13.6397 10 13.4489 10 13.25C10 13.0511 10.079 12.8603 10.2197 12.7197C10.3603 12.579 10.5511 12.5 10.75 12.5H12.5V10.5H4.5C4.30308 10.5 4.11056 10.5582 3.94657 10.6672C3.78257 10.7762 3.65442 10.9312 3.57816 11.1128C3.50191 11.2943 3.48096 11.4943 3.51793 11.6878C3.5549 11.8812 3.64816 12.0594 3.786 12.2C3.92524 12.3422 4.0023 12.5338 4.00024 12.7328C3.99818 12.9318 3.91716 13.1218 3.775 13.261C3.63285 13.4002 3.4412 13.4773 3.24222 13.4752C3.04325 13.4732 2.85324 13.3922 2.714 13.25C2.25571 12.7829 1.99929 12.1544 2 11.5V2.5ZM12.5 1.5V9H4.5C4.144 9 3.806 9.074 3.5 9.208V2.5C3.5 2.23478 3.60536 1.98043 3.79289 1.79289C3.98043 1.60536 4.23478 1.5 4.5 1.5H12.5ZM5 12.25V15.5C5 15.5464 5.01293 15.5919 5.03734 15.6314C5.06175 15.6709 5.09667 15.7028 5.1382 15.7236C5.17972 15.7444 5.22621 15.7532 5.27245 15.749C5.31869 15.7448 5.36286 15.7279 5.4 15.7L6.85 14.613C6.89328 14.5805 6.94591 14.563 7 14.563C7.05409 14.563 7.10673 14.5805 7.15 14.613L8.6 15.7C8.63714 15.7279 8.68131 15.7448 8.72755 15.749C8.77379 15.7532 8.82028 15.7444 8.8618 15.7236C8.90333 15.7028 8.93826 15.6709 8.96266 15.6314C8.98707 15.5919 9 15.5464 9 15.5V12.25C9 12.1837 8.97366 12.1201 8.92678 12.0732C8.87989 12.0263 8.81631 12 8.75 12H5.25C5.1837 12 5.12011 12.0263 5.07322 12.0732C5.02634 12.1201 5 12.1837 5 12.25Z&#34;/&gt;&lt;/svg&gt;&#39;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>在 html 模版中可以使用 <code>{{ index $.Site.Data.SVG &quot;repository-icon&quot; }}</code> 來抓取內容。</p>
+<h4 id="變數函數"><a href="#%e8%ae%8a%e6%95%b8%e5%87%bd%e6%95%b8" class="header-anchor"></a>變數、函數
+</h4><p>看過上面的用法，Hugo對於包在 <code>{{ }}</code> 中間的用法，就像一般程式在傳參數或調用函式。所以不只有單純顯示，裡面也可以作簡單的邏輯判斷或其他操作。</p>
+<p>例如我想判斷一段 shortcode 的 Inner 內容是不是 <code>&lt;p&gt;</code> 開頭，如果不是就強制包進去，我就可以用下面的程式碼做到。先將 markdown 轉譯完的內容放進 content 變數，再做條件判斷。</p>
+<figure class="code-block" role="figure" aria-label="html code snippet">
+
+  <div class="code-header">
+    <span class="code-type">html</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">myshortcode</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    {{ $content := .Inner | markdownify }}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    {{ if not (strings.HasPrefix $content &#34;<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>&#34;) }}
+</span></span><span class="line"><span class="cl">        {{ printf `<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>%s<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>` $content | safeHTML }}
+</span></span><span class="line"><span class="cl">    {{ else }}
+</span></span><span class="line"><span class="cl">        {{ $content }}
+</span></span><span class="line"><span class="cl">    {{ end }}
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">myshortcode</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>另外比較常用的 method 就是替換。例如要將 class 從 a 換成 b。<br>
+<code>{{ $result := replace $content &quot;a&quot; &quot;b&quot; }}</code></p>
+<p>更多可用的 Method 請參考官網的 <a class="link" href="https://gohugo.io/methods/"  target="_blank" rel="noopener"
+    >Methods</a></p>
+<h3 id="css美化"><a href="#css%e7%be%8e%e5%8c%96" class="header-anchor"></a>CSS美化
+</h3><h4 id="固定主題"><a href="#%e5%9b%ba%e5%ae%9a%e4%b8%bb%e9%a1%8c" class="header-anchor"></a>固定主題
+</h4><p>我們自訂的css設定可以放在 <code>my-project/assets/scss/custom.scss</code>。<br>
+雖然 shortcode 的 css 不會經常改，如果 shortcode 的數量一多，custom.scss 裡面變成一整團，要改也很麻煩。<br>
+所以我會把 shortcode 的 css 單讀拆分一個檔案出來，例如在 scss 資料夾內新增 myshortcode.scss，讓 custom.scss 去引用。</p>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">custom.scss</span></div><div class="highlight" title="custom.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;myshortcode.scss&#34;</span><span class="p">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>如果想用資料夾整理也可以，例如在 scss 資料夾內新增 myshortcode 資料夾 <code>my-project/assets/scss/myshortcode/main.scss</code> 。</p>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">custom.scss</span></div><div class="highlight" title="custom.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;myshortcode/main.scss&#34;</span><span class="p">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h4 id="白天夜晚模式"><a href="#%e7%99%bd%e5%a4%a9%e5%a4%9c%e6%99%9a%e6%a8%a1%e5%bc%8f" class="header-anchor"></a>白天、夜晚模式
+</h4><p>如果需要讓 shortcode 跟隨白天夜晚模式變化，我們需要用拆分檔案引用方式，不過就不是在 custom.scss 內引用了。</p>
+<p>新增 highlight 資料夾 <code>my-project/assets/scss/partials/highlight/</code><br>
+並新增 <code>dark.scss</code> 跟 <code>light.scss</code> 取代原本主題自帶的 scss<br>
+各自貼上下面的內容，這些程式碼都是照搬主題原始的 scss<br>
+最後就是定好顏色變數，不要跟已有的重複就行了 (下面範例夜晚會出現綠色，白天紅色)</p>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">dark.scss</span></div><div class="highlight" title="dark.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">*   Style: monokai
+</span></span></span><span class="line"><span class="cl"><span class="cm">*   https://xyproto.github.io/splash/docs/monokai.html
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$color</span><span class="o">:</span> <span class="mh">#f8f8f2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$background-color</span><span class="o">:</span> <span class="mh">#272822</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$error-color</span><span class="o">:</span> <span class="mh">#bb0064</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$keyword-color</span><span class="o">:</span> <span class="mh">#66d9ef</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$text-color</span><span class="o">:</span> <span class="nv">$color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$name-color</span><span class="o">:</span> <span class="mh">#a6e22e</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$literal-color</span><span class="o">:</span> <span class="mh">#e6db74</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// title colors
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$type-color</span><span class="o">:</span> <span class="mh">#4B4376</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$title-color</span><span class="o">:</span> <span class="mh">#432E54</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;common.scss&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 在這邊引用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$myshortcode-color</span><span class="o">:</span><span class="nf">rgb</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">255</span><span class="o">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;myshortcode.scss&#34;</span><span class="p">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">light.scss</span></div><div class="highlight" title="light.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">*   Style: monokailight
+</span></span></span><span class="line"><span class="cl"><span class="cm">*   https://xyproto.github.io/splash/docs/monokailight.html
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$color</span><span class="o">:</span> <span class="mh">#272822</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$background-color</span><span class="o">:</span> <span class="mh">#fafafa</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$error-color</span><span class="o">:</span> <span class="mh">#960050</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$keyword-color</span><span class="o">:</span> <span class="mh">#00a8c8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$text-color</span><span class="o">:</span> <span class="mh">#111111</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$name-color</span><span class="o">:</span> <span class="mh">#75af00</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$literal-color</span><span class="o">:</span> <span class="mh">#d88200</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// title colors
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$type-color</span><span class="o">:</span> <span class="mh">#D0E8C5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$title-color</span><span class="o">:</span> <span class="mh">#C5D3E8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;common.scss&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 在這邊引用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$myshortcode-color</span><span class="o">:</span><span class="nf">rgb</span><span class="p">(</span><span class="mi">255</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;myshortcode.scss&#34;</span><span class="p">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>這個方式也不限於只有 shortcode 的 scss 能用，像 page 或是其他地方需要修改也可以用這種方式引用。</p>
+<hr>
+<p>後面就放意本站有做的 shortcode</p>
+<h2 id="嵌入-notion-風格書籤"><a href="#%e5%b5%8c%e5%85%a5-notion-%e9%a2%a8%e6%a0%bc%e6%9b%b8%e7%b1%a4" class="header-anchor"></a>嵌入 notion 風格書籤
+</h2><a href=https://github.com/gohugoio/hugo target="_blank">
+  <div class="bookmark">
+    <div class="logo"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon bookmark-icon icon bookmark-icon-tabler icon bookmark-icons-tabler-outline icon bookmark-icon-tabler-world"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></svg>
+        <span class="name">hugo</span>
+    </div>
+    <div class="description">The world’s fastest framework for building websites.</div>
+  </div>
+</a>
+<h3 id="下載-icon"><a href="#%e4%b8%8b%e8%bc%89-icon" class="header-anchor"></a>下載 ICON
+</h3><p>到 tabler icon 下載 world svg 檔案，放到 icons 資料夾<br>
+<code>my-project/assets/icons/world.svg</code></p>
+<a href=https://tabler.io/icons target="_blank">
+  <div class="bookmark">
+    <div class="logo"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon bookmark-icon icon bookmark-icon-tabler icon bookmark-icons-tabler-outline icon bookmark-icon-tabler-world"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></svg>
+        <span class="name">tabler icon</span>
+    </div>
+    <div class="description">Free and open source icons designed to make your website or app attractive, visually consistent and simply beautiful.</div>
+  </div>
+</a>
+<h3 id="新增-bookmarkhtml"><a href="#%e6%96%b0%e5%a2%9e-bookmarkhtml" class="header-anchor"></a>新增 bookmark.html
+</h3><p>到 layouts 資料夾內新增 shortcodes 資料夾，新增 bookmark.html<br>
+<code>my-project/layouts/shortcodes/bookmark.html</code></p>
+<figure class="code-block" role="figure" aria-label="html code snippet">
+
+  <div class="code-header">
+    <span class="code-type">html</span>
+    <span  class="code-title">bookmark.html</span></div><div class="highlight" title="bookmark.html"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">{{</span> <span class="err">.</span><span class="na">Get</span> <span class="err">&#34;</span><span class="na">link</span><span class="err">&#34;</span> <span class="err">}}</span> <span class="na">target</span><span class="o">=</span><span class="s">&#34;_blank&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;bookmark&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;logo&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        {{- $iconFile := resources.GetMatch &#34;icons/world.svg&#34; -}}
+</span></span><span class="line"><span class="cl">        {{ replace $iconFile.Content &#34;icon&#34; &#34;icon bookmark-icon&#34; | safeHTML }}
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;name&#34;</span><span class="p">&gt;</span>{{ .Get &#34;name&#34; }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;description&#34;</span><span class="p">&gt;</span>{{ .Get &#34;description&#34; }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="新增-scss"><a href="#%e6%96%b0%e5%a2%9e-scss" class="header-anchor"></a>新增 scss
+</h3><p>在資料夾 <code>my-project/assets/scss/shortcodes/</code> 新增 bookmark.scss</p>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">bookmark.scss</span></div><div class="highlight" title="bookmark.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="nc">.bookmark</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.2</span><span class="kt">px</span> <span class="ni">solid</span> <span class="mh">#d0d7de</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border-radius</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">font-family</span><span class="o">:</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span><span class="n">BlinkMacSystemFont</span><span class="o">,</span><span class="n">segoe</span> <span class="n">ui</span><span class="o">,</span><span class="ow">not</span><span class="n">o</span> <span class="n">sans</span><span class="o">,</span><span class="n">Helvetica</span><span class="o">,</span><span class="n">Arial</span><span class="o">,</span><span class="ni">sans-serif</span><span class="o">,</span><span class="n">apple</span> <span class="ni">color</span> <span class="ni">emoji</span><span class="o">,</span><span class="n">segoe</span> <span class="n">ui</span> <span class="ni">emoji</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">padding</span><span class="o">:</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nc">.bookmark-icon</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="na">width</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.2</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">height</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.2</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">margin-right</span><span class="o">:</span> <span class="mi">0</span><span class="mf">.5</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">margin-bottom</span><span class="o">:</span> <span class="o">-</span><span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nc">.name</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="na">font-weight</span><span class="o">:</span> <span class="ni">bold</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">color</span><span class="o">:</span> <span class="mh">#0969da</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">text-decoration</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nc">.description</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="na">margin-top</span><span class="o">:</span> <span class="mi">0</span><span class="mf">.5</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">font-size</span><span class="o">:</span> <span class="mi">90</span><span class="kt">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">color</span><span class="o">:</span> <span class="mh">#656d76</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">transition</span><span class="o">:</span> <span class="ni">all</span> <span class="mf">.5</span><span class="kt">s</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">font-weight</span><span class="o">:</span> <span class="mi">400</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>my-project/assets/scss/custom.scss 裡加上引用 bookmark.scss</p>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">custom.scss</span></div><div class="highlight" title="custom.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;shortcodes/bookmark.scss&#34;</span><span class="p">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="使用方式"><a href="#%e4%bd%bf%e7%94%a8%e6%96%b9%e5%bc%8f" class="header-anchor"></a>使用方式
+</h3><p>在貼文的內容加上下面代碼，就可以產生書籤的效果</p>
+<figure class="code-block" role="figure" aria-label="markdown code snippet">
+
+  <div class="code-header">
+    <span class="code-type">markdown</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">{{<span class="p">&lt;</span><span class="nt">bookmark</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;hugo&#34;</span> <span class="na">link</span><span class="o">=</span><span class="s">&#34;https://github.com/gohugoio/hugo&#34;</span> <span class="na">description</span><span class="o">=</span><span class="s">&#34;The world’s fastest framework for building websites.&#34;</span><span class="p">&gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h2 id="unsplash-引用標籤"><a href="#unsplash-%e5%bc%95%e7%94%a8%e6%a8%99%e7%b1%a4" class="header-anchor"></a>Unsplash 引用標籤
+</h2><p>在這邊我只想要把引用 unsplash 的文字稍微做區隔</p>
+<h3 id="下載-icon-1"><a href="#%e4%b8%8b%e8%bc%89-icon-1" class="header-anchor"></a>下載 ICON
+</h3><p>到 tabler icon <a class="link" href="https://tabler.io/icons"  target="_blank" rel="noopener"
+    >https://tabler.io/icons</a> 下載 photo svg 檔案，放到 <code>my-project/assets/icons/</code> 資料夾</p>
+<h3 id="新增-unsplashhtml"><a href="#%e6%96%b0%e5%a2%9e-unsplashhtml" class="header-anchor"></a>新增 unsplash.html
+</h3><p>到 <code>my-project/layouts/shortcodes/</code> 資料夾(如果沒有就自己建)，新增 unsplash.html</p>
+<figure class="code-block" role="figure" aria-label="html code snippet">
+
+  <div class="code-header">
+    <span class="code-type">html</span>
+    <span  class="code-title">unsplash.html</span></div><div class="highlight" title="unsplash.html"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">{{- $raw := (markdownify .Inner | chomp) -}}
+</span></span><span class="line"><span class="cl">{{- $block := findRE &#34;(?is)^<span class="err">&lt;</span>(?:address|article|aside|blockquote|canvas|dd|div|dl|dt|fieldset|figcaption|figure|footer|form|h(?:1|2|3|4|5|6)|header|hgroup|hr|li|main|nav|noscript|ol|output|p|pre|section|table|tfoot|ul|video)\\b&#34; $raw 1 -}}
+</span></span><span class="line"><span class="cl">{{- $icon := resources.GetMatch &#34;icons/photo.svg&#34; -}}
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;unsplash unsplash-info&#34;</span> <span class="err">{{</span> <span class="na">if</span> <span class="na">len</span> <span class="err">.</span><span class="na">Params</span> <span class="err">|</span> <span class="na">eq</span> <span class="na">2</span> <span class="err">}}</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;{{ .Get 1 }}&#34;</span> <span class="err">{{</span> <span class="na">end</span> <span class="err">}}</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;unsplash-title&#34;</span><span class="p">&gt;</span>{{ replace $icon.Content &#34;icon&#34; &#34;icon unsplash-icon&#34; | safeHTML}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    {{- if or $block (not $raw) }}{{ $raw }}{{ else }}<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ $raw }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>{{ end -}}
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="新增-scss-1"><a href="#%e6%96%b0%e5%a2%9e-scss-1" class="header-anchor"></a>新增 scss
+</h3><p>在 shortcodes 資料夾下建立 unsplash.scss</p>
+<figure class="code-block" role="figure" aria-label="folder code snippet">
+
+  <div class="code-header">
+    <span class="code-type">folder</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">my-project/
+</span></span><span class="line"><span class="cl">└── assets/
+</span></span><span class="line"><span class="cl">    └── scss/
+</span></span><span class="line"><span class="cl">        ├── custom.scss
+</span></span><span class="line"><span class="cl">        └── shortcodes/
+</span></span><span class="line"><span class="cl">            └── unsplash.scss</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">unsplash.scss</span></div><div class="highlight" title="unsplash.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="nc">.unsplash</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">position</span><span class="o">:</span> <span class="ni">relative</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">padding</span><span class="o">:</span> <span class="mi">1</span><span class="kt">em</span> <span class="mi">1</span><span class="kt">em</span> <span class="mi">2</span><span class="kt">em</span> <span class="mi">2</span><span class="mf">.5</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border-radius</span><span class="o">:</span> <span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">p</span><span class="nd">:last-child</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">color</span><span class="o">:</span> <span class="mh">#919eac</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">a</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">color</span><span class="o">:</span> <span class="mh">#989bba</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">p</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">margin-left</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nc">.unsplash-title</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">position</span><span class="o">:</span> <span class="ni">absolute</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">left</span><span class="o">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">margin-top</span><span class="o">:</span> <span class="mi">17</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">font-size</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.2</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">.unsplash-icon</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="na">color</span><span class="o">:</span> <span class="mh">#919eac</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">width</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">height</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">&amp;</span><span class="nc">.unsplash-info</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">background</span><span class="o">:</span> <span class="mh">#F8FAFC</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">border-left</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="ni">solid</span> <span class="mh">#D9EAFD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>custom.scss 裡加上引用</p>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">custom.scss</span></div><div class="highlight" title="custom.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;shortcodes/bookmark.scss&#34;</span><span class="p">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="使用方式-1"><a href="#%e4%bd%bf%e7%94%a8%e6%96%b9%e5%bc%8f-1" class="header-anchor"></a>使用方式
+</h3><p>在貼文的內容加上下面代碼，就可以出現引用的效果</p>
+<figure class="code-block" role="figure" aria-label="markdown code snippet">
+
+  <div class="code-header">
+    <span class="code-type">markdown</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">{{ <span class="p">&lt;</span><span class="nt">unsplash</span><span class="p">&gt;</span> }}
+</span></span><span class="line"><span class="cl">Photo by <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://unsplash.com/</span><span class="ni">@themelessly</span><span class="s">?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;</span><span class="p">&gt;</span>Sho W.<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> on <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://unsplash.com/photos/a-bunch-of-different-shapes-and-sizes-on-a-wall-3tNqoO_ReHQ?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;</span><span class="p">&gt;</span>Unsplash<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">{{ <span class="p">&lt;/</span><span class="nt">unsplash</span><span class="p">&gt;</span> }}</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h2 id="terminal-區塊"><a href="#terminal-%e5%8d%80%e5%a1%8a" class="header-anchor"></a>terminal 區塊
+</h2><!-- TODO terminal 新增複製按鍵 -->
+<p>有時會遇到分享 terminal 指令或執行結果，會想要跟 codeblock 的稍微作區隔<br>
+所以就另外做 shortcode 來產生終端機的區塊</p>
+
+<div class="terminal">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+
+    
+    <div class="terminal-title">terminal</div>
+    
+
+    <div class="terminal-copy"></div>
+  </div>
+  <div class="terminal-block">
+    <p>$ ls<br><br>here is some bash output example<br></p>
+  </div>
+</div>
+
+<h3 id="新增-terminalhtml"><a href="#%e6%96%b0%e5%a2%9e-terminalhtml" class="header-anchor"></a>新增 terminal.html
+</h3><p>在 <code>my-project/layouts/shortcodes/</code> 新增 terminal.html</p>
+<p>這邊利用包住的內容 Inner，當作終端內顯示的內容<br>
+由於我寫閉包 shortcode 的習慣，Inner 變數第一行會是一個換行符號，用 replaceRE 可以完美去除<br>
+另外就是替換換行符號 <code>\n</code> 跟空白變成 html 格式<br>
+空白不替換其實也可以，不過相連的空白就只會顯示一格</p>
+<figure class="code-block" role="figure" aria-label="html code snippet">
+
+  <div class="code-header">
+    <span class="code-type">html</span>
+    <span  class="code-title">terminal.html</span></div><div class="highlight" title="terminal.html"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="c">&lt;!-- remove first word is newline --&gt;</span>
+</span></span><span class="line"><span class="cl">{{- $lines := (replaceRE `^\n` &#34;&#34; .Inner) -}}
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- replace /n to  --&gt;</span>
+</span></span><span class="line"><span class="cl">{{- $lines = (replace $lines &#34;\n&#34; &#34;&#34;) -}}
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- replace space to html formate --&gt;</span>
+</span></span><span class="line"><span class="cl">{{- $lines = (replace $lines &#34; &#34; &#34;<span class="ni">&amp;ensp;</span>&#34;) -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;terminal&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;terminal-header&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;terminal-btn&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn-mac mac-close&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn-mac mac-mini&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn-mac mac-full&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    {{ if and (ne .Params nil) (isset .Params &#34;title&#34;) }}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;terminal-title&#34;</span><span class="p">&gt;</span>{{.Get &#34;title&#34;}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    {{ else }}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;terminal-title&#34;</span><span class="p">&gt;</span>terminal<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    {{ end }}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;terminal-copy&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;terminal-block&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ $lines | markdownify}}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="新增-scss-2"><a href="#%e6%96%b0%e5%a2%9e-scss-2" class="header-anchor"></a>新增 scss
+</h3><p>我想要終端機有亮暗的模式，所以新增的 terminal.scss 改放在 <code>my-project/assets/scss/partials/highlight/</code><br>
+如果不需要可以自行修改至 <code>my-project/assets/scss/</code> (記得調整顏色變數)</p>
+<p>在 <code>my-project/assets/scss/partials/highlight/</code> 新增 terminal.scss<br>
+程式碼主要參考 codepen 上 Sam Willis 跟 Microk 分享的範例</p>
+<ul>
+<li>Sam Willis <a class="link" href="https://codepen.io/swillis/pen/RwzpbP"  target="_blank" rel="noopener"
+    >Pure CSS OSX window</a></li>
+<li>Microk <a class="link" href="https://codepen.io/engko/pen/xxXZBWe"  target="_blank" rel="noopener"
+    >Code Window for MAC OS Style</a></li>
+</ul>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">terminal.scss</span></div><div class="highlight" title="terminal.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="cm">/* Fira Code: https://github.com/tonsky/FiraCode */</span>
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="sx">url(&#39;https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&amp;display=swap&#39;)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$font-size</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$line-height</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.54</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nc">.terminal</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="ni">solid</span> <span class="mh">#e6e6e6</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border-radius</span><span class="o">:</span> <span class="mi">0</span><span class="mf">.7</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">24</span><span class="kt">px</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="na">overflow</span><span class="o">:</span> <span class="ni">hidden</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nc">.terminal-header</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">background-color</span><span class="o">:</span> <span class="nv">$terminal-header</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">color</span><span class="o">:</span> <span class="nv">$terminal-header-font</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">display</span><span class="o">:</span> <span class="ni">grid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">grid-template-columns</span><span class="o">:</span> <span class="mi">25</span><span class="kt">%</span> <span class="ni">auto</span> <span class="mi">25</span><span class="kt">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nc">.terminal-title</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="na">-webkit-box-align</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">-moz-box-align</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">align-items</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">display</span><span class="o">:</span> <span class="o">-</span><span class="n">moz-box</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">-webkit-box-pack</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">-moz-box-pack</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">justify-content</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">text-align</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nc">.terminal-btn</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">.terminal-cp</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">6</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nc">.terminal-btn</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="na">display</span><span class="o">:</span> <span class="ni">flex</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="nc">.btn-mac</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="na">width</span><span class="o">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">height</span><span class="o">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">margin</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span> <span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">border-radius</span><span class="o">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="nc">.mac-close</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="na">background-color</span><span class="o">:</span> <span class="mh">#ff5f56</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">      <span class="nc">.mac-mini</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="na">background-color</span><span class="o">:</span> <span class="mh">#ffbd2e</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">      <span class="nc">.mac-full</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="na">background-color</span><span class="o">:</span> <span class="mh">#27c93f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nc">.terminal-cp</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="na">align-items</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nc">.terminal-block</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">box-sizing</span><span class="o">:</span> <span class="ni">border-box</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">font-family</span><span class="o">:</span> <span class="s2">&#34;Fira Code&#34;</span><span class="o">,</span> <span class="n">Monaco</span><span class="o">,</span> <span class="n">Consolas</span><span class="o">,</span> <span class="s2">&#34;Ubuntu Mono&#34;</span><span class="o">,</span> <span class="ni">monospace</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">font-size</span><span class="o">:</span> <span class="nv">$font-size</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">font-weight</span><span class="o">:</span> <span class="mi">400</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">font-style</span><span class="o">:</span> <span class="ni">normal</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">line-height</span><span class="o">:</span> <span class="nv">$line-height</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">letter-spacing</span><span class="o">:</span> <span class="o">-</span><span class="mi">0</span><span class="mf">.01</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">background-color</span><span class="o">:</span> <span class="nv">$terminal-background</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">color</span><span class="o">:</span> <span class="nv">$terminal-foreground</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">text-rendering</span><span class="o">:</span> <span class="ni">optimizeLegibility</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* -webkit-font-smoothing: antialiased; */</span>
+</span></span><span class="line"><span class="cl">    <span class="na">font-feature-settings</span><span class="o">:</span> <span class="s2">&#34;liga&#34;</span><span class="o">,</span> <span class="s2">&#34;tnum&#34;</span><span class="o">,</span> <span class="s2">&#34;ss01&#34;</span><span class="o">,</span> <span class="s2">&#34;locl&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">font-variant-ligatures</span><span class="o">:</span> <span class="ni">contextual</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">-webkit-overflow-scrolling</span><span class="o">:</span> <span class="n">touch</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">-webkit-text-size-adjust</span><span class="o">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">p</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="na">padding</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>然後就是修改 <code>my-project/assets/scss/partials/highlight/</code> 裡的 dark.scss 跟 light.scss 內分別加入顏色變數還有引用</p>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">dark.scss</span></div><div class="highlight" title="dark.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="c1">// terminal
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$terminal-header</span><span class="o">:</span> <span class="mh">#273138</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$terminal-header-font</span><span class="o">:</span> <span class="mh">#ffffff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$terminal-background</span><span class="o">:</span> <span class="mh">#000000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$terminal-foreground</span><span class="o">:</span> <span class="mh">#4EEE85</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;custom/terminal.scss&#34;</span><span class="p">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">light.scss</span></div><div class="highlight" title="light.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="c1">// terminal
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$terminal-header</span><span class="o">:</span> <span class="mh">#f4f4f7</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$terminal-header-font</span><span class="o">:</span> <span class="mh">#000000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$terminal-background</span><span class="o">:</span> <span class="mh">#ffffff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$terminal-foreground</span><span class="o">:</span> <span class="mh">#000000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;custom/terminal.scss&#34;</span><span class="p">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="使用方式-2"><a href="#%e4%bd%bf%e7%94%a8%e6%96%b9%e5%bc%8f-2" class="header-anchor"></a>使用方式
+</h3>
+<div class="terminal">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+
+    
+    <div class="terminal-title">terminal</div>
+    
+
+    <div class="terminal-copy"></div>
+  </div>
+  <div class="terminal-block">
+    <p>user@host folder % ls<br><br>here is some bash output example<br></p>
+  </div>
+</div>
+
+<figure class="code-block" role="figure" aria-label="markdown code snippet">
+
+  <div class="code-header">
+    <span class="code-type">markdown</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">{{<span class="p">&lt;</span><span class="nt">terminal</span><span class="p">&gt;</span>}}
+</span></span><span class="line"><span class="cl">user<span class="ni">@host</span> folder % ls
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">here is some bash output example
+</span></span><span class="line"><span class="cl">{{<span class="p">&lt;/</span><span class="nt">terminal</span><span class="p">&gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>裡面的指令開頭，如 <code>user@host folder %</code> 我就沒有另外做生成，需要再手動打上去<br>
+一是懶得做辨識指令跟輸出，是個大工程<br>
+二是有些單純分享指令的情況，我不會加上開頭，方便複製<br>
+只有在同時貼指令加輸出結果時，為了區分會加<br>
+再加上裡面的內容有時我會想照不同終端機修改，例如 bash 是 $、mac 的終端機是 %</p>
+<hr>
+<p>預設上方的標題會寫 terminal ，如果想換別的可以用 title 屬性修改</p>
+
+<div class="terminal">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+
+    
+    <div class="terminal-title">bash</div>
+    
+
+    <div class="terminal-copy"></div>
+  </div>
+  <div class="terminal-block">
+    <p>$ ls<br><br>here is some bash output example<br></p>
+  </div>
+</div>
+
+<figure class="code-block" role="figure" aria-label="markdown code snippet">
+
+  <div class="code-header">
+    <span class="code-type">markdown</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">{{<span class="p">&lt;</span><span class="nt">terminal</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;bash&#34;</span><span class="p">&gt;</span>}}
+</span></span><span class="line"><span class="cl">\$ ls
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">here is some bash output example
+</span></span><span class="line"><span class="cl">{{<span class="p">&lt;/</span><span class="nt">terminal</span><span class="p">&gt;</span>}}</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><blockquote>
+<h2 id="參考資料"><a href="#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99" class="header-anchor"></a>參考資料
+</h2><ul>
+<li>小骆同学 <a class="link" href="https://lovir.cn/p/shortcodes/"  target="_blank" rel="noopener"
+    >Hugo 短代码</a></li>
+<li>一笼虾饺有四个 <a class="link" href="https://fourxiajiao.github.io/2022/hugo-blog/"  target="_blank" rel="noopener"
+    >不是从零开始的Hugo建站笔记</a></li>
+<li>Sam Willis <a class="link" href="https://codepen.io/swillis/pen/RwzpbP"  target="_blank" rel="noopener"
+    >Pure CSS OSX window</a></li>
+<li>Microk <a class="link" href="https://codepen.io/engko/pen/xxXZBWe"  target="_blank" rel="noopener"
+    >Code Window for MAC OS Style</a></li>
+</ul></blockquote>
+
+
+
+<div class="unsplash unsplash-info" >
+    <div class="unsplash-title"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon unsplash-icon icon unsplash-icon-tabler icon unsplash-icons-tabler-outline icon unsplash-icon-tabler-photo"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8h.01" /><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" /><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" /><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" /></svg></div>
+    <p>Photo by <a href="https://unsplash.com/@themelessly?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Sho W.</a> on <a href="https://unsplash.com/photos/a-bunch-of-different-shapes-and-sizes-on-a-wall-3tNqoO_ReHQ?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></p>
+</div>
+
+</section>
+
+
+  <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/hugo/">Hugo</a>
+        
+            <a href="/tags/blog/">Blog</a>
+        
+            <a href="/tags/html/">Html</a>
+        
+            <a href="/tags/css/">Css</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>本文採用 <a class="link" href="https://creativecommons.org/licenses/by/4.0/deed"  target="_blank" rel="noopener"
+    >創用CC BY 4.0</a> 協議許可</span>
+    </section>
+    </footer>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5857950919507241" crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5857950919507241"
+     data-ad-slot="6290484367"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-codeblock/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo-codeblock/cover.e4aed39246f9ce7a1007bea846f3dd35_hu_deabc1eec480223b.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo Theme Stack 修改 CodeBlock"
+                        data-key="hugo-codeblock" 
+                        data-hash="md5-5K7Tkkb5znoQB76oRvPdNQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo Theme Stack 修改 CodeBlock</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-stack-custom/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://user-images.githubusercontent.com/5889006/190859441-141b5f81-8483-40d2-bd96-ebf85616a46d.png" loading="lazy" data-key="hugo-stack-custom" data-hash="https://user-images.githubusercontent.com/5889006/190859441-141b5f81-8483-40d2-bd96-ebf85616a46d.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 定製自己的Stack主題</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo/cloudflare_page.e77bfd5bc9a3c9653fa35b1f55276f95_hu_f71e0ba1684e3d7f.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得"
+                        data-key="hugo" 
+                        data-hash="md5-53v9W8mjyWU/o1sfVSdvlQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-rss/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg" loading="lazy" data-key="hugo-rss" data-hash="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 設定RSS, ATOM Feed</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-config/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg" loading="lazy" data-key="hugo-config" data-hash="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 設定檔結構</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "4154b7069cefd96aa34b",
+        clientSecret: "4d1e06eb5468a4a083bdb0b6095c613deb234ea1",
+        repo: "zonelin.github.io",
+        owner: "ZoneLin",
+        admin: ["ZoneLin"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy: null ,
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2025 筆記Zone
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

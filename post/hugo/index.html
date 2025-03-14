@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Hexo 轉到 Hugo 會想將網站改用HUGO架的最後稻草，算是npm肥大的問題\n套用 CI/CD 之後，每次自動跑編譯更是把這個弊病放大\n動不動編譯就要跑1X～2X分鐘 也有可能是我的伺服器太爛\n之前還想哪天要整理一下貼文，剛好連生成器也一起換了\n選用主題 主體就選用 stack，有些地方再自己修改\nhugo-theme-stack Card-style Hugo theme designed for bloggers 我這邊clone CaiJimmy/hugo-theme-stack-starter 來使用，省去自己安裝\n">
+<title>Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得</title>
+
+<link rel='canonical' href='https://zonego.tw/post/hugo/'>
+
+<link rel="stylesheet" href="/scss/style.min.26ab0493597fcd285b9997f5ceddb4c468f78a8fee6c03c2790d3c192d6c92c3.css"><meta property='og:title' content="Hugo + woodpacker CI + CloudFlare Pages 架站心得">
+<meta property='og:description' content="Hexo 轉到 Hugo 會想將網站改用HUGO架的最後稻草，算是npm肥大的問題\n套用 CI/CD 之後，每次自動跑編譯更是把這個弊病放大\n動不動編譯就要跑1X～2X分鐘 也有可能是我的伺服器太爛\n之前還想哪天要整理一下貼文，剛好連生成器也一起換了\n選用主題 主體就選用 stack，有些地方再自己修改\nhugo-theme-stack Card-style Hugo theme designed for bloggers 我這邊clone CaiJimmy/hugo-theme-stack-starter 來使用，省去自己安裝\n">
+<meta property='og:url' content='https://zonego.tw/post/hugo/'>
+<meta property='og:site_name' content='筆記Zone'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='Blog' /><meta property='article:tag' content='self-hosting' /><meta property='article:tag' content='woodpecker' /><meta property='article:tag' content='CICD' /><meta property='article:published_time' content='2025-03-12T12:41:42&#43;08:00'/><meta property='article:modified_time' content='2025-03-12T12:41:42&#43;08:00'/><meta property='og:image' content='https://zonego.tw/post/hugo/cloudflare_page.png' />
+<meta name="twitter:title" content="Hugo + woodpacker CI + CloudFlare Pages 架站心得">
+<meta name="twitter:description" content="Hexo 轉到 Hugo 會想將網站改用HUGO架的最後稻草，算是npm肥大的問題\n套用 CI/CD 之後，每次自動跑編譯更是把這個弊病放大\n動不動編譯就要跑1X～2X分鐘 也有可能是我的伺服器太爛\n之前還想哪天要整理一下貼文，剛好連生成器也一起換了\n選用主題 主體就選用 stack，有些地方再自己修改\nhugo-theme-stack Card-style Hugo theme designed for bloggers 我這邊clone CaiJimmy/hugo-theme-stack-starter 來使用，省去自己安裝\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://zonego.tw/post/hugo/cloudflare_page.png' />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-92G2VB89BE"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-92G2VB89BE');
+        }
+      </script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🎮</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">筆記Zone</a></h1>
+            <h2 class="site-description">能者過勞</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='/rss.xml'
+                        target="_blank"
+                        title="01-RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/ZoneLin'
+                        target="_blank"
+                        title="02-GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首頁</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>所有文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                
+                <span>關於本站</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+                
+                <span>留言板</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tools/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tools"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" /><path d="M14.5 5.5l4 4" /><path d="M12 8l-5 -5l-4 4l5 5" /><path d="M7 8l-1.5 1.5" /><path d="M16 12l5 5l-4 4l-5 -5" /><path d="M16 17l-1.5 1.5" /></svg>
+                
+                <span>線上工具</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#hexo-轉到-hugo">Hexo 轉到 Hugo</a></li>
+    <li><a href="#選用主題">選用主題</a></li>
+    <li><a href="#修改預設設定">修改預設設定</a>
+      <ol>
+        <li><a href="#開啟換行自動轉-br">開啟換行自動轉 &lt;br&gt;</a></li>
+        <li><a href="#設定-google-analytics-網站分析">設定 Google Analytics 網站分析</a></li>
+        <li><a href="#設定-rss-atom-feed">設定 rss atom feed</a></li>
+      </ol>
+    </li>
+    <li><a href="#設定-cicd">設定 CICD</a>
+      <ol>
+        <li><a href="#設定自動更新主題">設定自動更新主題</a></li>
+        <li><a href="#設定推送至-github">設定推送至 GitHub</a></li>
+      </ol>
+    </li>
+    <li><a href="#部署到-cloudflare-page">部署到 CloudFlare Page</a></li>
+    <li><a href="#設定搜尋引擎">設定搜尋引擎</a></li>
+    <li><a href="#套用-google-adsense">套用 Google AdSense</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+  <header class="article-header">
+        <div class="article-image">
+            <a href="/post/hugo/">
+                <img src="/post/hugo/cloudflare_page_hu_93ead30025faa59f.png"
+                        srcset="/post/hugo/cloudflare_page_hu_93ead30025faa59f.png 800w, /post/hugo/cloudflare_page_hu_9b1ca364ada85343.png 1600w"
+                        width="800" 
+                        height="370" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/blog/" style="background-color: #eb5089; color: #ffffff;">
+                Blog
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/hugo/">Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025.03.12</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 3 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+  <section class="article-content">
+    
+    
+    <h2 id="hexo-轉到-hugo"><a href="#hexo-%e8%bd%89%e5%88%b0-hugo" class="header-anchor"></a>Hexo 轉到 Hugo
+</h2><p>會想將網站改用HUGO架的最後稻草，算是npm肥大的問題<br>
+套用 CI/CD 之後，每次自動跑編譯更是把這個弊病放大<br>
+動不動編譯就要跑1X～2X分鐘 <del>也有可能是我的伺服器太爛</del></p>
+<p>之前還想哪天要整理一下貼文，剛好連生成器也一起換了</p>
+<h2 id="選用主題"><a href="#%e9%81%b8%e7%94%a8%e4%b8%bb%e9%a1%8c" class="header-anchor"></a>選用主題
+</h2><p>主體就選用 stack，有些地方再自己修改</p>
+<a href=https://github.com/CaiJimmy/hugo-theme-stack target="_blank">
+  <div class="bookmark">
+    <div class="logo"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon bookmark-icon icon bookmark-icon-tabler icon bookmark-icons-tabler-outline icon bookmark-icon-tabler-world"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></svg>
+        <span class="name">hugo-theme-stack</span>
+    </div>
+    <div class="description">Card-style Hugo theme designed for bloggers</div>
+  </div>
+</a>
+<p>我這邊clone CaiJimmy/hugo-theme-stack-starter 來使用，省去自己安裝</p>
+<blockquote>
+<p>PS:<br>
+因為用 starter 還有自行修改。所以如果主題有更新，還要另外檢查一下修改的地方有沒有跟更新衝突。</p></blockquote>
+<p>修改的詳細步驟請看  <del>絕對不是想水文章</del></p>
+<ul>
+<li><a class="link" href="https://zonego.tw/post/hugo-stack-custom/" >Hugo 定製自己的Stack主題</a></li>
+<li><a class="link" href="https://zonego.tw/post/hugo-codeblock/" >Hugo Theme Stack 修改 CodeBlock</a></li>
+<li><a class="link" href="https://zonego.tw/post/hugo-shortcode/" >Hugo 短代碼 shortcode</a></li>
+</ul>
+<h2 id="修改預設設定"><a href="#%e4%bf%ae%e6%94%b9%e9%a0%90%e8%a8%ad%e8%a8%ad%e5%ae%9a" class="header-anchor"></a>修改預設設定
+</h2><p>在修改之前，由於 Hugo 的設定檔格式十分有彈性 (相對複雜)，建議修改前先稍微了解一下 <del>除非設定檔要照抄</del></p>
+<ul>
+<li><a class="link" href="https://zonego.tw/post/hugo-config/" >Hugo 設定檔結構</a></li>
+</ul>
+<h3 id="開啟換行自動轉-br"><a href="#%e9%96%8b%e5%95%9f%e6%8f%9b%e8%a1%8c%e8%87%aa%e5%8b%95%e8%bd%89-br" class="header-anchor"></a>開啟換行自動轉 &lt;br&gt;
+</h3><p>調整 markdown 處理器，將一般文字的換行符號轉 &lt;br&gt;<br>
+如果沒開 (預設沒開)，相鄰的兩行會接在同一行，例如：</p>
+<figure class="code-block" role="figure" aria-label="markdown code snippet">
+
+  <div class="code-header">
+    <span class="code-type">markdown</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">第一行
+</span></span><span class="line"><span class="cl">第二行</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>第一行 第二行</p>
+<hr>
+<p>修改 <code>config/markup.toml</code> 找到  [goldmark.renderer]<br>
+加上 hardWraps = true，就可以了，這樣寫起文章來也比較貼近平常習慣</p>
+<figure class="code-block" role="figure" aria-label="toml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">toml</span>
+    <span  class="code-title">markup.toml</span></div><div class="highlight" title="markup.toml"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># Markdown renderer configuration</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">goldmark</span><span class="p">.</span><span class="nx">renderer</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">unsafe</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="nx">hardWraps</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">...</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="設定-google-analytics-網站分析"><a href="#%e8%a8%ad%e5%ae%9a-google-analytics-%e7%b6%b2%e7%ab%99%e5%88%86%e6%9e%90" class="header-anchor"></a>設定 Google Analytics 網站分析
+</h3><p>Hugo 官方本來就有提供設定方法，詳情請參考 <a class="link" href="https://gohugo.io/templates/embedded/#google-analytics"  target="_blank" rel="noopener"
+    >hugo templates</a><br>
+通常沒特殊需要，只需要用 Hugo 內建的模版就好了</p>
+<blockquote>
+<p>如果需要替換，在專案資料夾內新增 <code>layouts/_internal/google_analytics.html</code> 取代原模版<br>
+隨附 hugo 預設模版 <a class="link" href="https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/google_analytics.html"  target="_blank" rel="noopener"
+    >google_analytics.html</a></p></blockquote>
+<p>在設定檔內加入 googleAnalytics 的評估 ID，就可以了</p>
+<figure class="code-block" role="figure" aria-label="toml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">toml</span>
+    <span  class="code-title">config/_default/hugo.toml</span></div><div class="highlight" title="config/_default/hugo.toml"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">services</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">services</span><span class="p">.</span><span class="nx">googleAnalytics</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">id</span> <span class="p">=</span> <span class="s1">&#39;G-MEASUREMENT_ID&#39;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="設定-rss-atom-feed"><a href="#%e8%a8%ad%e5%ae%9a-rss-atom-feed" class="header-anchor"></a>設定 rss atom feed
+</h3><p>這邊也切成另一篇文章</p>
+<ul>
+<li><a class="link" href="https://zonego.tw/post/hugo-rss/" >Hugo 設定RSS, ATOM Feed</a></li>
+</ul>
+<h2 id="設定-cicd"><a href="#%e8%a8%ad%e5%ae%9a-cicd" class="header-anchor"></a>設定 CICD
+</h2><p>我在用的環境之前有安裝 Drone CI 在用<br>
+但去年覺得怎很久沒跳需要更新，才發現免費版停更了<br>
+找了一陣子發現開源的替代方案 woodpecker，一樣是是用容器處理對應步驟<br>
+設定檔用起來也不會差太多</p>
+<p><del>使用方法改天再來寫教學</del></p>
+<p>當然，如果你是用 github 或是 gitlab，也可以用自帶的 github workflows 這類功能就可以了</p>
+<h3 id="設定自動更新主題"><a href="#%e8%a8%ad%e5%ae%9a%e8%87%aa%e5%8b%95%e6%9b%b4%e6%96%b0%e4%b8%bb%e9%a1%8c" class="header-anchor"></a>設定自動更新主題
+</h3><p>在 woodpecker repo 內點設定，在 cron 分頁中建好名叫 <code>every week</code> 的排程<br>
+更新主題應該不用太頻繁，所以我定每週跑一次，你也可以調更頻繁</p>
+<p>更新步驟就照改自 stack starter 的 github workflows<br>
+在專案資料夾下新增 <code>.woodpecker/update-theme.yml</code></p>
+<figure class="code-block" role="figure" aria-label="yaml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">yaml</span>
+    <span  class="code-title">.woodpecker/update-theme.yml</span></div><div class="highlight" title=".woodpecker/update-theme.yml"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">when</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">event</span><span class="p">:</span><span class="w"> </span><span class="l">cron</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;every week&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">update theme</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">hugomods/hugo:dart-sass-go-git</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">commands</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">hugo mod get -u github.com/CaiJimmy/hugo-theme-stack/v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Tidy go.mod, go.sum</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">hugomods/hugo:dart-sass-go-git</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">commands</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">hugo mod tidy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Commit changes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">appleboy/drone-git-push</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">settings</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">remote</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">from_secret</span><span class="p">:</span><span class="w"> </span><span class="l">gitea-remote-withpass</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">force</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">commit</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">commit_message</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;CI: Update theme&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">author_name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;zonelin&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">author_email</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;th5331958@gmail.com&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>hugo image 我是使用 razonyang 大大做的 docker image<br>
+他提供了各種版本跟套件的組合，有需要可以去 <a class="link" href="https://docker.hugomods.com/choose/"  target="_blank" rel="noopener"
+    >https://docker.hugomods.com/choose/</a> 找你需要的 image</p>
+<a href=https://docker.hugomods.com/ target="_blank">
+  <div class="bookmark">
+    <div class="logo"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon bookmark-icon icon bookmark-icon-tabler icon bookmark-icons-tabler-outline icon bookmark-icon-tabler-world"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></svg>
+        <span class="name">Hugo Docker Images</span>
+    </div>
+    <div class="description">Automated and up-to-date community Hugo Docker images, with various tags from minimalist to comprehensive, such as standard edition and extended edition, root and non-root, Git, Go, Node.js, NPM, Yarn, Dart Sass, AsciiDoc, Pandoc, Nightly build, and more.</div>
+  </div>
+</a>
+<p>這邊我有另外遇到一個小問題，就是我自己架的 git 是沒有開放 ssh 連線的<br>
+所以做了一點變通，將帳號密碼合併到 remote 字串，放在 secret 裡面</p>
+<figure class="code-block" role="figure" aria-label=" code snippet">
+
+  <div class="code-header"></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">https://username:password@your.gitea.com/username/repository.git</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>至於安全性，我覺得既然都可以將 ssh private key 內容放在 secret 裡面了，帳號密碼也沒關係吧</p>
+<p>詳細的設定請參考 <a class="link" href="https://zonego.tw/post/woodpeak-git-push/" >Woodpeak Git Push 至私有 git</a></p>
+<h3 id="設定推送至-github"><a href="#%e8%a8%ad%e5%ae%9a%e6%8e%a8%e9%80%81%e8%87%b3-github" class="header-anchor"></a>設定推送至 GitHub
+</h3><p>同樣在 .woodpecker 新增流程設定檔 github.yml<br>
+這次稍微改動，只有並到 release 分支，才會觸發執行</p>
+<figure class="code-block" role="figure" aria-label="yaml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">yaml</span>
+    <span  class="code-title">.woodpecker/github.yml</span></div><div class="highlight" title=".woodpecker/github.yml"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">when</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">event</span><span class="p">:</span><span class="w"> </span><span class="l">push</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l">Release</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">build</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">hugomods/hugo:dart-sass-go-git</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">commands</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">hugo build</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">cp public/post/rss.xml public/rss.xml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">deploy git page</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">appleboy/drone-git-push</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_BRANCH</span><span class="p">:</span><span class="w"> </span><span class="l">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_SSH_KEY</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">from_secret</span><span class="p">:</span><span class="w"> </span><span class="l">github_key</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_REMOTE</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;git@github.com:ZoneLin/blog-public.git&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_AUTHOR_NAME</span><span class="p">:</span><span class="w"> </span><span class="l">zoneLin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_AUTHOR_EMAIL</span><span class="p">:</span><span class="w"> </span><span class="l">th5331958@gmail.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_FORCE</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_COMMIT</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PLUGIN_COMMIT_MESSAGE</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Auto generated using Woodpecker CI&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">commands</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">cd public</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">git init</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">/bin/drone-git-push</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>這次是推送到 GutHub 所以可以用 SSH key 方式推送<br>
+我不想把網站程式碼公開出去，所以只將編譯完的 public 資料夾推到 GutHub 上</p>
+<p>到這邊其實 GitHub Page 差一步就可以設定好了<br>
+到 repository 設定 &gt; Pages 點 upgrade 就可以了</p>
+<p><img src="/post/hugo/github_page.png"
+	width="3104"
+	height="1834"
+	srcset="/post/hugo/github_page_hu_6c831593ae7ab76a.png 480w, /post/hugo/github_page_hu_afca7d784f4e13cb.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="406px"
+	
+></p>
+<blockquote>
+<p>備註 repository 的名稱必須是 XXX.github.io<br>
+詳細可到 github page 官網看 <a class="link" href="https://pages.github.com/"  target="_blank" rel="noopener"
+    >https://pages.github.com/</a></p></blockquote>
+<h2 id="部署到-cloudflare-page"><a href="#%e9%83%a8%e7%bd%b2%e5%88%b0-cloudflare-page" class="header-anchor"></a>部署到 CloudFlare Page
+</h2><p>請參考 <a class="link" href="https://zonego.tw/post/cloudflare-page/" >Cloudflare Page 架站教學</a></p>
+<p>這邊就跟之前一樣沒作修改，流程大概如下</p>
+<ol>
+<li>CloudFlare Page 設定監看 GitHub</li>
+<li>把編完的靜態網站檔案傳到 GitHub</li>
+</ol>
+<p>後就等自動同步就好了，通常只需要幾秒</p>
+<h2 id="設定搜尋引擎"><a href="#%e8%a8%ad%e5%ae%9a%e6%90%9c%e5%b0%8b%e5%bc%95%e6%93%8e" class="header-anchor"></a>設定搜尋引擎
+</h2><ul>
+<li><a class="link" href="https://zonego.tw/post/google-search-console/" >Google Search Console - 讓 Google 搜尋到部落格內容</a></li>
+<li><a class="link" href="https://zonego.tw/post/bingwebmastertools/" >Bing Webmaster Tools - 讓 Bing 搜尋到部落格內容</a></li>
+</ul>
+<h2 id="套用-google-adsense"><a href="#%e5%a5%97%e7%94%a8-google-adsense" class="header-anchor"></a>套用 Google AdSense
+</h2><ul>
+<li><a class="link" href="https://zonego.tw/post/adsense/" >Google AdSense 讓你的網站幫你賺錢</a></li>
+</ul>
+<p>大概就這些了 🥱</p>
+
+</section>
+
+
+  <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/hugo/">Hugo</a>
+        
+            <a href="/tags/blog/">Blog</a>
+        
+            <a href="/tags/self-hosting/">Self-Hosting</a>
+        
+            <a href="/tags/woodpecker/">Woodpecker</a>
+        
+            <a href="/tags/cicd/">CICD</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>本文採用 <a class="link" href="https://creativecommons.org/licenses/by/4.0/deed"  target="_blank" rel="noopener"
+    >創用CC BY 4.0</a> 協議許可</span>
+    </section>
+    </footer>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5857950919507241" crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5857950919507241"
+     data-ad-slot="6290484367"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-shortcode/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo-shortcode/cover.94c20c262b9400c01dc9c1c6f96aa2a1_hu_f2388f124074c817.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo 短代碼 shortcode"
+                        data-key="hugo-shortcode" 
+                        data-hash="md5-lMIMJiuUAMAdycHG&#43;WqioQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 短代碼 shortcode</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-codeblock/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo-codeblock/cover.e4aed39246f9ce7a1007bea846f3dd35_hu_deabc1eec480223b.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo Theme Stack 修改 CodeBlock"
+                        data-key="hugo-codeblock" 
+                        data-hash="md5-5K7Tkkb5znoQB76oRvPdNQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo Theme Stack 修改 CodeBlock</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-stack-custom/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://user-images.githubusercontent.com/5889006/190859441-141b5f81-8483-40d2-bd96-ebf85616a46d.png" loading="lazy" data-key="hugo-stack-custom" data-hash="https://user-images.githubusercontent.com/5889006/190859441-141b5f81-8483-40d2-bd96-ebf85616a46d.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 定製自己的Stack主題</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-rss/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg" loading="lazy" data-key="hugo-rss" data-hash="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 設定RSS, ATOM Feed</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-config/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg" loading="lazy" data-key="hugo-config" data-hash="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 設定檔結構</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "4154b7069cefd96aa34b",
+        clientSecret: "4d1e06eb5468a4a083bdb0b6095c613deb234ea1",
+        repo: "zonelin.github.io",
+        owner: "ZoneLin",
+        admin: ["ZoneLin"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy: null ,
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2025 筆記Zone
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>搜尋引擎 on 筆記Zone</title>
+        <link>https://zonego.tw/tags/%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E/</link>
+        <description>Recent content in 搜尋引擎 on 筆記Zone</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Mon, 02 Oct 2023 11:14:09 +0800</lastBuildDate><atom:link href="https://zonego.tw/tags/%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E/rss.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Bing Webmaster Tools - 讓 Bing 搜尋到部落格內容</title>
+        <link>https://zonego.tw/post/bingwebmastertools/</link>
+        <pubDate>Mon, 02 Oct 2023 11:14:09 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/bingwebmastertools/</guid>
+        <description>&lt;img src="https://zonego.tw/post/bingwebmastertools/Bing.svg" alt="Featured image of post Bing Webmaster Tools - 讓 Bing 搜尋到部落格內容" /&gt;&lt;p&gt;之前寫過讓 Google 主動來爬我們的網站內容，但世界上不只有 google 這個搜尋引擎&lt;br&gt;
+微軟的搜尋引擎 Bing 雖然不是最多人使用，不過為了增加網站曝光，就來設定 Webmaster Tools 吧&lt;br&gt;
+&lt;del&gt;反正設定也不用錢&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;其他搜尋引擎請參考&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zonego.tw/post/google-search-console/&#34; &gt;Google Search Console - 讓 Google 搜尋到部落格內容&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;登入-microsoft-帳號&#34;&gt;&lt;a href=&#34;#%e7%99%bb%e5%85%a5-microsoft-%e5%b8%b3%e8%99%9f&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;登入 Microsoft 帳號
+&lt;/h2&gt;&lt;p&gt;註冊就跳過吧，應該大家都會&lt;br&gt;
+真的沒有的話，也可以用 Google 或 FB 帳號登入&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/bingwebmastertools/login.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/bingwebmastertools/login_hu_fb6481c785d15b05.jpg 480w, https://zonego.tw/post/bingwebmastertools/login_hu_9910e8929c13986.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;登入&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;從-google-search-console-匯入網站&#34;&gt;&lt;a href=&#34;#%e5%be%9e-google-search-console-%e5%8c%af%e5%85%a5%e7%b6%b2%e7%ab%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;從 Google Search Console 匯入網站
+&lt;/h2&gt;&lt;p&gt;登入後選擇新增站點&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/bingwebmastertools/add_site.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/bingwebmastertools/add_site_hu_227c824bb46ea7ce.jpg 480w, https://zonego.tw/post/bingwebmastertools/add_site_hu_d4f955bcaa8f3915.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增站點&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;如果之前已經設定過 Google Search Console&lt;br&gt;
+可以連結 Google 帳號，將設定匯入 Bing Webmaster Tools&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/bingwebmastertools/add_site2.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/bingwebmastertools/add_site2_hu_abbe1e67db21e5f8.jpg 480w, https://zonego.tw/post/bingwebmastertools/add_site2_hu_6cf2928d2f56d890.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增站點&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/bingwebmastertools/add_site3.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/bingwebmastertools/add_site3_hu_88a73f80d923757c.jpg 480w, https://zonego.tw/post/bingwebmastertools/add_site3_hu_b0802521c4cf4d7b.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增站點&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;由於我的部落格 &lt;a class=&#34;link&#34; href=&#34;https://zonego.tw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zonego.tw&lt;/a&gt; 已經匯入過，所以我的 Google 帳號內會沒有其他網站能匯入&lt;br&gt;
+正常的話這邊選擇網站匯入就可以了&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/bingwebmastertools/add_site4.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/bingwebmastertools/add_site4_hu_6c85a6e9b4c06606.jpg 480w, https://zonego.tw/post/bingwebmastertools/add_site4_hu_7a382154d333b025.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增站點&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;新增網站至-webmaster-tools&#34;&gt;&lt;a href=&#34;#%e6%96%b0%e5%a2%9e%e7%b6%b2%e7%ab%99%e8%87%b3-webmaster-tools&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;新增網站至 Webmaster Tools
+&lt;/h2&gt;&lt;p&gt;新增站點這邊輸入網站的網址&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/bingwebmastertools/add_site2.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/bingwebmastertools/add_site2_hu_abbe1e67db21e5f8.jpg 480w, https://zonego.tw/post/bingwebmastertools/add_site2_hu_6cf2928d2f56d890.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增站點&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;以新增 &lt;code&gt;https://example.zonego.tw&lt;/code&gt; 為範例&lt;br&gt;
+下一步就是要驗證網站是你的，有三種驗證方法&lt;/p&gt;
+&lt;h3 id=&#34;1bingsiteauthxml&#34;&gt;&lt;a href=&#34;#1bingsiteauthxml&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;1.BingSiteAuth.xml
+&lt;/h3&gt;&lt;p&gt;下載驗證用的 BingSiteAuth.xml 檔案，放在網站的根目錄&lt;br&gt;
+&lt;code&gt;https://example.zonego.tw/BingSiteAuth.xml&lt;/code&gt;&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/bingwebmastertools/verify1.jpg&#34;
+	width=&#34;2516&#34;
+	height=&#34;1836&#34;
+	srcset=&#34;https://zonego.tw/post/bingwebmastertools/verify1_hu_fcb902c2f4a409df.jpg 480w, https://zonego.tw/post/bingwebmastertools/verify1_hu_9642824e649a4f69.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增站點&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;328px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2在頁面的-header-加入驗證資料&#34;&gt;&lt;a href=&#34;#2%e5%9c%a8%e9%a0%81%e9%9d%a2%e7%9a%84-header-%e5%8a%a0%e5%85%a5%e9%a9%97%e8%ad%89%e8%b3%87%e6%96%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;2.在頁面的 Header 加入驗證資料
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/bingwebmastertools/verify2.jpg&#34;
+	width=&#34;2516&#34;
+	height=&#34;1836&#34;
+	srcset=&#34;https://zonego.tw/post/bingwebmastertools/verify2_hu_96807d106e757992.jpg 480w, https://zonego.tw/post/bingwebmastertools/verify2_hu_1310d05d7988e619.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增站點&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;328px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在網站的所有頁面 Header 中加入驗證碼&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;html code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;html&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  ‹meta name=&amp;#34;msvalidate.01&amp;#34; content=&amp;#34;2218F52174A741F96454DA55D7A664AA&amp;#34; /&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;h3 id=&#34;3透過dns驗證網站&#34;&gt;&lt;a href=&#34;#3%e9%80%8f%e9%81%8edns%e9%a9%97%e8%ad%89%e7%b6%b2%e7%ab%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;3.透過DNS驗證網站
+&lt;/h3&gt;&lt;p&gt;在網域的DNS紀錄加入 CNAME 轉至 verify.bing.com&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/bingwebmastertools/verify3.jpg&#34;
+	width=&#34;2516&#34;
+	height=&#34;1836&#34;
+	srcset=&#34;https://zonego.tw/post/bingwebmastertools/verify3_hu_1f0143a7ddb39b83.jpg 480w, https://zonego.tw/post/bingwebmastertools/verify3_hu_d14c8ad6869b7310.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增站點&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;328px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;完成之後，對DNS查詢 &lt;code&gt;82d5e001135888feb5576ef02ef31223.zonego.tw&lt;/code&gt; 應該轉至 verify.bing.com&lt;/p&gt;
+&lt;h2 id=&#34;設定-sitemap&#34;&gt;&lt;a href=&#34;#%e8%a8%ad%e5%ae%9a-sitemap&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;設定 Sitemap
+&lt;/h2&gt;&lt;p&gt;接下來新增網站的 sitemap 網址，讓微軟的爬蟲知道有哪些公開頁面可以爬資料&lt;br&gt;
+例如我的網站 sitemap 就放在 &lt;a class=&#34;link&#34; href=&#34;https://zonego.tw/sitemap.xml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zonego.tw/sitemap.xml&lt;/a&gt;&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/bingwebmastertools/sitemap.jpg&#34;
+	width=&#34;3104&#34;
+	height=&#34;1836&#34;
+	srcset=&#34;https://zonego.tw/post/bingwebmastertools/sitemap_hu_d088ddf32cb523d8.jpg 480w, https://zonego.tw/post/bingwebmastertools/sitemap_hu_d5fb8e5d4959a457.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增站點&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;169&#34;
+		data-flex-basis=&#34;405px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;完成之後等待一段時間，在 Bing 搜尋就會找到我們網站的內容了 🎉&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Google Search Console - 讓 Google 搜尋到部落格內容</title>
+        <link>https://zonego.tw/post/google-search-console/</link>
+        <pubDate>Wed, 02 Aug 2023 12:52:15 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/google-search-console/</guid>
+        <description>&lt;img src="https://zonego.tw/post/google-search-console/google.jpg" alt="Featured image of post Google Search Console - 讓 Google 搜尋到部落格內容" /&gt;&lt;p&gt;建好一個新網站，在搜尋引擎爬到你的網站之前，理所當然會搜尋不到任何東西&lt;/p&gt;
+&lt;p&gt;那 Google 甚麼時候會時候會來爬我的網站? 真的就是&lt;em&gt;隨緣&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;要主動讓搜尋引擎認識你的網站? 那就是要去 Google Search Console 設定&lt;/p&gt;
+&lt;p&gt;其他搜尋引擎請參考&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zonego.tw/post/bingwebmastertools/&#34; &gt;Bing Webmaster Tools - 讓 Bing 搜尋到部落格內容&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;新增網站的-sitemap&#34;&gt;&lt;a href=&#34;#%e6%96%b0%e5%a2%9e%e7%b6%b2%e7%ab%99%e7%9a%84-sitemap&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;新增網站的 Sitemap
+&lt;/h2&gt;&lt;p&gt;去 Google 設定之前，我們需要先將搜尋引擎需要的網站地圖 sitemap.xml 產生出來。&lt;br&gt;
+教學在這 &lt;a class=&#34;link&#34; href=&#34;https://zonego.tw/post/hexo-sitemap/&#34; &gt;Hexo 自動產生網站的 sitemap&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;至於 Hugo 就不用再額外做設定了，預設就生成在 &lt;a class=&#34;link&#34; href=&#34;https://yoursite.com/sitemap.xml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://yoursite.com/sitemap.xml&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;在-google-search-console-新增網站&#34;&gt;&lt;a href=&#34;#%e5%9c%a8-google-search-console-%e6%96%b0%e5%a2%9e%e7%b6%b2%e7%ab%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;在 Google Search Console 新增網站
+&lt;/h2&gt;&lt;h3 id=&#34;註冊-google-帳號&#34;&gt;&lt;a href=&#34;#%e8%a8%bb%e5%86%8a-google-%e5%b8%b3%e8%99%9f&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;註冊 Google 帳號
+&lt;/h3&gt;&lt;p&gt;這部份相信大家都會，跳過&lt;/p&gt;
+&lt;h3 id=&#34;新增網站&#34;&gt;&lt;a href=&#34;#%e6%96%b0%e5%a2%9e%e7%b6%b2%e7%ab%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;新增網站
+&lt;/h3&gt;&lt;p&gt;接下來到 Google Search Console 去設定爬蟲來抓我們的網站&lt;br&gt;
+Google Search Console 網址： &lt;a class=&#34;link&#34; href=&#34;https://search.google.com/search-console&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://search.google.com/search-console&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/google-search-console/%E6%96%B0%E5%A2%9E%E7%AB%99%E9%BB%9E.png&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/google-search-console/%E6%96%B0%E5%A2%9E%E7%AB%99%E9%BB%9E_hu_547e618732b86349.png 480w, https://zonego.tw/post/google-search-console/%E6%96%B0%E5%A2%9E%E7%AB%99%E9%BB%9E_hu_c6deadd8855b7066.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增網站&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;資源類型分為兩類，網站前置字元代表只索引單一網站，網域則是歸在該網域下的所有網站都會索引。&lt;br&gt;
+沒有特殊需求的話選網站前置字元就好。&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/google-search-console/%E8%B3%87%E6%BA%90%E9%A1%9E%E5%9E%8B.png&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/google-search-console/%E8%B3%87%E6%BA%90%E9%A1%9E%E5%9E%8B_hu_9ee5c1dcfef54e96.png 480w, https://zonego.tw/post/google-search-console/%E8%B3%87%E6%BA%90%E9%A1%9E%E5%9E%8B_hu_fd13447a2adc93f.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增網站&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;驗證網站&#34;&gt;&lt;a href=&#34;#%e9%a9%97%e8%ad%89%e7%b6%b2%e7%ab%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;驗證網站
+&lt;/h2&gt;&lt;p&gt;把要索引的網站打進去後，接下來要驗證網站是你的&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/google-search-console/%E9%A9%97%E8%AD%89%E6%96%B9%E5%BC%8F.png&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/google-search-console/%E9%A9%97%E8%AD%89%E6%96%B9%E5%BC%8F_hu_addcb6db43f807fe.png 480w, https://zonego.tw/post/google-search-console/%E9%A9%97%E8%AD%89%E6%96%B9%E5%BC%8F_hu_a8dce4fb1516a9ea.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增網站&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;下面的驗證方式選一個就好&lt;/p&gt;
+&lt;h3 id=&#34;html-檔案&#34;&gt;&lt;a href=&#34;#html-%e6%aa%94%e6%a1%88&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;HTML 檔案
+&lt;/h3&gt;&lt;p&gt;預設最簡單的驗證方式，只要將 google 提供的驗證用 html 檔案下載，放在 hexo 的目錄即可&lt;br&gt;
+網站部屬之後可以在 &lt;a class=&#34;link&#34; href=&#34;https://yoursite.com/googleXXXXXXXXXXXXXXXX.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://yoursite.com/googleXXXXXXXXXXXXXXXX.html&lt;/a&gt; 看到驗證碼就可以去點驗證了&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Hexo 記得在 &lt;code&gt;_config.yml&lt;/code&gt; 加入跳過這個檔案的渲染 詳細請看 &lt;a class=&#34;link&#34; href=&#34;https://zonego.tw/post/hexo-skip/&#34; &gt;Hexo 指定文件跳過渲染&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;yaml code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;yaml&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;skip_render&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;googleXXXXXXXXXXXXXXXX.html&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;h3 id=&#34;html-標記&#34;&gt;&lt;a href=&#34;#html-%e6%a8%99%e8%a8%98&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;HTML 標記
+&lt;/h3&gt;&lt;p&gt;在首頁的 Header 內加入驗證碼&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://yoursite.com/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://yoursite.com/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;html code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;html&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;google-site-verification&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;key-XXX&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;h3 id=&#34;google-analytics&#34;&gt;&lt;a href=&#34;#google-analytics&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;Google Analytics
+&lt;/h3&gt;&lt;p&gt;如果你的網站有使用  Google Analytics 的話可以直接點驗整就好，反正也在設定 GA 時也算驗證過網站所有者了&lt;/p&gt;
+&lt;h3 id=&#34;網域名稱供應商&#34;&gt;&lt;a href=&#34;#%e7%b6%b2%e5%9f%9f%e5%90%8d%e7%a8%b1%e4%be%9b%e6%87%89%e5%95%86&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;網域名稱供應商
+&lt;/h3&gt;&lt;p&gt;在 DNS 內加入相同網域的 TXT 紀錄，裡面放驗證碼即可驗證&lt;br&gt;
+如果是 cloud flare 的話就更簡單，只要照著點就好了&lt;br&gt;
+不過設定時要注意衝突&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/google-search-console/DNS.png&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/google-search-console/DNS_hu_df2d55d55ef0691e.png 480w, https://zonego.tw/post/google-search-console/DNS_hu_2256bde3ab37432d.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增網站&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;完成&#34;&gt;&lt;a href=&#34;#%e5%ae%8c%e6%88%90&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;完成
+&lt;/h2&gt;&lt;p&gt;驗證完之後等待 google 把 sitemap 內的頁面索引完，在 Google 搜尋你的網站可以被搜尋到了&lt;br&gt;
+後續 google 會提是你的網站有什麼問題需要修正，未修正前會被排到搜尋列表的後面&lt;br&gt;
+要被演算法排到前面就需要做 SEO (search engine optimizaton) 了&lt;/p&gt;
+
+
+
+&lt;div class=&#34;unsplash unsplash-info&#34; &gt;
+    &lt;div class=&#34;unsplash-title&#34;&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon unsplash-icon icon unsplash-icon-tabler icon unsplash-icons-tabler-outline icon unsplash-icon-tabler-photo&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M15 8h.01&#34; /&gt;&lt;path d=&#34;M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z&#34; /&gt;&lt;path d=&#34;M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5&#34; /&gt;&lt;path d=&#34;M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3&#34; /&gt;&lt;/svg&gt;&lt;/div&gt;
+    &lt;p&gt;Photo by &lt;a href=&#34;https://unsplash.com/@mitchel3uo?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;Mitchell Luo&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/photos/google-logo-neon-light-signage-jz4ca36oJ_M?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

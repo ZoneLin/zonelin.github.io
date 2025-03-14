@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>套件管理 on 筆記Zone</title>
+        <link>https://zonego.tw/tags/%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86/</link>
+        <description>Recent content in 套件管理 on 筆記Zone</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Mon, 24 Oct 2022 17:59:16 +0800</lastBuildDate><atom:link href="https://zonego.tw/tags/%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86/rss.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Mac 上的套件管理系統 Homebrew</title>
+        <link>https://zonego.tw/post/homebrew/</link>
+        <pubDate>Mon, 24 Oct 2022 17:59:16 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/homebrew/</guid>
+        <description>&lt;img src="https://zonego.tw/post/homebrew/homebrew.jpeg" alt="Featured image of post Mac 上的套件管理系統 Homebrew" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://brew.sh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Homebrew&lt;/a&gt; 是 Mac 上常用的第三方套件管理器，可以用來安裝 wget 等 Linux 常用但 Mac 沒有的程式。&lt;br&gt;
+雖然主要是面向 Mac 的程式，但 Linux 也可以用。&lt;/p&gt;
+&lt;h2 id=&#34;安裝&#34;&gt;&lt;a href=&#34;#%e5%ae%89%e8%a3%9d&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;安裝
+&lt;/h2&gt;&lt;p&gt;官方有提供安裝腳本&lt;/p&gt;
+
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;terminal&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;/bin/bash -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;quot;&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;不需要用 sudo 安裝&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;裝完之後可以用 &lt;code&gt;brew help&lt;/code&gt; 檢查是否安裝成功&lt;/p&gt;
+&lt;h2 id=&#34;使用方法&#34;&gt;&lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;使用方法
+&lt;/h2&gt;
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;terminal&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;user@MacBook-Pro ~ % brew help&lt;br&gt;&lt;br&gt;Example usage:&lt;br&gt;  brew search TEXT|/REGEX/&lt;br&gt;  brew info [FORMULA|CASK&amp;hellip;]&lt;br&gt;  brew install FORMULA|CASK&amp;hellip;&lt;br&gt;  brew update&lt;br&gt;  brew upgrade [FORMULA|CASK&amp;hellip;]&lt;br&gt;  brew uninstall FORMULA|CASK&amp;hellip;&lt;br&gt;  brew list [FORMULA|CASK&amp;hellip;]&lt;br&gt;&lt;br&gt;Troubleshooting:&lt;br&gt;  brew config&lt;br&gt;  brew doctor&lt;br&gt;  brew install &amp;ndash;verbose &amp;ndash;debug FORMULA|CASK&lt;br&gt;&lt;br&gt;Contributing:&lt;br&gt;  brew create URL [&amp;ndash;no-fetch]&lt;br&gt;  brew edit [FORMULA|CASK&amp;hellip;]&lt;br&gt;&lt;br&gt;Further help:&lt;br&gt;  brew commands&lt;br&gt;  brew help [COMMAND]&lt;br&gt;  man brew&lt;br&gt;  https://docs.brew.sh&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;基本上就是發現缺什麼套件，先去官網找看看 &lt;a class=&#34;link&#34; href=&#34;https://brew.sh/zh-tw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://brew.sh/zh-tw&lt;/a&gt;，有的話就下指令安裝&lt;/p&gt;
+&lt;p&gt;安裝 wget&lt;/p&gt;
+
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;terminal&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;brew install wget&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;再來就是更新了&lt;/p&gt;
+
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;terminal&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;brew update&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;安裝問題&#34;&gt;&lt;a href=&#34;#%e5%ae%89%e8%a3%9d%e5%95%8f%e9%a1%8c&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;安裝問題
+&lt;/h2&gt;&lt;p&gt;如果下載途中意外中斷 \(例如 Mac 休眠自動斷線\) ，重跑時可能會出現下面問題&lt;/p&gt;
+
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;terminal&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;error: Not a valid ref: refs/remotes/origin/master&lt;br&gt;fatal: ambiguous argument &amp;lsquo;refs/remotes/origin/master&amp;rsquo;: unknown revision or path not in the working tree.&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;碰到這個問題，只要先把舊的刪掉再重裝就可以了&lt;/p&gt;
+
+&lt;div class=&#34;terminal&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;terminal&lt;/div&gt;
+    
+
+    &lt;div class=&#34;terminal-copy&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;terminal-block&#34;&gt;
+    &lt;p&gt;/bin/bash -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)&amp;quot;&lt;br&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

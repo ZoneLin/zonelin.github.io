@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>桌布 on 筆記Zone</title>
+        <link>https://zonego.tw/tags/%E6%A1%8C%E5%B8%83/</link>
+        <description>Recent content in 桌布 on 筆記Zone</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Mon, 06 Dec 2021 19:05:56 +0800</lastBuildDate><atom:link href="https://zonego.tw/tags/%E6%A1%8C%E5%B8%83/rss.xml" rel="self" type="application/rss+xml" /><item>
+        <title>自動換桌布 unsplash-wallpapers</title>
+        <link>https://zonego.tw/post/unsplash-wallpapers/</link>
+        <pubDate>Mon, 06 Dec 2021 19:05:56 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/unsplash-wallpapers/</guid>
+        <description>&lt;img src="https://zonego.tw/post/unsplash-wallpapers/unsplash.png" alt="Featured image of post 自動換桌布 unsplash-wallpapers" /&gt;&lt;p&gt;自動換桌布的方案有很多&lt;/p&gt;
+&lt;p&gt;在 Windows 上比較有名的是 Wallpaper Engine，除了一般的圖片之外，還可以將影片、靜態網頁做成桌布&lt;/p&gt;
+&lt;p&gt;跨平台的方案則有微軟的 bing wallpaper&lt;/p&gt;
+&lt;h2 id=&#34;unsplash&#34;&gt;&lt;a href=&#34;#unsplash&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;Unsplash
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://unsplash.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Unsplash&lt;/a&gt; 是一個免費的相片共享網站&lt;br&gt;
+攝影師可以將相片上傳到 Unsplash，相片編輯者們會對使用者上傳的相片進行整理&lt;br&gt;
+Unsplash 使用了較為自由的著作權許可條款，這讓 Unsplash 上的相片經常在文章配圖中出現&lt;/p&gt;
+&lt;p&gt;想當然，官方也推出像 bing wallpaper 一樣的自動桌布工具&lt;a class=&#34;link&#34; href=&#34;https://www.bing.com/apps/wallpaper&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;在這裡&lt;/a&gt;&lt;br&gt;
+但只有 iOS MAC AppleTV 以及 chrome 能使用&lt;/p&gt;
+&lt;p&gt;但PC平台這種大神開發者的發源地，這種小問題已經有人解決了&lt;/p&gt;
+&lt;h2 id=&#34;unsplash-wallpapers&#34;&gt;&lt;a href=&#34;#unsplash-wallpapers&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;unsplash-wallpapers
+&lt;/h2&gt;&lt;p&gt;這次要介紹的就是基於&lt;a class=&#34;link&#34; href=&#34;https://unsplash.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Unsplash&lt;/a&gt;圖庫的開源小工具 unsplash-wallpapers&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/soroushchehresa/unsplash-wallpapers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Github&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;特點&#34;&gt;&lt;a href=&#34;#%e7%89%b9%e9%bb%9e&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;特點
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;支援 Windows MAC Linux 系統&lt;/li&gt;
+&lt;li&gt;紀錄更換過的歷史桌布.&lt;/li&gt;
+&lt;li&gt;可設定自動更換週期，每小時、每天、每周、手動&lt;/li&gt;
+&lt;li&gt;下載桌布原圖&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;範例&#34;&gt;&lt;a href=&#34;#%e7%af%84%e4%be%8b&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;範例
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/unsplash-wallpapers/unsplash-wallpapers-mac.gif&#34;
+	width=&#34;972&#34;
+	height=&#34;920&#34;
+	srcset=&#34;https://zonego.tw/post/unsplash-wallpapers/unsplash-wallpapers-mac_hu_965120f7f8c0900.gif 480w, https://zonego.tw/post/unsplash-wallpapers/unsplash-wallpapers-mac_hu_23743fcbce4fd190.gif 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;MAC&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;105&#34;
+		data-flex-basis=&#34;253px&#34;
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/unsplash-wallpapers/unsplash-wallpapers-windows.gif&#34;
+	width=&#34;786&#34;
+	height=&#34;742&#34;
+	srcset=&#34;https://zonego.tw/post/unsplash-wallpapers/unsplash-wallpapers-windows_hu_aaca44ea38cc22a6.gif 480w, https://zonego.tw/post/unsplash-wallpapers/unsplash-wallpapers-windows_hu_e70b7572da6618f2.gif 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Windows&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;105&#34;
+		data-flex-basis=&#34;254px&#34;
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/unsplash-wallpapers/unsplash-wallpapers-linux.gif&#34;
+	width=&#34;444&#34;
+	height=&#34;420&#34;
+	srcset=&#34;https://zonego.tw/post/unsplash-wallpapers/unsplash-wallpapers-linux_hu_abca7cdb69f3bf7e.gif 480w, https://zonego.tw/post/unsplash-wallpapers/unsplash-wallpapers-linux_hu_f023ef4fe6c32d3c.gif 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Linux&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;105&#34;
+		data-flex-basis=&#34;253px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;下載&#34;&gt;&lt;a href=&#34;#%e4%b8%8b%e8%bc%89&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;下載
+&lt;/h3&gt;&lt;p&gt;下載點請到 &lt;a class=&#34;link&#34; href=&#34;https://github.com/soroushchehresa/unsplash-wallpapers/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Github Release&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;依據你的系統下載定應安裝檔&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/unsplash-wallpapers/unsplash-wallpaper-release.jpg&#34;
+	width=&#34;1920&#34;
+	height=&#34;1080&#34;
+	srcset=&#34;https://zonego.tw/post/unsplash-wallpapers/unsplash-wallpaper-release_hu_7210ee21dda9100.jpg 480w, https://zonego.tw/post/unsplash-wallpapers/unsplash-wallpaper-release_hu_81e8117823384261.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;release&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;MAC 系統下載 &lt;code&gt;.dmg&lt;/code&gt;&lt;br&gt;
+Windows 下載 &lt;code&gt;.exe&lt;/code&gt;&lt;br&gt;
+Redhat、Centos 下載 &lt;code&gt;.rpm&lt;/code&gt;&lt;br&gt;
+debain、Ubuntu 下載 &lt;code&gt;.deb&lt;/code&gt;&lt;br&gt;
+要自行編譯就下載 Sorce code&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;裝完就可以享受定時自動換桌布啦🎉&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>廣告 on 筆記Zone</title>
+        <link>https://zonego.tw/tags/%E5%BB%A3%E5%91%8A/</link>
+        <description>Recent content in 廣告 on 筆記Zone</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Wed, 16 Aug 2023 15:28:51 +0800</lastBuildDate><atom:link href="https://zonego.tw/tags/%E5%BB%A3%E5%91%8A/rss.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Google AdSense 讓你的網站幫你賺錢</title>
+        <link>https://zonego.tw/post/adsense/</link>
+        <pubDate>Wed, 16 Aug 2023 15:28:51 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/adsense/</guid>
+        <description>&lt;img src="https://zonego.tw/post/adsense/cash.jpg" alt="Featured image of post Google AdSense 讓你的網站幫你賺錢" /&gt;&lt;p&gt;申請 Google 帳號這個步驟就先跳過&lt;/p&gt;
+&lt;p&gt;接下來到 AdSense 網站 &lt;a class=&#34;link&#34; href=&#34;https://www.google.com/adsense&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.google.com/adsense&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;套用-adsense&#34;&gt;&lt;a href=&#34;#%e5%a5%97%e7%94%a8-adsense&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;套用 AdSense
+&lt;/h2&gt;&lt;hr&gt;
+&lt;h3 id=&#34;設定要套用的網站&#34;&gt;&lt;a href=&#34;#%e8%a8%ad%e5%ae%9a%e8%a6%81%e5%a5%97%e7%94%a8%e7%9a%84%e7%b6%b2%e7%ab%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;設定要套用的網站
+&lt;/h3&gt;&lt;p&gt;點新增網站之後，打入網站的連結，例如 &lt;a class=&#34;link&#34; href=&#34;https://example.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://example.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;接下來要驗證網站是你的，有兩種方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 AdSense 程式碼&lt;/li&gt;
+&lt;li&gt;使用 Ads.txt 驗證&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;建議使用 Ads.txt 驗證比較省事，如果我們不是用 Ads.txt 驗證網站所有權的話，後面還是要做這一步驟。簡單來說，美國為了保護下廣告的客戶，提供銷售廣告位的網站需要提供 &lt;a class=&#34;link&#34; href=&#34;https://iabtechlab.com/ads-txt/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Authorized Digital Sellers&lt;/a&gt; (簡稱 ads.txt)&lt;br&gt;
+詳細說明請參考 Google 的 &lt;a class=&#34;link&#34; href=&#34;https://support.google.com/adsense/answer/12171612?hl=zh-Hant&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://support.google.com/adsense/answer/12171612?hl=zh-Hant&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;使用-adsense-程式碼驗證&#34;&gt;&lt;a href=&#34;#%e4%bd%bf%e7%94%a8-adsense-%e7%a8%8b%e5%bc%8f%e7%a2%bc%e9%a9%97%e8%ad%89&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;使用 AdSense 程式碼驗證
+&lt;/h3&gt;&lt;p&gt;將 Google 提供的代碼貼到個頁面的 header 即可&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/adsense/AdSenseCode.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/adsense/AdSenseCode_hu_5239a6d2d59ef155.jpg 480w, https://zonego.tw/post/adsense/AdSenseCode_hu_97d7c156b8efb5d9.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;hexo nexmoe 這個主題有提供修改 header 的設定&lt;/p&gt;
+&lt;p&gt;修改 &lt;code&gt;_config.nexmoe.yml&lt;/code&gt;，在 &lt;code&gt;slotHead: &lt;/code&gt; 貼上即可&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;yaml code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;yaml&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nn&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;slotHead&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;sd&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;  &amp;lt;script async src=&amp;#34;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-ID&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;hr&gt;
+&lt;!-- TODO  Hugo --&gt;
+&lt;p&gt;Hugo Stack 主題要修改 Header 也一樣簡單&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;my-project/layouts/partials/head&lt;/code&gt; 資料夾內新增 custom.html&lt;br&gt;
+然後將內容貼進去就可以了&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;html code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;html&lt;/span&gt;
+    &lt;span  class=&#34;code-title&#34;&gt;custom.html&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;custom.html&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-ID&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;crossorigin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;h3 id=&#34;使用-adstxt-驗證&#34;&gt;&lt;a href=&#34;#%e4%bd%bf%e7%94%a8-adstxt-%e9%a9%97%e8%ad%89&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;使用 Ads.txt 驗證
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/adsense/AdSenseAds.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/adsense/AdSenseAds_hu_b88256f04e8d0fed.jpg 480w, https://zonego.tw/post/adsense/AdSenseAds_hu_ca57acb729948046.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;複製 google 提供的文字&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;txt code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;txt&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;google.com, pub-XXXXXX, DIRECT, XXXXXXX&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;blockquote&gt;
+&lt;p&gt;如果驗證時不是用這個方式的話，可以重新點網站進去，Google 會產生 &lt;code&gt;ads.txt&lt;/code&gt; 的內容可以複製&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/adsense/ads.txt.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/adsense/ads.txt_hu_12738f9d8a52b339.jpg 480w, https://zonego.tw/post/adsense/ads.txt_hu_17b6617fe6a3b57c.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Hexo 為例子，在 &lt;code&gt;source&lt;/code&gt; 資料夾內新增 &lt;code&gt;ads.txt&lt;/code&gt;，把剛剛複製的內容貼上&lt;br&gt;
+修改 &lt;code&gt;_config.yml&lt;/code&gt; 設定跳渲染 &lt;code&gt;ads.txt&lt;/code&gt; (可參考 &lt;a class=&#34;link&#34; href=&#34;https://zonego.tw/post/hexo-skip/&#34; &gt;Hexo 指定文件跳過渲染&lt;/a&gt;)&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;yml code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;yml&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nn&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;skip_render&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;ads.txt&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;hr&gt;
+&lt;p&gt;Hugo 就更簡單了，直接將 ads.txt 放在 &lt;code&gt;my-project/static&lt;/code&gt; 資料夾內就可以了&lt;br&gt;
+Hugo 就會自動放在網站的根目錄，像 http://localhost:1313/ads.txt&lt;/p&gt;
+&lt;h2 id=&#34;設定付款資料&#34;&gt;&lt;a href=&#34;#%e8%a8%ad%e5%ae%9a%e4%bb%98%e6%ac%be%e8%b3%87%e6%96%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;設定付款資料
+&lt;/h2&gt;&lt;hr&gt;
+&lt;h3 id=&#34;付款資料&#34;&gt;&lt;a href=&#34;#%e4%bb%98%e6%ac%be%e8%b3%87%e6%96%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;付款資料
+&lt;/h3&gt;&lt;p&gt;點左側選單 &amp;gt; 付款 &amp;gt; 付款資訊&lt;/p&gt;
+&lt;p&gt;付款帳戶的資料基本上不用管它，想要調整收到前的時間可以改付款時間表，最少需要累積到 100 美金才領的出來&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/adsense/%E4%BB%98%E6%AC%BE%E8%B3%87%E8%A8%8A.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/adsense/%E4%BB%98%E6%AC%BE%E8%B3%87%E8%A8%8A_hu_4d61534bcb44768b.jpg 480w, https://zonego.tw/post/adsense/%E4%BB%98%E6%AC%BE%E8%B3%87%E8%A8%8A_hu_a28bb14202baff08.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;美國稅籍資料&#34;&gt;&lt;a href=&#34;#%e7%be%8e%e5%9c%8b%e7%a8%85%e7%b1%8d%e8%b3%87%e6%96%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;美國稅籍資料
+&lt;/h3&gt;&lt;p&gt;畢竟 Google 是美國公司，照美國的稅制大概會收 24% 起跳的稅金&lt;br&gt;
+外國人可以申請 W-8BEN 來降低稅收，只有針對美國人銷售、營利才需要收 30% 稅金&lt;/p&gt;
+&lt;p&gt;簡單來說假設你的網站有 100 美元的廣告收入，其中有 10% 的廣告收入是來自美國&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;稅金&lt;/th&gt;
+          &lt;th&gt;實際收入&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;正常稅率 (未申請 W-8BEN)&lt;/td&gt;
+          &lt;td&gt;100 * 24% = 24&lt;/td&gt;
+          &lt;td&gt;100 - 24 = 76&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;有申請 W-8BEN&lt;/td&gt;
+          &lt;td&gt;(100 * 10%) * 30% = 3&lt;/td&gt;
+          &lt;td&gt;100 - 3 = 97&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;所以，除非你的網站或 Youtube 頻道主要都是來自美國，不然申請 W-8BEN 扣的稅會比較少&lt;/p&gt;
+&lt;p&gt;我是參考雲爸的教學來填寫 &lt;a class=&#34;link&#34; href=&#34;https://dacota.tw/blog/post/google-adsense-w-8ben&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://dacota.tw/blog/post/google-adsense-w-8ben&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;付款資料內的姓名記得填護照的英文姓名，不然需要在另外上傳護照證明稅及跟帳號擁有者是同一人&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;付款方式&#34;&gt;&lt;a href=&#34;#%e4%bb%98%e6%ac%be%e6%96%b9%e5%bc%8f&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;付款方式
+&lt;/h3&gt;&lt;p&gt;付款方式要累積到能第一次領錢才能設定&lt;/p&gt;
+&lt;p&gt;台灣能使用的有2種方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;美元支票&lt;/li&gt;
+&lt;li&gt;電匯&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://lashiblog.com/google-adsense-payments/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://lashiblog.com/google-adsense-payments/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安插廣告&#34;&gt;&lt;a href=&#34;#%e5%ae%89%e6%8f%92%e5%bb%a3%e5%91%8a&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;安插廣告
+&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;安插廣告到網站裡面有2種作法，自動廣告跟手動廣告&lt;/p&gt;
+&lt;h3 id=&#34;自動廣告&#34;&gt;&lt;a href=&#34;#%e8%87%aa%e5%8b%95%e5%bb%a3%e5%91%8a&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;自動廣告
+&lt;/h3&gt;&lt;p&gt;在左邊選單 廣告 &amp;gt; 按網站 &amp;gt; 選你要啟用自動廣告的網站&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/adsense/auto.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/adsense/auto_hu_a7568ca231055cdf.jpg 480w, https://zonego.tw/post/adsense/auto_hu_f8acc1d8fd5ff9db.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;這邊啟用之後就會自動在網站內插入廣告 (因為是自動，廣告可能會插在文中)&lt;/p&gt;
+&lt;h3 id=&#34;手動插入廣告&#34;&gt;&lt;a href=&#34;#%e6%89%8b%e5%8b%95%e6%8f%92%e5%85%a5%e5%bb%a3%e5%91%8a&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;手動插入廣告
+&lt;/h3&gt;&lt;p&gt;在左邊選單 廣告 &amp;gt; 按廣告單元&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/adsense/%E6%89%8B%E5%8B%95%E5%BB%A3%E5%91%8A.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/adsense/%E6%89%8B%E5%8B%95%E5%BB%A3%E5%91%8A_hu_777671d2163eb65.jpg 480w, https://zonego.tw/post/adsense/%E6%89%8B%E5%8B%95%E5%BB%A3%E5%91%8A_hu_544d59acc9be1f0c.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在這邊依照合適的版面類型建立廣告，建完之後會有給你廣告的代碼&lt;br&gt;
+代碼大概分為三個部分&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;html code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;html&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!--請放在 Header，只需要放一次--&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-ID&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;na&#34;&gt;crossorigin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!--放在頁面內你想出現廣告的地方，可在頁面內放多次--&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ins&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;adsbygoogle&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;na&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;display:block; text-align:center;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;na&#34;&gt;data-ad-layout&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;in-article&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;na&#34;&gt;data-ad-format&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;fluid&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;na&#34;&gt;data-ad-client&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ca-pub-ID&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;na&#34;&gt;data-ad-slot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;廣告單元ID&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ins&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!--放在頁面最後，只需要放一次--&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;adsbygoogle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;adsbygoogle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;push&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({});&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;p&gt;詳細可參考Google的說明&lt;a class=&#34;link&#34; href=&#34;https://support.google.com/adsense/answer/9190028?sjid=17637765633261310327-AP&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://support.google.com/adsense/answer/9190028?sjid=17637765633261310327-AP&lt;/a&gt;&lt;/p&gt;
+
+
+
+&lt;div class=&#34;unsplash unsplash-info&#34; &gt;
+    &lt;div class=&#34;unsplash-title&#34;&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon unsplash-icon icon unsplash-icon-tabler icon unsplash-icons-tabler-outline icon unsplash-icon-tabler-photo&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M15 8h.01&#34; /&gt;&lt;path d=&#34;M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z&#34; /&gt;&lt;path d=&#34;M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5&#34; /&gt;&lt;path d=&#34;M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3&#34; /&gt;&lt;/svg&gt;&lt;/div&gt;
+    &lt;p&gt;Photo by &lt;a href=&#34;https://unsplash.com/@sharonmccutcheon?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;Alexander Grey&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/photos/1-usa-dollar-banknotes-8lnbXtxFGZw?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
