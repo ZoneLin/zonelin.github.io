@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>DIY on 筆記Zone</title>
+        <link>https://zonego.tw/tags/diy/</link>
+        <description>Recent content in DIY on 筆記Zone</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Mon, 17 Jan 2022 20:20:36 +0800</lastBuildDate><atom:link href="https://zonego.tw/tags/diy/rss.xml" rel="self" type="application/rss+xml" /><item>
+        <title>ASUS VivoBook S14 S433 更換無線網卡</title>
+        <link>https://zonego.tw/post/vivobook-netcard/</link>
+        <pubDate>Mon, 17 Jan 2022 20:20:36 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/vivobook-netcard/</guid>
+        <description>&lt;p&gt;去年大概在10月左右買了 ASUS VivoBook S14 (S433)，起初用著都很正常&lt;/p&gt;
+&lt;p&gt;12月開始出現偶發的藍屏崩潰、網卡抓不到等現象&lt;/p&gt;
+&lt;p&gt;自從大學開始，電腦都是自己組以來，不知道已經有幾年沒看過這麼頻繁出現的藍屏&amp;hellip;&lt;/p&gt;
+&lt;p&gt;爬文後才發現，大概是因為晶片短缺的原因，ASUS 這幾個月的筆電網卡會採用替代品，而不是之前常用的 Intel AX210&lt;/p&gt;
+&lt;p&gt;Intel 他們家的網卡跟 SSD 可是出了名的穩定耐用&lt;/p&gt;
+&lt;p&gt;趁著缺貨前趕快從某皮買一張 AX210 來換&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;警告! 自行更換網卡可能會破保固，換之前請想好&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;事前準備&#34;&gt;&lt;a href=&#34;#%e4%ba%8b%e5%89%8d%e6%ba%96%e5%82%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;事前準備
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Intel AX210 網卡一張&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/vivobook-netcard/Intel-AX210.jpg&#34;
+	width=&#34;800&#34;
+	height=&#34;800&#34;
+	srcset=&#34;https://zonego.tw/post/vivobook-netcard/Intel-AX210_hu_2cdacdb5190d9f2b.jpg 480w, https://zonego.tw/post/vivobook-netcard/Intel-AX210_hu_4cbcb317460afbf0.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AX210&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;星型螺絲起子 建議可以買XX合1那種螺絲起子組&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/vivobook-netcard/screwdriver.jpg&#34;
+	width=&#34;440&#34;
+	height=&#34;437&#34;
+	srcset=&#34;https://zonego.tw/post/vivobook-netcard/screwdriver_hu_717a6a94fe665379.jpg 480w, https://zonego.tw/post/vivobook-netcard/screwdriver_hu_f38b3520c502151e.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;screwdriver&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;241px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;尖頭鑷子&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/vivobook-netcard/tweezers.jpg&#34;
+	width=&#34;400&#34;
+	height=&#34;156&#34;
+	srcset=&#34;https://zonego.tw/post/vivobook-netcard/tweezers_hu_36d7b0b9aa40d8a5.jpg 480w, https://zonego.tw/post/vivobook-netcard/tweezers_hu_7ead47c1b6f31fb4.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;tweezers&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;256&#34;
+		data-flex-basis=&#34;615px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;拆機&#34;&gt;&lt;a href=&#34;#%e6%8b%86%e6%a9%9f&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;拆機
+&lt;/h2&gt;&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe loading=&#34;lazy&#34; 
+            src=&#34;https://www.youtube.com/embed/gm1w6xI4cp0&#34; 
+            allowfullscreen 
+            title=&#34;YouTube Video&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;參考別人的拆機影片，把背蓋打開就看的到網卡了&lt;/p&gt;
+&lt;p&gt;紅框的地方就是網卡，天線用鑷子會比較好拆裝&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/vivobook-netcard/asus-s433.jpg&#34;
+	width=&#34;1152&#34;
+	height=&#34;720&#34;
+	srcset=&#34;https://zonego.tw/post/vivobook-netcard/asus-s433_hu_b66b7d1833247425.jpg 480w, https://zonego.tw/post/vivobook-netcard/asus-s433_hu_aa14866b799676c.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;asus-s433&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;換下的網卡 AW-XB468NF&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/vivobook-netcard/AW-XB468NF.jpg&#34;
+	width=&#34;991&#34;
+	height=&#34;1230&#34;
+	srcset=&#34;https://zonego.tw/post/vivobook-netcard/AW-XB468NF_hu_39a127c491fca3b6.jpg 480w, https://zonego.tw/post/vivobook-netcard/AW-XB468NF_hu_f05368807634c9a8.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;AW-XB468NF&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;80&#34;
+		data-flex-basis=&#34;193px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;這張卡請保留好，之後要如果送修&lt;/p&gt;
+&lt;p&gt;需要在送修前先換回去，以免保固出問題&lt;/p&gt;
+&lt;p&gt;都裝好了才發現忘記拍照&amp;hellip;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Stack 主題自帶的 CodeBlock，就蠻好看的，複製的功能也有，不過就少了顯示檔名(標題)的功能\n搜尋過後發現 Hugo 可以單獨改 CodeBlock 的轉譯，後面就紀錄修改的方式\n修改步驟 新增渲染檔案 folder 1 2 3 4 5 my-project/ └── layouts/ └── _default/ └── _markup/ └── render-codeblock.html 新增 render-codeblock.html 檔案，貼入下面內容\n不更改原有的 CodeBlock，新增顯示語言類型type跟檔名title\nhtml render-codeblock.html 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 {{- $label := print .Type &#34; code snippet&#34; -}} &lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;{{- $label | plainify -}}&#34;&gt; &lt;div class=&#34;code-header&#34;&gt; {{- with .Type }} &lt;span class=&#34;code-type&#34;&gt;{{ . | markdownify }}&lt;/span&gt; {{- end -}} {{- with .Attributes.title }} &lt;span class=&#34;code-title&#34;&gt;{{ . | markdownify }}&lt;/span&gt; {{- end -}} &lt;/div&gt; {{- with transform.HighlightCodeBlock . -}} {{ .Wrapped }} {{- end -}} &lt;/figure&gt; 新增 SCSS 建立assets/partials/highlight資料夾，新增dark.scss, light.scss, title.scss 3個scss檔\n">
+<title>Hugo Theme Stack 修改 CodeBlock</title>
+
+<link rel='canonical' href='https://zonego.tw/post/hugo-codeblock/'>
+
+<link rel="stylesheet" href="/scss/style.min.9bbe4048d3db002f91c76804e8da678ca29ee9116cff9926899e8d8c056612fb.css"><meta property='og:title' content="Hugo Theme Stack 修改 CodeBlock">
+<meta property='og:description' content="Stack 主題自帶的 CodeBlock，就蠻好看的，複製的功能也有，不過就少了顯示檔名(標題)的功能\n搜尋過後發現 Hugo 可以單獨改 CodeBlock 的轉譯，後面就紀錄修改的方式\n修改步驟 新增渲染檔案 folder 1 2 3 4 5 my-project/ └── layouts/ └── _default/ └── _markup/ └── render-codeblock.html 新增 render-codeblock.html 檔案，貼入下面內容\n不更改原有的 CodeBlock，新增顯示語言類型type跟檔名title\nhtml render-codeblock.html 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 {{- $label := print .Type &#34; code snippet&#34; -}} &lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;{{- $label | plainify -}}&#34;&gt; &lt;div class=&#34;code-header&#34;&gt; {{- with .Type }} &lt;span class=&#34;code-type&#34;&gt;{{ . | markdownify }}&lt;/span&gt; {{- end -}} {{- with .Attributes.title }} &lt;span class=&#34;code-title&#34;&gt;{{ . | markdownify }}&lt;/span&gt; {{- end -}} &lt;/div&gt; {{- with transform.HighlightCodeBlock . -}} {{ .Wrapped }} {{- end -}} &lt;/figure&gt; 新增 SCSS 建立assets/partials/highlight資料夾，新增dark.scss, light.scss, title.scss 3個scss檔\n">
+<meta property='og:url' content='https://zonego.tw/post/hugo-codeblock/'>
+<meta property='og:site_name' content='筆記Zone'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='Blog' /><meta property='article:tag' content='html' /><meta property='article:tag' content='css' /><meta property='article:published_time' content='2025-03-19T15:32:15&#43;08:00'/><meta property='article:modified_time' content='2025-03-19T15:32:15&#43;08:00'/><meta property='og:image' content='https://zonego.tw/post/hugo-codeblock/cover.jpg' />
+<meta name="twitter:title" content="Hugo Theme Stack 修改 CodeBlock">
+<meta name="twitter:description" content="Stack 主題自帶的 CodeBlock，就蠻好看的，複製的功能也有，不過就少了顯示檔名(標題)的功能\n搜尋過後發現 Hugo 可以單獨改 CodeBlock 的轉譯，後面就紀錄修改的方式\n修改步驟 新增渲染檔案 folder 1 2 3 4 5 my-project/ └── layouts/ └── _default/ └── _markup/ └── render-codeblock.html 新增 render-codeblock.html 檔案，貼入下面內容\n不更改原有的 CodeBlock，新增顯示語言類型type跟檔名title\nhtml render-codeblock.html 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 {{- $label := print .Type &#34; code snippet&#34; -}} &lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;{{- $label | plainify -}}&#34;&gt; &lt;div class=&#34;code-header&#34;&gt; {{- with .Type }} &lt;span class=&#34;code-type&#34;&gt;{{ . | markdownify }}&lt;/span&gt; {{- end -}} {{- with .Attributes.title }} &lt;span class=&#34;code-title&#34;&gt;{{ . | markdownify }}&lt;/span&gt; {{- end -}} &lt;/div&gt; {{- with transform.HighlightCodeBlock . -}} {{ .Wrapped }} {{- end -}} &lt;/figure&gt; 新增 SCSS 建立assets/partials/highlight資料夾，新增dark.scss, light.scss, title.scss 3個scss檔\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://zonego.tw/post/hugo-codeblock/cover.jpg' />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-92G2VB89BE"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-92G2VB89BE');
+        }
+      </script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🎮</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">筆記Zone</a></h1>
+            <h2 class="site-description">能者過勞</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='/rss.xml'
+                        target="_blank"
+                        title="01-RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/ZoneLin'
+                        target="_blank"
+                        title="02-GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首頁</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>所有文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                
+                <span>關於本站</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+                
+                <span>留言板</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tools/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tools"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" /><path d="M14.5 5.5l4 4" /><path d="M12 8l-5 -5l-4 4l5 5" /><path d="M7 8l-1.5 1.5" /><path d="M16 12l5 5l-4 4l-5 -5" /><path d="M16 17l-1.5 1.5" /></svg>
+                
+                <span>線上工具</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#修改步驟">修改步驟</a>
+      <ol>
+        <li><a href="#新增渲染檔案">新增渲染檔案</a></li>
+        <li><a href="#新增-scss">新增 SCSS</a></li>
+      </ol>
+    </li>
+    <li><a href="#效果展示">效果展示</a>
+      <ol>
+        <li><a href="#不指定語言類型檔名">不指定語言類型、檔名</a></li>
+        <li><a href="#指定語言類型">指定語言類型</a></li>
+        <li><a href="#指定檔名">指定檔名</a></li>
+        <li><a href="#全都指定">全都指定</a></li>
+      </ol>
+    </li>
+    <li><a href="#terminal-區塊">terminal 區塊</a></li>
+    <li><a href="#參考資料">參考資料</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+  <header class="article-header">
+        <div class="article-image">
+            <a href="/post/hugo-codeblock/">
+                <img src="/post/hugo-codeblock/cover_hu_962a909232d373ab.jpg"
+                        srcset="/post/hugo-codeblock/cover_hu_962a909232d373ab.jpg 800w, /post/hugo-codeblock/cover_hu_fb5de70ed01d6ecc.jpg 1600w"
+                        width="800" 
+                        height="533" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo Theme Stack 修改 CodeBlock" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/blog/" style="background-color: #eb5089; color: #ffffff;">
+                Blog
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/hugo-codeblock/">Hugo Theme Stack 修改 CodeBlock</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025.03.19</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 5 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+  <section class="article-content">
+    
+    
+    <p>Stack 主題自帶的 CodeBlock，就蠻好看的，複製的功能也有，不過就少了顯示檔名(標題)的功能</p>
+<p>搜尋過後發現 Hugo 可以單獨改 CodeBlock 的轉譯，後面就紀錄修改的方式</p>
+<h2 id="修改步驟"><a href="#%e4%bf%ae%e6%94%b9%e6%ad%a5%e9%a9%9f" class="header-anchor"></a>修改步驟
+</h2><h3 id="新增渲染檔案"><a href="#%e6%96%b0%e5%a2%9e%e6%b8%b2%e6%9f%93%e6%aa%94%e6%a1%88" class="header-anchor"></a>新增渲染檔案
+</h3><figure class="code-block" role="figure" aria-label="folder code snippet">
+
+  <div class="code-header">
+    <span class="code-type">folder</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">my-project/
+</span></span><span class="line"><span class="cl">└── layouts/
+</span></span><span class="line"><span class="cl">    └── _default/
+</span></span><span class="line"><span class="cl">        └── _markup/
+</span></span><span class="line"><span class="cl">            └── render-codeblock.html</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>新增 <code>render-codeblock.html</code> 檔案，貼入下面內容<br/><br>
+不更改原有的 CodeBlock，新增顯示語言類型<code>type</code>跟檔名<code>title</code></p>
+<figure class="code-block" role="figure" aria-label="html code snippet">
+
+  <div class="code-header">
+    <span class="code-type">html</span>
+    <span  class="code-title">render-codeblock.html</span></div><div class="highlight" title="render-codeblock.html"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">{{- $label := print .Type &#34; code snippet&#34; -}}
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">figure</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;code-block&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;figure&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;{{- $label | plainify -}}&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;code-header&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    {{- with .Type }}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;code-type&#34;</span><span class="p">&gt;</span>{{ . | markdownify }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    {{- end -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    {{- with .Attributes.title }}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">span</span>  <span class="na">class</span><span class="o">=</span><span class="s">&#34;code-title&#34;</span><span class="p">&gt;</span>{{ . | markdownify }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    {{- end -}}
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  {{- with transform.HighlightCodeBlock . -}}
+</span></span><span class="line"><span class="cl">    {{ .Wrapped }}
+</span></span><span class="line"><span class="cl">  {{- end -}}
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="新增-scss"><a href="#%e6%96%b0%e5%a2%9e-scss" class="header-anchor"></a>新增 SCSS
+</h3><p>建立<code>assets/partials/highlight</code>資料夾，新增<code>dark.scss</code>, <code>light.scss</code>, <code>title.scss</code> 3個scss檔</p>
+<figure class="code-block" role="figure" aria-label="folder code snippet">
+
+  <div class="code-header">
+    <span class="code-type">folder</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">my-project/
+</span></span><span class="line"><span class="cl">└── assets/
+</span></span><span class="line"><span class="cl">    └── partials/
+</span></span><span class="line"><span class="cl">        └── highlight/
+</span></span><span class="line"><span class="cl">            ├── dark.scss
+</span></span><span class="line"><span class="cl">            ├── light.scss
+</span></span><span class="line"><span class="cl">            └── title.scss</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p><code>dark.scss</code> 跟 <code>light.scss</code> 主要是為了覆蓋原本主題的scss<br/><br>
+加入引用自訂的<code>title.scss</code>，其餘就照貼原本 Stack 主題的設定<br/><br>
+如果對CodeBlock的顏色不滿意也可以在這邊改</p>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">dark.scss</span></div><div class="highlight" title="dark.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">*   Style: monokai
+</span></span></span><span class="line"><span class="cl"><span class="cm">*   https://xyproto.github.io/splash/docs/monokai.html
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$color</span><span class="o">:</span> <span class="mh">#f8f8f2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$background-color</span><span class="o">:</span> <span class="mh">#272822</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$error-color</span><span class="o">:</span> <span class="mh">#bb0064</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$keyword-color</span><span class="o">:</span> <span class="mh">#66d9ef</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$text-color</span><span class="o">:</span> <span class="nv">$color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$name-color</span><span class="o">:</span> <span class="mh">#a6e22e</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$literal-color</span><span class="o">:</span> <span class="mh">#e6db74</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// title colors
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$type-color</span><span class="o">:</span> <span class="mh">#4B4376</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$title-color</span><span class="o">:</span> <span class="mh">#432E54</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;title.scss&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;common.scss&#34;</span><span class="p">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">light.scss</span></div><div class="highlight" title="light.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">*   Style: monokailight
+</span></span></span><span class="line"><span class="cl"><span class="cm">*   https://xyproto.github.io/splash/docs/monokailight.html
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$color</span><span class="o">:</span> <span class="mh">#272822</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$background-color</span><span class="o">:</span> <span class="mh">#fafafa</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$error-color</span><span class="o">:</span> <span class="mh">#960050</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$keyword-color</span><span class="o">:</span> <span class="mh">#00a8c8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$text-color</span><span class="o">:</span> <span class="mh">#111111</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$name-color</span><span class="o">:</span> <span class="mh">#75af00</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$literal-color</span><span class="o">:</span> <span class="mh">#d88200</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// title colors
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$type-color</span><span class="o">:</span> <span class="mh">#D0E8C5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$title-color</span><span class="o">:</span> <span class="mh">#C5D3E8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;title.scss&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;common.scss&#34;</span><span class="p">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">title.scss</span></div><div class="highlight" title="title.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="nc">.code-block</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nc">.code-header</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">display</span><span class="o">:</span> <span class="ni">table</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">padding-top</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">padding-right</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nc">.code-type</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">position</span><span class="o">:</span> <span class="ni">relative</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">background-color</span><span class="o">:</span> <span class="nv">$type-color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">padding</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">padding-left</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">padding-right</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">border-radius</span><span class="o">:</span> <span class="mi">0</span><span class="kt">px</span> <span class="mi">15</span><span class="kt">px</span> <span class="mi">15</span><span class="kt">px</span> <span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">float</span><span class="o">:</span> <span class="ni">left</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">z-index</span><span class="o">:</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nc">.code-title</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">position</span><span class="o">:</span> <span class="ni">relative</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">background-color</span><span class="o">:</span> <span class="nv">$title-color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">padding</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">padding-right</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">padding-left</span><span class="o">:</span> <span class="mi">25</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">margin-left</span><span class="o">:</span> <span class="o">-</span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">border-radius</span><span class="o">:</span> <span class="mi">0</span><span class="kt">px</span> <span class="mi">15</span><span class="kt">px</span> <span class="mi">15</span><span class="kt">px</span> <span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">float</span><span class="o">:</span> <span class="ni">left</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">z-index</span><span class="o">:</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>這樣就完成了</p>
+<h2 id="效果展示"><a href="#%e6%95%88%e6%9e%9c%e5%b1%95%e7%a4%ba" class="header-anchor"></a>效果展示
+</h2><h3 id="不指定語言類型檔名"><a href="#%e4%b8%8d%e6%8c%87%e5%ae%9a%e8%aa%9e%e8%a8%80%e9%a1%9e%e5%9e%8b%e6%aa%94%e5%90%8d" class="header-anchor"></a>不指定語言類型、檔名
+</h3><p>Codeblock 標頭 ```</p>
+<figure class="code-block" role="figure" aria-label=" code snippet">
+
+  <div class="code-header"></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="k">var</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">);</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="指定語言類型"><a href="#%e6%8c%87%e5%ae%9a%e8%aa%9e%e8%a8%80%e9%a1%9e%e5%9e%8b" class="header-anchor"></a>指定語言類型
+</h3><p>Codeblock 標頭 ``` javascript</p>
+<figure class="code-block" role="figure" aria-label="javascript code snippet">
+
+  <div class="code-header">
+    <span class="code-type">javascript</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="指定檔名"><a href="#%e6%8c%87%e5%ae%9a%e6%aa%94%e5%90%8d" class="header-anchor"></a>指定檔名
+</h3><p>Codeblock 標頭 ``` {title=&ldquo;test.js&rdquo;}</p>
+<figure class="code-block" role="figure" aria-label=" code snippet">
+
+  <div class="code-header">
+    <span  class="code-title">test.js</span></div><div class="highlight" title="test.js"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="k">var</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">);</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="全都指定"><a href="#%e5%85%a8%e9%83%bd%e6%8c%87%e5%ae%9a" class="header-anchor"></a>全都指定
+</h3><p>Codeblock 標頭 ``` javascript {title=&ldquo;test.js&rdquo;}</p>
+<figure class="code-block" role="figure" aria-label="javascript code snippet">
+
+  <div class="code-header">
+    <span class="code-type">javascript</span>
+    <span  class="code-title">test.js</span></div><div class="highlight" title="test.js"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h2 id="terminal-區塊"><a href="#terminal-%e5%8d%80%e5%a1%8a" class="header-anchor"></a>terminal 區塊
+</h2><div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">bash</div>
+    
+  </div><div class="highlight" title="bash"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">\$ ls
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">here is some bash output example</span></span></code></pre></td></tr></table>
+</div>
+</div></div><figure class="code-block" role="figure" aria-label="markdown code snippet">
+
+  <div class="code-header">
+    <span class="code-type">markdown</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">``` terminal  {title=&#34;bash&#34;}
+</span></span><span class="line"><span class="cl">\$ ls
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">here is some bash output example
+</span></span><span class="line"><span class="cl">...</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><blockquote>
+<p>同場加映，我在這邊有利用shortcode 另外做 termainal 風格的區塊<br>
+有需要可以至隔壁篇看 <a class="link" href="/post/hugo-shortcode/#terminal-%e5%8d%80%e5%a1%8a" >Hugo 短代碼</a></p></blockquote>
+<p>同樣的效果也可以用 hugo 的特性，用 codeblock 加指定語言做到<br>
+Hugo 支援指定不同語言，就自動去找對應的渲染模版<br>
+下面範例 新增 mermaid 跟 python 模版</p>
+<figure class="code-block" role="figure" aria-label=" code snippet">
+
+  <div class="code-header"></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">layouts/
+</span></span><span class="line"><span class="cl">└── _default/
+</span></span><span class="line"><span class="cl">    └── _markup/
+</span></span><span class="line"><span class="cl">        ├── render-codeblock-mermaid.html
+</span></span><span class="line"><span class="cl">        ├── render-codeblock-python.html
+</span></span><span class="line"><span class="cl">        └── render-codeblock.html</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>所以我們只要新增 render-codeblock-terminal.html<br>
+就可以區分一般程式碼跟終端機的內容</p>
+<figure class="code-block" role="figure" aria-label="html code snippet">
+
+  <div class="code-header">
+    <span class="code-type">html</span>
+    <span  class="code-title">render-codeblock-terminal.html</span></div><div class="highlight" title="render-codeblock-terminal.html"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">{{- $label := print .Type &#34; code snippet&#34; -}}
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;terminal&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;figure&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;{{- $label | plainify -}}&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;terminal-header&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;terminal-btn&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn-mac mac-close&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn-mac mac-mini&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn-mac mac-full&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    {{ if .Attributes.title }}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;terminal-title&#34;</span><span class="p">&gt;</span>{{.Attributes.title}}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    {{ else }}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;terminal-title&#34;</span><span class="p">&gt;</span>terminal<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    {{ end }}
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  {{- with transform.HighlightCodeBlock . -}}
+</span></span><span class="line"><span class="cl">    {{ .Wrapped }}
+</span></span><span class="line"><span class="cl">  {{- end -}}
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>再來新增 SCSS ，如果已經有加入 terminal shortcode 這邊就不用改了<br>
+下面 SCSS 的內容一模一樣</p>
+<p>新增 terminal.scss 放在 <code>my-project/assets/scss/partials/highlight/</code><br>
+程式碼主要參考 codepen 上 Sam Willis 跟 Microk 分享的範例</p>
+<ul>
+<li>Sam Willis <a class="link" href="https://codepen.io/swillis/pen/RwzpbP"  target="_blank" rel="noopener"
+    >Pure CSS OSX window</a></li>
+<li>Microk <a class="link" href="https://codepen.io/engko/pen/xxXZBWe"  target="_blank" rel="noopener"
+    >Code Window for MAC OS Style</a></li>
+</ul>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">terminal.scss</span></div><div class="highlight" title="terminal.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="cm">/* Fira Code: https://github.com/tonsky/FiraCode */</span>
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="sx">url(&#39;https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&amp;display=swap&#39;)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$font-size</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$line-height</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.54</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nc">.terminal</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="ni">solid</span> <span class="mh">#e6e6e6</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border-radius</span><span class="o">:</span> <span class="mi">0</span><span class="mf">.7</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">24</span><span class="kt">px</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="na">overflow</span><span class="o">:</span> <span class="ni">hidden</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nc">.terminal-header</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">background-color</span><span class="o">:</span> <span class="nv">$terminal-header</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">color</span><span class="o">:</span> <span class="nv">$terminal-header-font</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">display</span><span class="o">:</span> <span class="ni">grid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">grid-template-columns</span><span class="o">:</span> <span class="mi">25</span><span class="kt">%</span> <span class="ni">auto</span> <span class="mi">25</span><span class="kt">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nc">.terminal-title</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="na">-webkit-box-align</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">-moz-box-align</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">align-items</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">display</span><span class="o">:</span> <span class="o">-</span><span class="n">moz-box</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">-webkit-box-pack</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">-moz-box-pack</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">justify-content</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">text-align</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nc">.terminal-btn</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">.terminal-cp</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">6</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nc">.terminal-btn</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="na">display</span><span class="o">:</span> <span class="ni">flex</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="nc">.btn-mac</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="na">width</span><span class="o">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">height</span><span class="o">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">margin</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span> <span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">border-radius</span><span class="o">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="nc">.mac-close</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="na">background-color</span><span class="o">:</span> <span class="mh">#ff5f56</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="nc">.mac-mini</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="na">background-color</span><span class="o">:</span> <span class="mh">#ffbd2e</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="nc">.mac-full</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="na">background-color</span><span class="o">:</span> <span class="mh">#27c93f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nc">.terminal-cp</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="na">align-items</span><span class="o">:</span> <span class="ni">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nc">.terminal-block</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">box-sizing</span><span class="o">:</span> <span class="ni">border-box</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">font-family</span><span class="o">:</span> <span class="s2">&#34;Fira Code&#34;</span><span class="o">,</span> <span class="n">Monaco</span><span class="o">,</span> <span class="n">Consolas</span><span class="o">,</span> <span class="s2">&#34;Ubuntu Mono&#34;</span><span class="o">,</span> <span class="ni">monospace</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">font-size</span><span class="o">:</span> <span class="nv">$font-size</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">font-weight</span><span class="o">:</span> <span class="mi">400</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">font-style</span><span class="o">:</span> <span class="ni">normal</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">line-height</span><span class="o">:</span> <span class="nv">$line-height</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">letter-spacing</span><span class="o">:</span> <span class="o">-</span><span class="mi">0</span><span class="mf">.01</span><span class="kt">em</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">background-color</span><span class="o">:</span> <span class="nv">$terminal-background</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">color</span><span class="o">:</span> <span class="nv">$terminal-foreground</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">text-rendering</span><span class="o">:</span> <span class="ni">optimizeLegibility</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* -webkit-font-smoothing: antialiased; */</span>
+</span></span><span class="line"><span class="cl">    <span class="na">font-feature-settings</span><span class="o">:</span> <span class="s2">&#34;liga&#34;</span><span class="o">,</span> <span class="s2">&#34;tnum&#34;</span><span class="o">,</span> <span class="s2">&#34;ss01&#34;</span><span class="o">,</span> <span class="s2">&#34;locl&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">font-variant-ligatures</span><span class="o">:</span> <span class="ni">contextual</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">-webkit-overflow-scrolling</span><span class="o">:</span> <span class="n">touch</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">-webkit-text-size-adjust</span><span class="o">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">p</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="na">padding</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>然後就是修改 <code>my-project/assets/scss/partials/highlight/</code> 裡的 dark.scss 跟 light.scss 內分別加入顏色變數還有引用</p>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">dark.scss</span></div><div class="highlight" title="dark.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="c1">// terminal
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$terminal-header</span><span class="o">:</span> <span class="mh">#273138</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$terminal-header-font</span><span class="o">:</span> <span class="mh">#ffffff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$terminal-background</span><span class="o">:</span> <span class="mh">#000000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$terminal-foreground</span><span class="o">:</span> <span class="mh">#4EEE85</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;custom/terminal.scss&#34;</span><span class="p">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">scss</span>
+    <span  class="code-title">light.scss</span></div><div class="highlight" title="light.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="c1">// terminal
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$terminal-header</span><span class="o">:</span> <span class="mh">#f4f4f7</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$terminal-header-font</span><span class="o">:</span> <span class="mh">#000000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$terminal-background</span><span class="o">:</span> <span class="mh">#ffffff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$terminal-foreground</span><span class="o">:</span> <span class="mh">#000000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;custom/terminal.scss&#34;</span><span class="p">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><blockquote>
+<h2 id="參考資料"><a href="#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99" class="header-anchor"></a>參考資料
+</h2><ul>
+<li>官方文件<a class="link" href="https://gohugo.io/render-hooks/code-blocks/"  target="_blank" rel="noopener"
+    >Code block render hooks</a></li>
+<li><a class="link" href="https://its.mw/posts/custom-code-blocks-hugo/"  target="_blank" rel="noopener"
+    >Custom code blocks in Hugo</a></li>
+<li><a class="link" href="https://write.rog.gr/writing/labeling-code-blocks-in-hugo/"  target="_blank" rel="noopener"
+    >Labeling Code Blocks in Hugo</a></li>
+</ul></blockquote>
+
+
+
+<div class="unsplash unsplash-info" >
+    <div class="unsplash-title"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon unsplash-icon icon unsplash-icon-tabler icon unsplash-icons-tabler-outline icon unsplash-icon-tabler-photo"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8h.01" /><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" /><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" /><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" /></svg></div>
+    <p>Photo by <a href="https://unsplash.com/@rahuulmiishra?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Rahul Mishra</a> on <a href="https://unsplash.com/photos/a-computer-screen-with-a-bunch-of-text-on-it-glmeeU0zabw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></p>
+</div>
+
+</section>
+
+
+  <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/hugo/">Hugo</a>
+        
+            <a href="/tags/blog/">Blog</a>
+        
+            <a href="/tags/html/">Html</a>
+        
+            <a href="/tags/css/">Css</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>本文採用 <a class="link" href="https://creativecommons.org/licenses/by/4.0/deed"  target="_blank" rel="noopener"
+    >創用CC BY 4.0</a> 協議許可</span>
+    </section>
+    </footer>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5857950919507241" crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5857950919507241"
+     data-ad-slot="6290484367"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-shortcode/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo-shortcode/cover.94c20c262b9400c01dc9c1c6f96aa2a1_hu_f2388f124074c817.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo 短代碼 shortcode"
+                        data-key="hugo-shortcode" 
+                        data-hash="md5-lMIMJiuUAMAdycHG&#43;WqioQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 短代碼 shortcode</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-stack-custom/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://user-images.githubusercontent.com/5889006/190859441-141b5f81-8483-40d2-bd96-ebf85616a46d.png" loading="lazy" data-key="hugo-stack-custom" data-hash="https://user-images.githubusercontent.com/5889006/190859441-141b5f81-8483-40d2-bd96-ebf85616a46d.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 定製自己的Stack主題</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo/cloudflare_page.e77bfd5bc9a3c9653fa35b1f55276f95_hu_f71e0ba1684e3d7f.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得"
+                        data-key="hugo" 
+                        data-hash="md5-53v9W8mjyWU/o1sfVSdvlQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-rss/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg" loading="lazy" data-key="hugo-rss" data-hash="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 設定RSS, ATOM Feed</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-config/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg" loading="lazy" data-key="hugo-config" data-hash="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 設定檔結構</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "4154b7069cefd96aa34b",
+        clientSecret: "4d1e06eb5468a4a083bdb0b6095c613deb234ea1",
+        repo: "zonelin.github.io",
+        owner: "ZoneLin",
+        admin: ["ZoneLin"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy: null ,
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2025 筆記Zone
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on 筆記Zone</title>
+        <link>https://zonego.tw/page/</link>
+        <description>Recent content in Pages on 筆記Zone</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Sun, 06 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://zonego.tw/page/rss.xml" rel="self" type="application/rss+xml" /><item>
+        <title>所有文章</title>
+        <link>https://zonego.tw/archives/</link>
+        <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://zonego.tw/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Search</title>
+        <link>https://zonego.tw/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://zonego.tw/search/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>留言板</title>
+        <link>https://zonego.tw/board/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://zonego.tw/board/</guid>
+        <description>&lt;img src="https://zonego.tw/board/cover.jpg" alt="Featured image of post 留言板" /&gt;
+
+
+&lt;div class=&#34;unsplash unsplash-info&#34; &gt;
+    &lt;div class=&#34;unsplash-title&#34;&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon unsplash-icon icon unsplash-icon-tabler icon unsplash-icons-tabler-outline icon unsplash-icon-tabler-photo&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M15 8h.01&#34; /&gt;&lt;path d=&#34;M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z&#34; /&gt;&lt;path d=&#34;M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5&#34; /&gt;&lt;path d=&#34;M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3&#34; /&gt;&lt;/svg&gt;&lt;/div&gt;
+    &lt;p&gt;Photo by &lt;a href=&#34;https://unsplash.com/@alterego_swiss?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;AbsolutVision&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/photos/photo-of-bulb-artwork-82TpEld0_e4?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        <item>
+        <title>線上工具</title>
+        <link>https://zonego.tw/tools/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://zonego.tw/tools/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>關於本站</title>
+        <link>https://zonego.tw/about/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://zonego.tw/about/</guid>
+        <description>&lt;img src="https://zonego.tw/about/cover.jpg" alt="Featured image of post 關於本站" /&gt;&lt;h1 id=&#34;作者本人&#34;&gt;&lt;a href=&#34;#%e4%bd%9c%e8%80%85%e6%9c%ac%e4%ba%ba&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;作者本人
+&lt;/h1&gt;&lt;p&gt;本人是一個喜歡 DIY、研究伺服器的宅宅&lt;br&gt;
+這邊會分享一些軟體、網站開發、架設 HomeLab 的學習過程與筆記&lt;/p&gt;
+&lt;h2 id=&#34;網站架設&#34;&gt;&lt;a href=&#34;#%e7%b6%b2%e7%ab%99%e6%9e%b6%e8%a8%ad&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;網站架設
+&lt;/h2&gt;&lt;p&gt;本網站使用 &lt;code&gt;HUGO&lt;/code&gt; 製作&lt;/p&gt;
+&lt;p&gt;HUGO官網: &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://gohugo.io/&lt;/a&gt;&lt;br&gt;
+主題選用 Stack: &lt;a class=&#34;link&#34; href=&#34;https://stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://stack.jimmycai.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;架站的步驟紀錄在 &lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://zonego.tw/post/hugo/&#34; &gt;Hugo + woodpacker CI + CloudFlare Pages 架站心得&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;使用素材&#34;&gt;&lt;a href=&#34;#%e4%bd%bf%e7%94%a8%e7%b4%a0%e6%9d%90&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;使用素材
+&lt;/h3&gt;&lt;p&gt;icons&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://tabler.io/icons&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://tabler.io/icons&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://www.svgrepo.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.svgrepo.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;舊站&#34;&gt;&lt;a href=&#34;#%e8%88%8a%e7%ab%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;舊站
+&lt;/h2&gt;&lt;p&gt;舊網站則是使用 &lt;code&gt;HEXO&lt;/code&gt; 製作，之前的文章就照舊保留過來。&lt;/p&gt;
+&lt;p&gt;HEXO官網: &lt;a class=&#34;link&#34; href=&#34;https://hexo.io/zh-tw/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://hexo.io/zh-tw/&lt;/a&gt;&lt;/p&gt;
+
+
+
+&lt;div class=&#34;unsplash unsplash-info&#34; &gt;
+    &lt;div class=&#34;unsplash-title&#34;&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon unsplash-icon icon unsplash-icon-tabler icon unsplash-icons-tabler-outline icon unsplash-icon-tabler-photo&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M15 8h.01&#34; /&gt;&lt;path d=&#34;M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z&#34; /&gt;&lt;path d=&#34;M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5&#34; /&gt;&lt;path d=&#34;M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3&#34; /&gt;&lt;/svg&gt;&lt;/div&gt;
+    &lt;p&gt;Cover Photo by &lt;a href=&#34;https://unsplash.com/@joshuaworoniecki?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;Joshua Woroniecki&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/photos/macbook-pro-turned-on-displaying-music-lzh3hPtJz9c?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;廣告區-如果喜歡本站的內容歡迎幫忙點廣告贊助我&#34;&gt;&lt;a href=&#34;#%e5%bb%a3%e5%91%8a%e5%8d%80-%e5%a6%82%e6%9e%9c%e5%96%9c%e6%ad%a1%e6%9c%ac%e7%ab%99%e7%9a%84%e5%85%a7%e5%ae%b9%e6%ad%a1%e8%bf%8e%e5%b9%ab%e5%bf%99%e9%bb%9e%e5%bb%a3%e5%91%8a%e8%b4%8a%e5%8a%a9%e6%88%91&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;廣告區 如果喜歡本站的內容，歡迎幫忙點廣告贊助我
+&lt;/h2&gt;&lt;p&gt;如果你喜歡這個網站，可以請我喝杯咖啡☕&lt;/p&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js&#34; data-name=&#34;bmc-button&#34; data-slug=&#34;zonego&#34; data-color=&#34;#FF5F5F&#34; data-emoji=&#34;&#34;  data-font=&#34;Bree&#34; data-text=&#34;Buy me a coffee&#34; data-outline-color=&#34;#000000&#34; data-font-color=&#34;#ffffff&#34; data-coffee-color=&#34;#FFDD00&#34; &gt;&lt;/script&gt;
+&lt;!-- &lt;a href=&#34;https://p.ecpay.com.tw/75BE4A0&#34;&gt;&lt;img src=&#34;https://payment.ecpay.com.tw/Upload/QRCode/202112/QRCode_b3ac26cc-12fb-410c-986e-bf3bfb679bdc.png&#34; /&gt;&lt;/a&gt; --&gt;
+&lt;p&gt;或多幫我點一些廣告&lt;/p&gt;
+&lt;p&gt;&lt;ins class=&#34;adsbygoogle&#34;
+style=&#34;display:block&#34;
+data-ad-format=&#34;autorelaxed&#34;
+data-ad-client=&#34;ca-pub-5857950919507241&#34;
+data-ad-slot=&#34;5412094533&#34;&gt;&lt;/ins&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Google on 筆記Zone</title>
+        <link>https://zonego.tw/tags/google/</link>
+        <description>Recent content in Google on 筆記Zone</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Mon, 18 Sep 2023 12:00:32 +0800</lastBuildDate><atom:link href="https://zonego.tw/tags/google/rss.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Emoji Kitchen 自己組合出想要的表情符號</title>
+        <link>https://zonego.tw/post/emoji-kitchen/</link>
+        <pubDate>Mon, 18 Sep 2023 12:00:32 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/emoji-kitchen/</guid>
+        <description>&lt;img src="https://zonego.tw/post/emoji-kitchen/emoji.jpg" alt="Featured image of post Emoji Kitchen 自己組合出想要的表情符號" /&gt;&lt;h2 id=&#34;gboard-鍵盤&#34;&gt;&lt;a href=&#34;#gboard-%e9%8d%b5%e7%9b%a4&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;Gboard 鍵盤
+&lt;/h2&gt;&lt;p&gt;Google 在 Android 出的 Gboard 鍵盤上推出 Emoji Kitchen 功能&lt;/p&gt;
+&lt;p&gt;Gboard Google Play 商店連結：&lt;a class=&#34;link&#34; href=&#34;https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;簡單來說，在可以傳圖片的地方 (如 Discord)，用 Gboard 鍵盤輸入兩個 emiji 就可以將融合後的圖片傳出去&lt;/p&gt;
+&lt;img src=&#34;Screenshot.jpg&#34; height=&#34;500&#34;/&gt;
+&lt;h2 id=&#34;網頁版&#34;&gt;&lt;a href=&#34;#%e7%b6%b2%e9%a0%81%e7%89%88&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;網頁版
+&lt;/h2&gt;&lt;p&gt;當初只在Gboard 鍵盤上的 Emoji Kitchen 合成功能現在開放網頁版啦&lt;/p&gt;
+&lt;p&gt;只要在 Google 搜尋 Emoji Kitchen，組合完表情就產生出圖片了&lt;/p&gt;
+&lt;p&gt;網址：&lt;a class=&#34;link&#34; href=&#34;https://www.google.com/search?q=emoji&amp;#43;kitchen&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.google.com/search?q=emoji+kitchen&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/emoji-kitchen/emoji_kitchen.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/emoji-kitchen/emoji_kitchen_hu_f28d00bab7fd25b5.jpg 480w, https://zonego.tw/post/emoji-kitchen/emoji_kitchen_hu_ca4fa896123a4e19.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/emoji-kitchen/emoji_kitchen2.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/emoji-kitchen/emoji_kitchen2_hu_c1e01ba23921cfd6.jpg 480w, https://zonego.tw/post/emoji-kitchen/emoji_kitchen2_hu_4459ff2c36c1bf38.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;要用時需要將圖片下載下來，或是複製圖片網址使用&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f914/u1f914_u1f47b.png?fbx&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;markdown code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;markdown&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 複製圖片網址範例 --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;![](https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f914/u1f914_u1f47b.png?fbx)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;h2 id=&#34;開源版本&#34;&gt;&lt;a href=&#34;#%e9%96%8b%e6%ba%90%e7%89%88%e6%9c%ac&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;開源版本
+&lt;/h2&gt;&lt;p&gt;在 Google 還沒開放網頁版功能之前，一些熱心開發者也做出類似的網站可以線上使用&lt;br&gt;
+這邊介紹 xsalazar/emoji-kitchen&lt;/p&gt;
+&lt;p&gt;使用時跟 Google 的網頁版一樣，需要將圖片下載下來，或是複製圖片網址使用&lt;/p&gt;
+&lt;p&gt;GitHub：&lt;a class=&#34;link&#34; href=&#34;https://github.com/xsalazar/emoji-kitchen&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/xsalazar/emoji-kitchen&lt;/a&gt;&lt;br&gt;
+Emoji Kitchen：&lt;a class=&#34;link&#34; href=&#34;https://emojikitchen.dev/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://emojikitchen.dev/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/emoji-kitchen/emoji_kitchen3.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/emoji-kitchen/emoji_kitchen3_hu_39f245ac69a56ed0.jpg 480w, https://zonego.tw/post/emoji-kitchen/emoji_kitchen3_hu_73ef5cd79ef40cbc.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Google AdSense 讓你的網站幫你賺錢</title>
+        <link>https://zonego.tw/post/adsense/</link>
+        <pubDate>Wed, 16 Aug 2023 15:28:51 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/adsense/</guid>
+        <description>&lt;img src="https://zonego.tw/post/adsense/cash.jpg" alt="Featured image of post Google AdSense 讓你的網站幫你賺錢" /&gt;&lt;p&gt;申請 Google 帳號這個步驟就先跳過&lt;/p&gt;
+&lt;p&gt;接下來到 AdSense 網站 &lt;a class=&#34;link&#34; href=&#34;https://www.google.com/adsense&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.google.com/adsense&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;套用-adsense&#34;&gt;&lt;a href=&#34;#%e5%a5%97%e7%94%a8-adsense&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;套用 AdSense
+&lt;/h2&gt;&lt;hr&gt;
+&lt;h3 id=&#34;設定要套用的網站&#34;&gt;&lt;a href=&#34;#%e8%a8%ad%e5%ae%9a%e8%a6%81%e5%a5%97%e7%94%a8%e7%9a%84%e7%b6%b2%e7%ab%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;設定要套用的網站
+&lt;/h3&gt;&lt;p&gt;點新增網站之後，打入網站的連結，例如 &lt;a class=&#34;link&#34; href=&#34;https://example.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://example.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;接下來要驗證網站是你的，有兩種方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 AdSense 程式碼&lt;/li&gt;
+&lt;li&gt;使用 Ads.txt 驗證&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;建議使用 Ads.txt 驗證比較省事，如果我們不是用 Ads.txt 驗證網站所有權的話，後面還是要做這一步驟。簡單來說，美國為了保護下廣告的客戶，提供銷售廣告位的網站需要提供 &lt;a class=&#34;link&#34; href=&#34;https://iabtechlab.com/ads-txt/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Authorized Digital Sellers&lt;/a&gt; (簡稱 ads.txt)&lt;br&gt;
+詳細說明請參考 Google 的 &lt;a class=&#34;link&#34; href=&#34;https://support.google.com/adsense/answer/12171612?hl=zh-Hant&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://support.google.com/adsense/answer/12171612?hl=zh-Hant&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;使用-adsense-程式碼驗證&#34;&gt;&lt;a href=&#34;#%e4%bd%bf%e7%94%a8-adsense-%e7%a8%8b%e5%bc%8f%e7%a2%bc%e9%a9%97%e8%ad%89&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;使用 AdSense 程式碼驗證
+&lt;/h3&gt;&lt;p&gt;將 Google 提供的代碼貼到個頁面的 header 即可&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/adsense/AdSenseCode.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/adsense/AdSenseCode_hu_5239a6d2d59ef155.jpg 480w, https://zonego.tw/post/adsense/AdSenseCode_hu_97d7c156b8efb5d9.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;hexo nexmoe 這個主題有提供修改 header 的設定&lt;/p&gt;
+&lt;p&gt;修改 &lt;code&gt;_config.nexmoe.yml&lt;/code&gt;，在 &lt;code&gt;slotHead: &lt;/code&gt; 貼上即可&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;yaml code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;yaml&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nn&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;slotHead&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;sd&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;  &amp;lt;script async src=&amp;#34;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-ID&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;hr&gt;
+&lt;!-- TODO  Hugo --&gt;
+&lt;p&gt;Hugo Stack 主題要修改 Header 也一樣簡單&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;my-project/layouts/partials/head&lt;/code&gt; 資料夾內新增 custom.html&lt;br&gt;
+然後將內容貼進去就可以了&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;html code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;html&lt;/span&gt;
+    &lt;span  class=&#34;code-title&#34;&gt;custom.html&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;custom.html&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-ID&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;crossorigin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;h3 id=&#34;使用-adstxt-驗證&#34;&gt;&lt;a href=&#34;#%e4%bd%bf%e7%94%a8-adstxt-%e9%a9%97%e8%ad%89&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;使用 Ads.txt 驗證
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/adsense/AdSenseAds.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/adsense/AdSenseAds_hu_b88256f04e8d0fed.jpg 480w, https://zonego.tw/post/adsense/AdSenseAds_hu_ca57acb729948046.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;複製 google 提供的文字&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;txt code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;txt&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;google.com, pub-XXXXXX, DIRECT, XXXXXXX&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;blockquote&gt;
+&lt;p&gt;如果驗證時不是用這個方式的話，可以重新點網站進去，Google 會產生 &lt;code&gt;ads.txt&lt;/code&gt; 的內容可以複製&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/adsense/ads.txt.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/adsense/ads.txt_hu_12738f9d8a52b339.jpg 480w, https://zonego.tw/post/adsense/ads.txt_hu_17b6617fe6a3b57c.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Hexo 為例子，在 &lt;code&gt;source&lt;/code&gt; 資料夾內新增 &lt;code&gt;ads.txt&lt;/code&gt;，把剛剛複製的內容貼上&lt;br&gt;
+修改 &lt;code&gt;_config.yml&lt;/code&gt; 設定跳渲染 &lt;code&gt;ads.txt&lt;/code&gt; (可參考 &lt;a class=&#34;link&#34; href=&#34;https://zonego.tw/post/hexo-skip/&#34; &gt;Hexo 指定文件跳過渲染&lt;/a&gt;)&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;yml code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;yml&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nn&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;skip_render&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;ads.txt&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;hr&gt;
+&lt;p&gt;Hugo 就更簡單了，直接將 ads.txt 放在 &lt;code&gt;my-project/static&lt;/code&gt; 資料夾內就可以了&lt;br&gt;
+Hugo 就會自動放在網站的根目錄，像 http://localhost:1313/ads.txt&lt;/p&gt;
+&lt;h2 id=&#34;設定付款資料&#34;&gt;&lt;a href=&#34;#%e8%a8%ad%e5%ae%9a%e4%bb%98%e6%ac%be%e8%b3%87%e6%96%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;設定付款資料
+&lt;/h2&gt;&lt;hr&gt;
+&lt;h3 id=&#34;付款資料&#34;&gt;&lt;a href=&#34;#%e4%bb%98%e6%ac%be%e8%b3%87%e6%96%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;付款資料
+&lt;/h3&gt;&lt;p&gt;點左側選單 &amp;gt; 付款 &amp;gt; 付款資訊&lt;/p&gt;
+&lt;p&gt;付款帳戶的資料基本上不用管它，想要調整收到前的時間可以改付款時間表，最少需要累積到 100 美金才領的出來&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/adsense/%E4%BB%98%E6%AC%BE%E8%B3%87%E8%A8%8A.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/adsense/%E4%BB%98%E6%AC%BE%E8%B3%87%E8%A8%8A_hu_4d61534bcb44768b.jpg 480w, https://zonego.tw/post/adsense/%E4%BB%98%E6%AC%BE%E8%B3%87%E8%A8%8A_hu_a28bb14202baff08.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;美國稅籍資料&#34;&gt;&lt;a href=&#34;#%e7%be%8e%e5%9c%8b%e7%a8%85%e7%b1%8d%e8%b3%87%e6%96%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;美國稅籍資料
+&lt;/h3&gt;&lt;p&gt;畢竟 Google 是美國公司，照美國的稅制大概會收 24% 起跳的稅金&lt;br&gt;
+外國人可以申請 W-8BEN 來降低稅收，只有針對美國人銷售、營利才需要收 30% 稅金&lt;/p&gt;
+&lt;p&gt;簡單來說假設你的網站有 100 美元的廣告收入，其中有 10% 的廣告收入是來自美國&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;稅金&lt;/th&gt;
+          &lt;th&gt;實際收入&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;正常稅率 (未申請 W-8BEN)&lt;/td&gt;
+          &lt;td&gt;100 * 24% = 24&lt;/td&gt;
+          &lt;td&gt;100 - 24 = 76&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;有申請 W-8BEN&lt;/td&gt;
+          &lt;td&gt;(100 * 10%) * 30% = 3&lt;/td&gt;
+          &lt;td&gt;100 - 3 = 97&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;所以，除非你的網站或 Youtube 頻道主要都是來自美國，不然申請 W-8BEN 扣的稅會比較少&lt;/p&gt;
+&lt;p&gt;我是參考雲爸的教學來填寫 &lt;a class=&#34;link&#34; href=&#34;https://dacota.tw/blog/post/google-adsense-w-8ben&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://dacota.tw/blog/post/google-adsense-w-8ben&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;付款資料內的姓名記得填護照的英文姓名，不然需要在另外上傳護照證明稅及跟帳號擁有者是同一人&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;付款方式&#34;&gt;&lt;a href=&#34;#%e4%bb%98%e6%ac%be%e6%96%b9%e5%bc%8f&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;付款方式
+&lt;/h3&gt;&lt;p&gt;付款方式要累積到能第一次領錢才能設定&lt;/p&gt;
+&lt;p&gt;台灣能使用的有2種方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;美元支票&lt;/li&gt;
+&lt;li&gt;電匯&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://lashiblog.com/google-adsense-payments/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://lashiblog.com/google-adsense-payments/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安插廣告&#34;&gt;&lt;a href=&#34;#%e5%ae%89%e6%8f%92%e5%bb%a3%e5%91%8a&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;安插廣告
+&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;安插廣告到網站裡面有2種作法，自動廣告跟手動廣告&lt;/p&gt;
+&lt;h3 id=&#34;自動廣告&#34;&gt;&lt;a href=&#34;#%e8%87%aa%e5%8b%95%e5%bb%a3%e5%91%8a&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;自動廣告
+&lt;/h3&gt;&lt;p&gt;在左邊選單 廣告 &amp;gt; 按網站 &amp;gt; 選你要啟用自動廣告的網站&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/adsense/auto.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/adsense/auto_hu_a7568ca231055cdf.jpg 480w, https://zonego.tw/post/adsense/auto_hu_f8acc1d8fd5ff9db.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;這邊啟用之後就會自動在網站內插入廣告 (因為是自動，廣告可能會插在文中)&lt;/p&gt;
+&lt;h3 id=&#34;手動插入廣告&#34;&gt;&lt;a href=&#34;#%e6%89%8b%e5%8b%95%e6%8f%92%e5%85%a5%e5%bb%a3%e5%91%8a&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;手動插入廣告
+&lt;/h3&gt;&lt;p&gt;在左邊選單 廣告 &amp;gt; 按廣告單元&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/adsense/%E6%89%8B%E5%8B%95%E5%BB%A3%E5%91%8A.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/adsense/%E6%89%8B%E5%8B%95%E5%BB%A3%E5%91%8A_hu_777671d2163eb65.jpg 480w, https://zonego.tw/post/adsense/%E6%89%8B%E5%8B%95%E5%BB%A3%E5%91%8A_hu_544d59acc9be1f0c.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在這邊依照合適的版面類型建立廣告，建完之後會有給你廣告的代碼&lt;br&gt;
+代碼大概分為三個部分&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;html code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;html&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!--請放在 Header，只需要放一次--&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-ID&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;na&#34;&gt;crossorigin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;anonymous&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!--放在頁面內你想出現廣告的地方，可在頁面內放多次--&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ins&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;adsbygoogle&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;na&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;display:block; text-align:center;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;na&#34;&gt;data-ad-layout&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;in-article&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;na&#34;&gt;data-ad-format&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;fluid&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;na&#34;&gt;data-ad-client&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ca-pub-ID&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;na&#34;&gt;data-ad-slot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;廣告單元ID&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;ins&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!--放在頁面最後，只需要放一次--&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;adsbygoogle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;adsbygoogle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;push&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({});&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;p&gt;詳細可參考Google的說明&lt;a class=&#34;link&#34; href=&#34;https://support.google.com/adsense/answer/9190028?sjid=17637765633261310327-AP&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://support.google.com/adsense/answer/9190028?sjid=17637765633261310327-AP&lt;/a&gt;&lt;/p&gt;
+
+
+
+&lt;div class=&#34;unsplash unsplash-info&#34; &gt;
+    &lt;div class=&#34;unsplash-title&#34;&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon unsplash-icon icon unsplash-icon-tabler icon unsplash-icons-tabler-outline icon unsplash-icon-tabler-photo&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M15 8h.01&#34; /&gt;&lt;path d=&#34;M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z&#34; /&gt;&lt;path d=&#34;M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5&#34; /&gt;&lt;path d=&#34;M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3&#34; /&gt;&lt;/svg&gt;&lt;/div&gt;
+    &lt;p&gt;Photo by &lt;a href=&#34;https://unsplash.com/@sharonmccutcheon?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;Alexander Grey&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/photos/1-usa-dollar-banknotes-8lnbXtxFGZw?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        <item>
+        <title>Google Search Console - 讓 Google 搜尋到部落格內容</title>
+        <link>https://zonego.tw/post/google-search-console/</link>
+        <pubDate>Wed, 02 Aug 2023 12:52:15 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/google-search-console/</guid>
+        <description>&lt;img src="https://zonego.tw/post/google-search-console/google.jpg" alt="Featured image of post Google Search Console - 讓 Google 搜尋到部落格內容" /&gt;&lt;p&gt;建好一個新網站，在搜尋引擎爬到你的網站之前，理所當然會搜尋不到任何東西&lt;/p&gt;
+&lt;p&gt;那 Google 甚麼時候會時候會來爬我的網站? 真的就是&lt;em&gt;隨緣&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;要主動讓搜尋引擎認識你的網站? 那就是要去 Google Search Console 設定&lt;/p&gt;
+&lt;p&gt;其他搜尋引擎請參考&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zonego.tw/post/bingwebmastertools/&#34; &gt;Bing Webmaster Tools - 讓 Bing 搜尋到部落格內容&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;新增網站的-sitemap&#34;&gt;&lt;a href=&#34;#%e6%96%b0%e5%a2%9e%e7%b6%b2%e7%ab%99%e7%9a%84-sitemap&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;新增網站的 Sitemap
+&lt;/h2&gt;&lt;p&gt;去 Google 設定之前，我們需要先將搜尋引擎需要的網站地圖 sitemap.xml 產生出來。&lt;br&gt;
+教學在這 &lt;a class=&#34;link&#34; href=&#34;https://zonego.tw/post/hexo-sitemap/&#34; &gt;Hexo 自動產生網站的 sitemap&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;至於 Hugo 就不用再額外做設定了，預設就生成在 &lt;a class=&#34;link&#34; href=&#34;https://yoursite.com/sitemap.xml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://yoursite.com/sitemap.xml&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;在-google-search-console-新增網站&#34;&gt;&lt;a href=&#34;#%e5%9c%a8-google-search-console-%e6%96%b0%e5%a2%9e%e7%b6%b2%e7%ab%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;在 Google Search Console 新增網站
+&lt;/h2&gt;&lt;h3 id=&#34;註冊-google-帳號&#34;&gt;&lt;a href=&#34;#%e8%a8%bb%e5%86%8a-google-%e5%b8%b3%e8%99%9f&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;註冊 Google 帳號
+&lt;/h3&gt;&lt;p&gt;這部份相信大家都會，跳過&lt;/p&gt;
+&lt;h3 id=&#34;新增網站&#34;&gt;&lt;a href=&#34;#%e6%96%b0%e5%a2%9e%e7%b6%b2%e7%ab%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;新增網站
+&lt;/h3&gt;&lt;p&gt;接下來到 Google Search Console 去設定爬蟲來抓我們的網站&lt;br&gt;
+Google Search Console 網址： &lt;a class=&#34;link&#34; href=&#34;https://search.google.com/search-console&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://search.google.com/search-console&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/google-search-console/%E6%96%B0%E5%A2%9E%E7%AB%99%E9%BB%9E.png&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/google-search-console/%E6%96%B0%E5%A2%9E%E7%AB%99%E9%BB%9E_hu_547e618732b86349.png 480w, https://zonego.tw/post/google-search-console/%E6%96%B0%E5%A2%9E%E7%AB%99%E9%BB%9E_hu_c6deadd8855b7066.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增網站&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;資源類型分為兩類，網站前置字元代表只索引單一網站，網域則是歸在該網域下的所有網站都會索引。&lt;br&gt;
+沒有特殊需求的話選網站前置字元就好。&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/google-search-console/%E8%B3%87%E6%BA%90%E9%A1%9E%E5%9E%8B.png&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/google-search-console/%E8%B3%87%E6%BA%90%E9%A1%9E%E5%9E%8B_hu_9ee5c1dcfef54e96.png 480w, https://zonego.tw/post/google-search-console/%E8%B3%87%E6%BA%90%E9%A1%9E%E5%9E%8B_hu_fd13447a2adc93f.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增網站&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;驗證網站&#34;&gt;&lt;a href=&#34;#%e9%a9%97%e8%ad%89%e7%b6%b2%e7%ab%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;驗證網站
+&lt;/h2&gt;&lt;p&gt;把要索引的網站打進去後，接下來要驗證網站是你的&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/google-search-console/%E9%A9%97%E8%AD%89%E6%96%B9%E5%BC%8F.png&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/google-search-console/%E9%A9%97%E8%AD%89%E6%96%B9%E5%BC%8F_hu_addcb6db43f807fe.png 480w, https://zonego.tw/post/google-search-console/%E9%A9%97%E8%AD%89%E6%96%B9%E5%BC%8F_hu_a8dce4fb1516a9ea.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增網站&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;下面的驗證方式選一個就好&lt;/p&gt;
+&lt;h3 id=&#34;html-檔案&#34;&gt;&lt;a href=&#34;#html-%e6%aa%94%e6%a1%88&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;HTML 檔案
+&lt;/h3&gt;&lt;p&gt;預設最簡單的驗證方式，只要將 google 提供的驗證用 html 檔案下載，放在 hexo 的目錄即可&lt;br&gt;
+網站部屬之後可以在 &lt;a class=&#34;link&#34; href=&#34;https://yoursite.com/googleXXXXXXXXXXXXXXXX.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://yoursite.com/googleXXXXXXXXXXXXXXXX.html&lt;/a&gt; 看到驗證碼就可以去點驗證了&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Hexo 記得在 &lt;code&gt;_config.yml&lt;/code&gt; 加入跳過這個檔案的渲染 詳細請看 &lt;a class=&#34;link&#34; href=&#34;https://zonego.tw/post/hexo-skip/&#34; &gt;Hexo 指定文件跳過渲染&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;yaml code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;yaml&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;skip_render&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;googleXXXXXXXXXXXXXXXX.html&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;h3 id=&#34;html-標記&#34;&gt;&lt;a href=&#34;#html-%e6%a8%99%e8%a8%98&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;HTML 標記
+&lt;/h3&gt;&lt;p&gt;在首頁的 Header 內加入驗證碼&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://yoursite.com/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://yoursite.com/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;html code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;html&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;google-site-verification&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;key-XXX&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;h3 id=&#34;google-analytics&#34;&gt;&lt;a href=&#34;#google-analytics&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;Google Analytics
+&lt;/h3&gt;&lt;p&gt;如果你的網站有使用  Google Analytics 的話可以直接點驗整就好，反正也在設定 GA 時也算驗證過網站所有者了&lt;/p&gt;
+&lt;h3 id=&#34;網域名稱供應商&#34;&gt;&lt;a href=&#34;#%e7%b6%b2%e5%9f%9f%e5%90%8d%e7%a8%b1%e4%be%9b%e6%87%89%e5%95%86&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;網域名稱供應商
+&lt;/h3&gt;&lt;p&gt;在 DNS 內加入相同網域的 TXT 紀錄，裡面放驗證碼即可驗證&lt;br&gt;
+如果是 cloud flare 的話就更簡單，只要照著點就好了&lt;br&gt;
+不過設定時要注意衝突&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/google-search-console/DNS.png&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/google-search-console/DNS_hu_df2d55d55ef0691e.png 480w, https://zonego.tw/post/google-search-console/DNS_hu_2256bde3ab37432d.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新增網站&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;完成&#34;&gt;&lt;a href=&#34;#%e5%ae%8c%e6%88%90&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;完成
+&lt;/h2&gt;&lt;p&gt;驗證完之後等待 google 把 sitemap 內的頁面索引完，在 Google 搜尋你的網站可以被搜尋到了&lt;br&gt;
+後續 google 會提是你的網站有什麼問題需要修正，未修正前會被排到搜尋列表的後面&lt;br&gt;
+要被演算法排到前面就需要做 SEO (search engine optimizaton) 了&lt;/p&gt;
+
+
+
+&lt;div class=&#34;unsplash unsplash-info&#34; &gt;
+    &lt;div class=&#34;unsplash-title&#34;&gt;&lt;svg  xmlns=&#34;http://www.w3.org/2000/svg&#34;  width=&#34;24&#34;  height=&#34;24&#34;  viewBox=&#34;0 0 24 24&#34;  fill=&#34;none&#34;  stroke=&#34;currentColor&#34;  stroke-width=&#34;2&#34;  stroke-linecap=&#34;round&#34;  stroke-linejoin=&#34;round&#34;  class=&#34;icon unsplash-icon icon unsplash-icon-tabler icon unsplash-icons-tabler-outline icon unsplash-icon-tabler-photo&#34;&gt;&lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M15 8h.01&#34; /&gt;&lt;path d=&#34;M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z&#34; /&gt;&lt;path d=&#34;M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5&#34; /&gt;&lt;path d=&#34;M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3&#34; /&gt;&lt;/svg&gt;&lt;/div&gt;
+    &lt;p&gt;Photo by &lt;a href=&#34;https://unsplash.com/@mitchel3uo?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;Mitchell Luo&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/photos/google-logo-neon-light-signage-jz4ca36oJ_M?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        <item>
+        <title>Hexo nexmoe 主題套用 Google Analytics</title>
+        <link>https://zonego.tw/post/hexo-ga/</link>
+        <pubDate>Tue, 16 Nov 2021 15:44:43 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/hexo-ga/</guid>
+        <description>&lt;p&gt;Google Analytics（GA）是Google公司提供的數據分析工具，可以幫助你追蹤你的網站流量、用戶行為，是一個網路行銷重要又好用的小工具。&lt;/p&gt;
+&lt;p&gt;網路上會看到很多推薦使用 GA 的文章，有甚麼功能就不用我多說了 &lt;del&gt;絕對不是我想偷懶&lt;/del&gt;。&lt;/p&gt;
+&lt;p&gt;畢竟我這小小的部落格也就只有看人數的需求而已。&lt;/p&gt;
+&lt;h2 id=&#34;申請-google-analytics&#34;&gt;&lt;a href=&#34;#%e7%94%b3%e8%ab%8b-google-analytics&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;申請 Google Analytics
+&lt;/h2&gt;&lt;p&gt;基本上你有 google 帳號就完成一半了，接下來到 &lt;a class=&#34;link&#34; href=&#34;https://analytics.google.com/analytics/web/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Google Analytics&lt;/a&gt;網站&lt;/p&gt;
+&lt;p&gt;接著在左下角管理 &amp;gt; 建立資源 &amp;gt; 完成後到資料串流&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/hexo-ga/ga_resource.jpg&#34;
+	width=&#34;2388&#34;
+	height=&#34;1432&#34;
+	srcset=&#34;https://zonego.tw/post/hexo-ga/ga_resource_hu_c8924e9b909e2f4a.jpg 480w, https://zonego.tw/post/hexo-ga/ga_resource_hu_28997177d993b4b1.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Google Analytics 資源&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;400px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;新增網站串流，裡面填入要分析的網站網址，以及名稱&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/hexo-ga/ga_stream.jpg&#34;
+	width=&#34;2388&#34;
+	height=&#34;1433&#34;
+	srcset=&#34;https://zonego.tw/post/hexo-ga/ga_stream_hu_d4d671da5255e627.jpg 480w, https://zonego.tw/post/hexo-ga/ga_stream_hu_89063ddd4ef3356.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Google Analytics 串流&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;399px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;完成後我們會得到需要的 &lt;code&gt;評估ID&lt;/code&gt; G-XXXXX 的這串ID&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/hexo-ga/ga_stream2.jpg&#34;
+	width=&#34;2388&#34;
+	height=&#34;1436&#34;
+	srcset=&#34;https://zonego.tw/post/hexo-ga/ga_stream2_hu_d450d27390292150.jpg 480w, https://zonego.tw/post/hexo-ga/ga_stream2_hu_cf395d9c347b418.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Google Analytics 串流&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;399px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;修改hexo設定檔&#34;&gt;&lt;a href=&#34;#%e4%bf%ae%e6%94%b9hexo%e8%a8%ad%e5%ae%9a%e6%aa%94&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;修改Hexo設定檔
+&lt;/h2&gt;&lt;h3 id=&#34;30-版設定方式&#34;&gt;&lt;a href=&#34;#30-%e7%89%88%e8%a8%ad%e5%ae%9a%e6%96%b9%e5%bc%8f&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;3.0 版設定方式
+&lt;/h3&gt;&lt;p&gt;nexmoe 這個主題有支援 Google Analytics&lt;/p&gt;
+&lt;p&gt;只要在 &lt;code&gt;_config.nexmoe.yml&lt;/code&gt; 設定檔內調整分析的設定即可&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;yaml code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;yaml&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;analytics&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;google_site_id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;gtags_site_id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;這邊填入分析ID G-XXXXX&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;cnzz_site_id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;tencent_site_id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;la_site_id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;baidu_site_id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;gtm_container_id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#&amp;lt;ID&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;h3 id=&#34;40-版設定方式&#34;&gt;&lt;a href=&#34;#40-%e7%89%88%e8%a8%ad%e5%ae%9a%e6%96%b9%e5%bc%8f&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;4.0 版設定方式
+&lt;/h3&gt;&lt;p&gt;照前面申請 Google Analytics 的步驟，先到資料串流設定&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;按一下「管理」。&lt;/li&gt;
+&lt;li&gt;使用「資源」欄頂端的下拉式選取器，選擇要在哪個資源設定資料串流的 Google 代碼。&lt;/li&gt;
+&lt;li&gt;在「資源」欄中，按一下「資料串流」。&lt;/li&gt;
+&lt;li&gt;照下圖複製&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/hexo-ga/ga_stream3.png&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/hexo-ga/ga_stream3_hu_e4ae3e003abab9b4.png 480w, https://zonego.tw/post/hexo-ga/ga_stream3_hu_f0f6b09da23b4b1b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Google Analytics 串流&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/hexo-ga/ga_code_setting.png&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/hexo-ga/ga_code_setting_hu_7823ed926f24283f.png 480w, https://zonego.tw/post/hexo-ga/ga_code_setting_hu_695dcb7661bfec10.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Google Analytics Code設定&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/hexo-ga/ga_code.png&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/hexo-ga/ga_code_hu_64a6d387a6f15581.png 480w, https://zonego.tw/post/hexo-ga/ga_code_hu_439ab6d0e70254e7.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Google Analytics Code&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;打開 &lt;code&gt;_config.nexmoe.yml&lt;/code&gt; 設定檔內在 &lt;code&gt;slotHead&lt;/code&gt; 下面貼上複製的嵌入碼&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;yaml code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;yaml&lt;/span&gt;
+    &lt;span  class=&#34;code-title&#34;&gt;_config.nexmoe.yml&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;_config.nexmoe.yml&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nn&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;slotHead&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;sd&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;  &amp;lt;!-- Google tag (gtag.js) --&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;  &amp;lt;script async src=&amp;#34;https://www.googletagmanager.com/gtag/js?id=G-ID&amp;#34;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;  &amp;lt;script&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;    window.dataLayer = window.dataLayer || [];
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;    function gtag(){dataLayer.push(arguments);}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;    gtag(&amp;#39;js&amp;#39;, new Date());
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;    gtag(&amp;#39;config&amp;#39;, &amp;#39;G-ID&amp;#39;);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sd&#34;&gt;  &amp;lt;/script&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nn&#34;&gt;...&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;h2 id=&#34;成果&#34;&gt;&lt;a href=&#34;#%e6%88%90%e6%9e%9c&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;成果
+&lt;/h2&gt;&lt;p&gt;設定完後重開 Hexo 伺服器套用&lt;/p&gt;
+&lt;p&gt;在&lt;a class=&#34;link&#34; href=&#34;https://analytics.google.com/analytics/web/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GA&lt;/a&gt;網站 &amp;gt; 報表內看到我們要的瀏覽人數&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/hexo-ga/ga_dash.jpg&#34;
+	width=&#34;2388&#34;
+	height=&#34;1436&#34;
+	srcset=&#34;https://zonego.tw/post/hexo-ga/ga_dash_hu_9cf3c9a8dfd9f626.jpg 480w, https://zonego.tw/post/hexo-ga/ga_dash_hu_6655e4612841a2c6.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Google Analytics 報表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;399px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;網站果然沒有人看，人數是0&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;其實是截圖時根本還沒重開 Hexo，所以 Google 根本沒抓到瀏覽紀錄&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Gitea 使用 Gmail 寄信</title>
+        <link>https://zonego.tw/post/gitea-gmail/</link>
+        <pubDate>Sun, 14 Nov 2021 12:39:30 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/gitea-gmail/</guid>
+        <description>&lt;img src="https://zonego.tw/post/gitea-gmail/mail.jpg" alt="Featured image of post Gitea 使用 Gmail 寄信" /&gt;&lt;h2 id=&#34;建立-gmail-應用程式密碼&#34;&gt;&lt;a href=&#34;#%e5%bb%ba%e7%ab%8b-gmail-%e6%87%89%e7%94%a8%e7%a8%8b%e5%bc%8f%e5%af%86%e7%a2%bc&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;建立 Gmail 應用程式密碼
+&lt;/h2&gt;&lt;p&gt;Google 基於安全性，禁用直接用密碼存取 smtp&lt;br&gt;
+取而代之要先建立應用程式密碼，代替原本密碼的功能&lt;/p&gt;
+&lt;p&gt;管理 Google 帳戶 &amp;gt; 安全性 &amp;gt; 登入 Google &amp;gt; 應用程式密碼&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/gitea-gmail/google_account.jpg&#34;
+	width=&#34;1919&#34;
+	height=&#34;585&#34;
+	srcset=&#34;https://zonego.tw/post/gitea-gmail/google_account_hu_93868852907d338a.jpg 480w, https://zonego.tw/post/gitea-gmail/google_account_hu_c6d31daa069a344f.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Google Account&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;328&#34;
+		data-flex-basis=&#34;787px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;應用選郵件，裝置只是方便管理的名稱，可以選其他自己寫&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/gitea-gmail/google_appkey.jpg&#34;
+	width=&#34;821&#34;
+	height=&#34;661&#34;
+	srcset=&#34;https://zonego.tw/post/gitea-gmail/google_appkey_hu_2fbc5dd2896018fd.jpg 480w, https://zonego.tw/post/gitea-gmail/google_appkey_hu_58d3dd947ef5b79e.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Google APP KEY&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;124&#34;
+		data-flex-basis=&#34;298px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;完成後會產生一組密碼，建議用完之後就忘掉他，下次要用忘記時再建新的就好&lt;/p&gt;
+&lt;h2 id=&#34;設定-container-環境變數&#34;&gt;&lt;a href=&#34;#%e8%a8%ad%e5%ae%9a-container-%e7%92%b0%e5%a2%83%e8%ae%8a%e6%95%b8&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;設定 container 環境變數
+&lt;/h2&gt;&lt;p&gt;我的 gitea 是使用 Docker 架的&lt;/p&gt;
+&lt;p&gt;gitea 官方鏡像有提供透過環境變數設定，不用另外修改設定檔&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;dockerfile code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;dockerfile&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-dockerfile&#34; data-lang=&#34;dockerfile&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;env&lt;/span&gt;ironment:&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  - &lt;span class=&#34;nv&#34;&gt;GITEA__mailer__ENABLED&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;true&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  - &lt;span class=&#34;nv&#34;&gt;GITEA__mailer__FROM&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;寄件者信箱&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  - &lt;span class=&#34;nv&#34;&gt;GITEA__mailer__MAILER_TYPE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;smtp&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  - &lt;span class=&#34;nv&#34;&gt;GITEA__mailer__HOST&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;smtp.gmail.com:465&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  - &lt;span class=&#34;nv&#34;&gt;GITEA__mailer__IS_TLS_ENABLED&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;true&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  - &lt;span class=&#34;nv&#34;&gt;GITEA__mailer__USER&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;你的Gmail&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  - &lt;span class=&#34;nv&#34;&gt;GITEA__mailer__PASSWD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;應用程式密碼&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;p&gt;改完之後到 Gitea 網站 &amp;gt; 網站管理 &amp;gt; 組態&lt;br&gt;
+往下捲找到 SMTP 組態，可以測試寄信&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.gitea.io/en-us/install-with-docker/#managing-deployments-with-environment-variables&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;詳細參考&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

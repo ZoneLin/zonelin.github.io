@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="建好一個新網站，在搜尋引擎爬到你的網站之前，理所當然會搜尋不到任何東西\n那 Google 甚麼時候會時候會來爬我的網站? 真的就是隨緣\n要主動讓搜尋引擎認識你的網站? 那就是要去 Google Search Console 設定\n其他搜尋引擎請參考\nBing Webmaster Tools - 讓 Bing 搜尋到部落格內容 新增網站的 Sitemap 去 Google 設定之前，我們需要先將搜尋引擎需要的網站地圖 sitemap.xml 產生出來。\n教學在這 Hexo 自動產生網站的 sitemap\n至於 Hugo 就不用再額外做設定了，預設就生成在 https://yoursite.com/sitemap.xml\n在 Google Search Console 新增網站 註冊 Google 帳號 這部份相信大家都會，跳過\n新增網站 接下來到 Google Search Console 去設定爬蟲來抓我們的網站\nGoogle Search Console 網址： https://search.google.com/search-console\n資源類型分為兩類，網站前置字元代表只索引單一網站，網域則是歸在該網域下的所有網站都會索引。\n沒有特殊需求的話選網站前置字元就好。\n驗證網站 把要索引的網站打進去後，接下來要驗證網站是你的\n">
+<title>Google Search Console - 讓 Google 搜尋到部落格內容</title>
+
+<link rel='canonical' href='https://zonego.tw/post/google-search-console/'>
+
+<link rel="stylesheet" href="/scss/style.min.9bbe4048d3db002f91c76804e8da678ca29ee9116cff9926899e8d8c056612fb.css"><meta property='og:title' content="Google Search Console - 讓 Google 搜尋到部落格內容">
+<meta property='og:description' content="建好一個新網站，在搜尋引擎爬到你的網站之前，理所當然會搜尋不到任何東西\n那 Google 甚麼時候會時候會來爬我的網站? 真的就是隨緣\n要主動讓搜尋引擎認識你的網站? 那就是要去 Google Search Console 設定\n其他搜尋引擎請參考\nBing Webmaster Tools - 讓 Bing 搜尋到部落格內容 新增網站的 Sitemap 去 Google 設定之前，我們需要先將搜尋引擎需要的網站地圖 sitemap.xml 產生出來。\n教學在這 Hexo 自動產生網站的 sitemap\n至於 Hugo 就不用再額外做設定了，預設就生成在 https://yoursite.com/sitemap.xml\n在 Google Search Console 新增網站 註冊 Google 帳號 這部份相信大家都會，跳過\n新增網站 接下來到 Google Search Console 去設定爬蟲來抓我們的網站\nGoogle Search Console 網址： https://search.google.com/search-console\n資源類型分為兩類，網站前置字元代表只索引單一網站，網域則是歸在該網域下的所有網站都會索引。\n沒有特殊需求的話選網站前置字元就好。\n驗證網站 把要索引的網站打進去後，接下來要驗證網站是你的\n">
+<meta property='og:url' content='https://zonego.tw/post/google-search-console/'>
+<meta property='og:site_name' content='筆記Zone'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Blog' /><meta property='article:tag' content='Google' /><meta property='article:tag' content='搜尋引擎' /><meta property='article:published_time' content='2023-08-02T12:52:15&#43;08:00'/><meta property='article:modified_time' content='2023-08-02T12:52:15&#43;08:00'/><meta property='og:image' content='https://zonego.tw/post/google-search-console/google.jpg' />
+<meta name="twitter:title" content="Google Search Console - 讓 Google 搜尋到部落格內容">
+<meta name="twitter:description" content="建好一個新網站，在搜尋引擎爬到你的網站之前，理所當然會搜尋不到任何東西\n那 Google 甚麼時候會時候會來爬我的網站? 真的就是隨緣\n要主動讓搜尋引擎認識你的網站? 那就是要去 Google Search Console 設定\n其他搜尋引擎請參考\nBing Webmaster Tools - 讓 Bing 搜尋到部落格內容 新增網站的 Sitemap 去 Google 設定之前，我們需要先將搜尋引擎需要的網站地圖 sitemap.xml 產生出來。\n教學在這 Hexo 自動產生網站的 sitemap\n至於 Hugo 就不用再額外做設定了，預設就生成在 https://yoursite.com/sitemap.xml\n在 Google Search Console 新增網站 註冊 Google 帳號 這部份相信大家都會，跳過\n新增網站 接下來到 Google Search Console 去設定爬蟲來抓我們的網站\nGoogle Search Console 網址： https://search.google.com/search-console\n資源類型分為兩類，網站前置字元代表只索引單一網站，網域則是歸在該網域下的所有網站都會索引。\n沒有特殊需求的話選網站前置字元就好。\n驗證網站 把要索引的網站打進去後，接下來要驗證網站是你的\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://zonego.tw/post/google-search-console/google.jpg' />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-92G2VB89BE"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-92G2VB89BE');
+        }
+      </script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🎮</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">筆記Zone</a></h1>
+            <h2 class="site-description">能者過勞</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='/rss.xml'
+                        target="_blank"
+                        title="01-RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/ZoneLin'
+                        target="_blank"
+                        title="02-GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首頁</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>所有文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                
+                <span>關於本站</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+                
+                <span>留言板</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tools/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tools"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" /><path d="M14.5 5.5l4 4" /><path d="M12 8l-5 -5l-4 4l5 5" /><path d="M7 8l-1.5 1.5" /><path d="M16 12l5 5l-4 4l-5 -5" /><path d="M16 17l-1.5 1.5" /></svg>
+                
+                <span>線上工具</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#新增網站的-sitemap">新增網站的 Sitemap</a></li>
+    <li><a href="#在-google-search-console-新增網站">在 Google Search Console 新增網站</a>
+      <ol>
+        <li><a href="#註冊-google-帳號">註冊 Google 帳號</a></li>
+        <li><a href="#新增網站">新增網站</a></li>
+      </ol>
+    </li>
+    <li><a href="#驗證網站">驗證網站</a>
+      <ol>
+        <li><a href="#html-檔案">HTML 檔案</a></li>
+        <li><a href="#html-標記">HTML 標記</a></li>
+        <li><a href="#google-analytics">Google Analytics</a></li>
+        <li><a href="#網域名稱供應商">網域名稱供應商</a></li>
+      </ol>
+    </li>
+    <li><a href="#完成">完成</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+  <header class="article-header">
+        <div class="article-image">
+            <a href="/post/google-search-console/">
+                <img src="/post/google-search-console/google_hu_e39ecddfda867224.jpg"
+                        srcset="/post/google-search-console/google_hu_e39ecddfda867224.jpg 800w, /post/google-search-console/google_hu_1081b69c8baae56.jpg 1600w"
+                        width="800" 
+                        height="501" 
+                        loading="lazy"
+                        alt="Featured image of post Google Search Console - 讓 Google 搜尋到部落格內容" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/blog/" style="background-color: #eb5089; color: #ffffff;">
+                Blog
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/google-search-console/">Google Search Console - 讓 Google 搜尋到部落格內容</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2023.08.02</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 1 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+  <section class="article-content">
+    
+    
+    <p>建好一個新網站，在搜尋引擎爬到你的網站之前，理所當然會搜尋不到任何東西</p>
+<p>那 Google 甚麼時候會時候會來爬我的網站? 真的就是<em>隨緣</em></p>
+<p>要主動讓搜尋引擎認識你的網站? 那就是要去 Google Search Console 設定</p>
+<p>其他搜尋引擎請參考</p>
+<ul>
+<li><a class="link" href="https://zonego.tw/post/bingwebmastertools/" >Bing Webmaster Tools - 讓 Bing 搜尋到部落格內容</a></li>
+</ul>
+<h2 id="新增網站的-sitemap"><a href="#%e6%96%b0%e5%a2%9e%e7%b6%b2%e7%ab%99%e7%9a%84-sitemap" class="header-anchor"></a>新增網站的 Sitemap
+</h2><p>去 Google 設定之前，我們需要先將搜尋引擎需要的網站地圖 sitemap.xml 產生出來。<br>
+教學在這 <a class="link" href="https://zonego.tw/post/hexo-sitemap/" >Hexo 自動產生網站的 sitemap</a></p>
+<p>至於 Hugo 就不用再額外做設定了，預設就生成在 <a class="link" href="https://yoursite.com/sitemap.xml"  target="_blank" rel="noopener"
+    >https://yoursite.com/sitemap.xml</a></p>
+<h2 id="在-google-search-console-新增網站"><a href="#%e5%9c%a8-google-search-console-%e6%96%b0%e5%a2%9e%e7%b6%b2%e7%ab%99" class="header-anchor"></a>在 Google Search Console 新增網站
+</h2><h3 id="註冊-google-帳號"><a href="#%e8%a8%bb%e5%86%8a-google-%e5%b8%b3%e8%99%9f" class="header-anchor"></a>註冊 Google 帳號
+</h3><p>這部份相信大家都會，跳過</p>
+<h3 id="新增網站"><a href="#%e6%96%b0%e5%a2%9e%e7%b6%b2%e7%ab%99" class="header-anchor"></a>新增網站
+</h3><p>接下來到 Google Search Console 去設定爬蟲來抓我們的網站<br>
+Google Search Console 網址： <a class="link" href="https://search.google.com/search-console"  target="_blank" rel="noopener"
+    >https://search.google.com/search-console</a></p>
+<p><img src="/post/google-search-console/%E6%96%B0%E5%A2%9E%E7%AB%99%E9%BB%9E.png"
+	width="2592"
+	height="1806"
+	srcset="/post/google-search-console/%E6%96%B0%E5%A2%9E%E7%AB%99%E9%BB%9E_hu_547e618732b86349.png 480w, /post/google-search-console/%E6%96%B0%E5%A2%9E%E7%AB%99%E9%BB%9E_hu_c6deadd8855b7066.png 1024w"
+	loading="lazy"
+	
+		alt="新增網站"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="143"
+		data-flex-basis="344px"
+	
+></p>
+<p>資源類型分為兩類，網站前置字元代表只索引單一網站，網域則是歸在該網域下的所有網站都會索引。<br>
+沒有特殊需求的話選網站前置字元就好。<br>
+<img src="/post/google-search-console/%E8%B3%87%E6%BA%90%E9%A1%9E%E5%9E%8B.png"
+	width="2592"
+	height="1806"
+	srcset="/post/google-search-console/%E8%B3%87%E6%BA%90%E9%A1%9E%E5%9E%8B_hu_9ee5c1dcfef54e96.png 480w, /post/google-search-console/%E8%B3%87%E6%BA%90%E9%A1%9E%E5%9E%8B_hu_fd13447a2adc93f.png 1024w"
+	loading="lazy"
+	
+		alt="新增網站"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="143"
+		data-flex-basis="344px"
+	
+></p>
+<h2 id="驗證網站"><a href="#%e9%a9%97%e8%ad%89%e7%b6%b2%e7%ab%99" class="header-anchor"></a>驗證網站
+</h2><p>把要索引的網站打進去後，接下來要驗證網站是你的<br>
+<img src="/post/google-search-console/%E9%A9%97%E8%AD%89%E6%96%B9%E5%BC%8F.png"
+	width="2592"
+	height="1806"
+	srcset="/post/google-search-console/%E9%A9%97%E8%AD%89%E6%96%B9%E5%BC%8F_hu_addcb6db43f807fe.png 480w, /post/google-search-console/%E9%A9%97%E8%AD%89%E6%96%B9%E5%BC%8F_hu_a8dce4fb1516a9ea.png 1024w"
+	loading="lazy"
+	
+		alt="新增網站"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="143"
+		data-flex-basis="344px"
+	
+></p>
+<p>下面的驗證方式選一個就好</p>
+<h3 id="html-檔案"><a href="#html-%e6%aa%94%e6%a1%88" class="header-anchor"></a>HTML 檔案
+</h3><p>預設最簡單的驗證方式，只要將 google 提供的驗證用 html 檔案下載，放在 hexo 的目錄即可<br>
+網站部屬之後可以在 <a class="link" href="https://yoursite.com/googleXXXXXXXXXXXXXXXX.html"  target="_blank" rel="noopener"
+    >https://yoursite.com/googleXXXXXXXXXXXXXXXX.html</a> 看到驗證碼就可以去點驗證了</p>
+<blockquote>
+<p>Hexo 記得在 <code>_config.yml</code> 加入跳過這個檔案的渲染 詳細請看 <a class="link" href="https://zonego.tw/post/hexo-skip/" >Hexo 指定文件跳過渲染</a></p></blockquote>
+<figure class="code-block" role="figure" aria-label="yaml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">yaml</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">skip_render</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">googleXXXXXXXXXXXXXXXX.html</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="html-標記"><a href="#html-%e6%a8%99%e8%a8%98" class="header-anchor"></a>HTML 標記
+</h3><p>在首頁的 Header 內加入驗證碼</p>
+<p><a class="link" href="https://yoursite.com/index.html"  target="_blank" rel="noopener"
+    >https://yoursite.com/index.html</a></p>
+<figure class="code-block" role="figure" aria-label="html code snippet">
+
+  <div class="code-header">
+    <span class="code-type">html</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;google-site-verification&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;key-XXX&#34;</span> <span class="p">/&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="google-analytics"><a href="#google-analytics" class="header-anchor"></a>Google Analytics
+</h3><p>如果你的網站有使用  Google Analytics 的話可以直接點驗整就好，反正也在設定 GA 時也算驗證過網站所有者了</p>
+<h3 id="網域名稱供應商"><a href="#%e7%b6%b2%e5%9f%9f%e5%90%8d%e7%a8%b1%e4%be%9b%e6%87%89%e5%95%86" class="header-anchor"></a>網域名稱供應商
+</h3><p>在 DNS 內加入相同網域的 TXT 紀錄，裡面放驗證碼即可驗證<br>
+如果是 cloud flare 的話就更簡單，只要照著點就好了<br>
+不過設定時要注意衝突<br>
+<img src="/post/google-search-console/DNS.png"
+	width="2592"
+	height="1806"
+	srcset="/post/google-search-console/DNS_hu_df2d55d55ef0691e.png 480w, /post/google-search-console/DNS_hu_2256bde3ab37432d.png 1024w"
+	loading="lazy"
+	
+		alt="新增網站"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="143"
+		data-flex-basis="344px"
+	
+></p>
+<h2 id="完成"><a href="#%e5%ae%8c%e6%88%90" class="header-anchor"></a>完成
+</h2><p>驗證完之後等待 google 把 sitemap 內的頁面索引完，在 Google 搜尋你的網站可以被搜尋到了<br>
+後續 google 會提是你的網站有什麼問題需要修正，未修正前會被排到搜尋列表的後面<br>
+要被演算法排到前面就需要做 SEO (search engine optimizaton) 了</p>
+
+
+
+<div class="unsplash unsplash-info" >
+    <div class="unsplash-title"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon unsplash-icon icon unsplash-icon-tabler icon unsplash-icons-tabler-outline icon unsplash-icon-tabler-photo"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8h.01" /><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" /><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" /><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" /></svg></div>
+    <p>Photo by <a href="https://unsplash.com/@mitchel3uo?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Mitchell Luo</a> on <a href="https://unsplash.com/photos/google-logo-neon-light-signage-jz4ca36oJ_M?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></p>
+</div>
+
+</section>
+
+
+  <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/blog/">Blog</a>
+        
+            <a href="/tags/google/">Google</a>
+        
+            <a href="/tags/%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E/">搜尋引擎</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>本文採用 <a class="link" href="https://creativecommons.org/licenses/by/4.0/deed"  target="_blank" rel="noopener"
+    >創用CC BY 4.0</a> 協議許可</span>
+    </section>
+    </footer>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5857950919507241" crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5857950919507241"
+     data-ad-slot="6290484367"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/bingwebmastertools/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/bingwebmastertools/Bing.svg" loading="lazy" data-key="BingWebmasterTools" data-hash="/post/bingwebmastertools/Bing.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bing Webmaster Tools - 讓 Bing 搜尋到部落格內容</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/hexo-ga/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hexo nexmoe 主題套用 Google Analytics</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-codeblock/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo-codeblock/cover.e4aed39246f9ce7a1007bea846f3dd35_hu_deabc1eec480223b.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo Theme Stack 修改 CodeBlock"
+                        data-key="hugo-codeblock" 
+                        data-hash="md5-5K7Tkkb5znoQB76oRvPdNQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo Theme Stack 修改 CodeBlock</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-shortcode/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo-shortcode/cover.94c20c262b9400c01dc9c1c6f96aa2a1_hu_f2388f124074c817.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo 短代碼 shortcode"
+                        data-key="hugo-shortcode" 
+                        data-hash="md5-lMIMJiuUAMAdycHG&#43;WqioQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 短代碼 shortcode</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo/cloudflare_page.e77bfd5bc9a3c9653fa35b1f55276f95_hu_f71e0ba1684e3d7f.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得"
+                        data-key="hugo" 
+                        data-hash="md5-53v9W8mjyWU/o1sfVSdvlQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "4154b7069cefd96aa34b",
+        clientSecret: "4d1e06eb5468a4a083bdb0b6095c613deb234ea1",
+        repo: "zonelin.github.io",
+        owner: "ZoneLin",
+        admin: ["ZoneLin"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy: null ,
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2025 筆記Zone
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
