@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" hugo-theme-stack Card-style Hugo theme designed for bloggers SCSS hugo-theme-stack 這個主題採用 SCSS 作為寫 CSS 的語言\n使用上也不會太困難，用大括號區分選擇器，使用分號區分屬性，寫起來蠻接近原本的 CSS\n巢狀結構 (Nesting) SCSS 支援在搜尋標籤下再次用搜尋，相下面的例子可以更清楚知道像 .title.name 的對應關係\n&lt;/&gt; scss 1 2 3 4 5 6 7 8 9 10 11 .title { color: rgb(0, 0, 0); .name { color: rgb(0, 255, 0); } span { color: rgb(255, 0, 0); } } 編譯完之後會變成\n">
+<title>Hugo 定製自己的Stack主題</title>
+
+<link rel='canonical' href='https://zonego.tw/post/hugo-stack-custom/'>
+
+<link rel="stylesheet" href="/scss/style.min.a3c15920a30c23119196d0bb550887c714dbbec13e0a63a8be307ce8841d712b.css"><meta property='og:title' content="Hugo 定製自己的Stack主題">
+<meta property='og:description' content=" hugo-theme-stack Card-style Hugo theme designed for bloggers SCSS hugo-theme-stack 這個主題採用 SCSS 作為寫 CSS 的語言\n使用上也不會太困難，用大括號區分選擇器，使用分號區分屬性，寫起來蠻接近原本的 CSS\n巢狀結構 (Nesting) SCSS 支援在搜尋標籤下再次用搜尋，相下面的例子可以更清楚知道像 .title.name 的對應關係\n&lt;/&gt; scss 1 2 3 4 5 6 7 8 9 10 11 .title { color: rgb(0, 0, 0); .name { color: rgb(0, 255, 0); } span { color: rgb(255, 0, 0); } } 編譯完之後會變成\n">
+<meta property='og:url' content='https://zonego.tw/post/hugo-stack-custom/'>
+<meta property='og:site_name' content='筆記Zone'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:tag' content='Blog' /><meta property='article:tag' content='css' /><meta property='article:tag' content='html' /><meta property='article:published_time' content='2025-01-06T11:39:58&#43;08:00'/><meta property='article:modified_time' content='2025-01-06T11:39:58&#43;08:00'/><meta property='og:image' content='https://user-images.githubusercontent.com/5889006/190859441-141b5f81-8483-40d2-bd96-ebf85616a46d.png' />
+<meta name="twitter:title" content="Hugo 定製自己的Stack主題">
+<meta name="twitter:description" content=" hugo-theme-stack Card-style Hugo theme designed for bloggers SCSS hugo-theme-stack 這個主題採用 SCSS 作為寫 CSS 的語言\n使用上也不會太困難，用大括號區分選擇器，使用分號區分屬性，寫起來蠻接近原本的 CSS\n巢狀結構 (Nesting) SCSS 支援在搜尋標籤下再次用搜尋，相下面的例子可以更清楚知道像 .title.name 的對應關係\n&lt;/&gt; scss 1 2 3 4 5 6 7 8 9 10 11 .title { color: rgb(0, 0, 0); .name { color: rgb(0, 255, 0); } span { color: rgb(255, 0, 0); } } 編譯完之後會變成\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://user-images.githubusercontent.com/5889006/190859441-141b5f81-8483-40d2-bd96-ebf85616a46d.png' />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-92G2VB89BE"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-92G2VB89BE');
+        }
+      </script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🎮</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">筆記Zone</a></h1>
+            <h2 class="site-description">能者過勞</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='/rss.xml'
+                        target="_blank"
+                        title="01-RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/ZoneLin'
+                        target="_blank"
+                        title="02-GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首頁</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>所有文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                
+                <span>關於本站</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+                
+                <span>留言板</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tools/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tools"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" /><path d="M14.5 5.5l4 4" /><path d="M12 8l-5 -5l-4 4l5 5" /><path d="M7 8l-1.5 1.5" /><path d="M16 12l5 5l-4 4l-5 -5" /><path d="M16 17l-1.5 1.5" /></svg>
+                
+                <span>線上工具</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#scss">SCSS</a>
+      <ol>
+        <li><a href="#巢狀結構-nesting">巢狀結構 (Nesting)</a></li>
+        <li><a href="#變數variables">變數(Variables)</a></li>
+        <li><a href="#引用">引用</a></li>
+      </ol>
+    </li>
+    <li><a href="#更改新貼文模版">更改新貼文模版</a></li>
+    <li><a href="#調整-archives">調整 Archives</a></li>
+    <li><a href="#鍵盤按鍵-kbd">鍵盤按鍵 &lt;kbd&gt;</a></li>
+    <li><a href="#參考來源">參考來源</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+  <header class="article-header">
+        <div class="article-image">
+            <a href="/post/hugo-stack-custom/">
+                
+                    <img src="https://user-images.githubusercontent.com/5889006/190859441-141b5f81-8483-40d2-bd96-ebf85616a46d.png" loading="lazy" alt="Featured image of post Hugo 定製自己的Stack主題" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/blog/" style="background-color: #eb5089; color: #ffffff;">
+                Blog
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/hugo-stack-custom/">Hugo 定製自己的Stack主題</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025.01.06</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 6 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+  <section class="article-content">
+    
+    
+    <a href=https://github.com/CaiJimmy/hugo-theme-stack target="_blank">
+  <div class="bookmark">
+    <div class="logo"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon bookmark-icon icon bookmark-icon-tabler icon bookmark-icons-tabler-outline icon bookmark-icon-tabler-world"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></svg>
+        <span class="name">hugo-theme-stack</span>
+    </div>
+    <div class="description">Card-style Hugo theme designed for bloggers</div>
+  </div>
+</a>
+<h2 id="scss"><a href="#scss" class="header-anchor"></a>SCSS
+</h2><p>hugo-theme-stack 這個主題採用 SCSS 作為寫 CSS 的語言<br>
+使用上也不會太困難，用大括號區分選擇器，使用分號區分屬性，寫起來蠻接近原本的 CSS</p>
+<h3 id="巢狀結構-nesting"><a href="#%e5%b7%a2%e7%8b%80%e7%b5%90%e6%a7%8b-nesting" class="header-anchor"></a>巢狀結構 (Nesting)
+</h3><p>SCSS 支援在搜尋標籤下再次用搜尋，相下面的例子可以更清楚知道像 <code>.title.name</code> 的對應關係</p>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; scss</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="nc">.title</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">color</span><span class="o">:</span> <span class="nf">rgb</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nc">.name</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">color</span><span class="o">:</span> <span class="nf">rgb</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">255</span><span class="o">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">span</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">color</span><span class="o">:</span> <span class="nf">rgb</span><span class="p">(</span><span class="mi">255</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>編譯完之後會變成</p>
+<figure class="code-block" role="figure" aria-label="css code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; css</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">title</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">title</span> <span class="p">.</span><span class="nc">name</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">title</span> <span class="nt">span</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="變數variables"><a href="#%e8%ae%8a%e6%95%b8variables" class="header-anchor"></a>變數(Variables)
+</h3><p>scss 內的變數可以紀錄多個值，單個值時可以用於計算</p>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; scss</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="nv">$box-margin</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">5</span><span class="kt">px</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$fontbase</span><span class="o">:</span> <span class="mi">5</span><span class="kt">pt</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nc">.box</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">margin</span><span class="o">:</span> <span class="nv">$box-margin</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">h2</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">font-size</span><span class="o">:</span> <span class="nv">$fontbase</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">p</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="na">font-size</span><span class="o">:</span> <span class="nv">$fontbase</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>編譯完之後</p>
+<figure class="code-block" role="figure" aria-label="css code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; css</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">box</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">margin</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">5</span><span class="kt">px</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">box</span> <span class="nt">h2</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">font-size</span><span class="p">:</span> <span class="mi">10</span><span class="kt">pt</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">p</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">font-size</span><span class="p">:</span> <span class="mi">5</span><span class="kt">pt</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="引用"><a href="#%e5%bc%95%e7%94%a8" class="header-anchor"></a>引用
+</h3><p>scss 支援檔案引用，例如我已經有個寫好的 <code>sidebar.scss</code>，在上一層就可以引用這個檔案，編譯時只生成單一個 css</p>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; scss</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;sidebar.scss&#34;</span><span class="p">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><hr>
+<p>後面就放意本站有做的修改</p>
+<h2 id="更改新貼文模版"><a href="#%e6%9b%b4%e6%94%b9%e6%96%b0%e8%b2%bc%e6%96%87%e6%a8%a1%e7%89%88" class="header-anchor"></a>更改新貼文模版
+</h2><p>新增貼文指令，建立 my-new-post</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">
+     >_ terminal
+    </div>
+    
+  </div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hugo new content post/my-new-post/index.md</span></span></code></pre></td></tr></table>
+</div>
+</div></div><p>依照官方文件 <a class="link" href="https://gohugo.io/content-management/archetypes/#lookup-order"  target="_blank" rel="noopener"
+    >archetypes#lookup-order</a> 的說明<br/><br>
+Hugo會依序到下面四個地方找模版</p>
+<ol>
+<li>archetypes/post.md</li>
+<li>archetypes/default.md</li>
+<li>themes/my-theme/archetypes/posts.md</li>
+<li>themes/my-theme/archetypes/default.md</li>
+</ol>
+<p>其中第3跟第4種，如果主題安裝是用 module 的方式，專案資料夾內不會出現<br/><br>
+我們可以在專案資料夾建 archetypes/post.md 取代就好</p>
+<p>內容用 yaml, toml 或 json 都可以，這邊以 yaml 為例<br/><br>
+其他格式請參考官方文件 <a class="link" href="https://gohugo.io/content-management/archetypes/"  target="_blank" rel="noopener"
+    >archetypes</a></p>
+<figure class="code-block" role="figure" aria-label="yaml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; yaml</span>
+    <span  class="code-title">📄 my-project/archetypes/post.md</span></div><div class="highlight" title="my-project/archetypes/post.md"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ replace .File.ContentBaseName `-` ` ` | title }}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">slug</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ .File.ContentBaseName }}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">date</span><span class="p">:</span><span class="w"> </span>{{<span class="w"> </span><span class="l">.Date }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">draft</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">hidden</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">comments</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">image</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">categories</span><span class="p">:</span><span class="w"> </span><span class="l">example</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tags</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">example</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>這樣用指令產生新文章時，title 會替換為 my new post，slug 還是維持 my-new-post</p>
+<h2 id="調整-archives"><a href="#%e8%aa%bf%e6%95%b4-archives" class="header-anchor"></a>調整 Archives
+</h2><p>貼文改一行兩篇</p>
+<p>在 <code>my-project/assets/scss/custom.scss</code> 新增下面程式碼</p>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; scss</span>
+    <span  class="code-title">📄 my-project/assets/scss/custom.scss</span></div><div class="highlight" title="my-project/assets/scss/custom.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="k">@media</span> <span class="p">(</span><span class="na">min-width</span><span class="o">:</span> <span class="mi">1024</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nc">.article-list--compact</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="na">display</span><span class="o">:</span> <span class="ni">grid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">grid-template-columns</span><span class="o">:</span> <span class="mi">1</span><span class="kt">fr</span> <span class="mi">1</span><span class="kt">fr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">background</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">box-shadow</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="na">gap</span><span class="o">:</span> <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nt">article</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="na">background</span><span class="o">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">card-background</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="na">border</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">box-shadow</span><span class="o">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">shadow-l2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h2 id="鍵盤按鍵-kbd"><a href="#%e9%8d%b5%e7%9b%a4%e6%8c%89%e9%8d%b5-kbd" class="header-anchor"></a>鍵盤按鍵 &lt;kbd&gt;
+</h2><p>HTML 內有一個不太常用的標籤 &lt;kbd&gt;&lt;/kbd&gt; 用來表示鍵盤按鍵。markdown 沒支援生成這個標籤，不過 markdown 內可以直接寫 HTML 使用。平常雖然不太常用，但偶爾用到時還是希望它長得好看一點。</p>
+<p><kbd>Ctrl</kbd> + <kbd>C</kbd></p>
+<figure class="code-block" role="figure" aria-label="markdown code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; markdown</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">kbd</span><span class="p">&gt;</span>Ctrl<span class="p">&lt;/</span><span class="nt">kbd</span><span class="p">&gt;</span> + <span class="p">&lt;</span><span class="nt">kbd</span><span class="p">&gt;</span>C<span class="p">&lt;/</span><span class="nt">kbd</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>翻一下 github 發現，有專門作鍵盤案動畫的 CSS <a class="link" href="https://github.com/shhdharmen/keyboard-css"  target="_blank" rel="noopener"
+    >shhdharmen/keyboard-css</a>。</p>
+<p>最簡單的方式可以在 <code>my-project/layouts/partials/head/custom.html</code> 加上引用就可以了。</p>
+<figure class="code-block" role="figure" aria-label="html code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; html</span>
+    <span  class="code-title">📄 my-project/layouts/partials/head/custom.html</span></div><div class="highlight" title="my-project/layouts/partials/head/custom.html"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://unpkg.com/keyboard-css@1.2.4/dist/css/main.min.css&#34;</span> <span class="p">/&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>不過使用時就要指定 class 才會有效，雖然可以有很多風格可以彈性使用，但在 markdown 就要多打很多字。</p>
+<figure class="code-block" role="figure" aria-label="markdown code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; markdown</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">kbd</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;kbc-button&#34;</span><span class="p">&gt;</span>Ctrl<span class="p">&lt;/</span><span class="nt">kbd</span><span class="p">&gt;</span> + <span class="p">&lt;</span><span class="nt">kbd</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;kbc-button&#34;</span><span class="p">&gt;</span>C<span class="p">&lt;/</span><span class="nt">kbd</span><span class="p">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>我這邊大概只會用一種風格，所以為了以後可以少打點字，這邊還是要稍微作點修改，移植裡面按鈕(button)的版本到我的scss。</p>
+<p>CSS code 修改自 GitHub <a class="link" href="https://github.com/shhdharmen/keyboard-css"  target="_blank" rel="noopener"
+    >shhdharmen/keyboard-css</a></p>
+<p>如果不需要有夜晚模式的話，在 custom.scss 加入下面的代碼即可 (白色按鍵)</p>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; scss</span>
+    <span  class="code-title">📄 my-project/assets/scss/custom.scss</span></div><div class="highlight" title="my-project/assets/scss/custom.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="nt">kbd</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">-webkit-backface-visibility</span><span class="o">:</span> <span class="ni">hidden</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">backface-visibility</span><span class="o">:</span> <span class="ni">hidden</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="ni">solid</span> <span class="mh">#e6e6e6</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border-radius</span><span class="o">:</span> <span class="mf">.25</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">display</span><span class="o">:</span> <span class="ni">inline-block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">font-weight</span><span class="o">:</span> <span class="mi">400</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">text-align</span><span class="o">:</span> <span class="ni">left</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transform</span><span class="o">:</span> <span class="nf">translateZ</span><span class="p">(</span><span class="mi">5</span><span class="kt">px</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transform-style</span><span class="o">:</span> <span class="ni">preserve-3d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transition</span><span class="o">:</span> <span class="ni">all</span> <span class="mf">.25</span><span class="kt">s</span> <span class="nf">cubic-bezier</span><span class="p">(</span><span class="mf">.2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mf">.2</span><span class="o">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="na">font-size</span><span class="o">:</span> <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">line-height</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">margin</span><span class="o">:</span> <span class="mf">.375</span><span class="kt">rem</span> <span class="mf">.375</span><span class="kt">rem</span> <span class="mf">.6875</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">padding</span><span class="o">:</span> <span class="mf">.375</span><span class="kt">rem</span> <span class="mf">.75</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mh">#d9d9d9</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mh">#d9d9d9</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mh">#d9d9d9</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">2</span><span class="kt">px</span> <span class="mh">#d9d9d9</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">3</span><span class="kt">px</span> <span class="mh">#d9d9d9</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">4</span><span class="kt">px</span> <span class="mh">#d9d9d9</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">5</span><span class="kt">px</span> <span class="mh">#d9d9d9</span><span class="o">,</span> <span class="mi">2</span><span class="kt">px</span> <span class="mi">2</span><span class="mf">.5</span><span class="kt">px</span> <span class="mi">4</span><span class="kt">px</span> <span class="mh">#adb5bd</span><span class="o">,</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span><span class="kt">px</span> <span class="mi">2</span><span class="mf">.5</span><span class="kt">px</span> <span class="mh">#adb5bd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">background-color</span><span class="o">:</span> <span class="mh">#fff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">color</span><span class="o">:</span> <span class="mh">#343a40</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">cursor</span><span class="o">:</span> <span class="ni">pointer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">font-family</span><span class="o">:</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="n">BlinkMacSystemFont</span><span class="o">,</span> <span class="n">Segoe</span> <span class="n">UI</span><span class="o">,</span> <span class="n">Roboto</span><span class="o">,</span> <span class="n">Helvetica</span> <span class="n">Neue</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="ow">Not</span><span class="n">o</span> <span class="n">Sans</span><span class="o">,</span> <span class="ni">sans-serif</span><span class="o">,</span> <span class="n">Apple</span> <span class="ni">Color</span> <span class="ni">Emoji</span><span class="o">,</span> <span class="n">Segoe</span> <span class="n">UI</span> <span class="ni">Emoji</span><span class="o">,</span> <span class="n">Segoe</span> <span class="n">UI</span> <span class="n">Symbol</span><span class="o">,</span> <span class="ow">Not</span><span class="n">o</span> <span class="ni">Color</span> <span class="ni">Emoji</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">text-decoration</span><span class="o">:</span> <span class="ni">none</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">kbd</span><span class="nd">:after</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border-radius</span><span class="o">:</span> <span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border-width</span><span class="o">:</span> <span class="mf">.125</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">bottom</span><span class="o">:</span> <span class="o">-</span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">left</span><span class="o">:</span> <span class="o">-</span><span class="mf">.3125</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">right</span><span class="o">:</span> <span class="o">-</span><span class="mf">.3125</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">top</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transform</span><span class="o">:</span> <span class="nf">translateZ</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="kt">px</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border-color</span><span class="o">:</span> <span class="mh">#ccc</span><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">}
+</span></span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">kbd</span><span class="o">:</span><span class="ni">focus</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">kbd</span><span class="o">:</span><span class="n">hover</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transform</span><span class="o">:</span> <span class="nf">translate3d</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="kt">px</span><span class="o">,</span> <span class="mi">5</span><span class="kt">px</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="na">box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mh">#d9d9d9</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mh">#d9d9d9</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mh">#d9d9d9</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">2</span><span class="kt">px</span> <span class="mh">#d9d9d9</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">3</span><span class="kt">px</span> <span class="mh">#d9d9d9</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">4</span><span class="kt">px</span> <span class="mh">#d9d9d9</span><span class="o">,</span> <span class="mi">2</span><span class="kt">px</span> <span class="mi">2</span><span class="kt">px</span> <span class="mi">4</span><span class="kt">px</span> <span class="mh">#adb5bd</span><span class="o">,</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span><span class="kt">px</span> <span class="mi">2</span><span class="kt">px</span> <span class="mh">#adb5bd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">background-color</span><span class="o">:</span> <span class="mh">#e6e6e6</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">color</span><span class="o">:</span> <span class="mh">#343a40</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">outline</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">text-decoration</span><span class="o">:</span> <span class="ni">none</span><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">}
+</span></span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">kbd</span><span class="o">:</span><span class="ni">focus</span><span class="o">:</span><span class="n">after</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">kbd</span><span class="o">:</span><span class="n">hover</span><span class="o">:</span><span class="n">after</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transform</span><span class="o">:</span> <span class="nf">translate3d</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="kt">px</span><span class="o">,</span> <span class="o">-</span><span class="mi">5</span><span class="kt">px</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">kbd</span><span class="nd">:active</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border-color</span><span class="o">:</span> <span class="ni">transparent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transform</span><span class="o">:</span> <span class="nf">translate3d</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">5</span><span class="kt">px</span><span class="o">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="na">background-color</span><span class="o">:</span> <span class="mh">#e6e6e6</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">1</span><span class="kt">px</span> <span class="mh">#d9d9d9</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">color</span><span class="o">:</span> <span class="mh">#343a40</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">kbd</span><span class="nd">:active:after</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transform</span><span class="o">:</span> <span class="nf">translate3d</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">5</span><span class="kt">px</span><span class="o">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">kbd</span><span class="nd">:disabled</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">cursor</span><span class="o">:</span> <span class="ni">not-allowed</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">opacity</span><span class="o">:</span> <span class="mf">.65</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">pointer-events</span><span class="o">:</span> <span class="ni">none</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><hr>
+<p>如果要有夜晚模式</p>
+<ul>
+<li>新增 highlight 資料夾 <code>my-project/assets/scss/partials/highlight/</code></li>
+<li>新增 <code>dark.scss</code> 跟 <code>light.scss</code> 取代原本主題自帶的 scss</li>
+<li>貼上下面的內容，這些程式碼都是照搬主題原始的 scss</li>
+<li>調整配色變數（如果你不喜歡我的配色），並引用 <code>kbd.scss</code></li>
+<li>加上 <code>kbd.scss</code> 放對應的 scss code</li>
+</ul>
+<figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; scss</span>
+    <span  class="code-title">📄 my-project/assets/scss/partials/highlight/dark.scss</span></div><div class="highlight" title="my-project/assets/scss/partials/highlight/dark.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">*   Style: monokai
+</span></span></span><span class="line"><span class="cl"><span class="cm">*   https://xyproto.github.io/splash/docs/monokai.html
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$color</span><span class="o">:</span> <span class="mh">#f8f8f2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$background-color</span><span class="o">:</span> <span class="mh">#272822</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$error-color</span><span class="o">:</span> <span class="mh">#bb0064</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$keyword-color</span><span class="o">:</span> <span class="mh">#66d9ef</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$text-color</span><span class="o">:</span> <span class="nv">$color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$name-color</span><span class="o">:</span> <span class="mh">#a6e22e</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$literal-color</span><span class="o">:</span> <span class="mh">#e6db74</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// kbd colors
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$kbd-fontcolor</span><span class="o">:</span> <span class="mh">#D5FFE4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$kbd-box-shadow</span><span class="o">:</span> <span class="mh">#5b4f9d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$kbd-box-shadow2</span><span class="o">:</span> <span class="mh">#6255ab</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$kbd-background-color</span><span class="o">:</span> <span class="mh">#6F61C0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$kbd-after-border</span><span class="o">:</span> <span class="mh">#011a3c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$kbd-hobver-background</span><span class="o">:</span> <span class="mh">#5b4f9d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;common.scss&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 在這邊引用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">@import</span> <span class="s2">&#34;kbd.scss&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; scss</span>
+    <span  class="code-title">📄 my-project/assets/scss/partials/highlight/light.scss</span></div><div class="highlight" title="my-project/assets/scss/partials/highlight/light.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">*   Style: monokailight
+</span></span></span><span class="line"><span class="cl"><span class="cm">*   https://xyproto.github.io/splash/docs/monokailight.html
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$color</span><span class="o">:</span> <span class="mh">#272822</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$background-color</span><span class="o">:</span> <span class="mh">#fafafa</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$error-color</span><span class="o">:</span> <span class="mh">#960050</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$keyword-color</span><span class="o">:</span> <span class="mh">#00a8c8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$text-color</span><span class="o">:</span> <span class="mh">#111111</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$name-color</span><span class="o">:</span> <span class="mh">#75af00</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$literal-color</span><span class="o">:</span> <span class="mh">#d88200</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// kbd colors
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$kbd-fontcolor</span><span class="o">:</span> <span class="mh">#343a40</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$kbd-box-shadow</span><span class="o">:</span> <span class="mh">#d9d9d9</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$kbd-box-shadow2</span><span class="o">:</span> <span class="mh">#adb5bd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$kbd-background-color</span><span class="o">:</span> <span class="mh">#fff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$kbd-after-border</span><span class="o">:</span> <span class="mh">#ccc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$kbd-hobver-background</span><span class="o">:</span> <span class="mh">#e6e6e6</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;common.scss&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 在這邊引用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">@import</span> <span class="s2">&#34;kbd.scss&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><figure class="code-block" role="figure" aria-label="scss code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; scss</span>
+    <span  class="code-title">📄 my-project/assets/scss/partials/highlight/kbd.scss</span></div><div class="highlight" title="my-project/assets/scss/partials/highlight/kbd.scss"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="nt">kbd</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">-webkit-backface-visibility</span><span class="o">:</span> <span class="ni">hidden</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">backface-visibility</span><span class="o">:</span> <span class="ni">hidden</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="ni">solid</span> <span class="nv">$kbd-hobver-background</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border-radius</span><span class="o">:</span> <span class="mf">.25</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">display</span><span class="o">:</span> <span class="ni">inline-block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">font-weight</span><span class="o">:</span> <span class="mi">400</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">text-align</span><span class="o">:</span> <span class="ni">left</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transform</span><span class="o">:</span> <span class="nf">translateZ</span><span class="p">(</span><span class="mi">5</span><span class="kt">px</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transform-style</span><span class="o">:</span> <span class="ni">preserve-3d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transition</span><span class="o">:</span> <span class="ni">all</span> <span class="mf">.25</span><span class="kt">s</span> <span class="nf">cubic-bezier</span><span class="p">(</span><span class="mf">.2</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mf">.2</span><span class="o">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="na">font-size</span><span class="o">:</span> <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">line-height</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">margin</span><span class="o">:</span> <span class="mf">.375</span><span class="kt">rem</span> <span class="mf">.375</span><span class="kt">rem</span> <span class="mf">.6875</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">padding</span><span class="o">:</span> <span class="mf">.375</span><span class="kt">rem</span> <span class="mf">.75</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="nv">$kbd-box-shadow</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">0</span> <span class="nv">$kbd-box-shadow</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="nv">$kbd-box-shadow</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">2</span><span class="kt">px</span> <span class="nv">$kbd-box-shadow</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">3</span><span class="kt">px</span> <span class="nv">$kbd-box-shadow</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">4</span><span class="kt">px</span> <span class="nv">$kbd-box-shadow</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">5</span><span class="kt">px</span> <span class="nv">$kbd-box-shadow</span><span class="o">,</span> <span class="mi">2</span><span class="kt">px</span> <span class="mi">2</span><span class="mf">.5</span><span class="kt">px</span> <span class="mi">4</span><span class="kt">px</span> <span class="mh">#adb5bd</span><span class="o">,</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span><span class="kt">px</span> <span class="mi">2</span><span class="mf">.5</span><span class="kt">px</span> <span class="mh">#adb5bd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">background-color</span><span class="o">:</span> <span class="nv">$kbd-background-color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">color</span><span class="o">:</span> <span class="nv">$kbd-fontcolor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">cursor</span><span class="o">:</span> <span class="ni">pointer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">font-family</span><span class="o">:</span> <span class="o">-</span><span class="n">apple-system</span><span class="o">,</span> <span class="n">BlinkMacSystemFont</span><span class="o">,</span> <span class="n">Segoe</span> <span class="n">UI</span><span class="o">,</span> <span class="n">Roboto</span><span class="o">,</span> <span class="n">Helvetica</span> <span class="n">Neue</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="ow">Not</span><span class="n">o</span> <span class="n">Sans</span><span class="o">,</span> <span class="ni">sans-serif</span><span class="o">,</span> <span class="n">Apple</span> <span class="ni">Color</span> <span class="ni">Emoji</span><span class="o">,</span> <span class="n">Segoe</span> <span class="n">UI</span> <span class="ni">Emoji</span><span class="o">,</span> <span class="n">Segoe</span> <span class="n">UI</span> <span class="n">Symbol</span><span class="o">,</span> <span class="ow">Not</span><span class="n">o</span> <span class="ni">Color</span> <span class="ni">Emoji</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">text-decoration</span><span class="o">:</span> <span class="ni">none</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">kbd</span><span class="nd">:after</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border-radius</span><span class="o">:</span> <span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border-width</span><span class="o">:</span> <span class="mf">.125</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">bottom</span><span class="o">:</span> <span class="o">-</span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">left</span><span class="o">:</span> <span class="o">-</span><span class="mf">.3125</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">right</span><span class="o">:</span> <span class="o">-</span><span class="mf">.3125</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">top</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transform</span><span class="o">:</span> <span class="nf">translateZ</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="kt">px</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border-color</span><span class="o">:</span> <span class="nv">$kbd-after-border</span><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">}
+</span></span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">kbd</span><span class="o">:</span><span class="ni">focus</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">kbd</span><span class="o">:</span><span class="n">hover</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transform</span><span class="o">:</span> <span class="nf">translate3d</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="kt">px</span><span class="o">,</span> <span class="mi">5</span><span class="kt">px</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="na">box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="nv">$kbd-box-shadow</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">0</span> <span class="nv">$kbd-box-shadow</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="nv">$kbd-box-shadow</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">2</span><span class="kt">px</span> <span class="nv">$kbd-box-shadow</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">3</span><span class="kt">px</span> <span class="nv">$kbd-box-shadow</span><span class="o">,</span> <span class="mi">0</span> <span class="mi">4</span><span class="kt">px</span> <span class="nv">$kbd-box-shadow</span><span class="o">,</span> <span class="mi">2</span><span class="kt">px</span> <span class="mi">2</span><span class="kt">px</span> <span class="mi">4</span><span class="kt">px</span> <span class="nv">$kbd-box-shadow2</span><span class="o">,</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span><span class="kt">px</span> <span class="mi">2</span><span class="kt">px</span> <span class="nv">$kbd-box-shadow2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">background-color</span><span class="o">:</span> <span class="nv">$kbd-hobver-background</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">color</span><span class="o">:</span> <span class="nv">$kbd-fontcolor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">outline</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">text-decoration</span><span class="o">:</span> <span class="ni">none</span><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">}
+</span></span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">kbd</span><span class="o">:</span><span class="ni">focus</span><span class="o">:</span><span class="n">after</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">kbd</span><span class="o">:</span><span class="n">hover</span><span class="o">:</span><span class="n">after</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transform</span><span class="o">:</span> <span class="nf">translate3d</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="kt">px</span><span class="o">,</span> <span class="o">-</span><span class="mi">5</span><span class="kt">px</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">kbd</span><span class="nd">:active</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">border-color</span><span class="o">:</span> <span class="ni">transparent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transform</span><span class="o">:</span> <span class="nf">translate3d</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">5</span><span class="kt">px</span><span class="o">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="na">background-color</span><span class="o">:</span> <span class="nv">$kbd-hobver-background</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">1</span><span class="kt">px</span> <span class="nv">$kbd-box-shadow</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">color</span><span class="o">:</span> <span class="nv">$kbd-fontcolor</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">kbd</span><span class="nd">:active:after</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">transform</span><span class="o">:</span> <span class="nf">translate3d</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">5</span><span class="kt">px</span><span class="o">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">kbd</span><span class="nd">:disabled</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="na">cursor</span><span class="o">:</span> <span class="ni">not-allowed</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">opacity</span><span class="o">:</span> <span class="mf">.65</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="na">pointer-events</span><span class="o">:</span> <span class="ni">none</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>完成🎉</p>
+<h2 id="參考來源"><a href="#%e5%8f%83%e8%80%83%e4%be%86%e6%ba%90" class="header-anchor"></a>參考來源
+</h2><ul>
+<li>第三夏尔 | Third Shire <a class="link" href="https://thirdshire.com/hugo-stack-renovation/"  target="_blank" rel="noopener"
+    >Hugo Stack主题装修笔记</a></li>
+<li>Naive Koala <a class="link" href="https://www.xalaok.top/post/stack-modify/"  target="_blank" rel="noopener"
+    >Hugo Stack 魔改美化</a></li>
+<li><a class="link" href="https://github.com/shhdharmen/keyboard-css"  target="_blank" rel="noopener"
+    >shhdharmen/keyboard-css</a></li>
+</ul>
+
+</section>
+
+
+  <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/hugo/">Hugo</a>
+        
+            <a href="/tags/blog/">Blog</a>
+        
+            <a href="/tags/css/">Css</a>
+        
+            <a href="/tags/html/">Html</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>本文採用 <a class="link" href="https://creativecommons.org/licenses/by/4.0/deed"  target="_blank" rel="noopener"
+    >創用CC BY 4.0</a> 協議許可</span>
+    </section>
+    </footer>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5857950919507241" crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5857950919507241"
+     data-ad-slot="6290484367"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-codeblock/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo-codeblock/cover.e4aed39246f9ce7a1007bea846f3dd35_hu_deabc1eec480223b.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo Theme Stack 修改 CodeBlock"
+                        data-key="hugo-codeblock" 
+                        data-hash="md5-5K7Tkkb5znoQB76oRvPdNQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo Theme Stack 修改 CodeBlock</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-shortcode/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo-shortcode/cover.94c20c262b9400c01dc9c1c6f96aa2a1_hu_f2388f124074c817.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo 短代碼 shortcode"
+                        data-key="hugo-shortcode" 
+                        data-hash="md5-lMIMJiuUAMAdycHG&#43;WqioQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 短代碼 shortcode</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo/cloudflare_page.e77bfd5bc9a3c9653fa35b1f55276f95_hu_f71e0ba1684e3d7f.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得"
+                        data-key="hugo" 
+                        data-hash="md5-53v9W8mjyWU/o1sfVSdvlQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-rss/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg" loading="lazy" data-key="hugo-rss" data-hash="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 設定RSS, ATOM Feed</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-config/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg" loading="lazy" data-key="hugo-config" data-hash="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 設定檔結構</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "4154b7069cefd96aa34b",
+        clientSecret: "4d1e06eb5468a4a083bdb0b6095c613deb234ea1",
+        repo: "zonelin.github.io",
+        owner: "ZoneLin",
+        admin: ["ZoneLin"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy: null ,
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2025 筆記Zone
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

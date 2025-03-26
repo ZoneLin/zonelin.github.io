@@ -1,0 +1,9 @@
+User-agent: Googlebot
+Disallow: /nogooglebot/
+
+User-agent: *
+Allow: /
+Disallow: /service.html
+Disallow: /404/*
+
+Sitemap: https://zonego.tw/sitemap.xml

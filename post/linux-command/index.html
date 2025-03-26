@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="紀錄用過的一些指令">
+<title>Linux Command 筆記</title>
+
+<link rel='canonical' href='https://zonego.tw/post/linux-command/'>
+
+<link rel="stylesheet" href="/scss/style.min.a3c15920a30c23119196d0bb550887c714dbbec13e0a63a8be307ce8841d712b.css"><meta property='og:title' content="Linux Command 筆記">
+<meta property='og:description' content="紀錄用過的一些指令">
+<meta property='og:url' content='https://zonego.tw/post/linux-command/'>
+<meta property='og:site_name' content='筆記Zone'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='linux' /><meta property='article:tag' content='Mac' /><meta property='article:tag' content='WSL' /><meta property='article:tag' content='shell script' /><meta property='article:published_time' content='2025-03-17T10:41:26&#43;08:00'/><meta property='article:modified_time' content='2025-03-17T10:41:26&#43;08:00'/><meta property='og:image' content='https://images.unsplash.com/photo-1629654297299-c8506221ca97?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
+<meta name="twitter:title" content="Linux Command 筆記">
+<meta name="twitter:description" content="紀錄用過的一些指令"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://images.unsplash.com/photo-1629654297299-c8506221ca97?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-92G2VB89BE"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-92G2VB89BE');
+        }
+      </script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🎮</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">筆記Zone</a></h1>
+            <h2 class="site-description">能者過勞</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='/rss.xml'
+                        target="_blank"
+                        title="01-RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/ZoneLin'
+                        target="_blank"
+                        title="02-GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首頁</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>所有文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                
+                <span>關於本站</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+                
+                <span>留言板</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tools/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tools"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" /><path d="M14.5 5.5l4 4" /><path d="M12 8l-5 -5l-4 4l5 5" /><path d="M7 8l-1.5 1.5" /><path d="M16 12l5 5l-4 4l-5 -5" /><path d="M16 17l-1.5 1.5" /></svg>
+                
+                <span>線上工具</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#顯示目前資料夾">顯示目前資料夾</a></li>
+    <li><a href="#find">find</a>
+      <ol>
+        <li><a href="#找檔名資料夾-基本用法">找檔名(資料夾) 基本用法</a></li>
+        <li><a href="#搜尋並執行指令">搜尋並執行指令</a>
+          <ol>
+            <li><a href="#搜尋並刪除">搜尋並刪除</a></li>
+            <li><a href="#列出大於-25mb檔案">列出大於 25MB檔案</a></li>
+          </ol>
+        </li>
+        <li><a href="#找檔案修改時間">找檔案修改時間</a></li>
+      </ol>
+    </li>
+    <li><a href="#找檔案內容">找檔案內容</a></li>
+    <li><a href="#壓縮解壓縮">壓縮、解壓縮</a>
+      <ol>
+        <li><a href="#tar">tar</a></li>
+        <li><a href="#targz">tar.gz</a></li>
+        <li><a href="#zip">zip</a></li>
+        <li><a href="#7z-rar">7z rar</a></li>
+      </ol>
+    </li>
+    <li><a href="#watch-固定間格重複執行固定指令">watch 固定間格重複執行固定指令</a></li>
+    <li><a href="#參考來源">參考來源</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+  <header class="article-header">
+        <div class="article-image">
+            <a href="/post/linux-command/">
+                
+                    <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" alt="Featured image of post Linux Command 筆記" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E9%96%8B%E7%99%BC%E7%9B%B8%E9%97%9C/" style="background-color: #27667B; color: #DDEB9D;">
+                開發相關
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/linux-command/">Linux Command 筆記</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            紀錄用過的一些指令
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025.03.17</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 2 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+  <section class="article-content">
+    
+    
+    <p>這邊紀錄是在 linux 上可以使用的指令，mac 上應該也能用<br>
+目前我用過的 linux 系統沒有很多，大概只有 ubuntu, Raspberry Pi OS, truenas, proxmox ve 等<br>
+如果 Windows 要使用可以裝 WSL (windows subsystem linux)</p>
+<h2 id="顯示目前資料夾"><a href="#%e9%a1%af%e7%a4%ba%e7%9b%ae%e5%89%8d%e8%b3%87%e6%96%99%e5%a4%be" class="header-anchor"></a>顯示目前資料夾
+</h2><div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">bash</div>
+    
+  </div><div class="highlight" title="bash"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">pwd</span></span></code></pre></td></tr></table>
+</div>
+</div></div><h2 id="find"><a href="#find" class="header-anchor"></a>find
+</h2><h3 id="找檔名資料夾-基本用法"><a href="#%e6%89%be%e6%aa%94%e5%90%8d%e8%b3%87%e6%96%99%e5%a4%be-%e5%9f%ba%e6%9c%ac%e7%94%a8%e6%b3%95" class="header-anchor"></a>找檔名(資料夾) 基本用法
+</h3><p>若要在目前的目錄底下，找尋找所有 .txt 的檔案，可以用下面指令<br>
+find 可以指定搜尋的是檔案或資料夾<br>
+<code>-type f</code> 檔案 ， <code>-type d</code> 資料夾</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">bash</div>
+    
+  </div><div class="highlight" title="bash"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find . -name ＊.txt</span></span></code></pre></td></tr></table>
+</div>
+</div></div><p>若其中有檔案或資料夾要排除<br>
+範例排除所有 txt 檔與在 folder 底下的檔案</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">bash</div>
+    
+  </div><div class="highlight" title="bash"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find . -type f ! -name &#34;*.txt&#34; ! -path &#34;./folder/*&#34;</span></span></code></pre></td></tr></table>
+</div>
+</div></div><h3 id="搜尋並執行指令"><a href="#%e6%90%9c%e5%b0%8b%e4%b8%a6%e5%9f%b7%e8%a1%8c%e6%8c%87%e4%bb%a4" class="header-anchor"></a>搜尋並執行指令
+</h3><p>中間 command 可以自行換成其他指令</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">bash</div>
+    
+  </div><div class="highlight" title="bash"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find . -type f -name &#34;*.txt&#34; -exec command {} \+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><h4 id="搜尋並刪除"><a href="#%e6%90%9c%e5%b0%8b%e4%b8%a6%e5%88%aa%e9%99%a4" class="header-anchor"></a>搜尋並刪除
+</h4><div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">bash</div>
+    
+  </div><div class="highlight" title="bash"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find . -type d -name &#34;foo&#34; -exec rm -rf {} \+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><p>如果只是刪除空資料夾可以不用用到 -exec</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">bash</div>
+    
+  </div><div class="highlight" title="bash"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find . -type d -empty -delete</span></span></code></pre></td></tr></table>
+</div>
+</div></div><h4 id="列出大於-25mb檔案"><a href="#%e5%88%97%e5%87%ba%e5%a4%a7%e6%96%bc-25mb%e6%aa%94%e6%a1%88" class="header-anchor"></a>列出大於 25MB檔案
+</h4><div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">bash</div>
+    
+  </div><div class="highlight" title="bash"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find . -size +25M -exec ls -lh {} \+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><h3 id="找檔案修改時間"><a href="#%e6%89%be%e6%aa%94%e6%a1%88%e4%bf%ae%e6%94%b9%e6%99%82%e9%96%93" class="header-anchor"></a>找檔案修改時間
+</h3><p>列出現在資料夾1天內有改動的檔案</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">bash</div>
+    
+  </div><div class="highlight" title="bash"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find ./ -mtime -1</span></span></code></pre></td></tr></table>
+</div>
+</div></div><p>列出現在資料夾2小時內有改動的檔案</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">bash</div>
+    
+  </div><div class="highlight" title="bash"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find ./ -mmin -120</span></span></code></pre></td></tr></table>
+</div>
+</div></div><p>列出現在資料夾1天之前有改動的檔案</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">bash</div>
+    
+  </div><div class="highlight" title="bash"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find ./ -mtime +1</span></span></code></pre></td></tr></table>
+</div>
+</div></div><p>列出檔案詳細資料</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">bash</div>
+    
+  </div><div class="highlight" title="bash"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find ./ -mtime +1 -ls</span></span></code></pre></td></tr></table>
+</div>
+</div></div><h2 id="找檔案內容"><a href="#%e6%89%be%e6%aa%94%e6%a1%88%e5%85%a7%e5%ae%b9" class="header-anchor"></a>找檔案內容
+</h2><p>find 專找檔案名稱、檔案資訊， grep 才能列內容出來找</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">bash</div>
+    
+  </div><div class="highlight" title="bash"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">grep -rnw &#39;/path/to/somewhere/&#39; -e &#39;pattern&#39;</span></span></code></pre></td></tr></table>
+</div>
+</div></div><ul>
+<li><code>-r</code> or <code>-R</code> is recursive,</li>
+<li><code>-n</code> is line number</li>
+<li><code>-w</code> stands for match the whole word.</li>
+<li><code>-l</code> (lower-case L) can be added to just give the file name of matching files.</li>
+</ul>
+<h2 id="壓縮解壓縮"><a href="#%e5%a3%93%e7%b8%ae%e8%a7%a3%e5%a3%93%e7%b8%ae" class="header-anchor"></a>壓縮、解壓縮
+</h2><p>紀錄目前有遇到、常用的格式</p>
+<h3 id="tar"><a href="#tar" class="header-anchor"></a>tar
+</h3><p>大部分 linux 內建，不用特別安裝</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">壓縮</div>
+    
+  </div><div class="highlight" title="壓縮"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tar cvf FileName.tar DirName</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">解壓縮</div>
+    
+  </div><div class="highlight" title="解壓縮"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tar xvf FileName.tar</span></span></code></pre></td></tr></table>
+</div>
+</div></div><h3 id="targz"><a href="#targz" class="header-anchor"></a>tar.gz
+</h3><p>大部分 linux 內建，不用特別安裝</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">壓縮</div>
+    
+  </div><div class="highlight" title="壓縮"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tar zcvf FileName.tar DirName</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">解壓縮</div>
+    
+  </div><div class="highlight" title="解壓縮"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tar zxvf FileName.tar</span></span></code></pre></td></tr></table>
+</div>
+</div></div><h3 id="zip"><a href="#zip" class="header-anchor"></a>zip
+</h3><p>需要安裝 zip，附上 ubutu 安裝指令</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">安裝</div>
+    
+  </div><div class="highlight" title="安裝"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">apt install zip unzip</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">壓縮</div>
+    
+  </div><div class="highlight" title="壓縮"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">zip -r FileName.zip DirName</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">解壓縮</div>
+    
+  </div><div class="highlight" title="解壓縮"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">unzip FileName.zip</span></span></code></pre></td></tr></table>
+</div>
+</div></div><h3 id="7z-rar"><a href="#7z-rar" class="header-anchor"></a>7z rar
+</h3><p>7z 可以一起處理 rar 的格式，附上 ubuntu 安裝指令</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">安裝</div>
+    
+  </div><div class="highlight" title="安裝"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">apt-get install p7zip-full p7zip-rar</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">壓縮</div>
+    
+  </div><div class="highlight" title="壓縮"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">7z a FileName.7z FileName</span></span></code></pre></td></tr></table>
+</div>
+</div></div><p>壓縮可以另外加 <code>-pYOURPASSWORD</code> 來加密碼<br>
+FileName.7z 可以自行換成 FileName.rar</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">解壓縮</div>
+    
+  </div><div class="highlight" title="解壓縮"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">7z x FileName.7z</span></span></code></pre></td></tr></table>
+</div>
+</div></div><h2 id="watch-固定間格重複執行固定指令"><a href="#watch-%e5%9b%ba%e5%ae%9a%e9%96%93%e6%a0%bc%e9%87%8d%e8%a4%87%e5%9f%b7%e8%a1%8c%e5%9b%ba%e5%ae%9a%e6%8c%87%e4%bb%a4" class="header-anchor"></a>watch 固定間格重複執行固定指令
+</h2><p>大部分 linux 內建，不用特別安裝</p>
+<p>watch 會固定時間重複下同樣的指令，方便看 log 或系統執行中的變化<br>
+<code>-n</code> 可以調整間隔時間(秒)，不同的系統預設值不同<br>
+<code>-d</code> 標示出不同處</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">bash</div>
+    
+  </div><div class="highlight" title="bash"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">watch -n 1 command</span></span></code></pre></td></tr></table>
+</div>
+</div></div><p>例如每秒看 nvidia 顯示卡的運行狀況</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">bash</div>
+    
+  </div><div class="highlight" title="bash"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">watch -n 1 nvidia-smi</span></span></code></pre></td></tr></table>
+</div>
+</div></div><blockquote>
+<h2 id="參考來源"><a href="#%e5%8f%83%e8%80%83%e4%be%86%e6%ba%90" class="header-anchor"></a>參考來源
+</h2><ul>
+<li><a class="link" href="https://blog.gtwang.org/linux/unix-linux-find-command-examples/"  target="_blank" rel="noopener"
+    >https://blog.gtwang.org/linux/unix-linux-find-command-examples/</a></li>
+<li><a class="link" href="https://www.cyberciti.biz/faq/how-to-find-and-delete-directory-recursively-on-linux-or-unix-like-system/"  target="_blank" rel="noopener"
+    >https://www.cyberciti.biz/faq/how-to-find-and-delete-directory-recursively-on-linux-or-unix-like-system/</a></li>
+<li><a class="link" href="https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux"  target="_blank" rel="noopener"
+    >https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux</a></li>
+<li><a class="link" href="https://note.drx.tw/2008/04/command.html"  target="_blank" rel="noopener"
+    >https://note.drx.tw/2008/04/command.html</a></li>
+<li><a class="link" href="https://snoopymemory.blogspot.com/2016/04/ubuntu-7zrar.html"  target="_blank" rel="noopener"
+    >https://snoopymemory.blogspot.com/2016/04/ubuntu-7zrar.html</a></li>
+</ul></blockquote>
+
+
+
+<div class="unsplash unsplash-info" >
+    <div class="unsplash-title"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon unsplash-icon icon unsplash-icon-tabler icon unsplash-icons-tabler-outline icon unsplash-icon-tabler-photo"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8h.01" /><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" /><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" /><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" /></svg></div>
+    <p>Photo by <a href="https://unsplash.com/@6heinz3r?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Gabriel Heinzer</a> on <a href="https://unsplash.com/photos/text-4Mw7nkQDByk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></p>
+</div>
+
+</section>
+
+
+  <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/linux/">Linux</a>
+        
+            <a href="/tags/mac/">Mac</a>
+        
+            <a href="/tags/wsl/">WSL</a>
+        
+            <a href="/tags/shell-script/">Shell Script</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>本文採用 <a class="link" href="https://creativecommons.org/licenses/by/4.0/deed"  target="_blank" rel="noopener"
+    >創用CC BY 4.0</a> 協議許可</span>
+    </section>
+    </footer>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5857950919507241" crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5857950919507241"
+     data-ad-slot="6290484367"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/woodpeak-git-push/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?q=80&amp;w=2952&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="woodpeak-git-push" data-hash="https://images.unsplash.com/photo-1556075798-4825dfaaf498?q=80&amp;w=2952&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Woodpeak Git Push 至私有 git</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/copy-past/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">注意複製貼上內容</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/drone-git-push/">
+        
+        
+            <div class="article-image">
+                <img src="/post/drone-git-push/DroneCI.28b55dedd6da5dc2b8d3e0e9b56f9472_hu_b3752a5262ee4ca3.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post drone-git-push 踩雷心得"
+                        data-key="drone-git-push" 
+                        data-hash="md5-KLVd7dbaXcK40&#43;DptW&#43;Ucg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">drone-git-push 踩雷心得</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "4154b7069cefd96aa34b",
+        clientSecret: "4d1e06eb5468a4a083bdb0b6095c613deb234ea1",
+        repo: "zonelin.github.io",
+        owner: "ZoneLin",
+        admin: ["ZoneLin"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy: null ,
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2025 筆記Zone
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
