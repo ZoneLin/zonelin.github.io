@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Drone CI 是一個可以自行架設的 CI (Continuous Integration) 軟體\n使用 CI 的用意就是為了，能在寫完程式時，自動測試、編譯與發佈程式。\n關於怎麼架設改天再寫一篇教學。 Google一下應該就很多教學了\ndrone-git-push 回來本篇主題\n這次我的需求是在 Drone 的流程內，測試或編譯完程式後以 git 推送到不同的儲藏庫\n其實就是要產生網站檔案後，推送到 GitHub 方便用 GitHub Page 或是 Cloudflare Page\n在 Drone CI 中可以用 drone-git-push 做到\n這次遇到的問題有2個 害我為了找問題多花很多時間\n儲存庫辨識失敗 錯誤訊息:\nterminal parse &quot;git@github.com:user/repo.git&quot;: first path segment in URL cannot contain colon&quot;\n照原本文件寫的 .drone.yml 大概是長這樣\n&lt;/&gt; yaml 1 2 3 4 5 6 7 - name: deploy git image: appleboy/drone-git-push settings: branch: main remote: git@github.com:user/repo.git force: false commit: true 參考GitHub討論區的解決方法\n">
+<title>drone-git-push 踩雷心得</title>
+
+<link rel='canonical' href='https://zonego.tw/post/drone-git-push/'>
+
+<link rel="stylesheet" href="/scss/style.min.a3c15920a30c23119196d0bb550887c714dbbec13e0a63a8be307ce8841d712b.css"><meta property='og:title' content="drone-git-push 踩雷心得">
+<meta property='og:description' content="Drone CI 是一個可以自行架設的 CI (Continuous Integration) 軟體\n使用 CI 的用意就是為了，能在寫完程式時，自動測試、編譯與發佈程式。\n關於怎麼架設改天再寫一篇教學。 Google一下應該就很多教學了\ndrone-git-push 回來本篇主題\n這次我的需求是在 Drone 的流程內，測試或編譯完程式後以 git 推送到不同的儲藏庫\n其實就是要產生網站檔案後，推送到 GitHub 方便用 GitHub Page 或是 Cloudflare Page\n在 Drone CI 中可以用 drone-git-push 做到\n這次遇到的問題有2個 害我為了找問題多花很多時間\n儲存庫辨識失敗 錯誤訊息:\nterminal parse &quot;git@github.com:user/repo.git&quot;: first path segment in URL cannot contain colon&quot;\n照原本文件寫的 .drone.yml 大概是長這樣\n&lt;/&gt; yaml 1 2 3 4 5 6 7 - name: deploy git image: appleboy/drone-git-push settings: branch: main remote: git@github.com:user/repo.git force: false commit: true 參考GitHub討論區的解決方法\n">
+<meta property='og:url' content='https://zonego.tw/post/drone-git-push/'>
+<meta property='og:site_name' content='筆記Zone'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CICD' /><meta property='article:tag' content='Drone' /><meta property='article:tag' content='Git' /><meta property='article:tag' content='疑難排解' /><meta property='article:published_time' content='2022-01-06T20:15:54&#43;08:00'/><meta property='article:modified_time' content='2022-01-06T20:15:54&#43;08:00'/><meta property='og:image' content='https://zonego.tw/post/drone-git-push/DroneCI.jpg' />
+<meta name="twitter:title" content="drone-git-push 踩雷心得">
+<meta name="twitter:description" content="Drone CI 是一個可以自行架設的 CI (Continuous Integration) 軟體\n使用 CI 的用意就是為了，能在寫完程式時，自動測試、編譯與發佈程式。\n關於怎麼架設改天再寫一篇教學。 Google一下應該就很多教學了\ndrone-git-push 回來本篇主題\n這次我的需求是在 Drone 的流程內，測試或編譯完程式後以 git 推送到不同的儲藏庫\n其實就是要產生網站檔案後，推送到 GitHub 方便用 GitHub Page 或是 Cloudflare Page\n在 Drone CI 中可以用 drone-git-push 做到\n這次遇到的問題有2個 害我為了找問題多花很多時間\n儲存庫辨識失敗 錯誤訊息:\nterminal parse &quot;git@github.com:user/repo.git&quot;: first path segment in URL cannot contain colon&quot;\n照原本文件寫的 .drone.yml 大概是長這樣\n&lt;/&gt; yaml 1 2 3 4 5 6 7 - name: deploy git image: appleboy/drone-git-push settings: branch: main remote: git@github.com:user/repo.git force: false commit: true 參考GitHub討論區的解決方法\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://zonego.tw/post/drone-git-push/DroneCI.jpg' />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-92G2VB89BE"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-92G2VB89BE');
+        }
+      </script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🎮</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">筆記Zone</a></h1>
+            <h2 class="site-description">能者過勞</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='/rss.xml'
+                        target="_blank"
+                        title="01-RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/ZoneLin'
+                        target="_blank"
+                        title="02-GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首頁</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>所有文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                
+                <span>關於本站</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+                
+                <span>留言板</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tools/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tools"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" /><path d="M14.5 5.5l4 4" /><path d="M12 8l-5 -5l-4 4l5 5" /><path d="M7 8l-1.5 1.5" /><path d="M16 12l5 5l-4 4l-5 -5" /><path d="M16 17l-1.5 1.5" /></svg>
+                
+                <span>線上工具</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#drone-git-push">drone-git-push</a></li>
+    <li><a href="#儲存庫辨識失敗">儲存庫辨識失敗</a></li>
+    <li><a href="#ssh-key-讀取失敗">SSH Key 讀取失敗</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+  <header class="article-header">
+        <div class="article-image">
+            <a href="/post/drone-git-push/">
+                <img src="/post/drone-git-push/DroneCI_hu_1065cf741407a587.jpg"
+                        srcset="/post/drone-git-push/DroneCI_hu_1065cf741407a587.jpg 800w, /post/drone-git-push/DroneCI_hu_6c3e4e84502058f2.jpg 1600w"
+                        width="800" 
+                        height="267" 
+                        loading="lazy"
+                        alt="Featured image of post drone-git-push 踩雷心得" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E9%96%8B%E7%99%BC%E7%9B%B8%E9%97%9C/" style="background-color: #27667B; color: #DDEB9D;">
+                開發相關
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/drone-git-push/">drone-git-push 踩雷心得</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2022.01.06</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 1 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+  <section class="article-content">
+    
+    
+    <p><a class="link" href="https://www.drone.io/"  target="_blank" rel="noopener"
+    >Drone CI</a> 是一個可以自行架設的 CI (Continuous Integration) 軟體</p>
+<p>使用 CI 的用意就是為了，能在寫完程式時，自動測試、編譯與發佈程式。</p>
+<p>關於怎麼架設改天再寫一篇教學。 <del>Google一下應該就很多教學了</del></p>
+<h2 id="drone-git-push"><a href="#drone-git-push" class="header-anchor"></a>drone-git-push
+</h2><p>回來本篇主題</p>
+<p>這次我的需求是在 Drone 的流程內，測試或編譯完程式後以 git 推送到不同的儲藏庫<br>
+其實就是要產生網站檔案後，推送到 GitHub 方便用 GitHub Page 或是 Cloudflare Page</p>
+<p>在 Drone CI 中可以用 <a class="link" href="http://plugins.drone.io/appleboy/drone-git-push/"  target="_blank" rel="noopener"
+    >drone-git-push</a> 做到</p>
+<p>這次遇到的問題有2個 <del>害我為了找問題多花很多時間</del></p>
+<h2 id="儲存庫辨識失敗"><a href="#%e5%84%b2%e5%ad%98%e5%ba%ab%e8%be%a8%e8%ad%98%e5%a4%b1%e6%95%97" class="header-anchor"></a>儲存庫辨識失敗
+</h2><p>錯誤訊息:</p>
+
+<div class="terminal">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+
+    
+    <div class="terminal-title">terminal</div>
+    
+  </div>
+  <div class="terminal-block">
+    <p>parse &quot;git@github.com:user/repo.git&quot;: first path segment in URL cannot contain colon&quot;</p>
+  </div>
+</div>
+<p>照原本文件寫的 <code>.drone.yml</code> 大概是長這樣</p>
+<figure class="code-block" role="figure" aria-label="yaml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; yaml</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">deploy git</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">appleboy/drone-git-push</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">settings</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">remote</span><span class="p">:</span><span class="w"> </span><span class="l">git@github.com:user/repo.git</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">force</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">commit</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>參考<a class="link" href="https://github.com/appleboy/drone-git-push/issues/40"  target="_blank" rel="noopener"
+    >GitHub討論區</a>的解決方法</p>
+<ul>
+<li>使用緊急修補的 image</li>
+<li>remote 改用字串</li>
+</ul>
+<figure class="code-block" role="figure" aria-label="yaml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; yaml</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">deploy git</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">appleboy/drone-git-push:0.2.0-linux-amd64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">settings</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">remote</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;git@github.com:user/repo.git&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">force</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">commit</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h2 id="ssh-key-讀取失敗"><a href="#ssh-key-%e8%ae%80%e5%8f%96%e5%a4%b1%e6%95%97" class="header-anchor"></a>SSH Key 讀取失敗
+</h2><p>由於資安的關係， SSH KEY 不可以跟著程式碼推送到儲存庫，更不可能放明碼在設定檔中</p>
+<p>在 Drone CI 要改用 secret 的功能</p>
+<p><code>.drone.yml</code> 大概長這樣</p>
+<figure class="code-block" role="figure" aria-label="yaml code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; yaml</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">deploy git</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">appleboy/drone-git-push:0.2.0-linux-amd64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">settings</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ssh_key</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">from_secret</span><span class="p">:</span><span class="w"> </span><span class="l">githubkey</span></span></span></code></pre></td></tr></table>
+</div>
+</div></figure><p>另外在 Drone CI 的 WebUI 上添加 Secret</p>
+<p>將 private key 的內文貼進去</p>
+<p><img src="/post/drone-git-push/DroneCI-secret.png"
+	width="1733"
+	height="682"
+	srcset="/post/drone-git-push/DroneCI-secret_hu_4f2816f1a6291bd2.png 480w, /post/drone-git-push/DroneCI-secret_hu_1783338f4ff44d1a.png 1024w"
+	loading="lazy"
+	
+		alt="secret"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="254"
+		data-flex-basis="609px"
+	
+></p>
+<p>然後就碰到問題了</p>
+<p>錯誤訊息:</p>
+
+<div class="terminal">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+
+    
+    <div class="terminal-title">terminal</div>
+    
+  </div>
+  <div class="terminal-block">
+    <p>Load key &ldquo;/root/.ssh/id_rsa&rdquo;: invalid format</p>
+  </div>
+</div>
+<p>參考<a class="link" href="https://github.com/appleboy/drone-git-push/issues/37"  target="_blank" rel="noopener"
+    >GitHub討論區</a>的解決方法</p>
+<ul>
+<li>產生的 SSH key 需要改用 PEM</li>
+</ul>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">
+     >_ terminal
+    </div>
+    
+  </div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ssh-keygen -t rsa -b 4096 -C &#34;your_email@example.com&#34; -m PEM</span></span></code></pre></td></tr></table>
+</div>
+</div></div><p>換完 KEY 甚麼問題都沒了🎉</p>
+
+</section>
+
+
+  <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/cicd/">CICD</a>
+        
+            <a href="/tags/drone/">Drone</a>
+        
+            <a href="/tags/git/">Git</a>
+        
+            <a href="/tags/%E7%96%91%E9%9B%A3%E6%8E%92%E8%A7%A3/">疑難排解</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>本文採用 <a class="link" href="https://creativecommons.org/licenses/by/4.0/deed"  target="_blank" rel="noopener"
+    >創用CC BY 4.0</a> 協議許可</span>
+    </section>
+    </footer>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5857950919507241" crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5857950919507241"
+     data-ad-slot="6290484367"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/woodpeak-git-push/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?q=80&amp;w=2952&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="woodpeak-git-push" data-hash="https://images.unsplash.com/photo-1556075798-4825dfaaf498?q=80&amp;w=2952&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Woodpeak Git Push 至私有 git</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/linux-command/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="linux-command" data-hash="https://images.unsplash.com/photo-1629654297299-c8506221ca97?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux Command 筆記</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/copy-past/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">注意複製貼上內容</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "4154b7069cefd96aa34b",
+        clientSecret: "4d1e06eb5468a4a083bdb0b6095c613deb234ea1",
+        repo: "zonelin.github.io",
+        owner: "ZoneLin",
+        admin: ["ZoneLin"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy: null ,
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2025 筆記Zone
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

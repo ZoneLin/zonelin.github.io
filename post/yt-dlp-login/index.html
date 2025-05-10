@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="↩️回總教學文 帳號密碼登入 某些內容會指定必須要認證身分\\(登入\\)後，才能觀看\n這種情況下， yt-dlp 有提供輸入簡單的帳號密碼的參數\n-u, --username USERNAME 輸入帳號 -p, --password PASSWORD 輸入密碼 範例\n>_ terminal 1 yt-dlp --username &#34;your_mail@gmail.com&#34; --password &#34;P@ssw0rd&#34; &#34;https://www.youtube.com/watch?v=dQw4w9WgXcQ&#34; 目前只剩部分網站可以用這種方法登入。\nGoogle 有更新過 youtube 帳號的取用安全性，只能用下面的 Cookie 方式登入。\n使用 Cookie 登入 yt-dlp 可以使用 Netscape 格式的 cookie 檔案，讓伺服器端認定為已登入帳號的瀏覽器\n匯出 cookie 我們可以用 EditThisCookie 幫我們匯出 Cookie\nEditThisCookie Chrome擴充商店\n安裝完後，進入 EditThisCookie 的設定\n將輸出格式選擇 Netscape 格式\n">
+<title>yt-dlp 登入並下載影片</title>
+
+<link rel='canonical' href='https://zonego.tw/post/yt-dlp-login/'>
+
+<link rel="stylesheet" href="/scss/style.min.a3c15920a30c23119196d0bb550887c714dbbec13e0a63a8be307ce8841d712b.css"><meta property='og:title' content="yt-dlp 登入並下載影片">
+<meta property='og:description' content="↩️回總教學文 帳號密碼登入 某些內容會指定必須要認證身分\\(登入\\)後，才能觀看\n這種情況下， yt-dlp 有提供輸入簡單的帳號密碼的參數\n-u, --username USERNAME 輸入帳號 -p, --password PASSWORD 輸入密碼 範例\n>_ terminal 1 yt-dlp --username &#34;your_mail@gmail.com&#34; --password &#34;P@ssw0rd&#34; &#34;https://www.youtube.com/watch?v=dQw4w9WgXcQ&#34; 目前只剩部分網站可以用這種方法登入。\nGoogle 有更新過 youtube 帳號的取用安全性，只能用下面的 Cookie 方式登入。\n使用 Cookie 登入 yt-dlp 可以使用 Netscape 格式的 cookie 檔案，讓伺服器端認定為已登入帳號的瀏覽器\n匯出 cookie 我們可以用 EditThisCookie 幫我們匯出 Cookie\nEditThisCookie Chrome擴充商店\n安裝完後，進入 EditThisCookie 的設定\n將輸出格式選擇 Netscape 格式\n">
+<meta property='og:url' content='https://zonego.tw/post/yt-dlp-login/'>
+<meta property='og:site_name' content='筆記Zone'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Windows' /><meta property='article:tag' content='Mac' /><meta property='article:tag' content='Linux' /><meta property='article:tag' content='影片下載' /><meta property='article:published_time' content='2025-03-18T14:33:45&#43;08:00'/><meta property='article:modified_time' content='2025-03-18T14:33:45&#43;08:00'/><meta property='og:image' content='https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
+<meta name="twitter:title" content="yt-dlp 登入並下載影片">
+<meta name="twitter:description" content="↩️回總教學文 帳號密碼登入 某些內容會指定必須要認證身分\\(登入\\)後，才能觀看\n這種情況下， yt-dlp 有提供輸入簡單的帳號密碼的參數\n-u, --username USERNAME 輸入帳號 -p, --password PASSWORD 輸入密碼 範例\n>_ terminal 1 yt-dlp --username &#34;your_mail@gmail.com&#34; --password &#34;P@ssw0rd&#34; &#34;https://www.youtube.com/watch?v=dQw4w9WgXcQ&#34; 目前只剩部分網站可以用這種方法登入。\nGoogle 有更新過 youtube 帳號的取用安全性，只能用下面的 Cookie 方式登入。\n使用 Cookie 登入 yt-dlp 可以使用 Netscape 格式的 cookie 檔案，讓伺服器端認定為已登入帳號的瀏覽器\n匯出 cookie 我們可以用 EditThisCookie 幫我們匯出 Cookie\nEditThisCookie Chrome擴充商店\n安裝完後，進入 EditThisCookie 的設定\n將輸出格式選擇 Netscape 格式\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-92G2VB89BE"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-92G2VB89BE');
+        }
+      </script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🎮</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">筆記Zone</a></h1>
+            <h2 class="site-description">能者過勞</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='/rss.xml'
+                        target="_blank"
+                        title="01-RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/ZoneLin'
+                        target="_blank"
+                        title="02-GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首頁</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>所有文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                
+                <span>關於本站</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+                
+                <span>留言板</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tools/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tools"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" /><path d="M14.5 5.5l4 4" /><path d="M12 8l-5 -5l-4 4l5 5" /><path d="M7 8l-1.5 1.5" /><path d="M16 12l5 5l-4 4l-5 -5" /><path d="M16 17l-1.5 1.5" /></svg>
+                
+                <span>線上工具</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#回總教學文"><a href="HAHAHUGOSHORTCODE53s0HBHB">↩️回總教學文</a></a></li>
+    <li><a href="#帳號密碼登入">帳號密碼登入</a></li>
+    <li><a href="#使用-cookie-登入">使用 Cookie 登入</a>
+      <ol>
+        <li><a href="#匯出-cookie">匯出 cookie</a></li>
+        <li><a href="#重整格式">重整格式</a></li>
+        <li><a href="#使用-cookie-登入-1">使用 cookie 登入</a></li>
+      </ol>
+    </li>
+    <li><a href="#回總教學文-1"><a href="HAHAHUGOSHORTCODE53s1HBHB">↩️回總教學文</a></a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+  <header class="article-header">
+        <div class="article-image">
+            <a href="/post/yt-dlp-login/">
+                
+                    <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" alt="Featured image of post yt-dlp 登入並下載影片" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%B7%A5%E5%85%B7%E7%A8%8B%E5%BC%8F/" style="background-color: #FADA7A; color: #2D336B;">
+                工具程式
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/yt-dlp-login/">yt-dlp 登入並下載影片</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025.03.18</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 3 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+  <section class="article-content">
+    
+    
+    <h2 id="回總教學文"><a href="#%e5%9b%9e%e7%b8%bd%e6%95%99%e5%ad%b8%e6%96%87" class="header-anchor"></a><a class="link" href="https://zonego.tw/post/yt-dlp/" >↩️回總教學文</a>
+</h2><h2 id="帳號密碼登入"><a href="#%e5%b8%b3%e8%99%9f%e5%af%86%e7%a2%bc%e7%99%bb%e5%85%a5" class="header-anchor"></a>帳號密碼登入
+</h2><p>某些內容會指定必須要認證身分\(登入\)後，才能觀看<br>
+這種情況下， yt-dlp 有提供輸入簡單的帳號密碼的參數</p>
+<ul>
+<li><code>-u</code>, <code>--username</code> USERNAME 輸入帳號</li>
+<li><code>-p</code>, <code>--password</code> PASSWORD 輸入密碼</li>
+</ul>
+<p>範例</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">
+     >_ terminal
+    </div>
+    
+  </div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">yt-dlp --username &#34;your_mail@gmail.com&#34; --password &#34;P@ssw0rd&#34; &#34;https://www.youtube.com/watch?v=dQw4w9WgXcQ&#34;</span></span></code></pre></td></tr></table>
+</div>
+</div></div><p>目前只剩部分網站可以用這種方法登入。<br>
+Google 有更新過 youtube 帳號的取用安全性，只能用下面的 Cookie 方式登入。</p>
+<h2 id="使用-cookie-登入"><a href="#%e4%bd%bf%e7%94%a8-cookie-%e7%99%bb%e5%85%a5" class="header-anchor"></a>使用 Cookie 登入
+</h2><p>yt-dlp 可以使用 Netscape 格式的 cookie 檔案，讓伺服器端認定為已登入帳號的瀏覽器</p>
+<h3 id="匯出-cookie"><a href="#%e5%8c%af%e5%87%ba-cookie" class="header-anchor"></a>匯出 cookie
+</h3><p>我們可以用 EditThisCookie 幫我們匯出 Cookie</p>
+<p><a class="link" href="https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg"  target="_blank" rel="noopener"
+    >EditThisCookie Chrome擴充商店</a></p>
+<p>安裝完後，進入 EditThisCookie 的設定</p>
+<p><img src="/post/yt-dlp-login/cookie_setting.jpg"
+	width="328"
+	height="330"
+	srcset="/post/yt-dlp-login/cookie_setting_hu_617725e24759968f.jpg 480w, /post/yt-dlp-login/cookie_setting_hu_5ed0adbf5bf13d4b.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="99"
+		data-flex-basis="238px"
+	
+></p>
+<p>將輸出格式選擇 Netscape 格式<br>
+<img src="/post/yt-dlp-login/cookie_setting2.jpg"
+	width="1012"
+	height="667"
+	srcset="/post/yt-dlp-login/cookie_setting2_hu_311b00a06007285a.jpg 480w, /post/yt-dlp-login/cookie_setting2_hu_3e9c26445fca9530.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="151"
+		data-flex-basis="364px"
+	
+></p>
+<p>接著建立 cookie.txt 文字檔</p>
+<p>建立完後我們到 <a class="link" href="https://youtube.com"  target="_blank" rel="noopener"
+    >https://youtube.com</a><br>
+用 EditThisCookie 插件的匯出功能複製所有 cookie<br>
+<img src="/post/yt-dlp-login/yt-dlp_cookie.jpg"
+	width="927"
+	height="288"
+	srcset="/post/yt-dlp-login/yt-dlp_cookie_hu_94b135c575cb9afe.jpg 480w, /post/yt-dlp-login/yt-dlp_cookie_hu_1f5b0e7bc3b06b45.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="321"
+		data-flex-basis="772px"
+	
+></p>
+<p>將複製到的文字貼到 cookie.txt</p>
+<p>貼完後照前面的步驟，抓出 <a class="link" href="https://accounts.google.com"  target="_blank" rel="noopener"
+    >https://accounts.google.com</a> 的 cookie</p>
+<p>都完成後 cookie.txt 大概會長這個樣子</p>
+<figure class="code-block" role="figure" aria-label="txt code snippet">
+
+  <div class="code-header">
+    <span class="code-type">&lt;/&gt; txt</span></div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl"># Netscape HTTP Cookie File
+</span></span><span class="line"><span class="cl"># http://curl.haxx.se/rfc/cookie_spec.html
+</span></span><span class="line"><span class="cl"># This file was generated by Cookie Editor
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	TRUE	1712544730	__Secure-1PAPISID	XXXXX
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	TRUE	1712544730	__Secure-1PSID	XXXXX
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	TRUE	1712544730	__Secure-3PAPISID	XXXXX
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	TRUE	1712544730	__Secure-3PSID	XXXXX
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	TRUE	1681127908	__Secure-3PSIDCC	XXXXX
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	FALSE	1687764170	_ga	XXXXX
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	FALSE	1654529554	_gcl_au	XXXXX
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	FALSE	1712544730	APISID	XXXXX
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	FALSE	1712544730	HSID	XXXXX
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	TRUE	1664713150	LOGIN_INFO	XXXXX
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	TRUE	1712663916	PREF	XXXXX
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	TRUE	1712544730	SAPISID	XXXXX
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	FALSE	1712544730	SID	XXXXX.
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	FALSE	1681127908	SIDCC	XXXXX
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	TRUE	1712544730	SSID	XXXXX
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	TRUE	1665142416	VISITOR_INFO1_LIVE	XXXXX
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	FALSE	0	wide	0
+</span></span><span class="line"><span class="cl">.youtube.com	TRUE	/	TRUE	0	YSC	XXXXX
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Netscape HTTP Cookie File
+</span></span><span class="line"><span class="cl"># http://curl.haxx.se/rfc/cookie_spec.html
+</span></span><span class="line"><span class="cl"># This file was generated by Cookie Editor
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	TRUE	1712494597	__Secure-1PAPISID	XXXXX
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	TRUE	1712494597	__Secure-1PSID	XXXXX
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	TRUE	1712494597	__Secure-3PAPISID	XXXXX
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	TRUE	1712494597	__Secure-3PSID	XXXXX
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	TRUE	1681128005	__Secure-3PSIDCC	XXXXX
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	TRUE	1652183330	1P_JAR	XXXXX
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	TRUE	1663206405	AEC	XXXXX
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	FALSE	1712494597	APISID	XXXXX
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	FALSE	1712494597	HSID	XXXXX
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	TRUE	1665402835	NID	XXXXX
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	FALSE	1651150185	OGP	XXXXX
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	FALSE	1651150184	OGPC	XXXXX
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	TRUE	1712494597	SAPISID	XXXXX
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	FALSE	1712494597	SID	XXXXX
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	FALSE	1681128005	SIDCC	XXXXX
+</span></span><span class="line"><span class="cl">.google.com	TRUE	/	TRUE	1712494597	SSID	XXXXX
+</span></span><span class="line"><span class="cl">myaccount.google.com	FALSE	/	TRUE	1712544729	__Secure-OSID	XXXXX
+</span></span><span class="line"><span class="cl">myaccount.google.com	FALSE	/	TRUE	1712544729	OSID	XXXXX
+</span></span><span class="line"><span class="cl">myaccount.google.com	FALSE	/	TRUE	1652064730	OTZ	XXXXX</span></span></code></pre></td></tr></table>
+</div>
+</div></figure><h3 id="重整格式"><a href="#%e9%87%8d%e6%95%b4%e6%a0%bc%e5%bc%8f" class="header-anchor"></a>重整格式
+</h3><p>接著我們將剛剛的 cookie.txt 用 curl 重新整理格式</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">
+     >_ terminal
+    </div>
+    
+  </div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">curl -b cookie.txt --cookie-jar ytcookie.txt &#39;https://youtube.com&#39;</span></span></code></pre></td></tr></table>
+</div>
+</div></div><blockquote>
+<p>若是 Windows 的用戶，可以使用 Windows subsystem linux (WSL) 跑 Linux 的程式</p></blockquote>
+<p>執行完後 cookie.txt 就可以刪了，我們只要 ytcookie.txt 這個檔案</p>
+<p>ytcookie.txt 要取甚麼名字都可以</p>
+<h3 id="使用-cookie-登入-1"><a href="#%e4%bd%bf%e7%94%a8-cookie-%e7%99%bb%e5%85%a5-1" class="header-anchor"></a>使用 cookie 登入
+</h3><p>用 <code>--cookie</code> 設定我們剛剛做好的 ytcookie.txt 就可以了</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">
+     >_ terminal
+    </div>
+    
+  </div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">yt-dlp --cookie ./ytcookie.txt &#34;https://www.youtube.com/watch?v=dQw4w9WgXcQ&#34;</span></span></code></pre></td></tr></table>
+</div>
+</div></div><p>接下來只要你沒在瀏覽器內登出帳號，ytcookie.txt 理論上就能一直使用</p>
+<p>當然，網站那邊可能也會紀錄是這個帳號在下載影片&hellip;</p>
+<h2 id="回總教學文-1"><a href="#%e5%9b%9e%e7%b8%bd%e6%95%99%e5%ad%b8%e6%96%87-1" class="header-anchor"></a><a class="link" href="https://zonego.tw/post/yt-dlp/" >↩️回總教學文</a>
+</h2>
+
+
+<div class="unsplash unsplash-info" >
+    <div class="unsplash-title"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon unsplash-icon icon unsplash-icon-tabler icon unsplash-icons-tabler-outline icon unsplash-icon-tabler-photo"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8h.01" /><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" /><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" /><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" /></svg></div>
+    <p>Photo by <a href="https://unsplash.com/@alexbemore?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Alexander Shatov</a> on <a href="https://unsplash.com/photos/red-and-white-square-illustration-niUkImZcSP8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></p>
+</div>
+
+</section>
+
+
+  <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/windows/">Windows</a>
+        
+            <a href="/tags/mac/">Mac</a>
+        
+            <a href="/tags/linux/">Linux</a>
+        
+            <a href="/tags/%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89/">影片下載</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>本文採用 <a class="link" href="https://creativecommons.org/licenses/by/4.0/deed"  target="_blank" rel="noopener"
+    >創用CC BY 4.0</a> 協議許可</span>
+    </section>
+    </footer>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5857950919507241" crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5857950919507241"
+     data-ad-slot="6290484367"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/yt-dlp/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="yt-dlp" data-hash="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">用指令下載影片吧 youtube-dlp</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/yt-dlp-quality/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="yt-dlp-quality" data-hash="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">yt-dlp 指定下載影片畫質</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/yt-dlp-subtitle/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="yt-dlp-subtitle" data-hash="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">yt-dlp 下載字幕</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/unsplash-wallpapers/">
+        
+        
+            <div class="article-image">
+                <img src="/post/unsplash-wallpapers/unsplash.5ab5fe14a4f40c25e349db6a09692b88_hu_c234ce67d12f3118.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 自動換桌布 unsplash-wallpapers"
+                        data-key="unsplash-wallpapers" 
+                        data-hash="md5-WrX&#43;FKT0DCXjSdtqCWkriA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">自動換桌布 unsplash-wallpapers</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hitomi-downloader/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hitomi-downloader/hitomi.1e5f91b75a0a8719eb2c20173496ddb8_hu_c215c42bb31c165b.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hitomi Downloader"
+                        data-key="hitomi-downloader" 
+                        data-hash="md5-Hl&#43;Rt1oKhxnrLCAXNJbduA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hitomi Downloader</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "4154b7069cefd96aa34b",
+        clientSecret: "4d1e06eb5468a4a083bdb0b6095c613deb234ea1",
+        repo: "zonelin.github.io",
+        owner: "ZoneLin",
+        admin: ["ZoneLin"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy: null ,
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2025 筆記Zone
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
