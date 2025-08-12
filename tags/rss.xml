@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Tags on 筆記Zone</title>
+        <link>https://zonego.tw/tags/</link>
+        <description>Recent content in Tags on 筆記Zone</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Sat, 10 May 2025 19:53:54 +0800</lastBuildDate><atom:link href="https://zonego.tw/tags/rss.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Proxmox VE</title>
+        <link>https://zonego.tw/tags/proxmox-ve/</link>
+        <pubDate>Sat, 10 May 2025 19:53:54 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/proxmox-ve/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>PVE</title>
+        <link>https://zonego.tw/tags/pve/</link>
+        <pubDate>Sat, 10 May 2025 19:53:54 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/pve/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>疑難排解</title>
+        <link>https://zonego.tw/tags/%E7%96%91%E9%9B%A3%E6%8E%92%E8%A7%A3/</link>
+        <pubDate>Sat, 10 May 2025 19:53:54 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E7%96%91%E9%9B%A3%E6%8E%92%E8%A7%A3/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Ubuntu</title>
+        <link>https://zonego.tw/tags/ubuntu/</link>
+        <pubDate>Wed, 26 Mar 2025 12:58:19 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/ubuntu/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>虛擬機</title>
+        <link>https://zonego.tw/tags/%E8%99%9B%E6%93%AC%E6%A9%9F/</link>
+        <pubDate>Wed, 26 Mar 2025 12:58:19 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E8%99%9B%E6%93%AC%E6%A9%9F/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Blog</title>
+        <link>https://zonego.tw/tags/blog/</link>
+        <pubDate>Wed, 19 Mar 2025 15:32:15 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/blog/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Css</title>
+        <link>https://zonego.tw/tags/css/</link>
+        <pubDate>Wed, 19 Mar 2025 15:32:15 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/css/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Html</title>
+        <link>https://zonego.tw/tags/html/</link>
+        <pubDate>Wed, 19 Mar 2025 15:32:15 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/html/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Hugo</title>
+        <link>https://zonego.tw/tags/hugo/</link>
+        <pubDate>Wed, 19 Mar 2025 15:32:15 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/hugo/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Linux</title>
+        <link>https://zonego.tw/tags/linux/</link>
+        <pubDate>Tue, 18 Mar 2025 14:45:13 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/linux/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Mac</title>
+        <link>https://zonego.tw/tags/mac/</link>
+        <pubDate>Tue, 18 Mar 2025 14:45:13 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/mac/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Windows</title>
+        <link>https://zonego.tw/tags/windows/</link>
+        <pubDate>Tue, 18 Mar 2025 14:45:13 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/windows/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>影片下載</title>
+        <link>https://zonego.tw/tags/%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89/</link>
+        <pubDate>Tue, 18 Mar 2025 14:45:13 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E5%BD%B1%E7%89%87%E4%B8%8B%E8%BC%89/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>字幕</title>
+        <link>https://zonego.tw/tags/%E5%AD%97%E5%B9%95/</link>
+        <pubDate>Tue, 18 Mar 2025 14:01:31 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E5%AD%97%E5%B9%95/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Shell Script</title>
+        <link>https://zonego.tw/tags/shell-script/</link>
+        <pubDate>Mon, 17 Mar 2025 10:41:26 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/shell-script/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>WSL</title>
+        <link>https://zonego.tw/tags/wsl/</link>
+        <pubDate>Mon, 17 Mar 2025 10:41:26 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/wsl/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>CICD</title>
+        <link>https://zonego.tw/tags/cicd/</link>
+        <pubDate>Wed, 12 Mar 2025 12:41:42 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/cicd/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Self-Hosting</title>
+        <link>https://zonego.tw/tags/self-hosting/</link>
+        <pubDate>Wed, 12 Mar 2025 12:41:42 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/self-hosting/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Woodpecker</title>
+        <link>https://zonego.tw/tags/woodpecker/</link>
+        <pubDate>Wed, 12 Mar 2025 12:41:42 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/woodpecker/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Git</title>
+        <link>https://zonego.tw/tags/git/</link>
+        <pubDate>Tue, 11 Mar 2025 13:07:50 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/git/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>字型</title>
+        <link>https://zonego.tw/tags/%E5%AD%97%E5%9E%8B/</link>
+        <pubDate>Mon, 15 Apr 2024 10:40:10 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E5%AD%97%E5%9E%8B/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>免費資源</title>
+        <link>https://zonego.tw/tags/%E5%85%8D%E8%B2%BB%E8%B3%87%E6%BA%90/</link>
+        <pubDate>Mon, 15 Apr 2024 10:40:10 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E5%85%8D%E8%B2%BB%E8%B3%87%E6%BA%90/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>搜尋引擎</title>
+        <link>https://zonego.tw/tags/%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E/</link>
+        <pubDate>Mon, 02 Oct 2023 11:14:09 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Emoji</title>
+        <link>https://zonego.tw/tags/emoji/</link>
+        <pubDate>Mon, 18 Sep 2023 12:00:32 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/emoji/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Google</title>
+        <link>https://zonego.tw/tags/google/</link>
+        <pubDate>Mon, 18 Sep 2023 12:00:32 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/google/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>廣告</title>
+        <link>https://zonego.tw/tags/%E5%BB%A3%E5%91%8A/</link>
+        <pubDate>Wed, 16 Aug 2023 15:28:51 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E5%BB%A3%E5%91%8A/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Hexo</title>
+        <link>https://zonego.tw/tags/hexo/</link>
+        <pubDate>Wed, 26 Jul 2023 13:18:46 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/hexo/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>DNS</title>
+        <link>https://zonego.tw/tags/dns/</link>
+        <pubDate>Tue, 21 Feb 2023 19:42:28 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/dns/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>網路設定</title>
+        <link>https://zonego.tw/tags/%E7%B6%B2%E8%B7%AF%E8%A8%AD%E5%AE%9A/</link>
+        <pubDate>Tue, 21 Feb 2023 19:42:28 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E7%B6%B2%E8%B7%AF%E8%A8%AD%E5%AE%9A/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Keyckoak</title>
+        <link>https://zonego.tw/tags/keyckoak/</link>
+        <pubDate>Fri, 10 Feb 2023 14:35:35 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/keyckoak/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Wiki JS</title>
+        <link>https://zonego.tw/tags/wiki-js/</link>
+        <pubDate>Fri, 10 Feb 2023 14:35:35 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/wiki-js/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>身分認證</title>
+        <link>https://zonego.tw/tags/%E8%BA%AB%E5%88%86%E8%AA%8D%E8%AD%89/</link>
+        <pubDate>Fri, 10 Feb 2023 14:35:35 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E8%BA%AB%E5%88%86%E8%AA%8D%E8%AD%89/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Cloudflare</title>
+        <link>https://zonego.tw/tags/cloudflare/</link>
+        <pubDate>Fri, 10 Feb 2023 12:39:40 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/cloudflare/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>網站架設</title>
+        <link>https://zonego.tw/tags/%E7%B6%B2%E7%AB%99%E6%9E%B6%E8%A8%AD/</link>
+        <pubDate>Fri, 10 Feb 2023 12:39:40 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E7%B6%B2%E7%AB%99%E6%9E%B6%E8%A8%AD/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>靜態網站</title>
+        <link>https://zonego.tw/tags/%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99/</link>
+        <pubDate>Fri, 10 Feb 2023 12:39:40 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>網路</title>
+        <link>https://zonego.tw/tags/%E7%B6%B2%E8%B7%AF/</link>
+        <pubDate>Sun, 25 Dec 2022 18:44:10 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E7%B6%B2%E8%B7%AF/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>環境變數</title>
+        <link>https://zonego.tw/tags/%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8/</link>
+        <pubDate>Tue, 29 Nov 2022 20:02:04 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>套件管理</title>
+        <link>https://zonego.tw/tags/%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86/</link>
+        <pubDate>Mon, 24 Oct 2022 17:59:16 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Apple Silicon</title>
+        <link>https://zonego.tw/tags/apple-silicon/</link>
+        <pubDate>Wed, 05 Oct 2022 09:07:13 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/apple-silicon/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>VM 虛擬機</title>
+        <link>https://zonego.tw/tags/vm-%E8%99%9B%E6%93%AC%E6%A9%9F/</link>
+        <pubDate>Wed, 05 Oct 2022 09:07:13 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/vm-%E8%99%9B%E6%93%AC%E6%A9%9F/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>資安</title>
+        <link>https://zonego.tw/tags/%E8%B3%87%E5%AE%89/</link>
+        <pubDate>Wed, 27 Apr 2022 19:44:03 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E8%B3%87%E5%AE%89/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>DIY</title>
+        <link>https://zonego.tw/tags/diy/</link>
+        <pubDate>Mon, 17 Jan 2022 20:20:36 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/diy/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Drone</title>
+        <link>https://zonego.tw/tags/drone/</link>
+        <pubDate>Thu, 06 Jan 2022 20:15:54 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/drone/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>桌布</title>
+        <link>https://zonego.tw/tags/%E6%A1%8C%E5%B8%83/</link>
+        <pubDate>Mon, 06 Dec 2021 19:05:56 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/%E6%A1%8C%E5%B8%83/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Gitea</title>
+        <link>https://zonego.tw/tags/gitea/</link>
+        <pubDate>Thu, 25 Nov 2021 19:22:30 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/gitea/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Email</title>
+        <link>https://zonego.tw/tags/email/</link>
+        <pubDate>Sun, 14 Nov 2021 12:39:30 +0800</pubDate>
+        
+        <guid>https://zonego.tw/tags/email/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

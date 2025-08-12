@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Emoji on 筆記Zone</title>
+        <link>https://zonego.tw/tags/emoji/</link>
+        <description>Recent content in Emoji on 筆記Zone</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Mon, 18 Sep 2023 12:00:32 +0800</lastBuildDate><atom:link href="https://zonego.tw/tags/emoji/rss.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Emoji Kitchen 自己組合出想要的表情符號</title>
+        <link>https://zonego.tw/post/emoji-kitchen/</link>
+        <pubDate>Mon, 18 Sep 2023 12:00:32 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/emoji-kitchen/</guid>
+        <description>&lt;img src="https://zonego.tw/post/emoji-kitchen/emoji.jpg" alt="Featured image of post Emoji Kitchen 自己組合出想要的表情符號" /&gt;&lt;h2 id=&#34;gboard-鍵盤&#34;&gt;&lt;a href=&#34;#gboard-%e9%8d%b5%e7%9b%a4&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;Gboard 鍵盤
+&lt;/h2&gt;&lt;p&gt;Google 在 Android 出的 Gboard 鍵盤上推出 Emoji Kitchen 功能&lt;/p&gt;
+&lt;p&gt;Gboard Google Play 商店連結：&lt;a class=&#34;link&#34; href=&#34;https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;簡單來說，在可以傳圖片的地方 (如 Discord)，用 Gboard 鍵盤輸入兩個 emiji 就可以將融合後的圖片傳出去&lt;/p&gt;
+&lt;img src=&#34;Screenshot.jpg&#34; height=&#34;500&#34;/&gt;
+&lt;h2 id=&#34;網頁版&#34;&gt;&lt;a href=&#34;#%e7%b6%b2%e9%a0%81%e7%89%88&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;網頁版
+&lt;/h2&gt;&lt;p&gt;當初只在Gboard 鍵盤上的 Emoji Kitchen 合成功能現在開放網頁版啦&lt;/p&gt;
+&lt;p&gt;只要在 Google 搜尋 Emoji Kitchen，組合完表情就產生出圖片了&lt;/p&gt;
+&lt;p&gt;網址：&lt;a class=&#34;link&#34; href=&#34;https://www.google.com/search?q=emoji&amp;#43;kitchen&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.google.com/search?q=emoji+kitchen&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/emoji-kitchen/emoji_kitchen.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/emoji-kitchen/emoji_kitchen_hu_f28d00bab7fd25b5.jpg 480w, https://zonego.tw/post/emoji-kitchen/emoji_kitchen_hu_ca4fa896123a4e19.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://zonego.tw/post/emoji-kitchen/emoji_kitchen2.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/emoji-kitchen/emoji_kitchen2_hu_c1e01ba23921cfd6.jpg 480w, https://zonego.tw/post/emoji-kitchen/emoji_kitchen2_hu_4459ff2c36c1bf38.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;要用時需要將圖片下載下來，或是複製圖片網址使用&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f914/u1f914_u1f47b.png?fbx&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;figure class=&#34;code-block&#34; role=&#34;figure&#34; aria-label=&#34;markdown code snippet&#34;&gt;
+
+  &lt;div class=&#34;code-header&#34;&gt;
+    &lt;span class=&#34;code-type&#34;&gt;&amp;lt;/&amp;gt; markdown&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 複製圖片網址範例 --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;![](https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f914/u1f914_u1f47b.png?fbx)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/figure&gt;&lt;h2 id=&#34;開源版本&#34;&gt;&lt;a href=&#34;#%e9%96%8b%e6%ba%90%e7%89%88%e6%9c%ac&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;開源版本
+&lt;/h2&gt;&lt;p&gt;在 Google 還沒開放網頁版功能之前，一些熱心開發者也做出類似的網站可以線上使用&lt;br&gt;
+這邊介紹 xsalazar/emoji-kitchen&lt;/p&gt;
+&lt;p&gt;使用時跟 Google 的網頁版一樣，需要將圖片下載下來，或是複製圖片網址使用&lt;/p&gt;
+&lt;p&gt;GitHub：&lt;a class=&#34;link&#34; href=&#34;https://github.com/xsalazar/emoji-kitchen&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/xsalazar/emoji-kitchen&lt;/a&gt;&lt;br&gt;
+Emoji Kitchen：&lt;a class=&#34;link&#34; href=&#34;https://emojikitchen.dev/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://emojikitchen.dev/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/emoji-kitchen/emoji_kitchen3.jpg&#34;
+	width=&#34;2592&#34;
+	height=&#34;1806&#34;
+	srcset=&#34;https://zonego.tw/post/emoji-kitchen/emoji_kitchen3_hu_39f245ac69a56ed0.jpg 480w, https://zonego.tw/post/emoji-kitchen/emoji_kitchen3_hu_73ef5cd79ef40cbc.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

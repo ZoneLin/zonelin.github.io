@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>PVE on 筆記Zone</title>
+        <link>https://zonego.tw/tags/pve/</link>
+        <description>Recent content in PVE on 筆記Zone</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Sat, 10 May 2025 19:53:54 +0800</lastBuildDate><atom:link href="https://zonego.tw/tags/pve/rss.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Proxmox VE Kernel Panic</title>
+        <link>https://zonego.tw/post/pve-kernel-panic/</link>
+        <pubDate>Sat, 10 May 2025 19:53:54 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/pve-kernel-panic/</guid>
+        <description>&lt;img src="https://raw.githubusercontent.com/proxmox/.github/main/Proxmox-logo-800.svg" alt="Featured image of post Proxmox VE Kernel Panic" /&gt;&lt;h2 id=&#34;kernel-panic&#34;&gt;&lt;a href=&#34;#kernel-panic&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;Kernel panic
+&lt;/h2&gt;&lt;p&gt;最近在更新 Proxmox VE 時遇到無法開機的情況&lt;/p&gt;
+&lt;p&gt;開機時出現 Kernel panic 無法開機進系統，網頁介面也都失效&lt;/p&gt;
+&lt;div class=&#34;simple-notice simple-notice-error&#34;&gt;
+  &lt;div class=&#34;simple-notice-title&#34;&gt;
+    &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;simple-notice-icon&#34; viewBox=&#34;0 0 576 512&#34; fill=&#34;currentColor&#34;&gt;&lt;path d=&#34;M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zM124 296c-6.6.0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6.0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H124z&#34;/&gt;&lt;/svg&gt;
+  &lt;/div&gt;
+  &lt;p&gt;Kernel panic - not syncing: VFS: unable to mount root fs on unknown-block(0,0)&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;其實早在剛跑完&lt;code&gt;apt upgrade&lt;/code&gt;更新指令時，就已經有過徵兆。&lt;/p&gt;
+&lt;div class=&#34;terminal&#34; role=&#34;figure&#34; aria-label=&#34;terminal code snippet&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;SSH&lt;/div&gt;
+    
+  &lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;SSH&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;dpkg&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;processing&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;proxmox&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;kernel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;6.8&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;configure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nx&#34;&gt;dependency&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;problems&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;leaving&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;unconfigured&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;Setting&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;up&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;proxmox&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;headers&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;6.8&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;6.8.12&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;Errors&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;were&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;encountered&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;processing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nx&#34;&gt;proxmox&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;kernel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;6.8.12&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;pve&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;signed&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nx&#34;&gt;proxmox&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;kernel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;6.8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sub&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;process&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;usr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;bin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;dpkg&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;returned&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;an&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;code&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;p&gt;這時就提醒最新版的 kernel 沒安裝成功，不過當時沒注意到&lt;br&gt;
+加上停電重開，遇到時已經是最新版 kernel 故障無法開機的狀態&lt;/p&gt;
+&lt;h2 id=&#34;解決方法&#34;&gt;&lt;a href=&#34;#%e8%a7%a3%e6%b1%ba%e6%96%b9%e6%b3%95&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;解決方法
+&lt;/h2&gt;&lt;p&gt;開機時在 Bootloader 選單時可以選擇用舊版的系統開機&lt;/p&gt;
+&lt;p&gt;出現選單時用鍵盤上下選擇進 &lt;code&gt;Advenced Options for Proxmox Virtual Enviornment&lt;/code&gt;&lt;br&gt;
+沒有按任何按鍵，倒數幾秒後會自動選擇用最新版的系統開機，然後就又跳 Kernel panic&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pve.proxmox.com/pve-docs/images/screenshot/boot-grub.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;選擇舊版系統開機之後能正常開機，但丟著不理下次重開機還是會遇到&lt;/p&gt;
+&lt;p&gt;經過排查元凶確定為 Nvidia 顯卡驅動&lt;br&gt;
+之前因為便宜買了一張 nvidia tesla p4 來玩&lt;/p&gt;
+&lt;p&gt;驅動版本已經是535，太舊導致安裝新版 proxmox-kernel 失敗&lt;br&gt;
+用指令刪除顯卡驅動&lt;/p&gt;
+&lt;div class=&#34;terminal&#34; role=&#34;figure&#34; aria-label=&#34;terminal code snippet&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;SSH&lt;/div&gt;
+    
+  &lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;SSH&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nvidia-uninstall&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;p&gt;刪除之後重新跑 apt upgrade，這次安裝 proxmox-kernel 順利完成，重開機也沒問題了&lt;/p&gt;
+&lt;p&gt;這張 p4 也算正式壽終正寢了&lt;/p&gt;
+&lt;h2 id=&#34;參考資料&#34;&gt;&lt;a href=&#34;#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;參考資料
+&lt;/h2&gt;&lt;p&gt;圖片來源 &lt;a class=&#34;link&#34; href=&#34;https://pve.proxmox.com/wiki/Host_Bootloader&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pve.proxmox.com/wiki/Host_Bootloader&lt;/a&gt;&lt;br&gt;
+資料來源 &lt;a class=&#34;link&#34; href=&#34;https://www.facebook.com/groups/pve.tw/posts/974292336072661/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.facebook.com/groups/pve.tw/posts/974292336072661/&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Proxmox VE 擴大 Ubuntu 虛擬機硬碟大小</title>
+        <link>https://zonego.tw/post/pve-ubuntu-disk/</link>
+        <pubDate>Wed, 26 Mar 2025 12:58:19 +0800</pubDate>
+        
+        <guid>https://zonego.tw/post/pve-ubuntu-disk/</guid>
+        <description>&lt;img src="https://raw.githubusercontent.com/proxmox/.github/main/Proxmox-logo-800.svg" alt="Featured image of post Proxmox VE 擴大 Ubuntu 虛擬機硬碟大小" /&gt;&lt;h2 id=&#34;調整硬碟大小&#34;&gt;&lt;a href=&#34;#%e8%aa%bf%e6%95%b4%e7%a1%ac%e7%a2%9f%e5%a4%a7%e5%b0%8f&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;調整硬碟大小
+&lt;/h2&gt;&lt;p&gt;在 Proxmox VE WEB UI 中擴大 Ubuntu 虛擬機的硬碟大小&lt;/p&gt;
+&lt;div class=&#34;simple-notice simple-notice-warning&#34;&gt;
+  &lt;div class=&#34;simple-notice-title&#34;&gt;
+    &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;simple-notice-icon&#34; viewBox=&#34;0 0 512 512&#34; fill=&#34;currentColor&#34;&gt;&lt;path d=&#34;M504 256a248 248 0 11-496 0 248 248 0 01496 0zm-248 50a46 46 0 100 92 46 46 0 000-92zm-44-165l8 136c0 6 5 11 12 11h48c7 0 12-5 12-11l8-136c0-7-5-13-12-13h-64c-7 0-12 6-12 13z&#34;/&gt;&lt;/svg&gt;
+  &lt;/div&gt;
+  &lt;p&gt;硬碟空間只能放大，不能縮小&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/pve-ubuntu-disk/pve1.png&#34;
+	width=&#34;1998&#34;
+	height=&#34;530&#34;
+	srcset=&#34;https://zonego.tw/post/pve-ubuntu-disk/pve1_hu_698e5d915a26b52.png 480w, https://zonego.tw/post/pve-ubuntu-disk/pve1_hu_8f1fb5133708774e.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;376&#34;
+		data-flex-basis=&#34;904px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zonego.tw/post/pve-ubuntu-disk/pve2.png&#34;
+	width=&#34;446&#34;
+	height=&#34;272&#34;
+	srcset=&#34;https://zonego.tw/post/pve-ubuntu-disk/pve2_hu_444b38df4e58cda3.png 480w, https://zonego.tw/post/pve-ubuntu-disk/pve2_hu_dc5cbfebf9564d73.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;163&#34;
+		data-flex-basis=&#34;393px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;擴充硬碟分割-physical-drive-partition&#34;&gt;&lt;a href=&#34;#%e6%93%b4%e5%85%85%e7%a1%ac%e7%a2%9f%e5%88%86%e5%89%b2-physical-drive-partition&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;擴充硬碟分割 (physical drive partition)
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Ubuntu 虛擬機開機進到 bash&lt;/li&gt;
+&lt;li&gt;檢視目前磁碟狀態&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;terminal&#34; role=&#34;figure&#34; aria-label=&#34;terminal code snippet&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+  &lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;bash&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo fdisk -l&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;擴充硬碟分割&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;terminal&#34; role=&#34;figure&#34; aria-label=&#34;terminal code snippet&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+  &lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;bash&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;growpart /dev/sda 3&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;檢視硬碟分割&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;terminal&#34; role=&#34;figure&#34; aria-label=&#34;terminal code snippet&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+  &lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;bash&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pvdisplay&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;擴充硬碟大小&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;terminal&#34; role=&#34;figure&#34; aria-label=&#34;terminal code snippet&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+  &lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;bash&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo pvresize /dev/sda3&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;檢視硬碟分割 看是否已改&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;terminal&#34; role=&#34;figure&#34; aria-label=&#34;terminal code snippet&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+  &lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;bash&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pvdisplay&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h2 id=&#34;擴充邏輯分割-logical-volume&#34;&gt;&lt;a href=&#34;#%e6%93%b4%e5%85%85%e9%82%8f%e8%bc%af%e5%88%86%e5%89%b2-logical-volume&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;擴充邏輯分割 Logical volume
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;檢視邏輯分割&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;terminal&#34; role=&#34;figure&#34; aria-label=&#34;terminal code snippet&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+  &lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;bash&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lvdisplay&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;擴充邏輯分割&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;terminal&#34; role=&#34;figure&#34; aria-label=&#34;terminal code snippet&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+  &lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;bash&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;檢視邏輯分割 看是否有擴充&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;terminal&#34; role=&#34;figure&#34; aria-label=&#34;terminal code snippet&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+  &lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;bash&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lvdisplay&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h2 id=&#34;調整-filesystem&#34;&gt;&lt;a href=&#34;#%e8%aa%bf%e6%95%b4-filesystem&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;調整 Filesystem
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;調整檔案系統大小&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;terminal&#34; role=&#34;figure&#34; aria-label=&#34;terminal code snippet&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+  &lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;bash&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;resize2fs /dev/ubuntu-vg/ubuntu-lv&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;檢查是否調整成功&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;terminal&#34; role=&#34;figure&#34; aria-label=&#34;terminal code snippet&#34;&gt;
+  &lt;div class=&#34;terminal-header&#34;&gt;
+    &lt;div class=&#34;terminal-btn&#34;&gt;
+      &lt;div class=&#34;btn-mac mac-close&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-mini&#34;&gt;&lt;/div&gt;
+      &lt;div class=&#34;btn-mac mac-full&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&#34;terminal-title&#34;&gt;bash&lt;/div&gt;
+    
+  &lt;/div&gt;&lt;div class=&#34;highlight&#34; title=&#34;bash&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;fdisk -l
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;df -h&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;h2 id=&#34;參考來源&#34;&gt;&lt;a href=&#34;#%e5%8f%83%e8%80%83%e4%be%86%e6%ba%90&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;參考來源
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.proxmox.com/threads/resize-ubuntu-vm-disk.117810/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;[SOLVED] - Resize Ubuntu VM disk | Proxmox Support Forum&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

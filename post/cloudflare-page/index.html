@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Cloudflare Page 使用上跟 GitHub Page 類似\n就差在 GitHub Page 只能用靜態網站檔案，用框架產生的靜態網站就必須先編好才能推上去儲藏庫\nCloudflare Page 可以支援編譯\n設定步驟 官方文件 https://developers.cloudflare.com/pages/\n簡單步驟總結：\n在 GitHub 或 GitLab 建立網頁用的儲藏庫 (repository)\nCloudflare page 連結 GitHub 或 GitLab\n在 Cloudflare 設定網站用的 domain name\n完成🎉\n設定 Git 儲藏庫 首先到 GitHub 或 GitLab 建立網頁用的儲藏庫 (就基本的 git 操作，這邊就不多作教學)\n網站內容跟 GitHub Page 一樣，只要是靜態網站都可以，不管是直接寫或是用框架產生都可以\n比 GitHub Page 好的一點是，可以直接推送框架的程式上去，部署時編譯\n但免費版有限制，所以我還是習慣推送已經編好的上去\nGitHub Page 跟 Cloudflare page 也不需要太糾結要用哪個，反正都免費都可以先用看看\n例如本網站的內容就是用 Hexo 框架產生，先推送到 GitHub Page，Cloudflare page 用同個儲藏庫當來源\n在 https://zonelin.github.io/ 也可以找到本站\n">
+<title>Cloudflare Page 架站教學</title>
+
+<link rel='canonical' href='https://zonego.tw/post/cloudflare-page/'>
+
+<link rel="stylesheet" href="/scss/style.min.a3c15920a30c23119196d0bb550887c714dbbec13e0a63a8be307ce8841d712b.css"><meta property='og:title' content="Cloudflare Page 架站教學">
+<meta property='og:description' content="Cloudflare Page 使用上跟 GitHub Page 類似\n就差在 GitHub Page 只能用靜態網站檔案，用框架產生的靜態網站就必須先編好才能推上去儲藏庫\nCloudflare Page 可以支援編譯\n設定步驟 官方文件 https://developers.cloudflare.com/pages/\n簡單步驟總結：\n在 GitHub 或 GitLab 建立網頁用的儲藏庫 (repository)\nCloudflare page 連結 GitHub 或 GitLab\n在 Cloudflare 設定網站用的 domain name\n完成🎉\n設定 Git 儲藏庫 首先到 GitHub 或 GitLab 建立網頁用的儲藏庫 (就基本的 git 操作，這邊就不多作教學)\n網站內容跟 GitHub Page 一樣，只要是靜態網站都可以，不管是直接寫或是用框架產生都可以\n比 GitHub Page 好的一點是，可以直接推送框架的程式上去，部署時編譯\n但免費版有限制，所以我還是習慣推送已經編好的上去\nGitHub Page 跟 Cloudflare page 也不需要太糾結要用哪個，反正都免費都可以先用看看\n例如本網站的內容就是用 Hexo 框架產生，先推送到 GitHub Page，Cloudflare page 用同個儲藏庫當來源\n在 https://zonelin.github.io/ 也可以找到本站\n">
+<meta property='og:url' content='https://zonego.tw/post/cloudflare-page/'>
+<meta property='og:site_name' content='筆記Zone'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='網站架設' /><meta property='article:tag' content='Cloudflare' /><meta property='article:tag' content='靜態網站' /><meta property='article:tag' content='Git' /><meta property='article:tag' content='Blog' /><meta property='article:published_time' content='2023-02-10T12:39:40&#43;08:00'/><meta property='article:modified_time' content='2023-02-10T12:39:40&#43;08:00'/><meta property='og:image' content='https://zonego.tw/post/cloudflare-page/cloudflare-page.png' />
+<meta name="twitter:title" content="Cloudflare Page 架站教學">
+<meta name="twitter:description" content="Cloudflare Page 使用上跟 GitHub Page 類似\n就差在 GitHub Page 只能用靜態網站檔案，用框架產生的靜態網站就必須先編好才能推上去儲藏庫\nCloudflare Page 可以支援編譯\n設定步驟 官方文件 https://developers.cloudflare.com/pages/\n簡單步驟總結：\n在 GitHub 或 GitLab 建立網頁用的儲藏庫 (repository)\nCloudflare page 連結 GitHub 或 GitLab\n在 Cloudflare 設定網站用的 domain name\n完成🎉\n設定 Git 儲藏庫 首先到 GitHub 或 GitLab 建立網頁用的儲藏庫 (就基本的 git 操作，這邊就不多作教學)\n網站內容跟 GitHub Page 一樣，只要是靜態網站都可以，不管是直接寫或是用框架產生都可以\n比 GitHub Page 好的一點是，可以直接推送框架的程式上去，部署時編譯\n但免費版有限制，所以我還是習慣推送已經編好的上去\nGitHub Page 跟 Cloudflare page 也不需要太糾結要用哪個，反正都免費都可以先用看看\n例如本網站的內容就是用 Hexo 框架產生，先推送到 GitHub Page，Cloudflare page 用同個儲藏庫當來源\n在 https://zonelin.github.io/ 也可以找到本站\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://zonego.tw/post/cloudflare-page/cloudflare-page.png' />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-92G2VB89BE"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-92G2VB89BE');
+        }
+      </script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🎮</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">筆記Zone</a></h1>
+            <h2 class="site-description">能者過勞</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='/rss.xml'
+                        target="_blank"
+                        title="01-RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/ZoneLin'
+                        target="_blank"
+                        title="02-GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首頁</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>所有文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                
+                <span>關於本站</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+                
+                <span>留言板</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tools/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tools"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" /><path d="M14.5 5.5l4 4" /><path d="M12 8l-5 -5l-4 4l5 5" /><path d="M7 8l-1.5 1.5" /><path d="M16 12l5 5l-4 4l-5 -5" /><path d="M16 17l-1.5 1.5" /></svg>
+                
+                <span>線上工具</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#設定步驟">設定步驟</a>
+      <ol>
+        <li><a href="#設定-git-儲藏庫">設定 Git 儲藏庫</a></li>
+        <li><a href="#cloudflare-新增-page-專案">Cloudflare 新增 page 專案</a></li>
+      </ol>
+    </li>
+    <li><a href="#免費版使用限制">免費版使用限制</a>
+      <ol>
+        <li><a href="#建置">建置</a></li>
+        <li><a href="#domains">Domains</a></li>
+        <li><a href="#檔案">檔案</a></li>
+        <li><a href="#headers">Headers</a></li>
+        <li><a href="#重導向規則">重導向規則</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+  <header class="article-header">
+        <div class="article-image">
+            <a href="/post/cloudflare-page/">
+                <img src="/post/cloudflare-page/cloudflare-page_hu_f8ec8d4511eed50c.png"
+                        srcset="/post/cloudflare-page/cloudflare-page_hu_f8ec8d4511eed50c.png 800w, /post/cloudflare-page/cloudflare-page_hu_6d03cbc7e491d829.png 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post Cloudflare Page 架站教學" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/blog/" style="background-color: #eb5089; color: #ffffff;">
+                Blog
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/cloudflare-page/">Cloudflare Page 架站教學</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2023.02.10</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 1 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+  <section class="article-content">
+    
+    
+    <p>Cloudflare Page 使用上跟 GitHub Page 類似<br>
+就差在 GitHub Page 只能用靜態網站檔案，用框架產生的靜態網站就必須先編好才能推上去儲藏庫<br>
+Cloudflare Page 可以支援編譯</p>
+<h2 id="設定步驟"><a href="#%e8%a8%ad%e5%ae%9a%e6%ad%a5%e9%a9%9f" class="header-anchor"></a>設定步驟
+</h2><p>官方文件 <a class="link" href="https://developers.cloudflare.com/pages/"  target="_blank" rel="noopener"
+    >https://developers.cloudflare.com/pages/</a></p>
+<p>簡單步驟總結：</p>
+<ol>
+<li>
+<p>在 GitHub 或 GitLab 建立網頁用的儲藏庫 (repository)</p>
+</li>
+<li>
+<p>Cloudflare page 連結 GitHub 或 GitLab</p>
+</li>
+<li>
+<p>在 Cloudflare 設定網站用的 domain name</p>
+</li>
+</ol>
+<p>完成🎉</p>
+<hr>
+<h3 id="設定-git-儲藏庫"><a href="#%e8%a8%ad%e5%ae%9a-git-%e5%84%b2%e8%97%8f%e5%ba%ab" class="header-anchor"></a>設定 Git 儲藏庫
+</h3><p>首先到 GitHub 或 GitLab 建立網頁用的儲藏庫 (就基本的 git 操作，這邊就不多作教學)</p>
+<p>網站內容跟 GitHub Page 一樣，只要是靜態網站都可以，不管是直接寫或是用框架產生都可以<br>
+比 GitHub Page 好的一點是，可以直接推送框架的程式上去，部署時編譯<br>
+但免費版有限制，所以我還是習慣推送已經編好的上去</p>
+<p>GitHub Page 跟 Cloudflare page 也不需要太糾結要用哪個，反正都免費都可以先用看看<br>
+例如本網站的內容就是用 Hexo 框架產生，先推送到 GitHub Page，Cloudflare page 用同個儲藏庫當來源</p>
+<p>在 <a class="link" href="https://zonelin.github.io/"  target="_blank" rel="noopener"
+    >https://zonelin.github.io/</a> 也可以找到本站</p>
+<h3 id="cloudflare-新增-page-專案"><a href="#cloudflare-%e6%96%b0%e5%a2%9e-page-%e5%b0%88%e6%a1%88" class="header-anchor"></a>Cloudflare 新增 page 專案
+</h3><p>登入 Cloudflare 在 page 設定內新增一個專案　<br>
+<img src="/post/cloudflare-page/cfpage-addproject.png"
+	width="2876"
+	height="1574"
+	srcset="/post/cloudflare-page/cfpage-addproject_hu_c161938c3861a6bf.png 480w, /post/cloudflare-page/cfpage-addproject_hu_a2b43c703eed7a19.png 1024w"
+	loading="lazy"
+	
+		alt="Cloudflare add project"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="182"
+		data-flex-basis="438px"
+	
+></p>
+<p>登入 GitHub 或 GitLab 選擇要用的存儲庫 repository<br>
+<img src="/post/cloudflare-page/cfpage-addproject-git.png"
+	width="2876"
+	height="1574"
+	srcset="/post/cloudflare-page/cfpage-addproject-git_hu_52ac97e7ca62ce42.png 480w, /post/cloudflare-page/cfpage-addproject-git_hu_3943888ffb734ce9.png 1024w"
+	loading="lazy"
+	
+		alt="Cloudflare add project"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="182"
+		data-flex-basis="438px"
+	
+></p>
+<p>設定要觸發抓取的分支 (建議把部署跟開發中做不同的分支)<br>
+<img src="/post/cloudflare-page/cfpage-addproject-setting.png"
+	width="2876"
+	height="1574"
+	srcset="/post/cloudflare-page/cfpage-addproject-setting_hu_77e0a3be8d9b02cd.png 480w, /post/cloudflare-page/cfpage-addproject-setting_hu_f7696a010ea149ec.png 1024w"
+	loading="lazy"
+	
+		alt="Cloudflare add project"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="182"
+		data-flex-basis="438px"
+	
+></p>
+<p>如果是想要推送後，再用框架產生靜態網頁可以調整這邊設定<br>
+<img src="/post/cloudflare-page/cfpage-addproject-setting2.png"
+	width="2876"
+	height="1574"
+	srcset="/post/cloudflare-page/cfpage-addproject-setting2_hu_f93998f5e8eb3c1e.png 480w, /post/cloudflare-page/cfpage-addproject-setting2_hu_8ac2ab37870294dc.png 1024w"
+	loading="lazy"
+	
+		alt="Cloudflare add project"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="182"
+		data-flex-basis="438px"
+	
+></p>
+<p>點儲存部屬 Save and Deploy 後會開始從 Git 存儲庫抓程式碼下來編譯<br>
+如果是靜態頁面，就只有抓下來 (畢竟我們的 Build setting 是空的)<br>
+完成會自動給一個自動分配的網址，例如本站就是 <a class="link" href="https://blog-public-3io.pages.dev"  target="_blank" rel="noopener"
+    >blog-public-3io.pages.dev</a></p>
+<p>需要自訂網址可以到專案的 Custom domains 設定，免費版有使用上限 <a class="link" href="#%e5%85%8d%e8%b2%bb%e7%89%88%e4%bd%bf%e7%94%a8%e9%99%90%e5%88%b6" >免費版限制</a><br>
+<img src="/post/cloudflare-page/cfpage-domain.png"
+	width="2876"
+	height="1574"
+	srcset="/post/cloudflare-page/cfpage-domain_hu_69774ed5b2b8ffc.png 480w, /post/cloudflare-page/cfpage-domain_hu_4a5f730face95697.png 1024w"
+	loading="lazy"
+	
+		alt="Cloudflare domain"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="182"
+		data-flex-basis="438px"
+	
+></p>
+<p>到這邊就完成了🎉</p>
+<p>用 Cloudflare 還有個好處，Cloudflare 會自動套 Web Analytics<br>
+<img src="/post/cloudflare-page/cfpage-web-analytics.png"
+	width="2876"
+	height="1574"
+	srcset="/post/cloudflare-page/cfpage-web-analytics_hu_741bd9c3c8f7722f.png 480w, /post/cloudflare-page/cfpage-web-analytics_hu_65dbc686814833d5.png 1024w"
+	loading="lazy"
+	
+		alt="Cloudflare web analytics"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="182"
+		data-flex-basis="438px"
+	
+></p>
+<h2 id="免費版使用限制"><a href="#%e5%85%8d%e8%b2%bb%e7%89%88%e4%bd%bf%e7%94%a8%e9%99%90%e5%88%b6" class="header-anchor"></a>免費版使用限制
+</h2><p>根據<a class="link" href="https://developers.cloudflare.com/pages/platform/limits"  target="_blank" rel="noopener"
+    >官方文件</a></p>
+<p>每個帳號可以件幾個網站專案、預覽板本好像沒限制</p>
+<h3 id="建置"><a href="#%e5%bb%ba%e7%bd%ae" class="header-anchor"></a>建置
+</h3><p>免費版能從 GitHub 抓程式碼重新建置每個月500次，建置時間不得過20分鐘<br>
+推送程式碼到 GitHub 也會觸發重新建置</p>
+<blockquote>
+<p>所以我習慣在本機把 hexo 建制好，再推送到 GitHub，省編譯時間</p></blockquote>
+<h3 id="domains"><a href="#domains" class="header-anchor"></a>Domains
+</h3><p>最多 10 個自訂 domain</p>
+<h3 id="檔案"><a href="#%e6%aa%94%e6%a1%88" class="header-anchor"></a>檔案
+</h3><p>單一個網站專案，最多到 2 萬個檔案<br>
+單一檔案、素材最大 25MB</p>
+<blockquote>
+<p>有放圖片要注意下容量</p></blockquote>
+<h3 id="headers"><a href="#headers" class="header-anchor"></a>Headers
+</h3><p>最多 100 header 規則</p>
+<h3 id="重導向規則"><a href="#%e9%87%8d%e5%b0%8e%e5%90%91%e8%a6%8f%e5%89%87" class="header-anchor"></a>重導向規則
+</h3><p>最多 100 個</p>
+
+</section>
+
+
+  <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E7%B6%B2%E7%AB%99%E6%9E%B6%E8%A8%AD/">網站架設</a>
+        
+            <a href="/tags/cloudflare/">Cloudflare</a>
+        
+            <a href="/tags/%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99/">靜態網站</a>
+        
+            <a href="/tags/git/">Git</a>
+        
+            <a href="/tags/blog/">Blog</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>本文採用 <a class="link" href="https://creativecommons.org/licenses/by/4.0/deed"  target="_blank" rel="noopener"
+    >創用CC BY 4.0</a> 協議許可</span>
+    </section>
+    </footer>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5857950919507241" crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5857950919507241"
+     data-ad-slot="6290484367"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-codeblock/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo-codeblock/cover.e4aed39246f9ce7a1007bea846f3dd35_hu_deabc1eec480223b.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo Theme Stack 修改 CodeBlock"
+                        data-key="hugo-codeblock" 
+                        data-hash="md5-5K7Tkkb5znoQB76oRvPdNQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo Theme Stack 修改 CodeBlock</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-shortcode/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo-shortcode/cover.94c20c262b9400c01dc9c1c6f96aa2a1_hu_f2388f124074c817.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo 短代碼 shortcode"
+                        data-key="hugo-shortcode" 
+                        data-hash="md5-lMIMJiuUAMAdycHG&#43;WqioQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 短代碼 shortcode</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo/">
+        
+        
+            <div class="article-image">
+                <img src="/post/hugo/cloudflare_page.e77bfd5bc9a3c9653fa35b1f55276f95_hu_f71e0ba1684e3d7f.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得"
+                        data-key="hugo" 
+                        data-hash="md5-53v9W8mjyWU/o1sfVSdvlQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo &#43; woodpacker CI &#43; CloudFlare Pages 架站心得</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-stack-custom/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://user-images.githubusercontent.com/5889006/190859441-141b5f81-8483-40d2-bd96-ebf85616a46d.png" loading="lazy" data-key="hugo-stack-custom" data-hash="https://user-images.githubusercontent.com/5889006/190859441-141b5f81-8483-40d2-bd96-ebf85616a46d.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 定製自己的Stack主題</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/hugo-rss/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg" loading="lazy" data-key="hugo-rss" data-hash="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo 設定RSS, ATOM Feed</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "4154b7069cefd96aa34b",
+        clientSecret: "4d1e06eb5468a4a083bdb0b6095c613deb234ea1",
+        repo: "zonelin.github.io",
+        owner: "ZoneLin",
+        admin: ["ZoneLin"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy: null ,
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2025 筆記Zone
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

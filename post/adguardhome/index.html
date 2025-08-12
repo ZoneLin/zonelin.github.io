@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="一般檔廣告大家都會使用瀏覽器插，例如 AD Bolck。這邊推薦可以從 DNS 下手\nDNS 檔廣告原理 DNS原理簡介 一般瀏覽網站時，我們常會使用網域名稱 domain，代替只有數字的 IP 作為連線地址\n舉個例子🌰，要去 google 首頁 https://www.google.com ，其中 www.google.com 就是網域名稱\n瀏覽器會先去 DNS 伺服器用網域名稱查出 Google 的伺服器 IP\n知道 IP 後才能連到 Google 的伺服器請求資料\n在這中間，Google 也會順便將要顯示的廣告網址一起送回來\n瀏覽器再照之前的流程，去廣告商的伺服器去抓廣告回來顯示\n想知道更多 DNS 詳細機制，可以參考 Coudflare 寫的說明\nDNS沉洞（DNS sinkhole） 看完原理後，反過來說，只要 DNS 伺服器不能正常把網域名稱換成 IP\n網路就像斷了，只剩直接給 IP 的方式還能連線\n所以只要在 DNS 伺服器動手腳，把廣告的網址設定成錯誤的IP(例如：127.0.0.1)\n廣告就無法正常顯示\n這種作法就叫做 DNS沉洞（DNS sinkhole）\n有幾套可以自己架的 DNS 伺服器軟體可以達到這種效果，如 PI-Hole、 AdGuard Home\n這邊主要介紹 AdGuard Home\n">
+<title>AdGuard Home 擋廣告工具</title>
+
+<link rel='canonical' href='https://zonego.tw/post/adguardhome/'>
+
+<link rel="stylesheet" href="/scss/style.min.a3c15920a30c23119196d0bb550887c714dbbec13e0a63a8be307ce8841d712b.css"><meta property='og:title' content="AdGuard Home 擋廣告工具">
+<meta property='og:description' content="一般檔廣告大家都會使用瀏覽器插，例如 AD Bolck。這邊推薦可以從 DNS 下手\nDNS 檔廣告原理 DNS原理簡介 一般瀏覽網站時，我們常會使用網域名稱 domain，代替只有數字的 IP 作為連線地址\n舉個例子🌰，要去 google 首頁 https://www.google.com ，其中 www.google.com 就是網域名稱\n瀏覽器會先去 DNS 伺服器用網域名稱查出 Google 的伺服器 IP\n知道 IP 後才能連到 Google 的伺服器請求資料\n在這中間，Google 也會順便將要顯示的廣告網址一起送回來\n瀏覽器再照之前的流程，去廣告商的伺服器去抓廣告回來顯示\n想知道更多 DNS 詳細機制，可以參考 Coudflare 寫的說明\nDNS沉洞（DNS sinkhole） 看完原理後，反過來說，只要 DNS 伺服器不能正常把網域名稱換成 IP\n網路就像斷了，只剩直接給 IP 的方式還能連線\n所以只要在 DNS 伺服器動手腳，把廣告的網址設定成錯誤的IP(例如：127.0.0.1)\n廣告就無法正常顯示\n這種作法就叫做 DNS沉洞（DNS sinkhole）\n有幾套可以自己架的 DNS 伺服器軟體可以達到這種效果，如 PI-Hole、 AdGuard Home\n這邊主要介紹 AdGuard Home\n">
+<meta property='og:url' content='https://zonego.tw/post/adguardhome/'>
+<meta property='og:site_name' content='筆記Zone'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Self-Hosting' /><meta property='article:tag' content='Linux' /><meta property='article:tag' content='Windows' /><meta property='article:tag' content='DNS' /><meta property='article:tag' content='網路設定' /><meta property='article:published_time' content='2023-02-21T19:42:28&#43;08:00'/><meta property='article:modified_time' content='2023-02-21T19:42:28&#43;08:00'/><meta property='og:image' content='https://zonego.tw/post/adguardhome/adguardhome.jpg' />
+<meta name="twitter:title" content="AdGuard Home 擋廣告工具">
+<meta name="twitter:description" content="一般檔廣告大家都會使用瀏覽器插，例如 AD Bolck。這邊推薦可以從 DNS 下手\nDNS 檔廣告原理 DNS原理簡介 一般瀏覽網站時，我們常會使用網域名稱 domain，代替只有數字的 IP 作為連線地址\n舉個例子🌰，要去 google 首頁 https://www.google.com ，其中 www.google.com 就是網域名稱\n瀏覽器會先去 DNS 伺服器用網域名稱查出 Google 的伺服器 IP\n知道 IP 後才能連到 Google 的伺服器請求資料\n在這中間，Google 也會順便將要顯示的廣告網址一起送回來\n瀏覽器再照之前的流程，去廣告商的伺服器去抓廣告回來顯示\n想知道更多 DNS 詳細機制，可以參考 Coudflare 寫的說明\nDNS沉洞（DNS sinkhole） 看完原理後，反過來說，只要 DNS 伺服器不能正常把網域名稱換成 IP\n網路就像斷了，只剩直接給 IP 的方式還能連線\n所以只要在 DNS 伺服器動手腳，把廣告的網址設定成錯誤的IP(例如：127.0.0.1)\n廣告就無法正常顯示\n這種作法就叫做 DNS沉洞（DNS sinkhole）\n有幾套可以自己架的 DNS 伺服器軟體可以達到這種效果，如 PI-Hole、 AdGuard Home\n這邊主要介紹 AdGuard Home\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://zonego.tw/post/adguardhome/adguardhome.jpg' />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-92G2VB89BE"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-92G2VB89BE');
+        }
+      </script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="https://www.gravatar.com/avatar/0b1d2b9d95375cc6af5909e145fb4a06" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">🎮</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">筆記Zone</a></h1>
+            <h2 class="site-description">能者過勞</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='/rss.xml'
+                        target="_blank"
+                        title="01-RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/ZoneLin'
+                        target="_blank"
+                        title="02-GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首頁</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>所有文章</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                
+                <span>關於本站</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/board/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+                
+                <span>留言板</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tools/' >
+                
+                
+                
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tools"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" /><path d="M14.5 5.5l4 4" /><path d="M12 8l-5 -5l-4 4l5 5" /><path d="M7 8l-1.5 1.5" /><path d="M16 12l5 5l-4 4l-5 -5" /><path d="M16 17l-1.5 1.5" /></svg>
+                
+                <span>線上工具</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#dns-檔廣告原理">DNS 檔廣告原理</a>
+      <ol>
+        <li><a href="#dns原理簡介">DNS原理簡介</a></li>
+        <li><a href="#dns沉洞dns-sinkhole">DNS沉洞（DNS sinkhole）</a></li>
+      </ol>
+    </li>
+    <li><a href="#adguard-home">AdGuard Home</a></li>
+    <li><a href="#安裝-adguard-home">安裝 AdGuard Home</a>
+      <ol>
+        <li><a href="#linux">Linux</a></li>
+        <li><a href="#windows">Windows</a></li>
+        <li><a href="#docker">Docker</a></li>
+      </ol>
+    </li>
+    <li><a href="#設定">設定</a>
+      <ol>
+        <li><a href="#初次設定">初次設定</a>
+          <ol>
+            <li><a href="#網路設定">網路設定</a></li>
+            <li><a href="#用戶端設定">用戶端設定</a></li>
+          </ol>
+        </li>
+        <li><a href="#設定上游-dns-伺服器">設定上游 DNS 伺服器</a>
+          <ol>
+            <li><a href="#google-dns">Google DNS</a></li>
+            <li><a href="#cloudflare-dns">Cloudflare DNS</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#過濾器設定">過濾器設定</a>
+      <ol>
+        <li><a href="#過濾黑名單">過濾黑名單</a>
+          <ol>
+            <li><a href="#預設黑名單">預設黑名單</a></li>
+            <li><a href="#第三方黑名單">第三方黑名單</a></li>
+          </ol>
+        </li>
+        <li><a href="#手動過濾規則">手動過濾規則</a></li>
+        <li><a href="#家長管控">家長管控</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+  <header class="article-header">
+        <div class="article-image">
+            <a href="/post/adguardhome/">
+                <img src="/post/adguardhome/adguardhome_hu_7476e9be6a1e3e73.jpg"
+                        srcset="/post/adguardhome/adguardhome_hu_7476e9be6a1e3e73.jpg 800w, /post/adguardhome/adguardhome_hu_d78cdea81af70f9d.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post AdGuard Home 擋廣告工具" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E8%87%AA%E6%9E%B6%E6%9C%8D%E5%8B%99/" style="background-color: #A0C878; color: #fff;">
+                自架服務
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/adguardhome/">AdGuard Home 擋廣告工具</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2023.02.21</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 3 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+  <section class="article-content">
+    
+    
+    <p>一般檔廣告大家都會使用瀏覽器插，例如 AD Bolck。這邊推薦可以從 DNS 下手</p>
+<h2 id="dns-檔廣告原理"><a href="#dns-%e6%aa%94%e5%bb%a3%e5%91%8a%e5%8e%9f%e7%90%86" class="header-anchor"></a>DNS 檔廣告原理
+</h2><h3 id="dns原理簡介"><a href="#dns%e5%8e%9f%e7%90%86%e7%b0%a1%e4%bb%8b" class="header-anchor"></a>DNS原理簡介
+</h3><p>一般瀏覽網站時，我們常會使用網域名稱 domain，代替只有數字的 IP 作為連線地址</p>
+<p><img src="/post/adguardhome/DNS.png"
+	width="544"
+	height="274"
+	srcset="/post/adguardhome/DNS_hu_d1bcb74afe03240c.png 480w, /post/adguardhome/DNS_hu_945e4c04303a82c2.png 1024w"
+	loading="lazy"
+	
+		alt="DNS"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="476px"
+	
+><br>
+舉個例子🌰，要去 google 首頁 <a class="link" href="https://www.google.com"  target="_blank" rel="noopener"
+    >https://www.google.com</a> ，其中 <a class="link" href="https://www.google.com"  target="_blank" rel="noopener"
+    >www.google.com</a> 就是網域名稱<br>
+瀏覽器會先去 DNS 伺服器用網域名稱查出 Google 的伺服器 IP<br>
+知道 IP 後才能連到 Google 的伺服器請求資料</p>
+<p>在這中間，Google 也會順便將要顯示的廣告網址一起送回來<br>
+瀏覽器再照之前的流程，去廣告商的伺服器去抓廣告回來顯示</p>
+<p>想知道更多 DNS 詳細機制，可以參考 <a class="link" href="https://www.cloudflare.com/zh-tw/learning/dns/what-is-dns/"  target="_blank" rel="noopener"
+    >Coudflare 寫的說明</a></p>
+<h3 id="dns沉洞dns-sinkhole"><a href="#dns%e6%b2%89%e6%b4%9edns-sinkhole" class="header-anchor"></a>DNS沉洞（DNS sinkhole）
+</h3><p>看完原理後，反過來說，只要 DNS 伺服器不能正常把網域名稱換成 IP<br>
+網路就像斷了，只剩直接給 IP 的方式還能連線</p>
+<p>所以只要在 DNS 伺服器動手腳，把廣告的網址設定成錯誤的IP(例如：127.0.0.1)<br>
+廣告就無法正常顯示</p>
+<p>這種作法就叫做 <code>DNS沉洞</code>（DNS sinkhole）</p>
+<p>有幾套可以自己架的 DNS 伺服器軟體可以達到這種效果，如 PI-Hole、 AdGuard Home<br>
+這邊主要介紹 AdGuard Home</p>
+<p><del>PI-Hole 改天在寫</del></p>
+<h2 id="adguard-home"><a href="#adguard-home" class="header-anchor"></a>AdGuard Home
+</h2><p><a class="link" href="https://adguard.com/zh_tw/adguard-home/overview.html"  target="_blank" rel="noopener"
+    >AdGuard Home 官方網站</a></p>
+<p><a class="link" href="https://github.com/AdguardTeam/AdGuardHome"  target="_blank" rel="noopener"
+    >AdGuard Home GitHub repo</a></p>
+<p>附上 AdGuard Home 提供的功能比對表&hellip;</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>功能</th>
+          <th>AdGuard Home</th>
+          <th>Pi-Hole</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>阻擋廣告與追蹤器</td>
+          <td>✅</td>
+          <td>✅</td>
+      </tr>
+      <tr>
+          <td>自訂阻擋清單</td>
+          <td>✅</td>
+          <td>✅</td>
+      </tr>
+      <tr>
+          <td>內建 DHCP server 功能</td>
+          <td>✅</td>
+          <td>✅</td>
+      </tr>
+      <tr>
+          <td>HTTPS 管理介面</td>
+          <td>✅</td>
+          <td>❌ 需手動設定 lighttpd</td>
+      </tr>
+      <tr>
+          <td>上游 DNS 伺服器加密<br>(DNS-over-HTTPS, DNS-over-TLS, DNSCrypt)</td>
+          <td>✅</td>
+          <td>❌ (需安裝額外插件)</td>
+      </tr>
+      <tr>
+          <td>跨平台支援</td>
+          <td>✅</td>
+          <td>❌ (需透過 Docker)</td>
+      </tr>
+      <tr>
+          <td>支援加密<br>DNS-over-HTTPS or DNS-over-TLS server</td>
+          <td>✅</td>
+          <td>❌ (需安裝額外插件)</td>
+      </tr>
+      <tr>
+          <td>阻擋惡意網域</td>
+          <td>✅</td>
+          <td>❌ (需要使用另外的阻擋清單)</td>
+      </tr>
+      <tr>
+          <td>家長管控 (阻擋成人網站)</td>
+          <td>✅</td>
+          <td>❌ (需自行設定阻擋清單)</td>
+      </tr>
+      <tr>
+          <td>強制搜尋引擎啟用安全搜尋</td>
+          <td>✅</td>
+          <td>❌</td>
+      </tr>
+      <tr>
+          <td>Per-client (device) configuration</td>
+          <td>✅</td>
+          <td>✅</td>
+      </tr>
+      <tr>
+          <td>存取設定 (設定可用 AGH DNS 的名單)</td>
+          <td>✅</td>
+          <td>❌</td>
+      </tr>
+      <tr>
+          <td>[不需 root 權限][wiki-noroot]執行</td>
+          <td>✅</td>
+          <td>❌</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>基本上我們只用擋廣告的功能，AdGuardHome 跟 Pi-Hole 選順手好用的就好<br>
+雖說 AdGuard Home 有原生跨平台支援，不過真的要用也是用 Docker 去不同平台執行比較方便</p>
+<h2 id="安裝-adguard-home"><a href="#%e5%ae%89%e8%a3%9d-adguard-home" class="header-anchor"></a>安裝 AdGuard Home
+</h2><h3 id="linux"><a href="#linux" class="header-anchor"></a>Linux
+</h3><p>官方有提供 Linux 系統的自動安裝腳本<br>
+可以用 wget, curl 等工具下載腳本</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">
+     >_ terminal
+    </div>
+    
+  </div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wget --no-verbose -O - https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -v</span></span></code></pre></td></tr></table>
+</div>
+</div></div><p>腳本參數：</p>
+<ul>
+<li><code>-c &lt;channel&gt;</code> 使用特定的安裝渠道，預設是從 release 安裝，可用 <code>development</code> <code>edge</code> <code>beta</code> <code>release</code></li>
+<li><code>-r</code> 重新安裝 AdGuard Home (不可與 <code>-u</code> 一起用)</li>
+<li><code>-u</code> 移除 AdGuard Home (不可與 <code>-r</code> 一起用)</li>
+<li><code>-v</code> 查看更多安裝時訊息</li>
+</ul>
+<p>或是手動下載、安裝<br>
+到 <a class="link" href="https://github.com/AdguardTeam/AdGuardHome/releases"  target="_blank" rel="noopener"
+    >GitHub Release</a> 下載對應 OS 的安裝檔<br>
+例如安裝 Linux x64 版本</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">
+     >_ terminal
+    </div>
+    
+  </div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tar zxvf AdGuardHome_linux_amd64.tar.gz
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">./AdGuardHome -s install</span></span></code></pre></td></tr></table>
+</div>
+</div></div><blockquote>
+<p>建議使用剛裝好系統的 VM 來裝 AdGuard Home，方便備份或是避免 port 衝突</p></blockquote>
+<h3 id="windows"><a href="#windows" class="header-anchor"></a>Windows
+</h3><p>跟 Linux 手動安裝步驟相同，到 <a class="link" href="https://github.com/AdguardTeam/AdGuardHome/releases"  target="_blank" rel="noopener"
+    >GitHub Release</a> 下載 windows 版本後執行</p>
+<h3 id="docker"><a href="#docker" class="header-anchor"></a>Docker
+</h3><p><a class="link" href="https://hub.docker.com/r/adguard/adguardhome"  target="_blank" rel="noopener"
+    >AdGuard Home Docker Hub</a></p>
+<p>docker 指令：</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">
+     >_ terminal
+    </div>
+    
+  </div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker run --name adguardhome\
+</span></span><span class="line"><span class="cl">    --restart unless-stopped\
+</span></span><span class="line"><span class="cl">    -v /my/own/workdir:/opt/adguardhome/work\
+</span></span><span class="line"><span class="cl">    -v /my/own/confdir:/opt/adguardhome/conf\
+</span></span><span class="line"><span class="cl">    -p 53:53/tcp -p 53:53/udp\
+</span></span><span class="line"><span class="cl">    -p 67:67/udp -p 68:68/udp\
+</span></span><span class="line"><span class="cl">    -p 80:80/tcp -p 443:443/tcp -p 443:443/udp -p 3000:3000/tcp\
+</span></span><span class="line"><span class="cl">    -p 853:853/tcp\
+</span></span><span class="line"><span class="cl">    -p 784:784/udp -p 853:853/udp -p 8853:8853/udp\
+</span></span><span class="line"><span class="cl">    -p 5443:5443/tcp -p 5443:5443/udp\
+</span></span><span class="line"><span class="cl">    -d adguard/adguardhome</span></span></code></pre></td></tr></table>
+</div>
+</div></div><p>其中的 Port 設定</p>
+<ul>
+<li><code>-p 53:53/tcp -p 53:53/udp</code>: 預設 DNS 使用 port</li>
+<li><code>-p 67:67/udp -p 68:68/tcp -p 68:68/udp</code>: DHCP 使用 port (如不使用 DHCP 可以跳過)</li>
+<li><code>-p 3000:3000/tcp -p 443:443/tcp</code>: AdGuard Home 的管理介面 (如不需設定 HTTPS 可以不用 443 port)</li>
+<li><code>-p 80:80/tcp -p 443:443/tcp -p 443:443/udp</code>: DNS-over-HTTPS 使用 port</li>
+<li><code>-p 853:853/tcp</code>: DNS-over-TLS 使用 port</li>
+<li><code>-p 784:784/udp -p 853:853/udp -p 8853:8853/udp</code>: DNS-over-QUIC 使用 port (只需要設定其中一個或兩個，不需要全都用)</li>
+<li><code>-p 5443:5443/tcp -p 5443:5443/udp</code>: DNSCrypt 使用 port.</li>
+</ul>
+<p>如果要使用 DHCP server 的功能，建議將讓容器使用主機網路 (需注意 port 衝突)</p>
+<div class="terminal" role="figure" aria-label="terminal code snippet">
+  <div class="terminal-header">
+    <div class="terminal-btn">
+      <div class="btn-mac mac-close"></div>
+      <div class="btn-mac mac-mini"></div>
+      <div class="btn-mac mac-full"></div>
+    </div>
+    
+    <div class="terminal-title">
+     >_ terminal
+    </div>
+    
+  </div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker run --name adguardhome\
+</span></span><span class="line"><span class="cl">    --restart unless-stopped\
+</span></span><span class="line"><span class="cl">    -v /my/own/workdir:/opt/adguardhome/work\
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">    --network host
+</span></span><span class="line"><span class="cl">    -d adguard/adguardhome</span></span></code></pre></td></tr></table>
+</div>
+</div></div><h2 id="設定"><a href="#%e8%a8%ad%e5%ae%9a" class="header-anchor"></a>設定
+</h2><blockquote>
+<p>這邊我是在自己的電腦上用 docker 展示，連線會用 localhost 去連<br>
+實際使用建議獨立裝在其他不常關的電腦或樹梅派，連線就使用 IP 連</p></blockquote>
+<h3 id="初次設定"><a href="#%e5%88%9d%e6%ac%a1%e8%a8%ad%e5%ae%9a" class="header-anchor"></a>初次設定
+</h3><p><img src="/post/adguardhome/adguard_init1.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_init1_hu_c41340fb8b75670c.png 480w, /post/adguardhome/adguard_init1_hu_1520cc7b1b080045.png 1024w"
+	loading="lazy"
+	
+		alt="adguard init"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+></p>
+<h4 id="網路設定"><a href="#%e7%b6%b2%e8%b7%af%e8%a8%ad%e5%ae%9a" class="header-anchor"></a>網路設定
+</h4><p>接下來設定監聽的網卡(透過哪張網卡能存取)，用 Docker 執行建議可以用所有介面<br>
+管理員的監聽介面如果在 docker 沒有使用 80，記得設定成 3000，避免設定完就連不到<br>
+<img src="/post/adguardhome/adguard_init2.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_init2_hu_1263b01e6df814a6.png 480w, /post/adguardhome/adguard_init2_hu_b989bdf6c75a7b02.png 1024w"
+	loading="lazy"
+	
+		alt="adguard init"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+><br>
+DNS 伺服器監聽介面同上，建議保留預設的 53 Port<br>
+<img src="/post/adguardhome/adguard_init3.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_init3_hu_b104f38bf717362f.png 480w, /post/adguardhome/adguard_init3_hu_cc99c5ec322411cc.png 1024w"
+	loading="lazy"
+	
+		alt="adguard init"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+></p>
+<h5 id="管理帳號設定"><a href="#%e7%ae%a1%e7%90%86%e5%b8%b3%e8%99%9f%e8%a8%ad%e5%ae%9a" class="header-anchor"></a>管理帳號設定
+</h5><p>設定管理員帳號密碼，建議不要用 <code>root</code>, <code>admin</code>, <code>administor</code> 等常見的管理帳號<br>
+<img src="/post/adguardhome/adguard_init4.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_init4_hu_ac178ebf82256630.png 480w, /post/adguardhome/adguard_init4_hu_bc0a0e259237232c.png 1024w"
+	loading="lazy"
+	
+		alt="adguard init"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+></p>
+<h4 id="用戶端設定"><a href="#%e7%94%a8%e6%88%b6%e7%ab%af%e8%a8%ad%e5%ae%9a" class="header-anchor"></a>用戶端設定
+</h4><p>初次設定完成，這邊可以看一下不同種類客戶端該怎麼設定使用這個 DNS 伺服器<br>
+基本上只要將網路設定裡的 DNS 伺服器，改成這邊監聽的網卡的IP，就可以用 Adguard 過濾網站<br>
+路由器也要套用的話，是去修改路由器的 DHCP 設定，讓子網段自動分配的 DNS 都使用我們架的 Adguard IP<br>
+<img src="/post/adguardhome/adguard_init5.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_init5_hu_12423511056369df.png 480w, /post/adguardhome/adguard_init5_hu_d6888cf10b32994f.png 1024w"
+	loading="lazy"
+	
+		alt="adguard init"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+><br>
+<img src="/post/adguardhome/adguard_init6.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_init6_hu_d10fb0fb6d47a0f0.png 480w, /post/adguardhome/adguard_init6_hu_fbeeef82fdfb9984.png 1024w"
+	loading="lazy"
+	
+		alt="adguard init"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+></p>
+<h5 id="初次設定完成"><a href="#%e5%88%9d%e6%ac%a1%e8%a8%ad%e5%ae%9a%e5%ae%8c%e6%88%90" class="header-anchor"></a>初次設定完成🎉
+</h5><p><img src="/post/adguardhome/adguard_init7.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_init7_hu_620934c5140f0ea6.png 480w, /post/adguardhome/adguard_init7_hu_a58803533faa92ac.png 1024w"
+	loading="lazy"
+	
+		alt="adguard init"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+></p>
+<p>接著可以用設定好的管理員帳號登入<br>
+<img src="/post/adguardhome/adguard_login.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_login_hu_beb8fd4345ee5f2f.png 480w, /post/adguardhome/adguard_login_hu_47eedc60f97ddb61.png 1024w"
+	loading="lazy"
+	
+		alt="adguard login"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+></p>
+<h3 id="設定上游-dns-伺服器"><a href="#%e8%a8%ad%e5%ae%9a%e4%b8%8a%e6%b8%b8-dns-%e4%bc%ba%e6%9c%8d%e5%99%a8" class="header-anchor"></a>設定上游 DNS 伺服器
+</h3><p>在 Adguard Home 中並不會紀錄設定之外的網域及IP的對應<br>
+其他網域就需要去其他的 DNS 伺服器(上游 DNS 伺服器)查詢<br>
+<img src="/post/adguardhome/adguard_upstreamDNS.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_upstreamDNS_hu_2eb2c48139a1647f.png 480w, /post/adguardhome/adguard_upstreamDNS_hu_6c6ff661c95a3993.png 1024w"
+	loading="lazy"
+	
+		alt="adguard upstream DNS"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+></p>
+<p>Adguard Home 整理了幾個常用的 DNS 伺服器 <a class="link" href="https://adguard-dns.io/kb/zh-CN/general/dns-providers/"  target="_blank" rel="noopener"
+    >https://adguard-dns.io/kb/zh-CN/general/dns-providers/</a><br>
+這邊推薦可以用 Google DNS 跟 Cloudflare DNS</p>
+<h4 id="google-dns"><a href="#google-dns" class="header-anchor"></a>Google DNS
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>協定</th>
+          <th>地址</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>DNS, IPv4</td>
+          <td>8.8.8.8 和 8.8.4.4</td>
+      </tr>
+      <tr>
+          <td>DNS, IPv6</td>
+          <td>2001:4860:4860::8888 和 2001:4860:4860::8844</td>
+      </tr>
+      <tr>
+          <td>DNS-over-HTTPS</td>
+          <td><a class="link" href="https://dns.google/dns-query"  target="_blank" rel="noopener"
+    >https://dns.google/dns-query</a></td>
+      </tr>
+      <tr>
+          <td>DNS-over-TLS</td>
+          <td>tls://dns.google</td>
+      </tr>
+  </tbody>
+</table></div>
+<h4 id="cloudflare-dns"><a href="#cloudflare-dns" class="header-anchor"></a>Cloudflare DNS
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>協定</th>
+          <th>地址</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>DNS, IPv4</td>
+          <td>1.1.1.1 和 1.0.0.1</td>
+      </tr>
+      <tr>
+          <td>DNS, IPv6</td>
+          <td>2606:4700:4700::1111 和 2606:4700:4700::1001</td>
+      </tr>
+      <tr>
+          <td>DNS-over-HTTPS IPv4</td>
+          <td><a class="link" href="https://dns.cloudflare.com/dns-query"  target="_blank" rel="noopener"
+    >https://dns.cloudflare.com/dns-query</a></td>
+      </tr>
+      <tr>
+          <td>DNS-over-HTTPS IPv6</td>
+          <td><a class="link" href="https://dns.cloudflare.com/dns-query"  target="_blank" rel="noopener"
+    >https://dns.cloudflare.com/dns-query</a></td>
+      </tr>
+      <tr>
+          <td>DNS-over-TLS</td>
+          <td>tls://1dot1dot1dot1.cloudflare-dns.com</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="過濾器設定"><a href="#%e9%81%8e%e6%bf%be%e5%99%a8%e8%a8%ad%e5%ae%9a" class="header-anchor"></a>過濾器設定
+</h2><h3 id="過濾黑名單"><a href="#%e9%81%8e%e6%bf%be%e9%bb%91%e5%90%8d%e5%96%ae" class="header-anchor"></a>過濾黑名單
+</h3><p><img src="/post/adguardhome/adguard_blocklist.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_blocklist_hu_27362711a555191f.png 480w, /post/adguardhome/adguard_blocklist_hu_f2a7f37cc6e97dd6.png 1024w"
+	loading="lazy"
+	
+		alt="adguard blocklist"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+></p>
+<h4 id="預設黑名單"><a href="#%e9%a0%90%e8%a8%ad%e9%bb%91%e5%90%8d%e5%96%ae" class="header-anchor"></a>預設黑名單
+</h4><p>Adguard Home 預設使用 Adguard 的過濾黑名單<br>
+新增黑名單也很方便<br>
+<img src="/post/adguardhome/adguard_blocklist_new.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_blocklist_new_hu_93468ba45561cbea.png 480w, /post/adguardhome/adguard_blocklist_new_hu_86602eaf0bb40501.png 1024w"
+	loading="lazy"
+	
+		alt="adguard blocklist new"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+><br>
+把想套用的黑名單加進去啟用<br>
+<img src="/post/adguardhome/adguard_blocklist_new2.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_blocklist_new2_hu_7a5596482bb93c5e.png 480w, /post/adguardhome/adguard_blocklist_new2_hu_5fc8175a31b71e05.png 1024w"
+	loading="lazy"
+	
+		alt="adguard blocklist new"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+></p>
+<h4 id="第三方黑名單"><a href="#%e7%ac%ac%e4%b8%89%e6%96%b9%e9%bb%91%e5%90%8d%e5%96%ae" class="header-anchor"></a>第三方黑名單
+</h4><p>要使用第三方黑名單只要有網址也可以匯入<br>
+<img src="/post/adguardhome/adguard_blocklist_new3.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_blocklist_new3_hu_742829d59ccda239.png 480w, /post/adguardhome/adguard_blocklist_new3_hu_67ccedf6985906bd.png 1024w"
+	loading="lazy"
+	
+		alt="adguard blocklist new"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+><br>
+<img src="/post/adguardhome/adguard_blocklist_new4.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_blocklist_new4_hu_f4b3aad0b09c51af.png 480w, /post/adguardhome/adguard_blocklist_new4_hu_f330d96dc6e74148.png 1024w"
+	loading="lazy"
+	
+		alt="adguard blocklist new"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+></p>
+<p>這邊介紹一款專為臺灣人設計的廣告阻擋規則 <a class="link" href="https://github.com/FutaGuard/LowTechFilter"  target="_blank" rel="noopener"
+    >LowTechFilter</a><br>
+提供阻擋台灣常見的簡訊詐騙、釣魚網站和農場文</p>
+<ul>
+<li>簡訊詐騙、釣魚網站 <a class="link" href="https://filter.futa.gg/hosts.txt"  target="_blank" rel="noopener"
+    >https://filter.futa.gg/hosts.txt</a></li>
+<li>農場文 <a class="link" href="https://filter.futa.gg/nofarm_hosts.txt"  target="_blank" rel="noopener"
+    >https://filter.futa.gg/nofarm_hosts.txt</a></li>
+</ul>
+<h3 id="手動過濾規則"><a href="#%e6%89%8b%e5%8b%95%e9%81%8e%e6%bf%be%e8%a6%8f%e5%89%87" class="header-anchor"></a>手動過濾規則
+</h3><p>可以從主頁到 DNS 查詢紀錄裡去增加封鎖名單，不過缺點是之前要先查詢過</p>
+<blockquote>
+<p>還沒有用戶端用這個 DNS 伺服器之前，紀錄會是空的<br>
+<img src="/post/adguardhome/adguard_dashboard.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_dashboard_hu_4a63ac9c0384ed5f.png 480w, /post/adguardhome/adguard_dashboard_hu_b8822dbeeb6c45c8.png 1024w"
+	loading="lazy"
+	
+		alt="adguard dashboard"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+><br>
+<img src="/post/adguardhome/adguard_record.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_record_hu_ae0581852264a908.png 480w, /post/adguardhome/adguard_record_hu_2e7b49a627e0ef8.png 1024w"
+	loading="lazy"
+	
+		alt="adguard record"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+></p></blockquote>
+<h3 id="家長管控"><a href="#%e5%ae%b6%e9%95%b7%e7%ae%a1%e6%8e%a7" class="header-anchor"></a>家長管控
+</h3><p><img src="/post/adguardhome/adguard_ad.png"
+	width="2592"
+	height="1788"
+	srcset="/post/adguardhome/adguard_ad_hu_a5a8d2147000d4c5.png 480w, /post/adguardhome/adguard_ad_hu_a19cf949bbd2a3d.png 1024w"
+	loading="lazy"
+	
+		alt="adguard blocklist new"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+></p>
+
+</section>
+
+
+  <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/self-hosting/">Self-Hosting</a>
+        
+            <a href="/tags/linux/">Linux</a>
+        
+            <a href="/tags/windows/">Windows</a>
+        
+            <a href="/tags/dns/">DNS</a>
+        
+            <a href="/tags/%E7%B6%B2%E8%B7%AF%E8%A8%AD%E5%AE%9A/">網路設定</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>本文採用 <a class="link" href="https://creativecommons.org/licenses/by/4.0/deed"  target="_blank" rel="noopener"
+    >創用CC BY 4.0</a> 協議許可</span>
+    </section>
+    </footer>
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5857950919507241" crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5857950919507241"
+     data-ad-slot="6290484367"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/post/speedtest/">
+        
+        
+            <div class="article-image">
+                <img src="/post/speedtest/speed-meter.ff9f903df4c3861aaa7606abcf7d0423_hu_405a36f98b18e000.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post OpenSpeedTest 純HTML5的內網測速工具"
+                        data-key="SpeedTest" 
+                        data-hash="md5-/5&#43;QPfTDhhqqdgarz30EIw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">OpenSpeedTest 純HTML5的內網測速工具</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/wikijs-keyckoak/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://camo.githubusercontent.com/0517b8b479b59ff711930e51861faf2154aa54524503cf5de4b7ef506e1119d1/68747470733a2f2f7374617469632e7265717561726b732e696f2f6c6f676f2f77696b696a732d66756c6c2e737667" loading="lazy" data-key="wikijs-keyckoak" data-hash="https://camo.githubusercontent.com/0517b8b479b59ff711930e51861faf2154aa54524503cf5de4b7ef506e1119d1/68747470733a2f2f7374617469632e7265717561726b732e696f2f6c6f676f2f77696b696a732d66756c6c2e737667"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">設定 WikiJS 使用 Keyckoak 做身分認證</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/gitea/">
+        
+        
+            <div class="article-image">
+                <img src="/post/gitea/Gitea.3ed89bbdaa84abd13a54857068724939_hu_1d5947817e67bab5.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Gitea - 自己的 Git 自己架"
+                        data-key="gitea" 
+                        data-hash="md5-PtibvaqEq9E6VIVwaHJJOQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Gitea - 自己的 Git 自己架</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/yt-dlp/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="yt-dlp" data-hash="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">用指令下載影片吧 youtube-dlp</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/post/yt-dlp-login/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="yt-dlp-login" data-hash="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&amp;w=2874&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">yt-dlp 登入並下載影片</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "4154b7069cefd96aa34b",
+        clientSecret: "4d1e06eb5468a4a083bdb0b6095c613deb234ea1",
+        repo: "zonelin.github.io",
+        owner: "ZoneLin",
+        admin: ["ZoneLin"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy: null ,
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2025 筆記Zone
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
